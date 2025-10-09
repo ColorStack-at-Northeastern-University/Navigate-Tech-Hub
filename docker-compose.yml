@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  strapi:
+    container_name: navigate-tech-hub-strapi
+    build: ./backend
+    image: navigate-tech-hub-strapi:latest
+    restart: unless-stopped
+    env_file: ./backend/.env
+    environment:
+      DATABASE_CLIENT: ${DATABASE_CLIENT}
+      DATABASE_HOST: postgres
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      APP_KEYS: ${APP_KEYS}
+    volumes:
+      - ./backend:/opt/app
+      - strapi-data:/opt/app/public/uploads
+    ports:
+      - "1337:1337"
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: navigate-tech-hub-db
+    image: postgres:14.6-alpine
+    restart: unless-stopped
+    env_file: ./backend/.env
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    # healthcheck for prod
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DATABASE_USERNAME} -d ${DATABASE_NAME}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  db-data:
+  strapi-data:
+
+# Notes for Production:
+# 1. Remove "ports" under postgres → keep DB internal (safer).
+# 2. Use S3 (or another cloud provider) for uploads instead of strapi-data volume.
+# 3. Ensure JWT_SECRET, ADMIN_JWT_SECRET, APP_KEYS are strong + unique (env or secret manager).
+# 4. Set up automated Postgres backups (pg_dump or managed DB snapshots).
+# 5. Healthchecks added so Strapi only runs after Postgres is ready.
