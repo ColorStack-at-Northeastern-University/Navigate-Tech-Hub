@@ -89,8 +89,8 @@ export const SITE_CONFIG = {
     description: 'A student-led initiative providing curated resources, guides, and community support for Black and Latinx computer science students at Northeastern University.',
     url: 'https://navigate-tech-hub.vercel.app', // subject to change
     social: {
-        linkedin: '#',
-        instagram: '#',
+        linkedin: 'https://www.linkedin.com/company/colorstackneu/',
+        instagram: 'https://www.instagram.com/colorstackneu/',
         github: 'https://github.com/ColorStack-at-Northeastern-University/Navigate-Tech-Hub',
     },
     footer: {
@@ -107,7 +107,7 @@ export const NAV_LINKS = [
     { href: '/', label: 'Home' },
     { href: '/browse', label: 'Browse' },
     { href: '/external-resources', label: 'External Resources' },
-    { href: '/#about', label: 'About' },
+    { href: '/#about', label: 'About' }, // subject to change to add a more detailed about section or "meet the team"
 ] as const;
 
 /**
