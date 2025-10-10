@@ -1,26 +1,123 @@
-@import "tailwindcss";
+/**
+ * Global styles for Navigate Tech Hub
+ * Tailwind directives + custom CSS mapped from mock code
+ */
 
+@import "tailwindcss/preflight";
+@tailwind utilities;
+
+/**
+ * CSS Custom Properties (CSS Variables)
+ * Color scheme matching the mock code and constants.ts
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --colorstack-teal: #3da39b;
+  --colorstack-orange: #fcb432;
+  --neu-red: #d41b2c;
+  --neu-black: #000000;
+  --neu-gray: #c0c0c0;
+  --neu-lightgray: #e8e8e8;
+  --white: #ffffff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/**
+ * Base styles
+ * Applied to all elements
+ */
+@layer base {
+  body {
+    @apply bg-neu-lightgray text-neu-black;
+    line-height: 1.6;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  html {
+    scroll-behavior: smooth;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/**
+ * Component-level utilities
+ * Reusable classes for common patterns
+ */
+@layer components {
+  /**
+   * Accent bar (gradient divider)
+   * Used throughout the site for visual separation
+   */
+  .accent-bar {
+    @apply h-[5px] rounded-md mb-8;
+    background: linear-gradient(
+      to right,
+      var(--neu-red),
+      var(--colorstack-teal),
+      var(--colorstack-orange)
+    );
+  }
+
+  /**
+   * Card base styles
+   * Common styling for resource cards
+   */
+  .card-base {
+    @apply bg-white rounded-xl p-8 shadow-card transition-all duration-300;
+    @apply border-t-[5px] border-colorstack-teal;
+  }
+
+  .card-base:hover {
+    @apply -translate-y-1 shadow-card-hover;
+  }
+
+  /**
+   * Section title styling
+   */
+  .section-title {
+    @apply text-4xl font-bold text-neu-red mb-4;
+  }
+
+  /**
+   * Page title styling (for Browse, External Resources, etc.)
+   */
+  .page-title {
+    @apply text-5xl font-bold text-neu-red mb-4;
+  }
+
+  /**
+   * Container for page content
+   * Centers content with max width
+   */
+  .container-custom {
+    @apply max-w-[1200px] mx-auto px-8 py-12;
+  }
+}
+
+/**
+ * Utility classes
+ * Single-purpose helper classes
+ */
+@layer utilities {
+  /**
+   * Brand gradient background
+   * Used for hero sections and accent elements
+   */
+  .gradient-brand {
+    background: linear-gradient(
+      to right,
+      var(--neu-red),
+      var(--colorstack-teal),
+      var(--colorstack-orange)
+    );
+  }
+
+  /**
+   * Text gradient for special headings
+   */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      to right,
+      var(--neu-red),
+      var(--colorstack-teal),
+      var(--colorstack-orange)
+    );
+  }
 }
