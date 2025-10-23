@@ -42,7 +42,7 @@ export interface ExternalResource {
     description: string;
     url: string;
     category: ResourceCategory;
-    badge?: string;                // e.g., "External Link", "Paid"
+    badge?: string;                // e.g., "External Link", "Paid" ??
 }
 
 /**
