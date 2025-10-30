@@ -30,7 +30,7 @@ export default function BrowsePage() {
     <>
       <Navbar />
 
-      <main className="container-custom mt-50 px-6">
+      <main className="container-custom mt-40 px-6">
         <h1 className="text-4xl md:text-5xl font-bold text-red-600 mb-3">
           Browse All Resources
         </h1>
