@@ -6,12 +6,20 @@ import Footer from '@/components/layout/Footer';
 import ResourceCard from '@/components/ui/ResourceCard';
 import { resources } from '@/data/resources';
 
+/**
+ * BrowsePage Component
+ * 
+ * Displays all available Navigate Tech Hub resources.
+ * Includes search and category filter functionality for easy browsing.
+ */
 export default function BrowsePage() {
+  // --- STATE ---
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
 
-  console.log("Resources loaded:", resources.length);
-  
+  console.log("Resources loaded:", resources.length); // Debugging helper
+
+  // --- CATEGORY BUTTON DATA ---
   const categories = [
     { value: 'all', label: 'All' },
     { value: 'interview-prep', label: 'Interview Prep' },
@@ -21,6 +29,8 @@ export default function BrowsePage() {
     { value: 'community', label: 'Community' },
   ];
 
+  // --- FILTER LOGIC ---
+  // Filters the list based on both search query and category
   const filteredResources = resources.filter((r) =>
     (selectedCategory === 'all' || r.category === selectedCategory) &&
     r.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -28,17 +38,23 @@ export default function BrowsePage() {
 
   return (
     <>
+      {/* NAVBAR (fixed at top) */}
       <Navbar />
 
-      <main className="container-custom mt-40 px-6">
+      {/* MAIN CONTENT */}
+      <main className="container-custom mt-44 px-6">
+        {/* --- PAGE HEADER --- */}
         <h1 className="text-4xl md:text-5xl font-bold text-red-600 mb-3">
           Browse All Resources
         </h1>
         <p className="text-gray-600 text-lg mb-8">
           Explore our curated collection of guides, articles, and tools for CS students.
         </p>
+
+        {/* --- ACCENT BAR --- */}
         <div className="h-1 bg-gradient-to-r from-red-600 via-teal-500 to-amber-400 rounded-full mb-10"></div>
 
+        {/* --- SEARCH BAR --- */}
         <div className="mb-8">
           <input
             type="text"
@@ -49,6 +65,7 @@ export default function BrowsePage() {
           />
         </div>
 
+        {/* --- CATEGORY FILTER BUTTONS --- */}
         <div className="flex flex-wrap gap-3 mb-12">
           {categories.map((category) => (
             <button
@@ -65,6 +82,7 @@ export default function BrowsePage() {
           ))}
         </div>
 
+        {/* --- RESOURCE GRID --- */}
         {filteredResources.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {filteredResources.map((resource) => (
@@ -76,15 +94,19 @@ export default function BrowsePage() {
             ))}
           </div>
         ) : (
+          // --- NO RESULTS MESSAGE ---
           <div className="text-center py-16">
             <h3 className="text-2xl font-semibold text-red-600 mb-2">
               No resources found
             </h3>
-            <p className="text-gray-600">Try adjusting your search or filter criteria.</p>
+            <p className="text-gray-600">
+              Try adjusting your search or filter criteria.
+            </p>
           </div>
         )}
       </main>
 
+      {/* FOOTER */}
       <Footer />
     </>
   );
