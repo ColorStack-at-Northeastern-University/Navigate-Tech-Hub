@@ -42,9 +42,9 @@ export default function BrowsePage() {
       <Navbar />
 
       {/* MAIN CONTENT */}
-      <main className="container-custom mt-44 px-6">
+      <main className="container-custom px-6 mt-40">
         {/* --- PAGE HEADER --- */}
-        <h1 className="text-4xl md:text-5xl font-bold text-red-600 mb-3">
+        <h1 className="text-4xl mt-15 md:text-5xl font-bold text-red-600 mb-3">
           Browse All Resources
         </h1>
         <p className="text-gray-600 text-lg mb-8">
