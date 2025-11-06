@@ -2,7 +2,6 @@
 
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
-import ResourceCard from '@/components/ui/ResourceCard';
 import { resources } from '@/data/resources';
 import { useState } from 'react';
 
