@@ -1,14 +1,14 @@
 /**
  * External Resources Data
  * Links to external platforms, tools, and resources for CS students
- * 
+ *
  * All resources link to real external sites and open in new tabs
  */
 
 import { ExternalResource } from '@/lib/types';
 
 export const externalResources: ExternalResource[] = [
-    // INTERVIEW PREP RESOURCES (add codewars)
+    // INTERVIEW PREP RESOURCES
     {
         title: 'Codewars',
         description: 'The true beginner coding practice site to go when even two-sum makes you feel dumb',
