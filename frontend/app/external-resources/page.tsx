@@ -1,5 +1,5 @@
 /** 
- * External Resources Page (Skeleton)
+ * External Resources Page
  *
  * Directory of external tools, platforms, and resources.
  * Organized by category with direct links to external sites.
@@ -80,10 +80,10 @@ export default function ExternalResourcesPage() {
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {interviewPrepResources.map((resource) => (
-                        <ExternalResourceCard
-                            key={resource.url}
-                            resource={resource}
-                        />
+                            <ExternalResourceCard
+                                key={resource.url}
+                                resource={resource}
+                            />
                         ))}
                     </div>
                 </section>
@@ -103,11 +103,11 @@ export default function ExternalResourcesPage() {
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {projectsResources.map((resource) => (
-                        <ExternalResourceCard
-                        key={resource.url}
-                        resource={resource}
-                        />
-                    ))}
+                            <ExternalResourceCard
+                                key={resource.url}
+                                resource={resource}
+                            />
+                        ))}
                     </div>
                 </section>
 
@@ -126,11 +126,11 @@ export default function ExternalResourcesPage() {
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {communityResources.map((resource) => (
-                        <ExternalResourceCard
-                        key={resource.url}
-                        resource={resource}
-                        />
-                    ))}
+                            <ExternalResourceCard
+                                key={resource.url}
+                                resource={resource}
+                            />
+                        ))}
                     </div>
                 </section>
 
@@ -149,11 +149,11 @@ export default function ExternalResourcesPage() {
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {hackathonResources.map((resource) => (
-                        <ExternalResourceCard
-                        key={resource.url}
-                        resource={resource}
-                        />
-                    ))}
+                            <ExternalResourceCard
+                                key={resource.url}
+                                resource={resource}
+                            />
+                        ))}
                     </div>
                 </section>
 
@@ -172,11 +172,11 @@ export default function ExternalResourcesPage() {
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {learningResources.map((resource) => (
-                        <ExternalResourceCard
-                        key={resource.url}
-                        resource={resource}
-                        />
-                    ))}
+                            <ExternalResourceCard
+                                key={resource.url}
+                                resource={resource}
+                            />
+                        ))}
                     </div>
                 </section>
             </main>
