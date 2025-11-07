@@ -107,7 +107,7 @@ export const NAV_LINKS = [
     { href: '/', label: 'Home' },
     { href: '/browse', label: 'Browse' },
     { href: '/external-resources', label: 'External Resources' },
-    { href: '/#about', label: 'About' }, // subject to change to add a more detailed about section or "meet the team"
+    { href: '/about', label: 'About' }, // subject to change to add a more detailed about section or "meet the team"
 ] as const;
 
 /**
