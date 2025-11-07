@@ -8,17 +8,13 @@
 import { ExternalResource } from '@/lib/types';
 
 export const externalResources: ExternalResource[] = [
-    // INTERVIEW PREP RESOURCES (add codewars)
+    // INTERVIEW PREP RESOURCES
     {
         title: 'Codewars',
         description: 'The true beginner coding practice site to go when even two-sum makes you feel dumb',
         url: 'https://codewars.com',
         category: 'interview-prep'
-<<<<<<< HEAD
     },
-=======
-    }, 
->>>>>>> dad636a (completed external resources with added functionality)
     {
         title: 'NeetCode 150',
         description: 'Curated list of 150 LeetCode questions with video explanations. Organized by pattern for efficient learning.',
