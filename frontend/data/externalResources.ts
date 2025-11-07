@@ -1,7 +1,7 @@
 /**
  * External Resources Data
  * Links to external platforms, tools, and resources for CS students
- * 
+ *
  * All resources link to real external sites and open in new tabs
  */
 
@@ -14,7 +14,11 @@ export const externalResources: ExternalResource[] = [
         description: 'The true beginner coding practice site to go when even two-sum makes you feel dumb',
         url: 'https://codewars.com',
         category: 'interview-prep'
+<<<<<<< HEAD
     },
+=======
+    }, 
+>>>>>>> dad636a (completed external resources with added functionality)
     {
         title: 'NeetCode 150',
         description: 'Curated list of 150 LeetCode questions with video explanations. Organized by pattern for efficient learning.',
