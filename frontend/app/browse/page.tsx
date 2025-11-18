@@ -17,8 +17,6 @@ export default function BrowsePage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
 
-  console.log("Resources loaded:", resources.length); // Debugging helper
-
   // CATEGORY BUTTON DATA
   const categories = [
     { value: 'all', label: 'All' },
