@@ -1,0 +1,17 @@
+# Root level gitignore
+# Prevent accidental npm installs at root level
+
+/node_modules/
+/package-lock.json
+/package.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
