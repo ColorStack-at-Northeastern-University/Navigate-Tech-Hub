@@ -1,13 +1,24 @@
 /**
+ * [DEMO UI ENHANCEMENTS - Phase 1]
+ * [MOCK FEATURES INTEGRATED]
+ * 
  * Home Page
  * 
- * Landing page featuring hero section, featured resources, and about section.
+ * Landing page featuring hero section, mock features, featured resources, and about section.
  * Server component that statically generates at build time.
+ * 
+ * Quick visual improvements for demo presentation.
+ * Production implementation would require:
+ * - Comprehensive accessibility audit
+ * - Design system integration (shadcn/ui, Radix, etc.)
+ * - User research and A/B testing
  */
 
 import Footer from '../components/layout/Footer';
 import Navbar from '../components/layout/Navbar';
 import Hero from '../components/sections/Hero';
+import ColorStackOpportunities from '../components/sections/ColorStackOpportunities';
+import LiveActivity from '../components/sections/LiveActivity';
 import ResourceCard from '../components/ui/ResourceCard';
 import { resources } from '../data/resources';
 
@@ -25,6 +36,9 @@ export default function Home() {
 
       <main>
         <Hero />
+
+        {/* ColorStack Opportunities - Mock Feature */}
+        <ColorStackOpportunities />
 
         {/* Featured Resources Section */}
         <section className="container-custom">
@@ -45,6 +59,9 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Live Activity - Mock Feature */}
+        <LiveActivity />
+
         {/* About Section */}
         <section className="container-custom">
           <h3 className="section-title" id="about">
@@ -53,7 +70,7 @@ export default function Home() {
 
           <div className="accent-bar"></div>
 
-          <div className="bg-white rounded-xl p-12 shadow-[0_2px_8px_rgba(0,0,0,0.1)] border-t-[5px] border-colorstack-teal">
+          <div className="bg-white rounded-xl p-12 shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition-all duration-300 border-t-[5px] border-colorstack-teal">
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
               <strong className="text-neu-red font-semibold">Navigate Tech Hub</strong> is a student-led initiative created by Adesola Odubiyi to support
               Black and Latinx computer science students at Northeastern University. Our mission is simple: centralize

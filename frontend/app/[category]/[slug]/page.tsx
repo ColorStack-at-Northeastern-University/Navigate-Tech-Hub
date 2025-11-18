@@ -1,8 +1,16 @@
 /**
+ * [DEMO UI ENHANCEMENTS - Phase 1]
+ * 
  * Article Page
  *
  * Dynamic route that displays full article content for individual resources.
  * Handles: /[category]/[slug] (e.g., /interview-prep/leetcode-patterns-guide)
+ * 
+ * Quick visual improvements for demo presentation.
+ * Production implementation would require:
+ * - Comprehensive accessibility audit
+ * - Design system integration (shadcn/ui, Radix, etc.)
+ * - User research and A/B testing
  */
 
 import Footer from '@/components/layout/Footer';
@@ -15,6 +23,7 @@ import { formatDate } from '@/lib/utils';
 import DifficultyBadge from '@/components/ui/DifficultyBadge';
 import ResourceCard from '@/components/ui/ResourceCard';
 import Tag from '@/components/ui/Tag';
+import ProgressButtons from '@/components/ui/ProgressButtons';
 import ReactMarkdown from 'react-markdown';
 
 
@@ -74,24 +83,24 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
 
                 <Link
                     href={`/${category}`}
-                    className="inline-block mb-8 px-6 py-2 bg-colorstack-teal text-white rounded-full font-semibold hover:bg-colorstack-orange transition-colors"
+                    className="inline-block mb-8 px-6 py-3 bg-colorstack-teal text-white rounded-full font-semibold hover:bg-colorstack-orange hover:scale-105 hover:shadow-lg transition-all duration-200 ease-out active:scale-100"
                 >
                     ← Back to {categoryData?.label}
                 </Link>
 
-                <article className="bg-white rounded-xl p-12 shadow-[0_2px_8px_rgba(0,0,0,0.1)] border-t-[5px] border-neu-red mb-16">
-                    <h1 className="text-4xl font-bold text-neu-black mb-6">
+                <article className="bg-white rounded-xl p-12 shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition-all duration-300 border-t-[5px] border-neu-red mb-16 animate-fade-in">
+                    <h1 className="text-4xl font-bold text-neu-black mb-6 tracking-tight">
                         {resource.title}
                     </h1>
 
-                    <div className="flex flex-wrap items-center gap-4 mb-8 pb-8 border-b border-gray-200">
+                    <div className="flex flex-wrap items-center gap-4 mb-8 pb-8 border-b-2 border-gray-100">
                         {resource.publishedDate && (
-                            <span className="text-gray-600 text-sm">
+                            <span className="text-gray-600 text-sm font-medium">
                                 Published: {formatDate(resource.publishedDate)}
                             </span>
                         )}
                         {resource.author && (
-                            <span className="text-gray-600 text-sm">
+                            <span className="text-gray-600 text-sm font-medium">
                                 By {resource.author}
                             </span>
                         )}
@@ -103,6 +112,11 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
                                 <Tag key={tag}>{tag}</Tag>
                             ))}
                         </div>
+                    </div>
+
+                    {/* Progress Tracking Buttons - Mock Feature */}
+                    <div className="mb-8 pb-8 border-b-2 border-gray-100">
+                        <ProgressButtons slug={resource.slug} />
                     </div>
 
                     <div className="prose prose-lg max-w-none">

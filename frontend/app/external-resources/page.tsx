@@ -1,4 +1,6 @@
 /**
+ * [DEMO UI ENHANCEMENTS - Reverted to List Layout]
+ * 
  * External Resources Page
  * 
  * Directory of external tools, platforms, and resources.
@@ -26,7 +28,7 @@ export default function ExternalResourcesPage() {
         <>
             <Navbar />
 
-            <main className="container-custom mt-16">
+            <main className="container-custom mt-16 animate-fade-in">
                 {/* Page Header */}
                 <div className="text-center mb-12 mt-12">
                     <h1 className="page-title">External Resources Directory</h1>
@@ -42,7 +44,7 @@ export default function ExternalResourcesPage() {
                     <h2 className="text-3xl font-bold text-neu-black mb-6 pb-2 border-b-[3px] border-neu-red inline-block">
                         Interview Prep
                     </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
                         {interviewPrepResources.map((resource) => (
                             <ExternalResourceCard key={resource.url} resource={resource} />
                         ))}
@@ -51,10 +53,10 @@ export default function ExternalResourcesPage() {
 
                 {/* Projects & Portfolio Section */}
                 <section className="mb-16">
-                    <h2 className="text-3xl font-bold text-neu-black mb-6 pb-2 border-b-[3px] border-neu-red inline-block">
+                    <h2 className="text-3xl font-bold text-neu-black mb-6 pb-2 border-b-[3px] border-colorstack-orange inline-block">
                         Projects & Portfolio
                     </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
                         {projectsResources.map((resource) => (
                             <ExternalResourceCard key={resource.url} resource={resource} />
                         ))}
@@ -63,10 +65,10 @@ export default function ExternalResourcesPage() {
 
                 {/* Community & Networking Section */}
                 <section className="mb-16">
-                    <h2 className="text-3xl font-bold text-neu-black mb-6 pb-2 border-b-[3px] border-neu-red inline-block">
+                    <h2 className="text-3xl font-bold text-neu-black mb-6 pb-2 border-b-[3px] border-colorstack-teal inline-block">
                         Community & Networking
                     </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
                         {communityResources.map((resource) => (
                             <ExternalResourceCard key={resource.url} resource={resource} />
                         ))}
@@ -75,10 +77,10 @@ export default function ExternalResourcesPage() {
 
                 {/* Hackathons Section */}
                 <section className="mb-16">
-                    <h2 className="text-3xl font-bold text-neu-black mb-6 pb-2 border-b-[3px] border-neu-red inline-block">
+                    <h2 className="text-3xl font-bold text-neu-black mb-6 pb-2 border-b-[3px] border-neu-black inline-block">
                         Hackathons
                     </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
                         {hackathonResources.map((resource) => (
                             <ExternalResourceCard key={resource.url} resource={resource} />
                         ))}
@@ -87,10 +89,10 @@ export default function ExternalResourcesPage() {
 
                 {/* Learning Platforms Section */}
                 <section className="mb-16">
-                    <h2 className="text-3xl font-bold text-neu-black mb-6 pb-2 border-b-[3px] border-neu-red inline-block">
+                    <h2 className="text-3xl font-bold text-neu-black mb-6 pb-2 border-b-[3px] border-colorstack-teal inline-block">
                         Learning Platforms
                     </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
                         {learningResources.map((resource) => (
                             <ExternalResourceCard key={resource.url} resource={resource} />
                         ))}
