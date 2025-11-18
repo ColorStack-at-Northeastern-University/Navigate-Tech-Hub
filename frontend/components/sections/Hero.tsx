@@ -13,10 +13,10 @@ import StatsCard from '../ui/StatsCard';
 
 export default function Hero() {
     const stats = [
-        { icon: '📚', value: 12, label: 'Resources', suffix: '+' },
-        { icon: '🔗', value: 31, label: 'External Links', suffix: '+' },
-        { icon: '📁', value: 5, label: 'Categories' },
-        { icon: '✨', value: 100, label: 'Free Access', suffix: '%' },
+        {value: 12, label: 'Resources', suffix: '+' },
+        {value: 31, label: 'External Links', suffix: '+' },
+        {value: 5, label: 'Categories' },
+        {value: 100, label: 'Free Access', suffix: '%' },
     ];
 
     return (

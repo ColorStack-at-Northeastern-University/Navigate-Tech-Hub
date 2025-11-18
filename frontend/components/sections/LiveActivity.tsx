@@ -33,10 +33,6 @@ export default function LiveActivity() {
           <span className="w-2 h-2 bg-white rounded-full animate-ping"></span>
           <span>LIVE</span>
         </div>
-        {/* Preview badge */}
-        <span className="text-xs bg-colorstack-orange/20 text-colorstack-orange px-3 py-1 rounded-full font-semibold">
-          Preview Feature
-        </span>
       </div>
 
       <div className="accent-bar"></div>
@@ -50,7 +46,7 @@ export default function LiveActivity() {
               <div className="flex items-center gap-3 mb-2">
                 <span className="text-sm font-semibold text-gray-600 uppercase tracking-wide">Views Today</span>
               </div>
-              <div className="text-4xl font-bold text-neu-red">
+              <div className="text-4xl font-bold">
                 {isVisible ? <CountUp end={mockLiveStats.viewsToday} duration={1500} /> : 0}
               </div>
             </div>
@@ -60,7 +56,7 @@ export default function LiveActivity() {
               <div className="flex items-center gap-3 mb-2">
                 <span className="text-sm font-semibold text-gray-600 uppercase tracking-wide">Bookmarks</span>
               </div>
-              <div className="text-4xl font-bold text-colorstack-teal">
+              <div className="text-4xl font-bold">
                 {isVisible ? <CountUp end={mockLiveStats.bookmarksThisWeek} duration={1500} /> : 0}
               </div>
             </div>
@@ -70,7 +66,7 @@ export default function LiveActivity() {
               <div className="flex items-center gap-3 mb-2">
                 <span className="text-sm font-semibold text-gray-600 uppercase tracking-wide">Contributions</span>
               </div>
-              <div className="text-4xl font-bold text-colorstack-orange">
+              <div className="text-4xl font-bold">
                 {isVisible ? <CountUp end={mockLiveStats.pendingContributions} duration={1500} /> : 0}
               </div>
             </div>
@@ -89,7 +85,7 @@ export default function LiveActivity() {
                   className="flex items-center justify-between p-4 rounded-lg hover:bg-gray-50 transition-colors group border border-transparent hover:border-colorstack-teal"
                 >
                   <div className="flex items-center gap-4">
-                    <span className="text-lg font-bold text-colorstack-teal">{rankBadges[item.rank - 1]}</span>
+                    <span className="text-lg font-bold">{rankBadges[item.rank - 1]}</span>
                     <div>
                       <div className="font-semibold text-gray-900 group-hover:text-colorstack-teal transition-colors">
                         {item.title}

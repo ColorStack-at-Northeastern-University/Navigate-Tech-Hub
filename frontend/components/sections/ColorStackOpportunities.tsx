@@ -39,7 +39,6 @@ export default function ColorStackOpportunities() {
 
       <p className="text-lg text-gray-600 mb-6 max-w-3xl">
         Navigate Tech Hub integrates with ColorStack to bring opportunities directly to you. 
-        <strong className="text-colorstack-teal"> We're better together.</strong>
       </p>
 
       <div className="accent-bar"></div>
@@ -142,7 +141,7 @@ export default function ColorStackOpportunities() {
               Join ColorStack
             </a>
             <a
-              href="https://www.colorstack.org/slack"
+              href="https://wiki.colorstack.org/the-colorstack-family/community/all-things-slack/slack-channels"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-colorstack-orange text-white px-8 py-3 rounded-full font-semibold hover:bg-neu-red transition-colors shadow-md"
@@ -156,7 +155,7 @@ export default function ColorStackOpportunities() {
       {/* Note about integration philosophy */}
       <div className="mt-8 p-4 bg-colorstack-teal/10 rounded-lg border border-colorstack-teal/20">
         <p className="text-sm text-gray-700 text-center">
-          <strong>Our Philosophy:</strong> Navigate Tech Hub works WITH ColorStack resources, not in competition. 
+          <strong>Our Philosophy:</strong> Navigate Tech Hub works with ColorStack resources, not in competition. 
           We're building infrastructure for collective success by bringing opportunities directly to you.
         </p>
       </div>

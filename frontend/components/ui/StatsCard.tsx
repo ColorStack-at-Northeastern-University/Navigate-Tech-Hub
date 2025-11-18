@@ -12,7 +12,6 @@
 import { useEffect, useState } from 'react';
 
 interface Stat {
-  icon: string;
   value: number;
   label: string;
   suffix?: string;
@@ -39,9 +38,8 @@ export default function StatsCard({ stats }: StatsCardProps) {
             className="flex items-center gap-4 animate-fade-in-up"
             style={{ animationDelay: `${400 + index * 100}ms` }}
           >
-            <div className="text-4xl">{stat.icon}</div>
             <div>
-              <div className="text-3xl font-bold text-neu-red">
+              <div className="text-3xl font-bold text-neu-black">
                 {isVisible ? (
                   <CountUp end={stat.value} duration={1000 + index * 200} />
                 ) : (

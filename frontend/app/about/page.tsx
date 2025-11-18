@@ -37,45 +37,45 @@ export default function AboutPage() {
 
                     {/* Mission Section – purpose, goals, and audience of Navigate Tech Hub */}
                     <section className="mb-12">
-                        <h2 className="text-3xl font-bold text-neu-red mb-6">Our Mission</h2>
+                        <h2 className="text-3xl font-bold text-neu-black mb-6">Our Mission</h2>
                         <div className="bg-white rounded-xl p-12 shadow-[0_2px_8px_rgba(0,0,0,0.1)] border-top-[5px] border-colorstack-teal">
                             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                                Navigate Tech Hub serves as a <strong>centralized platform</strong> for Black and Latinx computer science students at Northeastern University. Our mission is to provide accessible resources, foster community connections, and support academic success in technology fields.
+                                Navigate Tech Hub serves as a centralized platform for Black and Latinx computer science students at Northeastern University. Our mission is to provide accessible resources, foster community connections, and support academic success in technology fields.
                             </p>
                             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                                We believe that <strong>representation matters</strong> in tech. By creating a dedicated space for underrepresented students, we aim to bridge the resource gap and empower the next generation of diverse technologists.
+                                We believe that representation matters in tech. By creating a dedicated space for underrepresented students, we aim to bridge the resource gap and empower the next generation of diverse technologists.
                             </p>
                             <p className="text-lg text-gray-700 leading-relaxed">
-                                Whether you're looking for internship opportunities, technical tutorials, or community support, Navigate Tech Hub is here to help you <strong>navigate your journey</strong> in computer science.
+                                Whether you're looking for internship opportunities, technical tutorials, or community support, Navigate Tech Hub is here to help you navigate your journey in computer science.
                             </p>
                         </div>
                     </section>
 
                     {/* Values Section – core values and guiding principles */}
                     <section className="mb-12">
-                        <h2 className="text-3xl font-bold text-neu-red mb-6">Our Values</h2>
+                        <h2 className="text-3xl font-bold text-neu-black mb-6">Our Values</h2>
                         <div className="bg-white rounded-xl p-12 shadow-[0_2px_8px_rgba(0,0,0,0.1)] border-top-[5px] border-colorstack-orange">
                             <div className="grid md:grid-cols-2 gap-8">
                                 <div>
-                                    <h3 className="text-xl font-bold text-colorstack-teal mb-3">Student-Led</h3>
+                                    <h3 className="text-xl font-bold text-neu-black mb-3">Student-Led</h3>
                                     <p className="text-gray-700 leading-relaxed">
                                         Built and maintained by students who understand the challenges of navigating tech education. Our peer-to-peer approach ensures relevant, relatable content.
                                     </p>
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-bold text-colorstack-orange mb-3">Open Source</h3>
+                                    <h3 className="text-xl font-bold text-neu-black mb-3">Open Source</h3>
                                     <p className="text-gray-700 leading-relaxed">
                                         Transparency and collaboration are at our core. All our code is publicly available, welcoming contributions from the community.
                                     </p>
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-bold text-neu-red mb-3">Community-Driven</h3>
+                                    <h3 className="text-xl font-bold text-neu-black mb-3">Community-Driven</h3>
                                     <p className="text-gray-700 leading-relaxed">
                                         We grow through collective knowledge sharing. Every resource added strengthens our community and helps future students succeed.
                                     </p>
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-bold text-colorstack-teal mb-3">Inclusive</h3>
+                                    <h3 className="text-xl font-bold text-neu-black mb-3">Inclusive</h3>
                                     <p className="text-gray-700 leading-relaxed">
                                         Creating a welcoming space for all students, with particular focus on supporting Black and Latinx technologists in their academic journey.
                                     </p>
@@ -86,26 +86,26 @@ export default function AboutPage() {
 
                     {/* Origin Story Section – how and why the platform was created */}
                     <section className="mb-12">
-                        <h2 className="text-3xl font-bold text-neu-red mb-6">Our Story</h2>
+                        <h2 className="text-3xl font-bold text-neu-black mb-6">Our Story</h2>
                         <div className="bg-white rounded-xl p-12 shadow-[0_2px_8px_rgba(0,0,0,0.1)] border-top-[5px] border-neu-red">
                             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                                Navigate Tech Hub was founded by <strong>Adesola Odubiyi</strong>, Software Project Lead at ColorStack @ Northeastern University. Recognizing the need for a centralized resource hub specifically designed for underrepresented students in tech, Adesola envisioned a platform where students could easily find opportunities, tutorials, and community support.
+                                Navigate Tech Hub was founded by Adesola Odubiyi, Software Project Lead at ColorStack @ Northeastern University. Recognizing the need for a centralized resource hub specifically designed for underrepresented students in tech, Adesola envisioned a platform where students could easily find opportunities, tutorials, and community support.
                             </p>
                             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                                Through the partnership between <strong>ColorStack and Northeastern University</strong>, Navigate Tech Hub emerged as a student-driven initiative to address the resource gap faced by Black and Latinx computer science students. What started as a small collection of links has grown into a comprehensive platform serving the entire community.
+                                Through the partnership between ColorStack and Northeastern University, Navigate Tech Hub emerged as a student-driven initiative to address the resource gap faced by Black and Latinx computer science students. What started as a small collection of links has grown into a comprehensive platform serving the entire community.
                             </p>
                             <p className="text-lg text-gray-700 leading-relaxed">
-                                Today, Navigate Tech Hub continues to evolve with contributions from students like <strong>Taniya, Bryce, Branden, and Ayaan</strong>, who work together to expand and improve the platform for future generations of technologists.
+                                Today, Navigate Tech Hub continues to evolve with contributions from students like Taniya, Bryce, Branden, and Ayaan, who work together to expand and improve the platform for future generations of technologists.
                             </p>
                         </div>
                     </section>
 
                     {/* Contribution Section – invitation to participate and links to GitHub/contact */}
                     <section className="mb-16">
-                        <h2 className="text-3xl font-bold text-neu-red mb-6">Get Involved</h2>
+                        <h2 className="text-3xl font-bold text-neu-black mb-6">Get Involved</h2>
                         <div className="bg-white rounded-xl p-12 shadow-[0_2px_8px_rgba(0,0,0,0.1)] border-top-[5px] border-colorstack-teal">
                             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                                Navigate Tech Hub thrives on <strong>community contributions</strong>. Whether you've discovered a great resource, want to fix a bug, or have ideas for new features, we welcome your input. Every contribution helps build a stronger platform for current and future students.
+                                Navigate Tech Hub thrives on community contributions. Whether you've discovered a great resource, want to fix a bug, or have ideas for new features, we welcome your input. Every contribution helps build a stronger platform for current and future students.
                             </p>
                             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                                 Contributing is easy: fork our repository, make your changes, and submit a pull request. You can add new resources, improve existing content, enhance the UI, or report issues. No contribution is too small!

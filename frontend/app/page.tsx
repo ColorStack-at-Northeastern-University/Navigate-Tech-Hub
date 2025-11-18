@@ -72,27 +72,22 @@ export default function Home() {
 
           <div className="bg-white rounded-xl p-12 shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition-all duration-300 border-t-[5px] border-colorstack-teal">
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              <strong className="text-neu-red font-semibold">Navigate Tech Hub</strong> is a student-led initiative created by Adesola Odubiyi to support
+              Navigate Tech Hub is a student-led initiative created by Adesola Odubiyi to support
               Black and Latinx computer science students at Northeastern University. Our mission is simple: centralize
               resources, share knowledge, and build community.
             </p>
 
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
               Whether you're preparing for technical interviews, looking for project ideas, navigating course registration,
-              or seeking career advice, Navigate Tech Hub is your single source of truth. We've compiled insights from{' '}
-              <strong className="text-neu-red font-semibold">ColorStack</strong>,{' '}
-              <strong className="text-neu-red font-semibold">Code: Black</strong>, and experienced students who've been where you are.
+              or seeking career advice, Navigate Tech Hub is your single source of truth. We've compiled insights from ColorStack, Code: Black, and experienced students who've been where you are.
             </p>
 
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              This platform is built{' '}
-              <strong className="text-neu-red font-semibold">by students, for students</strong>. All content is open-source and continuously
+              This platform is built by students, for students. All content is open-source and continuously
               updated by our community. If you have advice to share or resources to contribute, we want to hear from you.
             </p>
 
-            <p className="text-lg text-gray-700 leading-relaxed">
-              <strong className="text-neu-red font-semibold">Let's navigate this journey together.</strong>
-            </p>
+            <p className="text-lg text-gray-700 leading-relaxed"></p>
           </div>
         </section>
       </main>
