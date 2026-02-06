@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "test_articles",
+  "info": {
+    "singularName": "test-article",
+    "pluralName": "test-articles",
+    "displayName": "Test Article"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "blocks"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "interview-prep",
+        "classes",
+        "projects"
+      ]
+    }
+  }
+}
