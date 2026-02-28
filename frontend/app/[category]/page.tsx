@@ -1,6 +1,6 @@
 /**
  * Category Page
- * 
+ *
  * Dynamic route that displays all resources for a specific category.
  * Handles: /interview-prep, /classes, /projects, /hackathons, /community
  */
@@ -9,24 +9,24 @@ import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
 import ResourceCard from '@/components/ui/ResourceCard';
 import { notFound } from 'next/navigation';
-import { resources } from '@/data/resources';
 import { CATEGORIES } from '@/lib/constants';
+import { getResourcesByCategory } from '@/lib/strapi';
+import type { ResourceCategory } from '@/lib/types';
 import Link from 'next/link';
 
 /**
  * Category page component
- * Shows all resources filtered by category
+ * Fetches and displays all resources filtered by category from Strapi.
  */
 export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
     const { category } = await params;
-    
-    const categoryData = CATEGORIES.find((cat) => cat.slug === category);
 
+    const categoryData = CATEGORIES.find((cat) => cat.slug === category);
     if (!categoryData) {
         notFound();
     }
 
-    const categoryResources = resources.filter((r) => r.category === category);
+    const categoryResources = await getResourcesByCategory(category as ResourceCategory);
 
     return (
         <>

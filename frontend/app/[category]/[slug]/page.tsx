@@ -3,52 +3,45 @@
  *
  * Dynamic route that displays full article content for individual resources.
  * Handles: /[category]/[slug] (e.g., /interview-prep/leetcode-patterns-guide)
+ *
+ * Fetches the full resource (including content) and up to 3 related
+ * resources from the same category via Strapi.
  */
 
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { resources } from '@/data/resources';
 import { CATEGORIES } from '@/lib/constants';
+import { getResourceBySlug, getRelatedResources } from '@/lib/strapi';
 import { formatDate } from '@/lib/utils';
+import type { ResourceCategory } from '@/lib/types';
 import DifficultyBadge from '@/components/ui/DifficultyBadge';
 import ResourceCard from '@/components/ui/ResourceCard';
 import Tag from '@/components/ui/Tag';
 import ReactMarkdown from 'react-markdown';
 
-
 /**
  * Article page component
- * Displays full resource content with metadata and related resources
+ * Displays full resource content with metadata and related resources.
  */
 export default async function ArticlePage({ params }: { params: Promise<{ category: string; slug: string }> }) {
     const { category, slug } = await params;
-    
-    const resource = resources.find((r) =>
-        r.category === category && r.slug === slug
-    );
 
+    const categoryData = CATEGORIES.find((cat) => cat.slug === category);
+    if (!categoryData) {
+        notFound();
+    }
+
+    const resource = await getResourceBySlug(category as ResourceCategory, slug);
     if (!resource) {
         notFound();
     }
 
-    const categoryData = CATEGORIES.find((cat) => cat.slug === category);
-
-    const relatedResources = resources
-        .filter((r) => {
-            const sameCategory = r.category === category;
-            const notCurrentArticle = r.slug !== slug;
-            return sameCategory && notCurrentArticle;
-        })
-        .sort((a, b) => {
-            if (!a.publishedDate) return 1;
-            if (!b.publishedDate) return -1;
-            const dateA = new Date(a.publishedDate).getTime();
-            const dateB = new Date(b.publishedDate).getTime();
-            return dateB - dateA;
-        })
-        .slice(0, 3);
+    const relatedResources = await getRelatedResources(
+        category as ResourceCategory,
+        slug,
+    );
 
     return (
         <>
@@ -64,7 +57,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
                         href={`/${category}`}
                         className="hover:text-colorstack-teal"
                     >
-                        {categoryData?.label}
+                        {categoryData.label}
                     </Link>
                     <span className="mx-2">›</span>
                     <span className="text-neu-black font-medium">
@@ -76,7 +69,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
                     href={`/${category}`}
                     className="inline-block mb-8 px-6 py-2 bg-colorstack-teal text-white rounded-full font-semibold hover:bg-colorstack-orange transition-colors"
                 >
-                    ← Back to {categoryData?.label}
+                    ← Back to {categoryData.label}
                 </Link>
 
                 <article className="bg-white rounded-xl p-12 shadow-[0_2px_8px_rgba(0,0,0,0.1)] border-t-[5px] border-neu-red mb-16">
@@ -106,7 +99,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
                     </div>
 
                     <div className="prose prose-lg max-w-none">
-                        <ReactMarkdown>{resource.content}</ReactMarkdown>
+                        <ReactMarkdown>{resource.content ?? ''}</ReactMarkdown>
                     </div>
                 </article>
 

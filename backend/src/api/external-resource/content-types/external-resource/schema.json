@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "external_resources",
+  "info": {
+    "singularName": "external-resource",
+    "pluralName": "external-resources",
+    "displayName": "External Resource",
+    "description": "Curated links to third-party tools and platforms"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "interview-prep",
+        "classes",
+        "projects",
+        "hackathons",
+        "community"
+      ],
+      "required": true
+    },
+    "badge": {
+      "type": "string"
+    }
+  }
+}

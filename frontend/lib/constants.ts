@@ -111,10 +111,10 @@ export const NAV_LINKS = [
 ] as const;
 
 /**
- * API Configuration (Phase 2 - Strapi Integration)
- * Currently commented out because hardcoded data is used in Phase 1
+ * API Configuration (Strapi Integration)
+ * The Strapi URL is used by lib/strapi.ts for all API calls.
+ * No API token is needed for public reads (Public role has find/findOne).
  */
-// export const API_CONFIG = {
-//   strapiUrl: process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337',
-//   apiToken: process.env.NEXT_PUBLIC_STRAPI_API_TOKEN,
-// } as const;
+export const API_CONFIG = {
+    strapiUrl: process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337',
+} as const;

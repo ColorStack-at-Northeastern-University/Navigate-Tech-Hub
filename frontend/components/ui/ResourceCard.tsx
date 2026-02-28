@@ -48,7 +48,7 @@ export default function ResourceCard({ resource, showCategory = false }: Resourc
 
             {/* Resource Tags */}
             <div className="flex flex-wrap gap-2">
-                {resource.tags.map((tag) => (
+                {(resource.tags ?? []).map((tag) => (
                     <Tag key={tag}>{tag}</Tag>
                 ))}
             </div>

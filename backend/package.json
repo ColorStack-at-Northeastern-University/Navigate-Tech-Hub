@@ -12,10 +12,10 @@
     "start": "strapi start",
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
-    "upgrade:dry": "npx @strapi/upgrade latest --dry"
+    "upgrade:dry": "npx @strapi/upgrade latest --dry",
+    "seed:external": "node scripts/seed-external-resources.js"
   },
   "dependencies": {
-    "20": "^3.1.9",
     "@strapi/plugin-cloud": "5.23.6",
     "@strapi/plugin-users-permissions": "5.23.6",
     "@strapi/strapi": "5.23.6",
@@ -26,6 +26,7 @@
     "styled-components": "^6.0.0"
   },
   "devDependencies": {
+    "dotenv": "^16.4.5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

@@ -1,26 +1,62 @@
 /**
  * External Resources Page
- * 
+ *
  * Directory of external tools, platforms, and resources.
- * Organized by category with direct links to external sites.
+ * Fetches all external resources from Strapi, then groups by category.
  */
 
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
 import ExternalResourceCard from '@/components/ui/ExternalResourceCard';
-import { externalResources } from '@/data/externalResources';
+import { getExternalResources } from '@/lib/strapi';
+import type { ExternalResource, ResourceCategory } from '@/lib/types';
+
+/** Maps category slugs to the display labels used in section headings. */
+const CATEGORY_LABELS: Record<ResourceCategory, string> = {
+    'interview-prep': 'Interview Prep',
+    'projects': 'Projects & Portfolio',
+    'community': 'Community & Networking',
+    'hackathons': 'Hackathons',
+    'classes': 'Learning Platforms',
+};
+
+/** Ordered list of categories for consistent section rendering. */
+const SECTION_ORDER: ResourceCategory[] = [
+    'interview-prep',
+    'projects',
+    'community',
+    'hackathons',
+    'classes',
+];
+
+/**
+ * Renders a single category section with its grid of external resource cards.
+ */
+function CategorySection({ label, resources }: { label: string; resources: ExternalResource[] }) {
+    if (resources.length === 0) return null;
+
+    return (
+        <section className="mb-16">
+            <h2 className="text-3xl font-bold text-neu-black mb-6 pb-2 border-b-[3px] border-neu-red inline-block">
+                {label}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {resources.map((resource) => (
+                    <ExternalResourceCard key={resource.url} resource={resource} />
+                ))}
+            </div>
+        </section>
+    );
+}
 
 /**
  * External Resources page component
- * Displays curated external links organized by category
+ * Fetches from Strapi and groups by category for display.
  */
-export default function ExternalResourcesPage() {
-    // Filter resources by category
-    const interviewPrepResources = externalResources.filter(r => r.category === 'interview-prep');
-    const projectsResources = externalResources.filter(r => r.category === 'projects');
-    const communityResources = externalResources.filter(r => r.category === 'community');
-    const hackathonResources = externalResources.filter(r => r.category === 'hackathons');
-    const learningResources = externalResources.filter(r => r.category === 'classes');
+export default async function ExternalResourcesPage() {
+    const allResources = await getExternalResources();
+
+    const grouped = Object.groupBy(allResources, (r) => r.category);
 
     return (
         <>
@@ -37,65 +73,13 @@ export default function ExternalResourcesPage() {
                     <div className="accent-bar max-w-md mx-auto"></div>
                 </div>
 
-                {/* Interview Prep Section */}
-                <section className="mb-16">
-                    <h2 className="text-3xl font-bold text-neu-black mb-6 pb-2 border-b-[3px] border-neu-red inline-block">
-                        Interview Prep
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {interviewPrepResources.map((resource) => (
-                            <ExternalResourceCard key={resource.url} resource={resource} />
-                        ))}
-                    </div>
-                </section>
-
-                {/* Projects & Portfolio Section */}
-                <section className="mb-16">
-                    <h2 className="text-3xl font-bold text-neu-black mb-6 pb-2 border-b-[3px] border-neu-red inline-block">
-                        Projects & Portfolio
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {projectsResources.map((resource) => (
-                            <ExternalResourceCard key={resource.url} resource={resource} />
-                        ))}
-                    </div>
-                </section>
-
-                {/* Community & Networking Section */}
-                <section className="mb-16">
-                    <h2 className="text-3xl font-bold text-neu-black mb-6 pb-2 border-b-[3px] border-neu-red inline-block">
-                        Community & Networking
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {communityResources.map((resource) => (
-                            <ExternalResourceCard key={resource.url} resource={resource} />
-                        ))}
-                    </div>
-                </section>
-
-                {/* Hackathons Section */}
-                <section className="mb-16">
-                    <h2 className="text-3xl font-bold text-neu-black mb-6 pb-2 border-b-[3px] border-neu-red inline-block">
-                        Hackathons
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {hackathonResources.map((resource) => (
-                            <ExternalResourceCard key={resource.url} resource={resource} />
-                        ))}
-                    </div>
-                </section>
-
-                {/* Learning Platforms Section */}
-                <section className="mb-16">
-                    <h2 className="text-3xl font-bold text-neu-black mb-6 pb-2 border-b-[3px] border-neu-red inline-block">
-                        Learning Platforms
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {learningResources.map((resource) => (
-                            <ExternalResourceCard key={resource.url} resource={resource} />
-                        ))}
-                    </div>
-                </section>
+                {SECTION_ORDER.map((cat) => (
+                    <CategorySection
+                        key={cat}
+                        label={CATEGORY_LABELS[cat]}
+                        resources={grouped[cat] ?? []}
+                    />
+                ))}
             </main>
 
             <Footer />
