@@ -1,0 +1,30 @@
+---
+description: Python backend typing, logging, path, secret, and boundary exception standards
+globs: **/*.py
+alwaysApply: false
+---
+# Python Backend Standards
+## Type hints
+All public functions must have explicit type hints on parameters and return values.
+Avoid `Any` unless crossing a third-party boundary you cannot control.
+Use `TypedDict` for dictionaries with a fixed, known shape — especially job stores and API payloads.
+## Paths
+Always use `pathlib.Path`, never string concatenation.
+## Logging
+Use `logger.info/warning/error`, never `print()` in service code.
+Include structured context in every log line:
+```python
+logger.info("Job ready job_id=%s", job_id)
+logger.warning("Stage failed job_id=%s error=%s", job_id, exc)
+```
+Never log sensitive data (file contents, user tokens, raw payloads).
+## Secrets
+Never hardcode credentials, API keys, or environment-specific values. Use `os.environ` or a settings object.
+## Exception hierarchy at service boundaries
+At the outermost boundary of a background task or integration call, catch broadly only as a last resort:
+```python
+except Exception as exc: # noqa: BLE001 — integration boundary
+job_storage[job_id]["status"] = "failed"
+logger.warning("Job failed job_id=%s error=%s", job_id, exc)
+```
+Everywhere else, catch the narrowest exception type possible.

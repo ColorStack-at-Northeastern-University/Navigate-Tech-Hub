@@ -7,7 +7,9 @@
 
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
+import EmptyResourceState from '@/components/ui/EmptyResourceState';
 import ExternalResourceCard from '@/components/ui/ExternalResourceCard';
+import { getSubmitResourceUrl } from '@/lib/constants';
 import { getExternalResources } from '@/lib/strapi';
 import type { ExternalResource, ResourceCategory } from '@/lib/types';
 
@@ -55,6 +57,7 @@ function CategorySection({ label, resources }: { label: string; resources: Exter
  */
 export default async function ExternalResourcesPage() {
     const allResources = await getExternalResources();
+    const submitUrl = getSubmitResourceUrl();
 
     const grouped = Object.groupBy(allResources, (r) => r.category);
 
@@ -73,13 +76,26 @@ export default async function ExternalResourcesPage() {
                     <div className="accent-bar max-w-md mx-auto"></div>
                 </div>
 
-                {SECTION_ORDER.map((cat) => (
-                    <CategorySection
-                        key={cat}
-                        label={CATEGORY_LABELS[cat]}
-                        resources={grouped[cat] ?? []}
+                {allResources.length === 0 ? (
+                    <EmptyResourceState
+                        title="No external links yet"
+                        body="Curated tools and platforms will appear here once they are added in Strapi."
+                        links={[
+                            { href: '/browse', label: 'Browse guides' },
+                            { href: submitUrl, label: 'Suggest a link', external: true },
+                        ]}
                     />
-                ))}
+                ) : (
+                    <>
+                        {SECTION_ORDER.map((cat) => (
+                            <CategorySection
+                                key={cat}
+                                label={CATEGORY_LABELS[cat]}
+                                resources={grouped[cat] ?? []}
+                            />
+                        ))}
+                    </>
+                )}
             </main>
 
             <Footer />

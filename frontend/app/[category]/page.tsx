@@ -7,9 +7,10 @@
 
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
+import EmptyResourceState from '@/components/ui/EmptyResourceState';
 import ResourceCard from '@/components/ui/ResourceCard';
 import { notFound } from 'next/navigation';
-import { CATEGORIES } from '@/lib/constants';
+import { CATEGORIES, getSubmitResourceUrl } from '@/lib/constants';
 import { getResourcesByCategory } from '@/lib/strapi';
 import type { ResourceCategory } from '@/lib/types';
 import Link from 'next/link';
@@ -27,6 +28,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
     }
 
     const categoryResources = await getResourcesByCategory(category as ResourceCategory);
+    const submitUrl = getSubmitResourceUrl();
 
     return (
         <>
@@ -49,19 +51,33 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                         <span className="text-neu-black font-medium">{categoryData.label}</span>
                     </div>
 
-                    <p className="text-gray-600 text-lg mb-8">
-                        Showing {categoryResources.length} resources in {categoryData.label}
-                    </p>
+                    {categoryResources.length > 0 && (
+                        <p className="text-gray-600 text-lg mb-8">
+                            Showing {categoryResources.length} resources in {categoryData.label}
+                        </p>
+                    )}
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                        {categoryResources.map((resource) => (
-                            <ResourceCard
-                                key={resource.slug}
-                                resource={resource}
-                                showCategory={false}
-                            />
-                        ))}
-                    </div>
+                    {categoryResources.length === 0 ? (
+                        <EmptyResourceState
+                            title={`No guides in ${categoryData.label} yet`}
+                            body="We are still building this section. Browse other categories, check external tools, or suggest something we should add."
+                            links={[
+                                { href: '/browse', label: 'Browse all guides' },
+                                { href: '/external-resources', label: 'External resources' },
+                                { href: submitUrl, label: 'Suggest a resource', external: true },
+                            ]}
+                        />
+                    ) : (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                            {categoryResources.map((resource) => (
+                                <ResourceCard
+                                    key={resource.slug}
+                                    resource={resource}
+                                    showCategory={false}
+                                />
+                            ))}
+                        </div>
+                    )}
                 </div>
             </main>
 

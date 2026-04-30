@@ -1,0 +1,21 @@
+---
+description: React and TypeScript frontend implementation patterns for components and async UI behavior
+globs: **/*.tsx, **/*.ts
+alwaysApply: false
+---
+# React / TypeScript Frontend Standards
+## Component size
+Keep components under 200 lines. When a component grows beyond that, extract feature state into a custom hook and sub-components into the same directory.
+## State reset
+Each feature's reset logic must live in one function, not scattered across multiple handlers.
+## Console logging
+`console.log` is only allowed behind a dev guard. Never leave it in production paths.
+```tsx
+if (import.meta.env.DEV) console.log('debug:', value)
+```
+## String encoding
+Always save source files as UTF-8. Use Unicode literals directly: `—`, `✗`, `✓`, `→`.
+## Polling loops
+All polling intervals must have an explicit terminal condition — a status that stops the poll. Document the terminal states in a comment.
+## Error handling in async handlers
+Every `async` event handler must have a `try/catch`. Unhandled promise rejections surface as silent failures in production.

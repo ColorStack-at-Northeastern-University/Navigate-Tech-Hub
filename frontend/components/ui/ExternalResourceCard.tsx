@@ -1,5 +1,5 @@
 import { ExternalResourceCardProps } from '@/lib/types';
-import { getCategoryColor } from '@/lib/utils';
+import { formatDate, getCategoryColor } from '@/lib/utils';
 
 /**
  * ExternalResourceCard Component
@@ -43,13 +43,20 @@ export default function ExternalResourceCard({ resource }: ExternalResourceCardP
             </p>
 
             {/* Card Footer with URL and Arrow */}
-            <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
-                <span className="text-sm text-colorstack-teal font-medium">
-                    {resource.url.replace(/^https?:\/\/(www\.)?/, '').split('/')[0]}
-                </span>
-                <span className="text-2xl text-colorstack-teal transition-transform duration-300 group-hover:translate-x-1">
-                    →
-                </span>
+            <div className="mt-4 pt-4 border-t border-gray-200">
+                <div className="flex items-center justify-between">
+                    <span className="text-sm text-colorstack-teal font-medium">
+                        {resource.url.replace(/^https?:\/\/(www\.)?/, '').split('/')[0]}
+                    </span>
+                    <span className="text-2xl text-colorstack-teal transition-transform duration-300 group-hover:translate-x-1">
+                        →
+                    </span>
+                </div>
+                {resource.lastUpdated && (
+                    <p className="text-xs text-gray-500 mt-2">
+                        Updated {formatDate(resource.lastUpdated)}
+                    </p>
+                )}
             </div>
         </a>
     );

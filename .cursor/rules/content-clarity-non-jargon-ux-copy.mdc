@@ -1,0 +1,14 @@
+---
+description: Keep user-facing copy clear, plain-language, and action-oriented for student audiences
+globs: frontend/app/**/*.tsx, frontend/components/**/*.tsx, frontend/lib/constants.ts
+alwaysApply: false
+---
+# Content Clarity and Non-Jargon UX Copy
+
+- Write user-facing copy in plain language; avoid internal engineering terms.
+- Prefer concrete actions over vague phrasing (e.g., "Browse guides", "Suggest a resource").
+- Keep headings and empty states short, specific, and reassuring.
+- Explain what happened and what to do next for empty/error states.
+- Avoid acronyms unless broadly understood by target users; expand uncommon terms.
+- Maintain inclusive, supportive tone aligned with Navigate Tech Hub’s mission.
+- Use consistent terminology across pages (`guides`, `external resources`, `featured`).

@@ -25,6 +25,22 @@ export function formatDate(dateString: string): string {
 }
 
 /**
+ * Single freshness line for resource cards: prefer last edit date, else publish date.
+ */
+export function resourceCardFreshnessText(
+    publishedDate?: string,
+    lastUpdated?: string,
+): string | null {
+    if (lastUpdated) {
+        return `Updated ${formatDate(lastUpdated)}`;
+    }
+    if (publishedDate) {
+        return `Published ${formatDate(publishedDate)}`;
+    }
+    return null;
+}
+
+/**
  * Converts text into a URL-safe slug.
  * Removes special characters, converts spaces to hyphens, and lowercases.
  * 

@@ -1,0 +1,20 @@
+---
+description: Environment variable usage and secrets management
+globs: **/*.{ts,tsx}, **/*.{js,mjs}
+alwaysApply: false
+---
+
+# Environment Variable Rules
+
+## Core
+- Never hardcode URLs, API keys, tokens, or environment-specific values
+- No magic strings for config — if it could change between environments, it's an env var
+
+## Naming Convention
+- Server-only secrets (Strapi API token, DB credentials) never get `NEXT_PUBLIC_` prefix
+- All required env vars documented in `.env.example` with placeholder values
+
+
+## Validation
+- Validate required env vars at startup — fail loudly in dev if missing rather than failing silently at runtime
+- Access env vars through a central `src/lib/env.ts` module where validation lives, not scattered `process.env` calls throughout the codebase

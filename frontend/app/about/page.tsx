@@ -7,7 +7,7 @@
 
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
-import { SITE_CONFIG } from '@/lib/constants';
+import { NATIONAL_COLORSTACK, SITE_CONFIG, getSubmitResourceUrl } from '@/lib/constants';
 import Link from 'next/link';
 
 /**
@@ -15,6 +15,8 @@ import Link from 'next/link';
  * Provides in-depth information about the project and team
  */
 export default function AboutPage() {
+    const submitUrl = getSubmitResourceUrl();
+
     return (
         <>
             <Navbar />
@@ -46,7 +48,7 @@ export default function AboutPage() {
                                 We believe that <strong>representation matters</strong> in tech. By creating a dedicated space for underrepresented students, we aim to bridge the resource gap and empower the next generation of diverse technologists.
                             </p>
                             <p className="text-lg text-gray-700 leading-relaxed">
-                                Whether you're looking for internship opportunities, technical tutorials, or community support, Navigate Tech Hub is here to help you <strong>navigate your journey</strong> in computer science.
+                                Whether you&apos;re looking for internship opportunities, technical tutorials, or community support, Navigate Tech Hub is here to help you <strong>navigate your journey</strong> in computer science.
                             </p>
                         </div>
                     </section>
@@ -92,7 +94,16 @@ export default function AboutPage() {
                                 Navigate Tech Hub was founded by <strong>Adesola Odubiyi</strong>, Software Project Lead at ColorStack @ Northeastern University. Recognizing the need for a centralized resource hub specifically designed for underrepresented students in tech, Adesola envisioned a platform where students could easily find opportunities, tutorials, and community support.
                             </p>
                             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                                Through the partnership between <strong>ColorStack and Northeastern University</strong>, Navigate Tech Hub emerged as a student-driven initiative to address the resource gap faced by Black and Latinx computer science students. What started as a small collection of links has grown into a comprehensive platform serving the entire community.
+                                Through the partnership between{' '}
+                                <a
+                                    href={NATIONAL_COLORSTACK.website}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-colorstack-teal font-semibold underline hover:opacity-80"
+                                >
+                                    ColorStack
+                                </a>
+                                {' '}and Northeastern University, Navigate Tech Hub emerged as a student-driven initiative to address the resource gap faced by Black and Latinx computer science students. What started as a small collection of links has grown into a comprehensive platform serving the entire community.
                             </p>
                             <p className="text-lg text-gray-700 leading-relaxed">
                                 Today, Navigate Tech Hub continues to evolve with contributions from students like <strong>Taniya, Bryce, Branden, and Ayaan</strong>, who work together to expand and improve the platform for future generations of technologists.
@@ -105,16 +116,25 @@ export default function AboutPage() {
                         <h2 className="text-3xl font-bold text-neu-red mb-6">Get Involved</h2>
                         <div className="bg-white rounded-xl p-12 shadow-[0_2px_8px_rgba(0,0,0,0.1)] border-top-[5px] border-colorstack-teal">
                             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                                Navigate Tech Hub thrives on <strong>community contributions</strong>. Whether you've discovered a great resource, want to fix a bug, or have ideas for new features, we welcome your input. Every contribution helps build a stronger platform for current and future students.
+                                Navigate Tech Hub thrives on <strong>community contributions</strong>. Whether you&apos;ve discovered a great resource, want to fix a bug, or have ideas for new features, we welcome your input. Every contribution helps build a stronger platform for current and future students.
                             </p>
                             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                                 Contributing is easy: fork our repository, make your changes, and submit a pull request. You can add new resources, improve existing content, enhance the UI, or report issues. No contribution is too small!
                             </p>
                             <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                                Join us in building something meaningful for the community. Check out our GitHub repository to get started today.
+                                Join us in building something meaningful for the community. Check out our GitHub repository to get started today, or{' '}
+                                <a
+                                    href={submitUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-colorstack-teal font-semibold underline hover:opacity-80"
+                                >
+                                    suggest a resource
+                                </a>
+                                {' '}for the hub.
                             </p>
 
-                            {/* Contact Button */}
+                            <div className="flex flex-wrap gap-4">
                             <Link
                                 href="mailto:contact@navigatetechhub.com"
                                 className="bg-neu-red text-white px-8 py-3 rounded-full font-semibold hover:bg-red-700 transition-colors inline-flex items-center justify-center gap-2"
@@ -125,7 +145,6 @@ export default function AboutPage() {
                                 </svg>
                             </Link>
 
-                            {/* GitHub Link Button */}
                             <Link
                                 href={SITE_CONFIG.social.github}
                                 target="_blank"
@@ -137,6 +156,7 @@ export default function AboutPage() {
                                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                                 </svg>
                             </Link>
+                            </div>
                         </div>
                     </section>
                 </div>

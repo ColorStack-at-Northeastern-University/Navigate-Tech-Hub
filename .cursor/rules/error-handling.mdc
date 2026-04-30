@@ -1,0 +1,30 @@
+---
+description: Error handling and defensive programming patterns
+globs: **/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Error Handling Rules
+
+## General
+- Handle errors at the top of functions with early returns — happy path goes last
+- No silent failures — every catch block either logs, returns a typed error, or surfaces a fallback
+- Catch type is always `unknown`; narrow before using: `if (err instanceof Error)`
+
+## Async / Data Fetching
+- All async functions have explicit return types including the error case
+- Use a consistent result pattern for functions that can fail:
+  ```ts
+  // Prefer this over throwing
+  return { data: null, error: 'Failed to fetch articles' }
+  ```
+- Never use unhandled promise rejections — always await or `.catch()`
+
+## React / UI
+- Every data-fetching component has a loading state and an error state — no exceptions
+- Use Next.js `error.tsx` boundaries for route-level errors
+- Don't expose raw error messages to the UI — map them to user-safe strings
+
+## TypeScript Guards
+- Use type guards to narrow `unknown` before accessing properties
+- Avoid optional chaining chains longer than 2 levels — it usually signals a missing type or missing null check

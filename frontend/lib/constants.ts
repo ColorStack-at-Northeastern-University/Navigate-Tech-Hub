@@ -100,6 +100,30 @@ export const SITE_CONFIG = {
 } as const;
 
 /**
+ * National ColorStack organization (not the NEU chapter).
+ * Used for footer, about copy, and 404 helper links.
+ */
+export const NATIONAL_COLORSTACK = {
+    website: 'https://www.colorstack.org',
+    becomeMember: 'https://www.colorstack.org/member-application-requirements',
+    getInvolved: 'https://www.colorstack.org/get-involved',
+} as const;
+
+/**
+ * URL for “Suggest a resource” (Google Form, Typeform, etc.).
+ * Set NEXT_PUBLIC_SUBMIT_RESOURCE_URL in .env for production; otherwise falls back to a GitHub issue template.
+ */
+export function getSubmitResourceUrl(): string {
+    const fromEnv = process.env.NEXT_PUBLIC_SUBMIT_RESOURCE_URL?.trim();
+    if (fromEnv) {
+        return fromEnv;
+    }
+    const base = SITE_CONFIG.social.github;
+    const title = encodeURIComponent('Suggest a resource');
+    return `${base}/issues/new?labels=content&title=${title}`;
+}
+
+/**
  * Navigation links for header menu
  * Subject to expansion
  */

@@ -119,6 +119,7 @@ function mapExternalResource(raw: StrapiExternalResource): ExternalResource {
         url: raw.url,
         category: raw.category,
         badge: raw.badge ?? undefined,
+        lastUpdated: raw.updatedAt,
     };
 }
 

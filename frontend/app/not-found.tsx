@@ -7,6 +7,7 @@
 
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
+import { NATIONAL_COLORSTACK } from '@/lib/constants';
 import Link from 'next/link';
 
 /**
@@ -22,10 +23,10 @@ export default function NotFound() {
                 <section className="mt-16 gradient-brand text-white py-20 px-8 text-center">
                     <div className="max-w-4xl mx-auto">
                         <h1 className="text-5xl font-bold mb-4">
-                            Looks like you're navigating uncharted territory
+                            Looks like you&apos;re navigating uncharted territory
                         </h1>
                         <p className="text-xl">
-                            The page you're looking for doesn't exist
+                            The page you&apos;re looking for doesn&apos;t exist
                         </p>
                     </div>
                 </section>
@@ -38,15 +39,28 @@ export default function NotFound() {
                         Return to Home
                     </Link>
 
-                    <p className="text-gray-600 text-lg">
-                        Or explore:{' '}
+                    <p className="text-gray-600 text-lg mb-4">
+                        Try{' '}
                         <Link href="/browse" className="text-colorstack-teal underline hover:text-colorstack-orange">
-                            Browse Resources
+                            Browse
                         </Link>
-                        {' or '}
+                        {' '}or{' '}
                         <Link href="/external-resources" className="text-colorstack-teal underline hover:text-colorstack-orange">
                             External Resources
                         </Link>
+                        {' '}from the menu.
+                    </p>
+                    <p className="text-gray-600 text-sm">
+                        Looking for{' '}
+                        <a
+                            href={NATIONAL_COLORSTACK.website}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-colorstack-teal underline hover:text-colorstack-orange"
+                        >
+                            ColorStack nationally
+                        </a>
+                        ?
                     </p>
                 </div>
             </main>

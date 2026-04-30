@@ -83,6 +83,11 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
                                 Published: {formatDate(resource.publishedDate)}
                             </span>
                         )}
+                        {resource.lastUpdated && (
+                            <span className="text-gray-600 text-sm">
+                                Last updated: {formatDate(resource.lastUpdated)}
+                            </span>
+                        )}
                         {resource.author && (
                             <span className="text-gray-600 text-sm">
                                 By {resource.author}
@@ -92,7 +97,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
                             <DifficultyBadge difficulty={resource.difficulty} />
                         )}
                         <div className="flex flex-wrap gap-2">
-                            {resource.tags.map((tag) => (
+                            {(resource.tags ?? []).map((tag) => (
                                 <Tag key={tag}>{tag}</Tag>
                             ))}
                         </div>

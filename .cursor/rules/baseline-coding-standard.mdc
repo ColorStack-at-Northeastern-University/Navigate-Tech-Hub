@@ -1,0 +1,41 @@
+---
+description: Baseline naming, function design, error handling, and comment standards
+alwaysApply: true
+---
+# Baseline Coding Standard
+## Naming
+Use names that make intent obvious without reading the body.
+- Functions: verb phrases — `calculate_discount`, `fetch_user_profile`, `validate_transaction`
+- Variables: noun phrases — `active_users`, `pdf_job_id`, `suggestions_by_section`
+- Never: `x`, `tmp`, `data2`, `handle()`, `process()`, `doStuff()`
+## Function size and responsibility
+Each function does one clearly defined thing. If you need to describe a function with "and," split it.
+- Prefer 20–40 lines. Over 80 lines is a signal to extract helpers.
+- Background jobs with multiple stages: extract one function per stage.
+## Error handling
+Never silently swallow exceptions.
+```python
+# ❌ Silent failure — the worst kind
+except Exception:
+pass
+# ✅ Boundary exception — allowed only with log + degradation comment
+except Exception as exc: # noqa: BLE001 — last-resort advisory boundary
+logger.warning("Stage failed job_id=%s error=%s", job_id, exc)
+storage[job_id]["status"] = "failed"
+```
+When using `except Exception` at a system boundary, require:
+1. A comment explaining why narrowing is not feasible
+2. A structured log with context (`job_id`, `run_id`, etc.)
+3. Explicit status update so the caller/UI knows what happened
+## Dead code
+Never leave commented-out logic. Version control preserves history.
+## Context calibration
+- **Script / one-off tool**: clarity over layering. Acceptable to have a flat main block.
+- **Service / API handler / background job**: full production standards — typed, logged, explicit error states, no `print()`.
+## Comments
+Code explains what. Comments explain why it must be that way.
+Write a comment when:
+- A business rule drives a non-obvious choice
+- A vendor/API quirk forces a workaround
+- A broad `except` is intentional at a boundary
+Never comment what the code already says clearly.

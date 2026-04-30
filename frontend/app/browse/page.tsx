@@ -9,6 +9,8 @@
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
 import BrowseContent from '@/components/sections/BrowseContent';
+import EmptyResourceState from '@/components/ui/EmptyResourceState';
+import { getSubmitResourceUrl } from '@/lib/constants';
 import { getAllResources } from '@/lib/strapi';
 
 /**
@@ -17,6 +19,7 @@ import { getAllResources } from '@/lib/strapi';
  */
 export default async function BrowsePage() {
     const resources = await getAllResources();
+    const submitUrl = getSubmitResourceUrl();
 
     return (
         <>
@@ -34,7 +37,18 @@ export default async function BrowsePage() {
                 {/* Accent Bar */}
                 <div className="h-1 bg-gradient-to-r from-red-600 via-teal-500 to-amber-400 rounded-full mb-10"></div>
 
-                <BrowseContent resources={resources} />
+                {resources.length === 0 ? (
+                    <EmptyResourceState
+                        title="No guides published yet"
+                        body="Once editors add articles in Strapi, they’ll show up here. You can still explore external links or suggest content."
+                        links={[
+                            { href: '/external-resources', label: 'External resources' },
+                            { href: submitUrl, label: 'Suggest a resource', external: true },
+                        ]}
+                    />
+                ) : (
+                    <BrowseContent resources={resources} />
+                )}
             </main>
 
             <Footer />

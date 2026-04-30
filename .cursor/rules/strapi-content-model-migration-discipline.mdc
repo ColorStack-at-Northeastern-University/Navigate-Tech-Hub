@@ -1,0 +1,15 @@
+---
+description: Safe discipline for evolving Strapi content models without breaking API consumers
+globs: backend/src/api/**/content-types/**/schema.json, backend/types/generated/contentTypes.d.ts, docs/API_ENDPOINT_DESIGN.md, frontend/lib/{types,strapi}.ts
+alwaysApply: false
+---
+# Strapi Content Model Migration Discipline
+
+- Treat Strapi content-type schema changes as contract changes, not internal refactors.
+- Before changing a field name/type/requiredness, identify all frontend/API consumers and migration impact.
+- Prefer additive changes first (add new field, backfill, then deprecate old field) over destructive renames.
+- Avoid changing `singularName`, `pluralName`, and endpoint identity unless explicitly approved (breaks route contracts).
+- Keep `docs/API_ENDPOINT_DESIGN.md` aligned with any model or query-contract changes.
+- Regenerate and verify Strapi generated types after schema updates.
+- For enum changes, ensure frontend constants and filters are updated in the same change.
+- For content migrations, define rollback strategy and verify existing content still renders safely.

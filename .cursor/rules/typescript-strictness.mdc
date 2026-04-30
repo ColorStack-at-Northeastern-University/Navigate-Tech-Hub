@@ -1,0 +1,28 @@
+---
+description: TypeScript strictness and type safety standards
+globs: **/*.{ts,tsx}
+alwaysApply: false
+---
+
+# TypeScript Rules
+
+## Core
+- Strict mode is on — no workarounds
+- Zero `any`. Use `unknown` and narrow it, or define a proper type
+- No type assertions (`as SomeType`) unless you can justify it in a comment
+- Prefer `interface` for object shapes; `type` for unions, intersections, and aliases
+
+## Components & Functions
+- All component props get an explicit interface: `interface CardProps { ... }`
+- All functions have explicit return types — especially async functions and API helpers
+- Use discriminated unions for components with meaningfully different states
+
+## Patterns
+- Use `unknown` for error catches: `catch (err: unknown)`
+- Validate external data at the boundary (Strapi API responses) — don't trust and spread
+- Avoid non-null assertion (`!`) — handle the null case explicitly
+
+## Naming
+- Boolean variables: `isLoading`, `hasError`, `canSubmit`
+- Event handlers: `handleClick`, `handleSubmit`
+- Directories: `kebab-case` — components use `PascalCase` filenames

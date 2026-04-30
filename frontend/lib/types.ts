@@ -57,6 +57,8 @@ export interface ExternalResource {
     url: string;
     category: ResourceCategory;
     badge?: string;
+    /** From Strapi updatedAt when present in API response */
+    lastUpdated?: string;
 }
 
 /**

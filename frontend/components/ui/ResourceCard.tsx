@@ -1,5 +1,5 @@
 import { ResourceCardProps } from '@/lib/types';
-import { getCategoryColor } from '@/lib/utils';
+import { getCategoryColor, resourceCardFreshnessText } from '@/lib/utils';
 import Link from 'next/link';
 import Tag from './Tag';
 
@@ -16,6 +16,8 @@ export default function ResourceCard({ resource, showCategory = false }: Resourc
     // Get Tailwind class for category border color
     const borderColorClass = getCategoryColor(resource.category);
 
+    const freshness = resourceCardFreshnessText(resource.publishedDate, resource.lastUpdated);
+
     return (
         <Link
             href={href}
@@ -29,6 +31,12 @@ export default function ResourceCard({ resource, showCategory = false }: Resourc
                 cursor-pointer
             `}
         >
+            {resource.featured && (
+                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-colorstack-teal text-white uppercase tracking-wide">
+                    Featured
+                </span>
+            )}
+
             {/* Optional Category Badge */}
             {showCategory && (
                 <span className="absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-semibold bg-colorstack-orange text-white">
@@ -36,8 +44,12 @@ export default function ResourceCard({ resource, showCategory = false }: Resourc
                 </span>
             )}
 
-            {/* Resource Title */}
-            <h4 className="text-2xl font-semibold mb-3 text-neu-black">
+            {/* Resource Title — extra top padding when badges occupy corners */}
+            <h4
+                className={`text-2xl font-semibold mb-3 text-neu-black ${
+                    resource.featured || showCategory ? 'pt-6' : ''
+                }`}
+            >
                 {resource.title}
             </h4>
 
@@ -47,11 +59,15 @@ export default function ResourceCard({ resource, showCategory = false }: Resourc
             </p>
 
             {/* Resource Tags */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 mb-3">
                 {(resource.tags ?? []).map((tag) => (
                     <Tag key={tag}>{tag}</Tag>
                 ))}
             </div>
+
+            {freshness && (
+                <p className="text-xs text-gray-500 mt-auto pt-2 border-t border-gray-100">{freshness}</p>
+            )}
         </Link>
     );
 }
