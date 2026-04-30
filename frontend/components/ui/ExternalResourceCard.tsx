@@ -10,10 +10,18 @@ import { formatDate, getCategoryColor } from '@/lib/utils';
 export default function ExternalResourceCard({ resource }: ExternalResourceCardProps) {
     // Get Tailwind class for category border color
     const borderColorClass = getCategoryColor(resource.category);
+    const safeUrl = resource.url?.trim() || '#';
+    let displayHost = 'External link';
+    try {
+        const parsed = new URL(safeUrl);
+        displayHost = parsed.hostname.replace(/^www\./, '');
+    } catch {
+        // Keep fallback host label when URL parsing fails.
+    }
 
     return (
         <a
-            href={resource.url}
+            href={safeUrl}
             target="_blank"
             rel="noopener noreferrer"
             className={`
@@ -46,7 +54,7 @@ export default function ExternalResourceCard({ resource }: ExternalResourceCardP
             <div className="mt-4 pt-4 border-t border-gray-200">
                 <div className="flex items-center justify-between">
                     <span className="text-sm text-colorstack-teal font-medium">
-                        {resource.url.replace(/^https?:\/\/(www\.)?/, '').split('/')[0]}
+                        {displayHost}
                     </span>
                     <span className="text-2xl text-colorstack-teal transition-transform duration-300 group-hover:translate-x-1">
                         →

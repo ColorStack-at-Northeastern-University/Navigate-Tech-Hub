@@ -17,6 +17,17 @@ export type ResourceCategory =
  * Difficulty levels for resources.
  */
 export type DifficultyLevel = 'beginner' | 'intermediate' | 'advanced';
+export type AudienceStage = 'first-semester' | 'first-year' | 'underclassmen' | 'all-levels';
+export type ContentVolatility = 'high' | 'medium' | 'low';
+export type ExternalResourceType =
+    | 'learning-platform'
+    | 'opportunities-board'
+    | 'scholarship-funding'
+    | 'community-network'
+    | 'events-conference'
+    | 'career-tool'
+    | 'documentation-reference';
+export type OfficialStatus = 'official-org' | 'community-vetted';
 
 /**
  * Image data returned by Strapi's media field (populated with select fields).
@@ -39,11 +50,16 @@ export interface Resource {
     title: string;
     description: string;
     content?: string;
+    audienceStage: AudienceStage;
+    timeToReadMinutes: number;
+    outcome: string;
+    contentVolatility: ContentVolatility;
     tags: string[];
     difficulty?: DifficultyLevel;
     author?: string;
     publishedDate?: string;
     lastUpdated?: string;
+    lastReviewedAt?: string;
     featured?: boolean;
     image?: StrapiImage | null;
 }
@@ -56,7 +72,9 @@ export interface ExternalResource {
     description: string;
     url: string;
     category: ResourceCategory;
+    resourceType: ExternalResourceType;
     badge?: string;
+    officialStatus?: OfficialStatus;
     /** From Strapi updatedAt when present in API response */
     lastUpdated?: string;
 }
@@ -109,9 +127,14 @@ export interface StrapiResource {
     title: string;
     description: string;
     content?: string;
+    audienceStage: AudienceStage;
+    timeToReadMinutes: number;
+    outcome: string;
+    contentVolatility: ContentVolatility;
     tags: string[] | null;
     difficulty?: DifficultyLevel | null;
     author?: string | null;
+    lastReviewedAt?: string | null;
     featured?: boolean | null;
     image?: StrapiImage | null;
     publishedAt: string | null;
@@ -129,7 +152,9 @@ export interface StrapiExternalResource {
     description: string | null;
     url: string;
     category: ResourceCategory;
+    resourceType: ExternalResourceType;
     badge?: string | null;
+    officialStatus?: OfficialStatus | null;
     publishedAt: string | null;
     updatedAt: string;
     createdAt: string;

@@ -16,6 +16,10 @@ export const resources: Resource[] = [
         category: 'interview-prep',
         title: 'LeetCode Patterns Guide',
         description: 'Master common DSA patterns including two pointers, sliding window, dynamic programming, and graph algorithms.',
+        audienceStage: 'underclassmen',
+        timeToReadMinutes: 12,
+        outcome: 'Apply core interview problem patterns to new coding questions.',
+        contentVolatility: 'medium',
         content: `# LeetCode Patterns Guide
 
 Mastering LeetCode isn't about memorizing hundreds of solutions. It's about recognizing **patterns**. Once you understand the underlying patterns, you can tackle similar problems with confidence, even if you've never seen them before.
@@ -57,6 +61,10 @@ By focusing on patterns, you'll:
         category: 'interview-prep',
         title: 'Building the Perfect Resume',
         description: 'Learn how to craft a one-page resume that passes ATS systems and catches recruiter attention. Includes templates and examples.',
+        audienceStage: 'first-year',
+        timeToReadMinutes: 8,
+        outcome: 'Create a one-page resume tailored for internship applications.',
+        contentVolatility: 'low',
         content: `# Building the Perfect Resume
 
 Your resume is your ticket into any opportunity. This should be the document you edit the most. Don't let any of your skills go unnoticed!
@@ -80,6 +88,10 @@ Your resume is your ticket into any opportunity. This should be the document you
         category: 'interview-prep',
         title: 'Behavioral Interview Prep',
         description: 'Use the STAR method to craft compelling stories. Learn how to answer "Tell me about yourself" and other common questions.',
+        audienceStage: 'first-year',
+        timeToReadMinutes: 8,
+        outcome: 'Use STAR-based stories for common behavioral interview prompts.',
+        contentVolatility: 'low',
         content: `# Behavioral Interview Prep
 
 Behavioral interviews assess your soft skills, problem-solving approach, and cultural fit. Master the STAR method to tell compelling stories.
@@ -106,6 +118,10 @@ Emphasize your "why". Why you're studying your major, why you're pursuing this r
         category: 'interview-prep',
         title: 'Technical Interview Strategies',
         description: 'Navigate CodeSignal GCAs, HackerRank assessments, and live coding rounds. Learn the UMPIRE framework for problem-solving.',
+        audienceStage: 'underclassmen',
+        timeToReadMinutes: 9,
+        outcome: 'Follow a repeatable framework during technical interview rounds.',
+        contentVolatility: 'medium',
         content: `# Technical Interview Strategies
 
 Technical interviews can be intimidating, but with the right framework and practice, you can excel.
@@ -131,6 +147,10 @@ Technical interviews can be intimidating, but with the right framework and pract
         category: 'classes',
         title: 'Course Registration Tips',
         description: 'Strategic advice for planning your CS coursework at NEU. Which classes to take when, and how to build a strong foundation.',
+        audienceStage: 'first-semester',
+        timeToReadMinutes: 10,
+        outcome: 'Build a balanced course plan for upcoming semesters.',
+        contentVolatility: 'high',
         content: `# Course Registration Tips
 
 Strategic course planning can make or break your CS journey. Here's how to build a strong foundation and avoid common mistakes.
@@ -157,6 +177,10 @@ Don't overload on theory classes in one semester. Balance your schedule with pra
         category: 'classes',
         title: 'AI Fundamentals',
         description: 'Introduction to machine learning and neural networks. Understand the basics before diving into advanced AI coursework.',
+        audienceStage: 'underclassmen',
+        timeToReadMinutes: 7,
+        outcome: 'Understand baseline AI concepts before advanced coursework.',
+        contentVolatility: 'medium',
         content: `# AI Fundamentals
 
 Machine learning and AI are transforming tech. Here's what you need to know before taking advanced courses.
@@ -179,6 +203,10 @@ Machine learning and AI are transforming tech. Here's what you need to know befo
         category: 'projects',
         title: 'Build a Personal Portfolio',
         description: 'Showcase your projects with a stunning portfolio website. Learn design principles and deploy with Vercel or GitHub Pages.',
+        audienceStage: 'first-year',
+        timeToReadMinutes: 8,
+        outcome: 'Launch a portfolio site that clearly presents your projects.',
+        contentVolatility: 'medium',
         content: `# Build a Personal Portfolio
 
 A portfolio website is one of the best ways to stand out. Showcase your projects, skills, and story in one central hub.
@@ -206,6 +234,10 @@ A portfolio website is one of the best ways to stand out. Showcase your projects
         category: 'projects',
         title: 'Project Ideas Generator',
         description: 'Address real problems people face using your technical skills. Learn how to identify impactful project opportunities.',
+        audienceStage: 'first-year',
+        timeToReadMinutes: 7,
+        outcome: 'Generate project ideas tied to real user problems.',
+        contentVolatility: 'low',
         content: `# Project Ideas Generator
 
 The best personal projects address real problems that people face and create meaningful impact.
@@ -228,6 +260,10 @@ The best personal projects address real problems that people face and create mea
         category: 'hackathons',
         title: 'How to Hackathon',
         description: 'Your complete guide to hackathons. From team formation to pitching, learn how to maximize your 24-48 hour experience.',
+        audienceStage: 'first-year',
+        timeToReadMinutes: 9,
+        outcome: 'Prepare for and execute a focused hackathon plan.',
+        contentVolatility: 'medium',
         content: `# How to Hackathon
 
 Hackathons are intense, rewarding experiences. Here's how to make the most of your 24-48 hours.
@@ -254,6 +290,10 @@ Hackathons are intense, rewarding experiences. Here's how to make the most of yo
         category: 'hackathons',
         title: 'Winning Hackathon Projects',
         description: 'Study past winning projects and understand what judges look for. Innovation, execution, and presentation all matter.',
+        audienceStage: 'underclassmen',
+        timeToReadMinutes: 8,
+        outcome: 'Use judging criteria to shape stronger hackathon submissions.',
+        contentVolatility: 'medium',
         content: `# Winning Hackathon Projects
 
 What separates winning projects from the rest? Let's break down what judges look for.
@@ -276,6 +316,10 @@ What separates winning projects from the rest? Let's break down what judges look
         category: 'community',
         title: 'Networking & Cold Emailing',
         description: 'Craft cold emails that get responses. Learn to network at conferences like AfroTech, NSBE, and ColorStack Summit.',
+        audienceStage: 'first-year',
+        timeToReadMinutes: 8,
+        outcome: 'Send concise cold outreach and build relevant professional connections.',
+        contentVolatility: 'low',
         content: `# Networking & Cold Emailing
 
 Building a strong network is crucial for career success. Here's how to reach out effectively.
@@ -300,6 +344,10 @@ I'd love to learn more about your path into tech. Would you be open to a quick 1
         category: 'community',
         title: 'Conferences & Career Fairs',
         description: 'Must-attend events for Black CS students: AfroTech, NSBE National Convention, Grace Hopper, and more.',
+        audienceStage: 'all-levels',
+        timeToReadMinutes: 8,
+        outcome: 'Select and prepare for high-value conferences and career fairs.',
+        contentVolatility: 'high',
         content: `# Conferences & Career Fairs
 
 Attending the right conferences can transform your career. Here are the must-attend events.

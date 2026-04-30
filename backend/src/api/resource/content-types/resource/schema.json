@@ -40,6 +40,34 @@
       "type": "text",
       "required": true
     },
+    "audienceStage": {
+      "type": "enumeration",
+      "enum": [
+        "first-semester",
+        "first-year",
+        "underclassmen",
+        "all-levels"
+      ],
+      "required": true
+    },
+    "timeToReadMinutes": {
+      "type": "integer",
+      "required": true,
+      "min": 1
+    },
+    "outcome": {
+      "type": "string",
+      "required": true
+    },
+    "contentVolatility": {
+      "type": "enumeration",
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "required": true
+    },
     "tags": {
       "type": "json"
     },
@@ -53,6 +81,9 @@
     },
     "author": {
       "type": "string"
+    },
+    "lastReviewedAt": {
+      "type": "datetime"
     },
     "featured": {
       "type": "boolean",

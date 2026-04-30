@@ -17,7 +17,8 @@
       "required": true
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "url": {
       "type": "string",
@@ -34,8 +35,28 @@
       ],
       "required": true
     },
+    "resourceType": {
+      "type": "enumeration",
+      "enum": [
+        "learning-platform",
+        "opportunities-board",
+        "scholarship-funding",
+        "community-network",
+        "events-conference",
+        "career-tool",
+        "documentation-reference"
+      ],
+      "required": true
+    },
     "badge": {
       "type": "string"
+    },
+    "officialStatus": {
+      "type": "enumeration",
+      "enum": [
+        "official-org",
+        "community-vetted"
+      ]
     }
   }
 }

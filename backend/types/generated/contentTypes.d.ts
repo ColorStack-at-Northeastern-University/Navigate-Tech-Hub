@@ -431,14 +431,29 @@ export interface ApiExternalResourceExternalResource
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::external-resource.external-resource'
     > &
       Schema.Attribute.Private;
+    officialStatus: Schema.Attribute.Enumeration<
+      ['official-org', 'community-vetted']
+    >;
     publishedAt: Schema.Attribute.DateTime;
+    resourceType: Schema.Attribute.Enumeration<
+      [
+        'learning-platform',
+        'opportunities-board',
+        'scholarship-funding',
+        'community-network',
+        'events-conference',
+        'career-tool',
+        'documentation-reference',
+      ]
+    > &
+      Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -459,12 +474,18 @@ export interface ApiResourceResource extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    audienceStage: Schema.Attribute.Enumeration<
+      ['first-semester', 'first-year', 'underclassmen', 'all-levels']
+    > &
+      Schema.Attribute.Required;
     author: Schema.Attribute.String;
     category: Schema.Attribute.Enumeration<
       ['interview-prep', 'classes', 'projects', 'hackathons', 'community']
     > &
       Schema.Attribute.Required;
     content: Schema.Attribute.Text & Schema.Attribute.Required;
+    contentVolatility: Schema.Attribute.Enumeration<['high', 'medium', 'low']> &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -474,17 +495,27 @@ export interface ApiResourceResource extends Struct.CollectionTypeSchema {
     >;
     featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     image: Schema.Attribute.Media<'images'>;
+    lastReviewedAt: Schema.Attribute.DateTime;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::resource.resource'
     > &
       Schema.Attribute.Private;
+    outcome: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     tags: Schema.Attribute.JSON;
+    timeToReadMinutes: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

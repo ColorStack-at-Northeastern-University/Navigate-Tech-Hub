@@ -2,6 +2,8 @@
 
 Design doc for how the frontend gets data from Strapi. Documents the finalized endpoint design, content models, and configuration decisions.
 
+This document is aligned with `docs/CONTENT_CONTRACT_AND_EDITORIAL_TAXONOMY.md`.
+
 ---
 
 ## Design Process
@@ -36,6 +38,9 @@ A test content type was created and the API was verified in-browser. Key finding
 - `featured` boolean for homepage curation -- editors pin articles manually
 - Optional image (media) field on Resource -- cover images for cards
 - `fields` parameter to exclude `content` from list queries -- smaller payloads
+- `audienceStage` replaces `difficulty` as primary audience-fit signal (`difficulty` retained for backward compatibility)
+- `contentVolatility` drives staleness thresholds (`high` 15d, `medium` 30d, `low` 45d)
+- External resources require `resourceType`; `officialStatus` is optional
 
 ---
 
@@ -45,18 +50,23 @@ A test content type was created and the API was verified in-browser. Key finding
 
 The main content type for articles. Maps to the `Resource` interface in `frontend/lib/types.ts`.
 
-| Field       | Strapi Type         | Required | Notes |
-|-------------|---------------------|----------|-------|
-| slug        | Text (unique)       | Yes      | URL-safe identifier, e.g. `leetcode-patterns-guide` |
-| category    | Enumeration         | Yes      | `interview-prep`, `classes`, `projects`, `hackathons`, `community` |
-| title       | Text                | Yes      | Display title |
-| description | Long Text           | Yes      | Short summary shown on cards |
-| content     | Long Text           | Yes      | Full article as markdown. Using Long Text so frontend keeps its existing `react-markdown` renderer. Rich Text would return nested JSON requiring a different renderer. |
-| tags        | JSON                | No       | Array of strings, e.g. `["LeetCode", "DSA"]`. JSON is simpler than a Tag collection type for v1 since we don't filter by tag on the backend. |
-| difficulty  | Enumeration         | No       | `beginner`, `intermediate`, `advanced` |
-| author      | Text                | No       | Freeform author name |
-| featured    | Boolean             | No       | Default `false`. Editors toggle to pin articles to homepage. |
-| image       | Media (single)      | No       | Optional cover image / thumbnail for cards |
+| Field             | Strapi Type         | Required | Notes |
+|-------------------|---------------------|----------|-------|
+| slug              | Text (unique)       | Yes      | URL-safe identifier, e.g. `leetcode-patterns-guide` |
+| category          | Enumeration         | Yes      | `interview-prep`, `classes`, `projects`, `hackathons`, `community` |
+| title             | Text                | Yes      | Display title |
+| description       | Long Text           | Yes      | Short summary shown on cards |
+| content           | Long Text           | Yes      | Full article as markdown. Using Long Text so frontend keeps its existing `react-markdown` renderer. Rich Text would return nested JSON requiring a different renderer. |
+| audienceStage     | Enumeration         | Yes      | `first-semester`, `first-year`, `underclassmen`, `all-levels` |
+| timeToReadMinutes | Integer             | Yes      | Estimated reading time in minutes |
+| outcome           | Text                | Yes      | One-line expected outcome for the reader |
+| contentVolatility | Enumeration         | Yes      | `high`, `medium`, `low`; controls staleness thresholds |
+| tags              | JSON                | No       | Array of strings, e.g. `["LeetCode", "DSA"]`. JSON is simpler than a Tag collection type for v1 since we don't filter by tag on the backend. |
+| difficulty        | Enumeration         | No       | Legacy compatibility field (`beginner`, `intermediate`, `advanced`) |
+| author            | Text                | No       | Freeform author name |
+| featured          | Boolean             | No       | Default `false`. Editors toggle to pin articles to homepage. |
+| image             | Media (single)      | No       | Optional cover image / thumbnail for cards |
+| lastReviewedAt    | Datetime            | No       | Operational editorial freshness timestamp |
 
 Auto-generated fields (via Draft & Publish):
 - `publishedAt` -- maps to frontend `publishedDate`, used for "most recent" sorting
@@ -67,13 +77,15 @@ Auto-generated fields (via Draft & Publish):
 
 Curated links to third-party tools and platforms. Maps to `ExternalResource` in `frontend/lib/types.ts`.
 
-| Field       | Strapi Type   | Required | Notes |
-|-------------|---------------|----------|-------|
-| title       | Text          | Yes      | |
-| description | Long Text     | No       | |
-| url         | Text          | Yes      | Full URL to external platform |
-| category    | Enumeration   | Yes      | Same 5 values as Resource |
-| badge       | Text          | No       | Freeform label, e.g. "Paid" |
+| Field          | Strapi Type   | Required | Notes |
+|----------------|---------------|----------|-------|
+| title          | Text          | Yes      | |
+| description    | Long Text     | Yes      | |
+| url            | Text          | Yes      | Full URL to external platform |
+| category       | Enumeration   | Yes      | Same 5 values as Resource |
+| resourceType   | Enumeration   | Yes      | `learning-platform`, `opportunities-board`, `scholarship-funding`, `community-network`, `events-conference`, `career-tool`, `documentation-reference` |
+| badge          | Text          | No       | Freeform label, e.g. "Paid" |
+| officialStatus | Enumeration   | No       | `official-org`, `community-vetted` |
 
 No separate Tag or Category content types. Category labels, colors, and descriptions live in `frontend/lib/constants.ts`.
 
@@ -87,13 +99,14 @@ All endpoints use Strapi's default REST API. No custom controllers or routes.
 
 ### Shared: List field selection
 
-List views (homepage, browse, category pages) exclude the `content` field to keep responses small. The frontend API client uses the `qs` library to build these queries cleanly:
+List views (homepage, browse, category pages) exclude the `content` field to keep responses small. The frontend API client builds these query strings directly.
 
 ```ts
 const RESOURCE_LIST_FIELDS = [
   'slug', 'category', 'title', 'description',
-  'tags', 'difficulty', 'author', 'featured',
-  'publishedAt', 'updatedAt',
+  'audienceStage', 'timeToReadMinutes', 'outcome',
+  'contentVolatility', 'tags', 'difficulty', 'author', 'featured',
+  'publishedAt', 'updatedAt', 'lastReviewedAt',
 ];
 ```
 
@@ -113,7 +126,7 @@ GET /api/resources
   ?filters[featured][$eq]=true
   &pagination[pageSize]=6
   &sort=publishedAt:desc
-  &fields=slug,category,title,description,tags,difficulty,author,featured,publishedAt,updatedAt
+  &fields=slug,category,title,description,audienceStage,timeToReadMinutes,outcome,contentVolatility,tags,difficulty,author,featured,publishedAt,updatedAt,lastReviewedAt
   &populate[image][fields][0]=url
   &populate[image][fields][1]=alternativeText
 ```
@@ -188,6 +201,7 @@ GET /api/resources
 GET /api/external-resources
   ?pagination[pageSize]=100
   &sort=category:asc,title:asc
+  &fields=title,description,url,category,resourceType,badge,officialStatus,updatedAt,publishedAt
 ```
 
 No `fields` exclusion needed (no heavy content field). No image field on this type.
@@ -208,10 +222,15 @@ Strapi 5 uses a flattened response format. Fields are at the top level, not nest
       "category": "interview-prep",
       "title": "LeetCode Patterns Guide",
       "description": "Master common DSA patterns...",
+      "audienceStage": "first-year",
+      "timeToReadMinutes": 12,
+      "outcome": "Apply common interview problem patterns with confidence",
+      "contentVolatility": "medium",
       "tags": ["LeetCode", "Interview", "DSA"],
       "difficulty": "intermediate",
       "author": "Navigate Tech Hub Team",
       "featured": true,
+      "lastReviewedAt": "2025-01-19T10:00:00.000Z",
       "image": {
         "url": "/uploads/cover_abc123.jpg",
         "alternativeText": "LeetCode patterns diagram"
@@ -270,6 +289,7 @@ This allows unauthenticated frontend requests. No API token needed for public re
 - **Invalid category in URL:** Frontend validates against `CATEGORIES` before calling the API. Invalid categories hit `notFound()` on the route, never reaching the API.
 - **Empty list:** Strapi returns `data: [], meta: { pagination: { total: 0 } }`. Frontend shows an empty state.
 - **Invalid enum filter value:** Strapi returns no matches (empty data array), not an error.
+- **Stale featured content:** Freshness policy removes `featured` from stale entries; content remains published.
 
 ---
 
@@ -285,6 +305,9 @@ This allows unauthenticated frontend requests. No API token needed for public re
 | Featured resources? | `featured` boolean field. Editors pin articles manually. |
 | Cover image? | Optional media field on Resource. Populated in queries. |
 | Content exclusion on lists? | Yes. Use `fields` param to exclude `content` from list views. |
+| Primary audience-fit field? | `audienceStage` (keep `difficulty` for backward compatibility). |
+| Staleness model? | `contentVolatility` with 15/30/45 day thresholds; stale content is auto-unfeatured. |
+| External resource classification? | `resourceType` required, `officialStatus` optional. |
 
 ---
 

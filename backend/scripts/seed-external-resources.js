@@ -22,6 +22,76 @@ if (!API_TOKEN) {
 }
 
 const SEED_PATH = path.join(__dirname, 'external-resources.seed.json');
+const CATEGORY_ENUM = new Set([
+  'interview-prep',
+  'classes',
+  'projects',
+  'hackathons',
+  'community',
+]);
+const RESOURCE_TYPE_ENUM = new Set([
+  'learning-platform',
+  'opportunities-board',
+  'scholarship-funding',
+  'community-network',
+  'events-conference',
+  'career-tool',
+  'documentation-reference',
+]);
+const OFFICIAL_STATUS_ENUM = new Set(['official-org', 'community-vetted']);
+
+function isNonEmptyString(value) {
+  return typeof value === 'string' && value.trim().length > 0;
+}
+
+function isValidUrl(value) {
+  if (!isNonEmptyString(value)) return false;
+  try {
+    const parsed = new URL(value);
+    return parsed.protocol === 'http:' || parsed.protocol === 'https:';
+  } catch {
+    return false;
+  }
+}
+
+function validateItem(item, index) {
+  const label = `seed item ${index + 1}`;
+  if (typeof item !== 'object' || item === null) {
+    throw new Error(`${label}: expected an object`);
+  }
+  if (!isNonEmptyString(item.title)) {
+    throw new Error(`${label}: missing required "title"`);
+  }
+  if (!isNonEmptyString(item.description)) {
+    throw new Error(`${label}: missing required "description"`);
+  }
+  if (!isValidUrl(item.url)) {
+    throw new Error(`${label}: invalid required "url"`);
+  }
+  if (!CATEGORY_ENUM.has(item.category)) {
+    throw new Error(`${label}: invalid required "category" (${item.category})`);
+  }
+  if (!RESOURCE_TYPE_ENUM.has(item.resourceType)) {
+    throw new Error(`${label}: invalid required "resourceType" (${item.resourceType})`);
+  }
+  if (
+    item.officialStatus !== undefined
+    && item.officialStatus !== null
+    && !OFFICIAL_STATUS_ENUM.has(item.officialStatus)
+  ) {
+    throw new Error(`${label}: invalid "officialStatus" (${item.officialStatus})`);
+  }
+
+  return {
+    title: item.title.trim(),
+    description: item.description.trim(),
+    url: item.url.trim(),
+    category: item.category,
+    resourceType: item.resourceType,
+    ...(isNonEmptyString(item.badge) && { badge: item.badge.trim() }),
+    ...(isNonEmptyString(item.officialStatus) && { officialStatus: item.officialStatus }),
+  };
+}
 
 /**
  * Creates a single external resource via Strapi REST API and publishes it.
@@ -31,10 +101,12 @@ async function createExternalResource(item) {
   const body = {
     data: {
       title: item.title,
-      description: item.description ?? '',
+      description: item.description,
       url: item.url,
       category: item.category,
+      resourceType: item.resourceType,
       ...(item.badge && { badge: item.badge }),
+      ...(item.officialStatus && { officialStatus: item.officialStatus }),
     },
   };
 
@@ -85,13 +157,23 @@ async function main() {
   let created = 0;
   let failed = 0;
 
+  const validatedItems = [];
   for (let i = 0; i < items.length; i++) {
-    const item = items[i];
+    try {
+      validatedItems.push(validateItem(items[i], i));
+    } catch (err) {
+      console.error(`Validation error: ${err.message}`);
+      process.exit(1);
+    }
+  }
+
+  for (let i = 0; i < validatedItems.length; i++) {
+    const item = validatedItems[i];
     const label = item.title || `item ${i + 1}`;
     try {
       await createExternalResource(item);
       created++;
-      console.log(`  [${created}/${items.length}] ${label}`);
+      console.log(`  [${created}/${validatedItems.length}] ${label}`);
     } catch (err) {
       failed++;
       console.error(`  FAIL ${label}:`, err.message);

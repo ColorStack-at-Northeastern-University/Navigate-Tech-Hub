@@ -35,7 +35,7 @@ export default function BrowseContent({ resources }: BrowseContentProps) {
 
     const filteredResources = resources.filter((r) =>
         (selectedCategory === 'all' || r.category === selectedCategory) &&
-        r.title.toLowerCase().includes(searchQuery.toLowerCase())
+        (r.title ?? '').toLowerCase().includes(searchQuery.toLowerCase())
     );
 
     return (
