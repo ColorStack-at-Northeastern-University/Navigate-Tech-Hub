@@ -1,5 +1,5 @@
 import { ResourceCardProps } from '@/lib/types';
-import { getCategoryColor, resourceCardFreshnessText } from '@/lib/utils';
+import { resourceCardFreshnessText } from '@/lib/utils';
 import Link from 'next/link';
 import Tag from './Tag';
 
@@ -13,33 +13,21 @@ export default function ResourceCard({ resource, showCategory = false }: Resourc
     // Build dynamic route path
     const href = `/${resource.category}/${resource.slug}`;
 
-    // Get Tailwind class for category border color
-    const borderColorClass = getCategoryColor(resource.category);
-
     const freshness = resourceCardFreshnessText(resource.publishedDate, resource.lastUpdated);
 
     return (
         <Link
             href={href}
-            className={`
-                relative block 
-                bg-white rounded-xl p-8 
-                shadow-[0_2px_8px_rgba(0,0,0,0.1)]
-                hover:-translate-y-1 hover:shadow-[0_8px_16px_rgba(0,0,0,0.15)]
-                transition-all duration-300
-                border-t-[5px] ${borderColorClass}
-                cursor-pointer
-            `}
+            className="relative block bg-white rounded-xl p-8 shadow-[0_2px_8px_rgba(0,0,0,0.1)] hover:-translate-y-1 hover:shadow-[0_8px_16px_rgba(0,0,0,0.15)] transition-all duration-300 border-t-[3px] border-neu-red cursor-pointer"
         >
             {resource.featured && (
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-colorstack-teal text-white uppercase tracking-wide">
+                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-neu-red text-white uppercase tracking-wide">
                     Featured
                 </span>
             )}
 
-            {/* Optional Category Badge */}
             {showCategory && (
-                <span className="absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-semibold bg-colorstack-orange text-white">
+                <span className="absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-semibold bg-gray-800 text-white">
                     {resource.category}
                 </span>
             )}

@@ -46,7 +46,7 @@ export default function BrowseContent({ resources }: BrowseContentProps) {
                     type="text"
                     placeholder="Search resources by title..."
                     aria-label="Search resources by title"
-                    className="w-full max-w-2xl px-6 py-3 text-base border-2 border-gray-300 rounded-full transition-all duration-300 focus:outline-none focus:border-colorstack-teal focus:shadow-[0_0_0_3px_rgba(61,163,155,0.1)]"
+                    className="w-full max-w-2xl px-6 py-3 text-base border-2 border-gray-300 rounded-full transition-all duration-300 focus:outline-none focus:border-neu-red focus:shadow-[0_0_0_3px_rgba(212,27,44,0.1)]"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                 />
@@ -61,8 +61,8 @@ export default function BrowseContent({ resources }: BrowseContentProps) {
                         aria-pressed={selectedCategory === category.value}
                         className={`px-5 py-2 rounded-full text-sm border-2 font-medium transition-all duration-200 ${
                             selectedCategory === category.value
-                                ? 'bg-colorstack-teal border-colorstack-teal text-white'
-                                : 'bg-white border-gray-300 text-black hover:border-colorstack-teal'
+                                ? 'bg-neu-red border-neu-red text-white'
+                                : 'bg-white border-gray-300 text-black hover:border-neu-red'
                         }`}
                     >
                         {category.label}

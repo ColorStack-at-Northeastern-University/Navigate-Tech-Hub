@@ -1,19 +1,12 @@
-/**
- * External Resources Page
- *
- * Directory of external tools, platforms, and resources.
- * Fetches all external resources from Strapi, then groups by category.
- */
-
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
+import CircuitPattern from '@/components/ui/CircuitPattern';
 import EmptyResourceState from '@/components/ui/EmptyResourceState';
 import ExternalResourceCard from '@/components/ui/ExternalResourceCard';
 import { getSubmitResourceUrl } from '@/lib/constants';
 import { getExternalResources } from '@/lib/strapi';
 import type { ExternalResource, ResourceCategory } from '@/lib/types';
 
-/** Maps category slugs to the display labels used in section headings. */
 const CATEGORY_LABELS: Record<ResourceCategory, string> = {
     'interview-prep': 'Interview Prep',
     'projects': 'Projects & Portfolio',
@@ -22,7 +15,6 @@ const CATEGORY_LABELS: Record<ResourceCategory, string> = {
     'classes': 'Learning Platforms',
 };
 
-/** Ordered list of categories for consistent section rendering. */
 const SECTION_ORDER: ResourceCategory[] = [
     'interview-prep',
     'projects',
@@ -31,15 +23,12 @@ const SECTION_ORDER: ResourceCategory[] = [
     'classes',
 ];
 
-/**
- * Renders a single category section with its grid of external resource cards.
- */
 function CategorySection({ label, resources }: { label: string; resources: ExternalResource[] }) {
     if (resources.length === 0) return null;
 
     return (
         <section className="mb-16">
-            <h2 className="text-3xl font-bold text-neu-black mb-6 pb-2 border-b-[3px] border-neu-red inline-block">
+            <h2 className="font-display text-3xl font-bold text-brand-dark mb-6 pb-2 border-b-[3px] border-neu-red inline-block">
                 {label}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -51,10 +40,6 @@ function CategorySection({ label, resources }: { label: string; resources: Exter
     );
 }
 
-/**
- * External Resources page component
- * Fetches from Strapi and groups by category for display.
- */
 export default async function ExternalResourcesPage() {
     const allResources = await getExternalResources();
     const submitUrl = getSubmitResourceUrl();
@@ -65,37 +50,47 @@ export default async function ExternalResourcesPage() {
         <>
             <Navbar />
 
-            <main className="container-custom mt-16">
-                {/* Page Header */}
-                <div className="text-center mb-12 mt-12">
-                    <h1 className="page-title">External Resources Directory</h1>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-                        Quick links to external tools, platforms, and resources curated for CS students.
-                        All links open in a new tab.
-                    </p>
-                    <div className="accent-bar max-w-md mx-auto"></div>
-                </div>
+            <main>
+                <section className="mt-16 pt-16 pb-12 bg-[#AA0F15] relative overflow-hidden">
+                    <CircuitPattern />
+                    <div className="container-custom !py-0 relative z-10">
+                        <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-3">
+                            External Resources Directory
+                        </h1>
+                        <p className="text-white/80 text-xl max-w-3xl">
+                            Quick links to external tools, platforms, and resources curated for CS students.
+                            All links open in a new tab.
+                        </p>
+                    </div>
+                </section>
 
-                {allResources.length === 0 ? (
-                    <EmptyResourceState
-                        title="No external links yet"
-                        body="Curated tools and platforms will appear here once they are added in Strapi."
-                        links={[
-                            { href: '/browse', label: 'Browse guides' },
-                            { href: submitUrl, label: 'Suggest a link', external: true },
-                        ]}
-                    />
-                ) : (
-                    <>
-                        {SECTION_ORDER.map((cat) => (
-                            <CategorySection
-                                key={cat}
-                                label={CATEGORY_LABELS[cat]}
-                                resources={grouped[cat] ?? []}
-                            />
-                        ))}
-                    </>
-                )}
+                <div className="container-custom">
+                    <p className="text-[#de0911] text-4xl md:text-5xl font-bold mb-8">&lt;&gt;</p>
+
+                    {allResources.length === 0 ? (
+                        <EmptyResourceState
+                            title="No external links yet"
+                            body="Curated tools and platforms will appear here once they are added in Strapi."
+                            links={[
+                                { href: '/browse', label: 'Browse guides' },
+                                { href: submitUrl, label: 'Suggest a link', external: true },
+                            ]}
+                        />
+                    ) : (
+                        <>
+                            {SECTION_ORDER.map((cat) => (
+                                <CategorySection
+                                    key={cat}
+                                    label={CATEGORY_LABELS[cat]}
+                                    resources={grouped[cat] ?? []}
+                                />
+                            ))}
+                        </>
+                    )}
+                </div>
+                <div className="container-custom !pt-0">
+                    <p className="text-[#de0911] text-3xl md:text-4xl font-bold">&lt;/&gt;</p>
+                </div>
             </main>
 
             <Footer />

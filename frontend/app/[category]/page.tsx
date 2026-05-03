@@ -1,12 +1,6 @@
-/**
- * Category Page
- *
- * Dynamic route that displays all resources for a specific category.
- * Handles: /interview-prep, /classes, /projects, /hackathons, /community
- */
-
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
+import CircuitPattern from '@/components/ui/CircuitPattern';
 import EmptyResourceState from '@/components/ui/EmptyResourceState';
 import ResourceCard from '@/components/ui/ResourceCard';
 import { notFound } from 'next/navigation';
@@ -15,10 +9,6 @@ import { getResourcesByCategory } from '@/lib/strapi';
 import type { ResourceCategory } from '@/lib/types';
 import Link from 'next/link';
 
-/**
- * Category page component
- * Fetches and displays all resources filtered by category from Strapi.
- */
 export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
     const { category } = await params;
 
@@ -35,24 +25,27 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
             <Navbar />
 
             <main>
-                <section className="mt-16 gradient-brand text-white py-16 px-8 text-center">
-                    <div className="max-w-4xl mx-auto">
-                        <h1 className="text-5xl font-bold mb-4">{categoryData.label}</h1>
-                        <p className="text-xl">{categoryData.description}</p>
+                <section className="mt-16 pt-16 pb-12 bg-[#AA0F15] relative overflow-hidden">
+                    <CircuitPattern />
+                    <div className="container-custom !py-0 relative z-10">
+                        <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-3">
+                            {categoryData.label}
+                        </h1>
+                        <p className="text-white/80 text-xl">{categoryData.description}</p>
                     </div>
                 </section>
 
                 <div className="container-custom">
                     <div className="text-gray-600 mb-8 text-sm">
-                        <Link href="/" className="hover:text-colorstack-teal">
+                        <Link href="/" className="hover:text-neu-red transition-colors">
                             Home
                         </Link>
-                        <span className="mx-2">›</span>
-                        <span className="text-neu-black font-medium">{categoryData.label}</span>
+                        <span className="mx-2">&rsaquo;</span>
+                        <span className="text-brand-dark font-medium">{categoryData.label}</span>
                     </div>
 
                     {categoryResources.length > 0 && (
-                        <p className="text-gray-600 text-lg mb-8">
+                        <p className="text-gray-500 text-lg mb-8">
                             Showing {categoryResources.length} resources in {categoryData.label}
                         </p>
                     )}
@@ -78,6 +71,9 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                             ))}
                         </div>
                     )}
+                </div>
+                <div className="container-custom !pt-0">
+                    <p className="text-[#de0911] text-3xl md:text-4xl font-bold">&lt;/&gt;</p>
                 </div>
             </main>
 

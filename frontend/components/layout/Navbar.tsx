@@ -1,42 +1,35 @@
-/**
- * Navbar Component (Skeleton)
- *
- * Fixed navigation bar with responsive design.
- * Desktop: horizontal menu with links
- * Mobile: hamburger menu with dropdown
- */
-
 'use client';
 
-import { NAV_LINKS, SITE_CONFIG } from "@/lib/constants";
-import Link from "next/link";
+import { NAV_LINKS } from '@/lib/constants';
+import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 
-/**
- * Navbar component for site-wide navigation
- * Appears at the top of every page via root layout
- */
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <nav className="fixed top-0 left-0 right-0 bg-neu-black text-white px-8 py-4 z-50 shadow-md">
-            <div className="max-w-7xl mx-auto flex justify-between items-center">
+        <nav className="fixed top-0 left-0 right-0 bg-white border-b border-gray-200 px-8 z-50 shadow-sm">
+            <div className="max-w-7xl mx-auto flex items-center relative h-14">
+                {/* Left: Logo — allowed to overflow the navbar height */}
+                <Link href="/" className="flex-shrink-0 relative z-10">
+                    <Image
+                        src="/images/navtechhub-logo.png"
+                        alt="Navigate Tech Hub"
+                        width={500}
+                        height={140}
+                        className="h-20 md:h-28 lg:h-32 w-auto -my-4"
+                        priority
+                    />
+                </Link>
 
-                <div className="text-2xl font-bold">
-                    <Link href="/"
-                        className="hover:text-colorstack-teal transition-colors"
-                    >
-                        {SITE_CONFIG.name}
-                    </Link>
-                </div>
-
-                <ul className="hidden md:flex gap-8">
+                {/* Center: Nav links — absolutely centered in the navbar */}
+                <ul className="hidden md:flex gap-8 absolute left-1/2 -translate-x-1/2">
                     {NAV_LINKS.map(({ href, label }) => (
                         <li key={href}>
                             <Link
                                 href={href}
-                                className="hover:text-colorstack-teal transition-colors"
+                                className="text-sm font-medium text-gray-600 hover:text-neu-red transition-colors whitespace-nowrap"
                             >
                                 {label}
                             </Link>
@@ -46,21 +39,22 @@ export default function Navbar() {
 
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className="md:hidden text-2xl hover:text-colorstack-teal transition-colors"
+                    className="md:hidden ml-auto text-2xl text-brand-dark hover:text-neu-red transition-colors"
+                    aria-label="Toggle menu"
                 >
-                    ☰
+                    {isOpen ? '✕' : '☰'}
                 </button>
             </div>
 
             {isOpen && (
-                <div className="absolute top-full left-0 right-0 bg-neu-black md:hidden shadow-lg transition-all duration-300">
+                <div className="absolute top-full left-0 right-0 bg-white border-t border-gray-200 md:hidden shadow-lg">
                     <ul className="flex flex-col">
                         {NAV_LINKS.map(({ href, label }) => (
-                            <li key={href} className="border-b border-gray-800">
+                            <li key={href} className="border-b border-gray-100">
                                 <Link
                                     href={href}
                                     onClick={() => setIsOpen(false)}
-                                    className="block px-8 py-4 text-center hover:bg-gray-900 hover:text-colorstack-teal transition-colors duration-200"
+                                    className="block px-8 py-4 text-center text-brand-dark font-medium hover:bg-surface-muted hover:text-neu-red transition-colors duration-200"
                                 >
                                     {label}
                                 </Link>

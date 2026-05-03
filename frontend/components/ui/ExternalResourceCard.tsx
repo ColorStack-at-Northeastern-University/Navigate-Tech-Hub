@@ -1,5 +1,5 @@
 import { ExternalResourceCardProps } from '@/lib/types';
-import { formatDate, getCategoryColor } from '@/lib/utils';
+import { formatDate } from '@/lib/utils';
 
 /**
  * ExternalResourceCard Component
@@ -8,8 +8,6 @@ import { formatDate, getCategoryColor } from '@/lib/utils';
  * Opens in new tab with external badge and animated arrow indicator.
  */
 export default function ExternalResourceCard({ resource }: ExternalResourceCardProps) {
-    // Get Tailwind class for category border color
-    const borderColorClass = getCategoryColor(resource.category);
     const safeUrl = resource.url?.trim() || '#';
     let displayHost = 'External link';
     try {
@@ -24,19 +22,10 @@ export default function ExternalResourceCard({ resource }: ExternalResourceCardP
             href={safeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className={`
-                group
-                relative block 
-                bg-white rounded-xl p-8 
-                shadow-[0_2px_8px_rgba(0,0,0,0.1)]
-                hover:-translate-y-1 hover:shadow-[0_8px_16px_rgba(0,0,0,0.15)]
-                transition-all duration-300
-                border-t-[5px] ${borderColorClass}
-                cursor-pointer
-            `}
+            className="group relative block bg-white rounded-xl p-8 shadow-[0_2px_8px_rgba(0,0,0,0.1)] hover:-translate-y-1 hover:shadow-[0_8px_16px_rgba(0,0,0,0.15)] transition-all duration-300 border-t-[3px] border-neu-red cursor-pointer"
         >
             {/* External Badge */}
-            <span className="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold bg-colorstack-orange text-white uppercase tracking-wide">
+            <span className="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold bg-neu-red text-white uppercase tracking-wide">
                 {resource.badge || 'External Link'}
             </span>
 
@@ -53,10 +42,10 @@ export default function ExternalResourceCard({ resource }: ExternalResourceCardP
             {/* Card Footer with URL and Arrow */}
             <div className="mt-4 pt-4 border-t border-gray-200">
                 <div className="flex items-center justify-between">
-                    <span className="text-sm text-colorstack-teal font-medium">
+                    <span className="text-sm text-neu-red font-medium">
                         {displayHost}
                     </span>
-                    <span className="text-2xl text-colorstack-teal transition-transform duration-300 group-hover:translate-x-1">
+                    <span className="text-2xl text-neu-red transition-transform duration-300 group-hover:translate-x-1">
                         →
                     </span>
                 </div>

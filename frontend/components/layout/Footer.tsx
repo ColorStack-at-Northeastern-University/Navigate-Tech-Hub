@@ -1,9 +1,6 @@
 import { NATIONAL_COLORSTACK, SITE_CONFIG, getSubmitResourceUrl } from "@/lib/constants";
+import Image from 'next/image';
 
-/**
- * Footer component for site-wide navigation and social links
- * Appears at the bottom of every page via root layout
- */
 export default function Footer() {
     const submitUrl = getSubmitResourceUrl();
 
@@ -12,9 +9,12 @@ export default function Footer() {
             <div className="container-custom">
                 <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 text-center md:text-left">
 
-                    <p className="text-neu-gray">
-                        {SITE_CONFIG.footer.copyright}
-                    </p>
+                    <div className="flex items-center gap-2 justify-center md:justify-start">
+                        <Image src="/images/s-icon.png" alt="" width={20} height={20} />
+                        <p className="text-neu-gray">
+                            {SITE_CONFIG.footer.copyright}
+                        </p>
+                    </div>
 
                     <div className="flex flex-wrap gap-6 justify-center md:justify-end">
                         {Object.entries(SITE_CONFIG.social).map(([label, url]) => (
@@ -62,7 +62,7 @@ export default function Footer() {
                         href={submitUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-colorstack-teal hover:text-white transition-colors font-medium"
+                        className="text-neu-red hover:text-white transition-colors font-medium"
                     >
                         Suggest a resource
                     </a>

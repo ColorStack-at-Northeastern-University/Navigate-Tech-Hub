@@ -1,13 +1,3 @@
-/**
- * Article Page
- *
- * Dynamic route that displays full article content for individual resources.
- * Handles: /[category]/[slug] (e.g., /interview-prep/leetcode-patterns-guide)
- *
- * Fetches the full resource (including content) and up to 3 related
- * resources from the same category via Strapi.
- */
-
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
 import Link from 'next/link';
@@ -21,10 +11,6 @@ import ResourceCard from '@/components/ui/ResourceCard';
 import Tag from '@/components/ui/Tag';
 import ReactMarkdown from 'react-markdown';
 
-/**
- * Article page component
- * Displays full resource content with metadata and related resources.
- */
 export default async function ArticlePage({ params }: { params: Promise<{ category: string; slug: string }> }) {
     const { category, slug } = await params;
 
@@ -49,31 +35,31 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
 
             <main className="container-custom mt-16">
                 <div className="text-gray-600 mb-6 text-sm">
-                    <Link href="/" className="hover:text-colorstack-teal">
+                    <Link href="/" className="hover:text-neu-red transition-colors">
                         Home
                     </Link>
-                    <span className="mx-2">›</span>
+                    <span className="mx-2">&rsaquo;</span>
                     <Link
                         href={`/${category}`}
-                        className="hover:text-colorstack-teal"
+                        className="hover:text-neu-red transition-colors"
                     >
                         {categoryData.label}
                     </Link>
-                    <span className="mx-2">›</span>
-                    <span className="text-neu-black font-medium">
+                    <span className="mx-2">&rsaquo;</span>
+                    <span className="text-brand-dark font-medium">
                         {resource.title}
                     </span>
                 </div>
 
                 <Link
                     href={`/${category}`}
-                    className="inline-block mb-8 px-6 py-2 bg-colorstack-teal text-white rounded-full font-semibold hover:bg-colorstack-orange transition-colors"
+                    className="inline-block mb-8 px-6 py-2 bg-neu-red text-white rounded-full font-semibold hover:bg-red-700 transition-colors"
                 >
-                    ← Back to {categoryData.label}
+                    &larr; Back to {categoryData.label}
                 </Link>
 
-                <article className="bg-white rounded-xl p-12 shadow-[0_2px_8px_rgba(0,0,0,0.1)] border-t-[5px] border-neu-red mb-16">
-                    <h1 className="text-4xl font-bold text-neu-black mb-6">
+                <article className="bg-white rounded-xl p-12 shadow-[0_2px_8px_rgba(0,0,0,0.1)] border-t-[3px] border-neu-red mb-16">
+                    <h1 className="font-display text-4xl font-bold text-brand-dark mb-6">
                         {resource.title}
                     </h1>
 
@@ -110,8 +96,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
 
                 {relatedResources.length > 0 && (
                     <section className="mb-16">
-                        <h2 className="section-title">Related Resources</h2>
-                        <div className="accent-bar"></div>
+                        <h2 className="font-display text-3xl font-bold text-brand-dark mb-4">Related Resources</h2>
+                        <div className="accent-bar" />
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             {relatedResources.map((relatedResource) => (
                                 <ResourceCard

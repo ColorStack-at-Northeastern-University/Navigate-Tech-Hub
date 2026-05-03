@@ -1,31 +1,23 @@
-/**
- * 404 Not Found Page
- * 
- * Error page shown when user navigates to invalid URL.
- * On-brand messaging that encourages user to return to valid pages.
- */
-
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
 import { NATIONAL_COLORSTACK } from '@/lib/constants';
 import Link from 'next/link';
 
-/**
- * 404 page component
- * Displays friendly error message with navigation options
- */
 export default function NotFound() {
     return (
         <>
             <Navbar />
 
             <main className="min-h-screen">
-                <section className="mt-16 gradient-brand text-white py-20 px-8 text-center">
-                    <div className="max-w-4xl mx-auto">
-                        <h1 className="text-5xl font-bold mb-4">
-                            Looks like you&apos;re navigating uncharted territory
+                <section className="mt-16 pt-20 pb-16 text-center">
+                    <div className="max-w-4xl mx-auto px-8">
+                        <h1 className="font-display text-6xl font-bold text-brand-dark mb-4">
+                            404
                         </h1>
-                        <p className="text-xl">
+                        <p className="text-2xl text-gray-500 mb-2">
+                            Looks like you&apos;re navigating uncharted territory
+                        </p>
+                        <p className="text-lg text-gray-400">
                             The page you&apos;re looking for doesn&apos;t exist
                         </p>
                     </div>
@@ -34,18 +26,18 @@ export default function NotFound() {
                 <div className="container-custom text-center">
                     <Link
                         href="/"
-                        className="inline-block bg-colorstack-teal text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-colorstack-orange transition-colors mb-8"
+                        className="inline-block bg-neu-red text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-red-700 transition-colors mb-8"
                     >
                         Return to Home
                     </Link>
 
                     <p className="text-gray-600 text-lg mb-4">
                         Try{' '}
-                        <Link href="/browse" className="text-colorstack-teal underline hover:text-colorstack-orange">
+                        <Link href="/browse" className="text-neu-red underline hover:text-red-700">
                             Browse
                         </Link>
                         {' '}or{' '}
-                        <Link href="/external-resources" className="text-colorstack-teal underline hover:text-colorstack-orange">
+                        <Link href="/external-resources" className="text-neu-red underline hover:text-red-700">
                             External Resources
                         </Link>
                         {' '}from the menu.
@@ -56,7 +48,7 @@ export default function NotFound() {
                             href={NATIONAL_COLORSTACK.website}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-colorstack-teal underline hover:text-colorstack-orange"
+                            className="text-neu-red underline hover:text-red-700"
                         >
                             ColorStack nationally
                         </a>

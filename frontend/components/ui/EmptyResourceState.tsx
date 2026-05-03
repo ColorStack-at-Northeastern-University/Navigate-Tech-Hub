@@ -25,7 +25,7 @@ export default function EmptyResourceState({ title, body, links }: EmptyResource
             <h2 className="text-xl font-semibold text-neu-black mb-3">{title}</h2>
             <p className="text-gray-600 mb-6 leading-relaxed">{body}</p>
             {links && links.length > 0 && (
-                <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-colorstack-teal">
+                <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-neu-red">
                     {links.map((link) => (
                         <li key={`${link.href}-${link.label}`}>
                             {link.external ? (
