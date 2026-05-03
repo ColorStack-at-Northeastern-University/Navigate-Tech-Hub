@@ -223,7 +223,7 @@ Strapi 5 uses a flattened response format. Fields are at the top level, not nest
       "title": "LeetCode Patterns Guide",
       "description": "Master common DSA patterns...",
       "audienceStage": "first-year",
-      "timeToReadMinutes": 12,
+      "timeToReadMinutes": 5,
       "outcome": "Apply common interview problem patterns with confidence",
       "contentVolatility": "medium",
       "tags": ["LeetCode", "Interview", "DSA"],

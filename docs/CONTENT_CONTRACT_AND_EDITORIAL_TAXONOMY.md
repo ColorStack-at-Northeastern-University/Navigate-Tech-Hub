@@ -83,6 +83,8 @@ Internal and external content both use this category set:
 - `outcome` (short result statement)
 - `contentVolatility` (enum)
 
+`timeToReadMinutes` is the estimated **silent reading time** for the published markdown (not time-on-task). Editorial default band is **3–5 minutes**; **up to 7 minutes** is allowed only for intentionally dense but still scannable guides. See `docs/INTERNAL_GUIDE_INVENTORY.md` section 2 for how estimates relate to word count.
+
 ### 4.2 Optional Fields
 - `tags` (controlled vocabulary)
 - `featured` (editorial flag)

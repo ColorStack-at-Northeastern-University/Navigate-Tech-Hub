@@ -14,7 +14,8 @@
     "upgrade": "npx @strapi/upgrade latest",
     "upgrade:dry": "npx @strapi/upgrade latest --dry",
     "seed:external": "node scripts/seed-external-resources.js",
-    "backfill:contract": "node scripts/backfill-contract-fields.js"
+    "backfill:contract": "node scripts/backfill-contract-fields.js",
+    "checklist:external-resources": "node scripts/external-resource-checklist.js"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "5.23.6",
