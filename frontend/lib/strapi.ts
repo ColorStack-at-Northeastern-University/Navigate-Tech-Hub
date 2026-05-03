@@ -11,6 +11,7 @@
  *   - Media fields require `populate` to be included in responses
  */
 
+import { SAMPLE_ARTICLES, SAMPLE_EXTERNAL_RESOURCES } from '@/data/sample-resources';
 import type {
     Resource,
     ExternalResource,
@@ -249,19 +250,24 @@ function compactExternalResources(records: Array<ExternalResource | null>): Exte
  * Returns up to 6 results sorted by most recent first.
  */
 export async function getFeaturedResources(): Promise<Resource[]> {
-    const query = buildQuery([
-        ['filters[featured][$eq]', 'true'],
-        ['pagination[pageSize]', '6'],
-        ['sort', 'publishedAt:desc'],
-        ...resourceListFieldsParams(),
-        ...imagePopulateParams(),
-    ]);
+    try {
+        const query = buildQuery([
+            ['filters[featured][$eq]', 'true'],
+            ['pagination[pageSize]', '6'],
+            ['sort', 'publishedAt:desc'],
+            ...resourceListFieldsParams(),
+            ...imagePopulateParams(),
+        ]);
 
-    const res = await fetchStrapi<StrapiListResponse<StrapiResource>>(
-        `/api/resources?${query}`
-    );
+        const res = await fetchStrapi<StrapiListResponse<StrapiResource>>(
+            `/api/resources?${query}`
+        );
 
-    return compactResources(res.data.map(mapResource));
+        return compactResources(res.data.map(mapResource));
+    } catch (error) {
+        console.error('[strapi] getFeaturedResources failed:', error);
+        return SAMPLE_ARTICLES.filter((r) => r.featured);
+    }
 }
 
 /**
@@ -269,18 +275,23 @@ export async function getFeaturedResources(): Promise<Resource[]> {
  * The browse page handles search and category filtering client-side.
  */
 export async function getAllResources(): Promise<Resource[]> {
-    const query = buildQuery([
-        ['pagination[pageSize]', '25'],
-        ['sort', 'publishedAt:desc'],
-        ...resourceListFieldsParams(),
-        ...imagePopulateParams(),
-    ]);
+    try {
+        const query = buildQuery([
+            ['pagination[pageSize]', '25'],
+            ['sort', 'publishedAt:desc'],
+            ...resourceListFieldsParams(),
+            ...imagePopulateParams(),
+        ]);
 
-    const res = await fetchStrapi<StrapiListResponse<StrapiResource>>(
-        `/api/resources?${query}`
-    );
+        const res = await fetchStrapi<StrapiListResponse<StrapiResource>>(
+            `/api/resources?${query}`
+        );
 
-    return compactResources(res.data.map(mapResource));
+        return compactResources(res.data.map(mapResource));
+    } catch (error) {
+        console.error('[strapi] getAllResources failed:', error);
+        return SAMPLE_ARTICLES;
+    }
 }
 
 /**
@@ -288,18 +299,23 @@ export async function getAllResources(): Promise<Resource[]> {
  * Used by the dynamic `[category]/page.tsx` route.
  */
 export async function getResourcesByCategory(category: ResourceCategory): Promise<Resource[]> {
-    const query = buildQuery([
-        ['filters[category][$eq]', category],
-        ['sort', 'publishedAt:desc'],
-        ...resourceListFieldsParams(),
-        ...imagePopulateParams(),
-    ]);
+    try {
+        const query = buildQuery([
+            ['filters[category][$eq]', category],
+            ['sort', 'publishedAt:desc'],
+            ...resourceListFieldsParams(),
+            ...imagePopulateParams(),
+        ]);
 
-    const res = await fetchStrapi<StrapiListResponse<StrapiResource>>(
-        `/api/resources?${query}`
-    );
+        const res = await fetchStrapi<StrapiListResponse<StrapiResource>>(
+            `/api/resources?${query}`
+        );
 
-    return compactResources(res.data.map(mapResource));
+        return compactResources(res.data.map(mapResource));
+    } catch (error) {
+        console.error('[strapi] getResourcesByCategory failed:', error);
+        return SAMPLE_ARTICLES.filter((r) => r.category === category);
+    }
 }
 
 /**
@@ -313,19 +329,24 @@ export async function getResourceBySlug(
     category: ResourceCategory,
     slug: string,
 ): Promise<Resource | null> {
-    const query = buildQuery([
-        ['filters[slug][$eq]', slug],
-        ['filters[category][$eq]', category],
-        ['pagination[pageSize]', '1'],
-        ...imagePopulateParams(),
-    ]);
+    try {
+        const query = buildQuery([
+            ['filters[slug][$eq]', slug],
+            ['filters[category][$eq]', category],
+            ['pagination[pageSize]', '1'],
+            ...imagePopulateParams(),
+        ]);
 
-    const res = await fetchStrapi<StrapiListResponse<StrapiResource>>(
-        `/api/resources?${query}`
-    );
+        const res = await fetchStrapi<StrapiListResponse<StrapiResource>>(
+            `/api/resources?${query}`
+        );
 
-    if (res.data.length === 0) return null;
-    return mapResource(res.data[0]);
+        if (res.data.length === 0) return null;
+        return mapResource(res.data[0]);
+    } catch (error) {
+        console.error('[strapi] getResourceBySlug failed:', error);
+        return SAMPLE_ARTICLES.find((r) => r.slug === slug && r.category === category) ?? null;
+    }
 }
 
 /**
@@ -336,20 +357,25 @@ export async function getRelatedResources(
     category: ResourceCategory,
     excludeSlug: string,
 ): Promise<Resource[]> {
-    const query = buildQuery([
-        ['filters[category][$eq]', category],
-        ['filters[slug][$ne]', excludeSlug],
-        ['sort', 'publishedAt:desc'],
-        ['pagination[pageSize]', '3'],
-        ...resourceListFieldsParams(),
-        ...imagePopulateParams(),
-    ]);
+    try {
+        const query = buildQuery([
+            ['filters[category][$eq]', category],
+            ['filters[slug][$ne]', excludeSlug],
+            ['sort', 'publishedAt:desc'],
+            ['pagination[pageSize]', '3'],
+            ...resourceListFieldsParams(),
+            ...imagePopulateParams(),
+        ]);
 
-    const res = await fetchStrapi<StrapiListResponse<StrapiResource>>(
-        `/api/resources?${query}`
-    );
+        const res = await fetchStrapi<StrapiListResponse<StrapiResource>>(
+            `/api/resources?${query}`
+        );
 
-    return compactResources(res.data.map(mapResource));
+        return compactResources(res.data.map(mapResource));
+    } catch (error) {
+        console.error('[strapi] getRelatedResources failed:', error);
+        return SAMPLE_ARTICLES.filter((r) => r.category === category && r.slug !== excludeSlug).slice(0, 3);
+    }
 }
 
 // ---------------------------------------------------------------------------
@@ -361,24 +387,29 @@ export async function getRelatedResources(
  * The frontend groups these by category for display.
  */
 export async function getExternalResources(): Promise<ExternalResource[]> {
-    const query = buildQuery([
-        ['pagination[pageSize]', '100'],
-        ['sort[0]', 'category:asc'],
-        ['sort[1]', 'title:asc'],
-        ['fields[0]', 'title'],
-        ['fields[1]', 'description'],
-        ['fields[2]', 'url'],
-        ['fields[3]', 'category'],
-        ['fields[4]', 'resourceType'],
-        ['fields[5]', 'badge'],
-        ['fields[6]', 'officialStatus'],
-        ['fields[7]', 'updatedAt'],
-        ['fields[8]', 'publishedAt'],
-    ]);
+    try {
+        const query = buildQuery([
+            ['pagination[pageSize]', '100'],
+            ['sort[0]', 'category:asc'],
+            ['sort[1]', 'title:asc'],
+            ['fields[0]', 'title'],
+            ['fields[1]', 'description'],
+            ['fields[2]', 'url'],
+            ['fields[3]', 'category'],
+            ['fields[4]', 'resourceType'],
+            ['fields[5]', 'badge'],
+            ['fields[6]', 'officialStatus'],
+            ['fields[7]', 'updatedAt'],
+            ['fields[8]', 'publishedAt'],
+        ]);
 
-    const res = await fetchStrapi<StrapiListResponse<StrapiExternalResource>>(
-        `/api/external-resources?${query}`
-    );
+        const res = await fetchStrapi<StrapiListResponse<StrapiExternalResource>>(
+            `/api/external-resources?${query}`
+        );
 
-    return compactExternalResources(res.data.map(mapExternalResource));
+        return compactExternalResources(res.data.map(mapExternalResource));
+    } catch (error) {
+        console.error('[strapi] getExternalResources failed:', error);
+        return SAMPLE_EXTERNAL_RESOURCES;
+    }
 }

@@ -1,20 +1,6 @@
 import { SITE_CONFIG } from '@/lib/constants';
 import type { Metadata } from 'next';
-import { Poppins } from 'next/font/google';
 import './globals.css';
-
-// Subject to change because details about "authors" and metadata is tentative
-
-/**
- * Load Poppins font from Google Fonts
- * Weights: 300 (light), 400 (regular), 500 (medium), 600 (semibold), 700 (bold)
- */
-const poppins = Poppins({
-  weight: ['300', '400', '500', '600', '700'],
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-poppins',
-});
 
 /**
  * Site-wide metadata for SEO and social sharing
@@ -71,8 +57,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={poppins.variable}>
-      <body className="font-sans antialiased">
+    <html lang="en">
+      <body className="antialiased">
         {children}
       </body>
     </html>

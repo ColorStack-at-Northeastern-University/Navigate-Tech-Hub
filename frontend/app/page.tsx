@@ -1,22 +1,12 @@
-/**
- * Home Page
- *
- * Landing page featuring hero section, featured resources, and about section.
- * Fetches featured resources from Strapi (editor-curated via the `featured` boolean).
- */
-
 import Footer from '../components/layout/Footer';
 import Navbar from '../components/layout/Navbar';
 import Hero from '../components/sections/Hero';
+import ColorStackOpportunities from '../components/sections/ColorStackOpportunities';
 import EmptyResourceState from '../components/ui/EmptyResourceState';
 import ResourceCard from '../components/ui/ResourceCard';
 import { NATIONAL_COLORSTACK, getSubmitResourceUrl } from '@/lib/constants';
 import { getFeaturedResources } from '@/lib/strapi';
 
-/**
- * Home page component
- * Entry point for the Navigate Tech Hub application
- */
 export default async function Home() {
     const featuredResources = await getFeaturedResources();
     const submitUrl = getSubmitResourceUrl();
@@ -27,17 +17,17 @@ export default async function Home() {
 
             <main>
                 <Hero />
+                <ColorStackOpportunities />
 
                 {/* Featured Resources Section */}
                 <section className="container-custom">
-                    <h3 className="section-title">
+                    <h3 className="font-display text-3xl md:text-4xl font-bold text-brand-dark mb-2">
                         Featured Resources
                     </h3>
-                    <p className="text-gray-600 max-w-3xl mb-6">
-                        Curated by the team—toggle &quot;Featured&quot; in Strapi to pin guides here.
+                    <p className="text-gray-500 max-w-3xl mb-4 text-sm md:text-base">
+                        Curated by the team — toggle &quot;Featured&quot; in Strapi to pin guides here.
                     </p>
-
-                    <div className="accent-bar"></div>
+                    <div className="accent-bar" />
 
                     {featuredResources.length === 0 ? (
                         <EmptyResourceState
@@ -64,13 +54,12 @@ export default async function Home() {
 
                 {/* About Section */}
                 <section className="container-custom">
-                    <h3 className="section-title" id="about">
+                    <h3 className="font-display text-3xl md:text-4xl font-bold text-brand-dark mb-2" id="about">
                         About Navigate Tech Hub
                     </h3>
+                    <div className="accent-bar" />
 
-                    <div className="accent-bar"></div>
-
-                    <div className="bg-white rounded-xl p-12 shadow-[0_2px_8px_rgba(0,0,0,0.1)] border-t-[5px] border-colorstack-teal">
+                    <div className="bg-white rounded-xl p-12 shadow-[0_2px_8px_rgba(0,0,0,0.1)] border-t-[3px] border-neu-red">
                         <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                             <strong className="text-neu-red font-semibold">Navigate Tech Hub</strong> is a student-led initiative created by Adesola Odubiyi to support
                             Black and Latinx computer science students at Northeastern University. Our mission is simple: centralize
@@ -100,7 +89,7 @@ export default async function Home() {
                                 href={submitUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-colorstack-teal font-semibold underline hover:opacity-80"
+                                className="text-neu-red font-semibold underline hover:opacity-80"
                             >
                                 Suggest a resource
                             </a>

@@ -1,0 +1,86 @@
+import type { Resource, ExternalResource } from '@/lib/types';
+
+// ── SAMPLE ARTICLES (remove this file when Strapi is connected) ─────────────
+
+export const SAMPLE_ARTICLES: Resource[] = [
+    {
+        slug: 'leetcode-guide',
+        category: 'interview-prep',
+        title: 'The Ultimate LeetCode Strategy for Beginners',
+        description: 'A step-by-step guide to building your LeetCode habit, choosing the right problems, and tracking progress toward your first internship.',
+        audienceStage: 'first-year',
+        timeToReadMinutes: 8,
+        outcome: 'A 4-week study plan with curated problem sets',
+        contentVolatility: 'low',
+        tags: ['LeetCode', 'Interviews', 'DSA'],
+        difficulty: 'beginner',
+        author: 'Adesola Odubiyi',
+        publishedDate: '2026-04-20T12:00:00.000Z',
+        lastUpdated: '2026-04-28T12:00:00.000Z',
+        featured: true,
+    },
+    {
+        slug: 'resume-tips-cs',
+        category: 'interview-prep',
+        title: 'Crafting a CS Resume That Gets Callbacks',
+        description: 'Learn how to structure your resume, highlight projects, and tailor your experience for software engineering roles.',
+        audienceStage: 'underclassmen',
+        timeToReadMinutes: 6,
+        outcome: 'A polished resume ready for career fairs',
+        contentVolatility: 'medium',
+        tags: ['Resume', 'Career', 'Tips'],
+        difficulty: 'beginner',
+        author: 'John Martinez',
+        publishedDate: '2026-04-15T12:00:00.000Z',
+        lastUpdated: '2026-04-25T12:00:00.000Z',
+        featured: true,
+    },
+    {
+        slug: 'first-hackathon',
+        category: 'hackathons',
+        title: 'How to Win Your First Hackathon',
+        description: 'Everything you need to know before, during, and after your first hackathon — from team formation to demo day.',
+        audienceStage: 'first-year',
+        timeToReadMinutes: 10,
+        outcome: 'Confidence and a game plan for hackathon weekend',
+        contentVolatility: 'low',
+        tags: ['Hackathons', 'Projects', 'Teamwork'],
+        difficulty: 'beginner',
+        author: 'Priya Sharma',
+        publishedDate: '2026-04-10T12:00:00.000Z',
+        lastUpdated: '2026-04-22T12:00:00.000Z',
+        featured: true,
+    },
+];
+
+// ── SAMPLE EXTERNAL RESOURCES (remove this file when Strapi is connected) ───
+
+export const SAMPLE_EXTERNAL_RESOURCES: ExternalResource[] = [
+    {
+        title: 'NeetCode 150',
+        description: 'A curated list of 150 LeetCode problems organized by topic and difficulty — the most popular interview prep roadmap.',
+        url: 'https://neetcode.io',
+        category: 'interview-prep',
+        resourceType: 'learning-platform',
+        badge: 'Popular',
+        officialStatus: 'community-vetted',
+    },
+    {
+        title: 'ColorStack Community',
+        description: 'The largest community for Black and Latinx CS students. Access mentorship, job postings, and events nationwide.',
+        url: 'https://colorstack.org',
+        category: 'community',
+        resourceType: 'community-network',
+        badge: 'Official',
+        officialStatus: 'official-org',
+    },
+    {
+        title: 'MLH Season 2026',
+        description: 'Major League Hacking hosts 200+ hackathons every year. Find upcoming events, register, and start building.',
+        url: 'https://mlh.io',
+        category: 'hackathons',
+        resourceType: 'events-conference',
+        badge: 'Events',
+        officialStatus: 'official-org',
+    },
+];
