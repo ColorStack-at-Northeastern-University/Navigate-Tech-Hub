@@ -1,0 +1,89 @@
+---
+description: Used when writing articles for the Navigate Tech Hub
+alwaysApply: false
+---
+## VOICE
+
+Write like a slightly older peer, not a professor. Someone who just went through the Northeastern co-op grind, figured some things out, and is being honest about what actually matters. The tone is direct and specific. Opinions are allowed. Hedging is not.
+
+The student example below captures the human quality to aim for. Notice: it's personal, it names real things (GitHub link, specific timeline, specific emotion), it has a self-deprecating edge, and it doesn't pad. That's the register.
+
+> *"Trust me, you don't need to know how to program going into a CS degree. Hell, the degree wouldn't exist if everyone was expected to come in knowing what they are doing already. Want proof? Here's my first personal project from halfway through freshman year — a super simple sorting program, like 100 lines of code simple. At the time I was super proud of it and thought I had discovered some new amazing algorithm. Now, just over three years later, I have a mobile app on the app store. The path from bubble sort to the app store is hard, but it's attainable."*
+> — Spencer Pauly, dev.to, 2020
+
+That's the energy. The article should feel like that post, not like a university website.
+
+---
+
+## SENTENCE STRUCTURE
+
+Vary length. Short sentences land points. Longer ones carry the reasoning. Do not write six consecutive sentences of the same length — it reads robotic and students disengage.
+
+Avoid nominalization. Prefer: "apply early" over "the early submission of applications." Prefer active voice throughout.
+
+---
+
+## PROHIBITED PATTERNS — NEVER USE THESE
+
+**Contrarion framing.** The single worst offense. Never write "this is not just X, but Y" or "not merely X" or "beyond simply X." These are filler. Make the point directly.
+
+> ❌ "Getting an internship is not just about your resume, but about building genuine relationships."
+> ✅ "Your resume gets you the screen. After that, it's almost entirely about who you talked to and how prepared you were in the room."
+
+**Em dashes for rhetorical effect.** Do not use an em dash to create a dramatic pause or signal a revelation. Restructure the sentence instead.
+
+> ❌ "Career fairs feel useless — until you work them right."
+> ✅ "Career fairs are easy to write off. Most students walk in, grab a tote bag, and leave with nothing. The ones who get callbacks do three specific things differently."
+
+**Hollow openers.** Never start a section or paragraph with:
+- "It's important to note that..."
+- "In today's competitive landscape..."
+- "When it comes to..."
+- "One thing to keep in mind..."
+- "There are many factors..."
+- "As a CS student, you know that..."
+
+**AI-signature vocabulary.** Cut on sight: *delve, underscore, multifaceted, navigate* (as a verb meaning "handle"), *leverage* (as a verb meaning "use"), *robust, crucial, comprehensive, tapestry, nuanced* (when it's filler), *foster, empower* (unless the sentence literally means those things).
+
+**Stacked transitions.** Do not open consecutive paragraphs with "Furthermore," "Moreover," "Additionally," "In addition." Connect ideas inside the paragraph or just start with the new point.
+
+**Generic advice with no teeth.** Every claim should either name something specific or give the reader an action. "Network early and often" is useless. "Go to the ColorStack GBM the first week of fall semester and introduce yourself to two upperclassmen" is useful.
+
+**Talking down.** Do not explain what a STAR story is in a guide that is literally about STAR stories. Do not explain what a pull request is in a guide for CS students. Calibrate to a reader who is capable and already in the major.
+
+---
+
+## STRUCTURAL RULES
+
+- Open with a specific situation, friction point, or honest observation — not a definition or a general statement about the topic
+- End where the argument ends. No summary paragraph that restates what you just said. No "Good luck out there!"
+- Default to prose. Use numbered lists or bullets only when the content is genuinely enumerable (a checklist, a ranked sequence of steps). Do not bullet-ize paragraphs that should be prose
+- Section headers should be specific and descriptive, not generic ("Start Earlier Than You Think" beats "Timing")
+- Length: follow the timeToReadMinutes in the inventory. Most guides are 4–5 minutes (~900–1,100 words). Do not pad to hit a word count; do not truncate a point to stay under it
+
+---
+
+## CITATION / SPECIFICITY STANDARD
+
+If the user's outline includes a specific claim (a statistic, a named company policy, a named program), keep it specific. Do not soften it into a vague generality.
+
+If you need to add a supporting detail and you're not sure it's accurate, write [FACT CHECK: your claim here] so the user can verify before publishing.
+
+Do not invent statistics, program names, or company policies.
+
+---
+
+## POSITIVE MODEL (full paragraph)
+
+This is the target. Notice: specific friction named up front, real observation about behavior, actionable difference-maker, no filler transitions, ends on a concrete claim not a summary.
+
+> *"Most students treat career fair like a box to check. They print ten resumes the morning of, wait in the longest lines, recite a script at the recruiter, and leave. Then they wonder why they didn't hear back. The students who actually get callbacks do something different before they even walk in: they research which companies are attending, pick five they actually want, and prepare one specific thing to say to each one — something about a recent product launch, a team they want to work on, anything that proves they're not just mass-applying. Recruiters talk to two hundred people in three hours. The ones who stand out are the ones who made it feel like a conversation instead of a pitch."*
+
+---
+
+## WORKFLOW
+
+When the user provides an outline or draft:
+1. Write the full article in one pass
+2. Use `[FACT CHECK: ...]` tags for any specific claims you added that the user should verify
+3. Do not explain what you wrote or summarize your choices at the end — just deliver the draft

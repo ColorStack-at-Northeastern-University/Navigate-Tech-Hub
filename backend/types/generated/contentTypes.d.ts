@@ -414,7 +414,7 @@ export interface ApiExternalResourceExternalResource
   extends Struct.CollectionTypeSchema {
   collectionName: 'external_resources';
   info: {
-    description: 'Curated links to third-party tools and platforms';
+    description: 'Curated links to third-party tools, platforms, and named programs';
     displayName: 'External Resource';
     pluralName: 'external-resources';
     singularName: 'external-resource';
@@ -423,15 +423,38 @@ export interface ApiExternalResourceExternalResource
     draftAndPublish: true;
   };
   attributes: {
+    applicationDeadline: Schema.Attribute.Date;
+    applicationStatus: Schema.Attribute.Enumeration<
+      [
+        'apply-now',
+        'closing-soon',
+        'rolling',
+        'opens-fall-2026',
+        'uncertain-2026',
+        'closed-this-cycle',
+        'year-round',
+      ]
+    >;
+    audienceSpecific: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
     badge: Schema.Attribute.String;
+    bostonLocal: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     category: Schema.Attribute.Enumeration<
-      ['interview-prep', 'classes', 'projects', 'hackathons', 'community']
+      [
+        'interview-prep',
+        'classes',
+        'projects',
+        'hackathons',
+        'community',
+        'programs',
+      ]
     > &
       Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text & Schema.Attribute.Required;
+    lastVerified: Schema.Attribute.Date;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -441,7 +464,17 @@ export interface ApiExternalResourceExternalResource
     officialStatus: Schema.Attribute.Enumeration<
       ['official-org', 'community-vetted']
     >;
+    programType: Schema.Attribute.Enumeration<
+      [
+        'early-career-program',
+        'fellowship',
+        'pre-internship',
+        'insight-event',
+        'conference',
+      ]
+    >;
     publishedAt: Schema.Attribute.DateTime;
+    relatedArticleSlug: Schema.Attribute.String;
     resourceType: Schema.Attribute.Enumeration<
       [
         'learning-platform',
@@ -454,6 +487,9 @@ export interface ApiExternalResourceExternalResource
       ]
     > &
       Schema.Attribute.Required;
+    riskFlag: Schema.Attribute.Enumeration<
+      ['dei-rollback-risk', 'deprecated-soon', 'verify-before-applying']
+    >;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
