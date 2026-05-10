@@ -5,13 +5,18 @@
 
 /**
  * Valid resource categories that match the app routing structure.
+ *
+ * `programs` is External-Resource only — there is no `/programs` article route.
+ * It surfaces named, time-bounded opportunities (fellowships, early-career
+ * programs, insight events) in the External Resources directory.
  */
 export type ResourceCategory =
     | 'interview-prep'
     | 'classes'
     | 'projects'
     | 'hackathons'
-    | 'community';
+    | 'community'
+    | 'programs';
 
 /**
  * Difficulty levels for resources.
@@ -28,6 +33,41 @@ export type ExternalResourceType =
     | 'career-tool'
     | 'documentation-reference';
 export type OfficialStatus = 'official-org' | 'community-vetted';
+
+/**
+ * Sub-type of a Programs entry. Drives sub-headings and ordering inside
+ * the Programs section of the External Resources page.
+ */
+export type ProgramType =
+    | 'early-career-program'
+    | 'fellowship'
+    | 'pre-internship'
+    | 'insight-event'
+    | 'conference';
+
+/**
+ * Application status for Programs. Drives the colored badge and the
+ * default ordering inside each programType bucket.
+ *
+ * `closed-this-cycle` entries are collapsed by default in the UI.
+ */
+export type ApplicationStatus =
+    | 'apply-now'
+    | 'closing-soon'
+    | 'rolling'
+    | 'opens-fall-2026'
+    | 'uncertain-2026'
+    | 'closed-this-cycle'
+    | 'year-round';
+
+/**
+ * Reasons a Program needs human verification before a student commits to it.
+ * Surfaces as a small warning pill on the card.
+ */
+export type RiskFlag =
+    | 'dei-rollback-risk'
+    | 'deprecated-soon'
+    | 'verify-before-applying';
 
 /**
  * Image data returned by Strapi's media field (populated with select fields).
@@ -66,6 +106,11 @@ export interface Resource {
 
 /**
  * Represents an external resource link.
+ *
+ * Program-specific fields (programType, applicationStatus, applicationDeadline,
+ * audienceSpecific, bostonLocal, riskFlag, lastVerified, relatedArticleSlug)
+ * are only populated when `category === 'programs'`. They default to undefined
+ * for community/learning/etc. resources.
  */
 export interface ExternalResource {
     title: string;
@@ -77,6 +122,17 @@ export interface ExternalResource {
     officialStatus?: OfficialStatus;
     /** From Strapi updatedAt when present in API response */
     lastUpdated?: string;
+    programType?: ProgramType;
+    applicationStatus?: ApplicationStatus;
+    /** ISO date string (YYYY-MM-DD) used for "closing-soon" detection and sorting */
+    applicationDeadline?: string;
+    audienceSpecific?: boolean;
+    bostonLocal?: boolean;
+    riskFlag?: RiskFlag;
+    /** ISO date string (YYYY-MM-DD) — date a human last confirmed the program is live */
+    lastVerified?: string;
+    /** Slug of one internal article to pair with this resource (no Strapi relation; intentional decoupling) */
+    relatedArticleSlug?: string;
 }
 
 /**
@@ -155,6 +211,14 @@ export interface StrapiExternalResource {
     resourceType: ExternalResourceType;
     badge?: string | null;
     officialStatus?: OfficialStatus | null;
+    programType?: ProgramType | null;
+    applicationStatus?: ApplicationStatus | null;
+    applicationDeadline?: string | null;
+    audienceSpecific?: boolean | null;
+    bostonLocal?: boolean | null;
+    riskFlag?: RiskFlag | null;
+    lastVerified?: string | null;
+    relatedArticleSlug?: string | null;
     publishedAt: string | null;
     updatedAt: string;
     createdAt: string;

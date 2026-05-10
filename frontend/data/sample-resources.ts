@@ -83,4 +83,16 @@ export const SAMPLE_EXTERNAL_RESOURCES: ExternalResource[] = [
         badge: 'Events',
         officialStatus: 'official-org',
     },
+    {
+        title: 'CodePath Applied AI Engineering',
+        description: 'Free, project-based AI engineering program. Closes May 17, 2026.',
+        url: 'https://www.codepath.org',
+        category: 'programs',
+        resourceType: 'learning-platform',
+        programType: 'pre-internship',
+        applicationStatus: 'closing-soon',
+        applicationDeadline: '2026-05-17',
+        audienceSpecific: true,
+        lastVerified: '2026-05-10',
+    },
 ];

@@ -20,6 +20,9 @@ import type {
     StrapiResource,
     StrapiExternalResource,
     ResourceCategory,
+    ProgramType,
+    ApplicationStatus,
+    RiskFlag,
 } from './types';
 
 // ---------------------------------------------------------------------------
@@ -41,7 +44,29 @@ const RESOURCE_CATEGORIES: ResourceCategory[] = [
     'projects',
     'hackathons',
     'community',
+    'programs',
 ];
+const PROGRAM_TYPES = [
+    'early-career-program',
+    'fellowship',
+    'pre-internship',
+    'insight-event',
+    'conference',
+] as const;
+const APPLICATION_STATUSES = [
+    'apply-now',
+    'closing-soon',
+    'rolling',
+    'opens-fall-2026',
+    'uncertain-2026',
+    'closed-this-cycle',
+    'year-round',
+] as const;
+const RISK_FLAGS = [
+    'dei-rollback-risk',
+    'deprecated-soon',
+    'verify-before-applying',
+] as const;
 const AUDIENCE_STAGES = ['first-semester', 'first-year', 'underclassmen', 'all-levels'] as const;
 const CONTENT_VOLATILITIES = ['high', 'medium', 'low'] as const;
 const EXTERNAL_RESOURCE_TYPES = [
@@ -102,6 +127,25 @@ function isValidOfficialStatus(value: unknown): value is OfficialStatus {
         typeof value === 'string'
         && OFFICIAL_STATUSES.includes(value as (typeof OFFICIAL_STATUSES)[number])
     );
+}
+
+function isValidProgramType(value: unknown): value is ProgramType {
+    return typeof value === 'string' && PROGRAM_TYPES.includes(value as ProgramType);
+}
+
+function isValidApplicationStatus(value: unknown): value is ApplicationStatus {
+    return (
+        typeof value === 'string'
+        && APPLICATION_STATUSES.includes(value as ApplicationStatus)
+    );
+}
+
+function isValidRiskFlag(value: unknown): value is RiskFlag {
+    return typeof value === 'string' && RISK_FLAGS.includes(value as RiskFlag);
+}
+
+function isIsoDateString(value: unknown): value is string {
+    return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}/.test(value);
 }
 
 function isPositiveNumber(value: unknown): value is number {
@@ -211,6 +255,18 @@ function mapExternalResource(raw: StrapiExternalResource): ExternalResource | nu
     const officialStatus = isValidOfficialStatus(raw.officialStatus)
         ? raw.officialStatus
         : undefined;
+    const programType = isValidProgramType(raw.programType) ? raw.programType : undefined;
+    const applicationStatus = isValidApplicationStatus(raw.applicationStatus)
+        ? raw.applicationStatus
+        : undefined;
+    const riskFlag = isValidRiskFlag(raw.riskFlag) ? raw.riskFlag : undefined;
+    const applicationDeadline = isIsoDateString(raw.applicationDeadline)
+        ? raw.applicationDeadline
+        : undefined;
+    const lastVerified = isIsoDateString(raw.lastVerified) ? raw.lastVerified : undefined;
+    const relatedArticleSlug = isNonEmptyString(raw.relatedArticleSlug)
+        ? raw.relatedArticleSlug
+        : undefined;
 
     return {
         title: raw.title,
@@ -221,6 +277,14 @@ function mapExternalResource(raw: StrapiExternalResource): ExternalResource | nu
         badge: raw.badge ?? undefined,
         officialStatus,
         lastUpdated: raw.updatedAt,
+        programType,
+        applicationStatus,
+        applicationDeadline,
+        audienceSpecific: raw.audienceSpecific === true,
+        bostonLocal: raw.bostonLocal === true,
+        riskFlag,
+        lastVerified,
+        relatedArticleSlug,
     };
 }
 
@@ -389,7 +453,7 @@ export async function getRelatedResources(
 export async function getExternalResources(): Promise<ExternalResource[]> {
     try {
         const query = buildQuery([
-            ['pagination[pageSize]', '100'],
+            ['pagination[pageSize]', '250'],
             ['sort[0]', 'category:asc'],
             ['sort[1]', 'title:asc'],
             ['fields[0]', 'title'],
@@ -401,6 +465,14 @@ export async function getExternalResources(): Promise<ExternalResource[]> {
             ['fields[6]', 'officialStatus'],
             ['fields[7]', 'updatedAt'],
             ['fields[8]', 'publishedAt'],
+            ['fields[9]', 'programType'],
+            ['fields[10]', 'applicationStatus'],
+            ['fields[11]', 'applicationDeadline'],
+            ['fields[12]', 'audienceSpecific'],
+            ['fields[13]', 'bostonLocal'],
+            ['fields[14]', 'riskFlag'],
+            ['fields[15]', 'lastVerified'],
+            ['fields[16]', 'relatedArticleSlug'],
         ]);
 
         const res = await fetchStrapi<StrapiListResponse<StrapiExternalResource>>(

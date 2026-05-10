@@ -78,6 +78,7 @@ export function getCategoryColor(category: ResourceCategory): string {
         'projects': 'border-colorstack-orange',
         'hackathons': 'border-neu-black',
         'community': 'border-neu-gray',
+        'programs': 'border-neu-red',
     };
 
     return colorMap[category];

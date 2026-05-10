@@ -5,7 +5,7 @@
     "singularName": "external-resource",
     "pluralName": "external-resources",
     "displayName": "External Resource",
-    "description": "Curated links to third-party tools and platforms"
+    "description": "Curated links to third-party tools, platforms, and named programs"
   },
   "options": {
     "draftAndPublish": true
@@ -31,7 +31,8 @@
         "classes",
         "projects",
         "hackathons",
-        "community"
+        "community",
+        "programs"
       ],
       "required": true
     },
@@ -57,6 +58,53 @@
         "official-org",
         "community-vetted"
       ]
+    },
+    "programType": {
+      "type": "enumeration",
+      "enum": [
+        "early-career-program",
+        "fellowship",
+        "pre-internship",
+        "insight-event",
+        "conference"
+      ]
+    },
+    "applicationStatus": {
+      "type": "enumeration",
+      "enum": [
+        "apply-now",
+        "closing-soon",
+        "rolling",
+        "opens-fall-2026",
+        "uncertain-2026",
+        "closed-this-cycle",
+        "year-round"
+      ]
+    },
+    "applicationDeadline": {
+      "type": "date"
+    },
+    "audienceSpecific": {
+      "type": "boolean",
+      "default": false
+    },
+    "bostonLocal": {
+      "type": "boolean",
+      "default": false
+    },
+    "riskFlag": {
+      "type": "enumeration",
+      "enum": [
+        "dei-rollback-risk",
+        "deprecated-soon",
+        "verify-before-applying"
+      ]
+    },
+    "lastVerified": {
+      "type": "date"
+    },
+    "relatedArticleSlug": {
+      "type": "string"
     }
   }
 }

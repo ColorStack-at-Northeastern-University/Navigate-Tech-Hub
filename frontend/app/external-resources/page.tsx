@@ -3,11 +3,12 @@ import Navbar from '@/components/layout/Navbar';
 import CircuitPattern from '@/components/ui/CircuitPattern';
 import EmptyResourceState from '@/components/ui/EmptyResourceState';
 import ExternalResourceCard from '@/components/ui/ExternalResourceCard';
+import ProgramsSection from '@/components/ui/ProgramsSection';
 import { getSubmitResourceUrl } from '@/lib/constants';
 import { getExternalResources } from '@/lib/strapi';
 import type { ExternalResource, ResourceCategory } from '@/lib/types';
 
-const CATEGORY_LABELS: Record<ResourceCategory, string> = {
+const CATEGORY_LABELS: Record<Exclude<ResourceCategory, 'programs'>, string> = {
     'interview-prep': 'Interview Prep',
     'projects': 'Projects & Portfolio',
     'community': 'Community & Networking',
@@ -15,7 +16,7 @@ const CATEGORY_LABELS: Record<ResourceCategory, string> = {
     'classes': 'Learning Platforms',
 };
 
-const SECTION_ORDER: ResourceCategory[] = [
+const SECTION_ORDER: Array<Exclude<ResourceCategory, 'programs'>> = [
     'interview-prep',
     'projects',
     'community',
@@ -44,7 +45,9 @@ export default async function ExternalResourcesPage() {
     const allResources = await getExternalResources();
     const submitUrl = getSubmitResourceUrl();
 
-    const grouped = Object.groupBy(allResources, (r) => r.category);
+    const programs = allResources.filter((r) => r.category === 'programs');
+    const others = allResources.filter((r) => r.category !== 'programs');
+    const grouped = Object.groupBy(others, (r) => r.category);
 
     return (
         <>
@@ -58,7 +61,7 @@ export default async function ExternalResourcesPage() {
                             External Resources Directory
                         </h1>
                         <p className="text-white/80 text-xl max-w-3xl">
-                            Quick links to external tools, platforms, and resources curated for CS students.
+                            Quick links to external tools, platforms, and named programs curated for CS students.
                             All links open in a new tab.
                         </p>
                     </div>
@@ -78,6 +81,7 @@ export default async function ExternalResourcesPage() {
                         />
                     ) : (
                         <>
+                            <ProgramsSection resources={programs} />
                             {SECTION_ORDER.map((cat) => (
                                 <CategorySection
                                     key={cat}
