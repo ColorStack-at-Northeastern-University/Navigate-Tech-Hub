@@ -18,12 +18,10 @@ colorstack-updates   | ColorStack Updates             | https://www.colorstack.o
 nsbe-news            | NSBE Newsroom                  | https://www.nsbe.org/news
 afrotech-articles    | AfroTech Articles              | https://afrotech.com/category/news
 codepath-news        | CodePath Newsroom              | https://www.codepath.org/news
-hack-diversity       | Hack.Diversity Updates         | https://www.hackdiversity.com/news
 mlt-news             | MLT News                       | https://mlt.org/news/
 seo-news             | SEO News                       | https://www.seo-usa.org/news/
 rewriting-the-code   | Rewriting the Code Updates     | https://rewritingthecode.org/news
 ai4all-news          | AI4ALL News                    | https://ai-4-all.org/news/
-headstart-updates    | Headstart Fellowship           | https://www.headstartfellowship.com/news
 
 # ─────────────────────────────────────────────────────────────
 # NORTHEASTERN-SPECIFIC SOURCES
@@ -40,7 +38,7 @@ neu-colorstack       | ColorStack @ Northeastern      | https://www.colorstack.o
 outintech-news       | Out in Tech News               | https://outintech.com/news/
 latinas-in-tech      | Latinas in Tech                | https://latinasintech.org/news/
 formation-updates    | Formation (Netflix pipeline)   | https://formation.dev/blog
-brilliant-black      | Brilliant Black Minds          | https://www.brilliantblackminds.com/news
+brilliant-black      | Brilliant Black Minds          | https://brilliantblackminds.co
 base-fellowship      | BASE Fellowship                | https://www.basefellowship.org/news
 hsf-news             | Hispanic Scholarship Fund      | https://www.hsf.net/news
 nsf-reu-cs           | NSF REU Computer Science       | https://www.nsf.gov/crssprgm/reu/reu_search.jsp

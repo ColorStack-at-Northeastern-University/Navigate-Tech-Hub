@@ -17,6 +17,7 @@ meta-university      | Meta University Program               | Shut down Jan 202
 code2040-fellows     | CODE2040 Fellows Program              | Final cohort ended July 2026 per primary source               | 2026-05-10 | n/a
 amazon-leap-swe      | Amazon LEAP (SWE program)             | Does not exist as a SWE program; conflated with Amazon Future Engineer | 2026-05-10 | n/a
 oracle-sophomore     | Oracle Sophomore SWE Internship       | No such tier exists; Oracle expects rising junior minimum      | 2026-05-10 | n/a
+hack-diversity       | Hack.Diversity (org source)           | Organization shut down Aug 2025; remove from org radar queue   | 2026-05-10 | n/a
 
 # ─────────────────────────────────────────────────────────────
 # COMPANIES EXCLUDED (structural ineligibility)

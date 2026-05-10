@@ -14,7 +14,7 @@
 
 Jane Street SEEDS                    | Jane Street JSIP                    | jane-street       | 2026-05-10 | SEEDS (Summer Engineering Experience for Diverse Students) appears to be superseded by JSIP on janestreet.com/join-jane-street/programs/
 Meta University                      | CANCELLED                           | meta              | 2026-01-10 | DEI cut; final class accepted before wind-down per internal memo
-Google STEP                          | Google STEP (still active)          | google            | 2026-05-10 | User initially believed cancelled; confirmed active for NA/India/EMEA/Japan in 2026
+Google STEP                          | Google ASDI (Associate Software Developer Intern) | google | 2026-05-10 | First/second-year SWE intern role rebranded on Google Careers as ASDI; search "Associate Software Developer Intern" + Google. Regional variants (NA/India/EMEA/Japan) still exist under new naming.
 Amazon Future Engineer LEAP          | Amazon Future Engineer (AFE)        | amazon            | 2026-05-10 | "LEAP" branding not used for SWE program; AFE is the correct name (requires HS-senior scholarship win)
 Oracle Sophomore SWE Internship      | DOES NOT EXIST                      | oracle            | 2026-05-10 | Oracle does not run a sophomore-tier program; standard undergrad intern expects rising junior minimum
 CODE2040 Fellows Program             | SHUT DOWN                           | -                 | 2026-07-01 | Final program ended July 2026 per code2040.org; remove any catalog entries
