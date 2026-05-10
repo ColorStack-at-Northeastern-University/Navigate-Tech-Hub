@@ -1,5 +1,6 @@
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
+import CategoryAnchorNav from '@/components/ui/CategoryAnchorNav';
 import CircuitPattern from '@/components/ui/CircuitPattern';
 import EmptyResourceState from '@/components/ui/EmptyResourceState';
 import ExternalResourceCard from '@/components/ui/ExternalResourceCard';
@@ -24,11 +25,11 @@ const SECTION_ORDER: Array<Exclude<ResourceCategory, 'programs'>> = [
     'classes',
 ];
 
-function CategorySection({ label, resources }: { label: string; resources: ExternalResource[] }) {
+function CategorySection({ label, resources, id }: { label: string; resources: ExternalResource[]; id: string }) {
     if (resources.length === 0) return null;
 
     return (
-        <section className="mb-16">
+        <section className="mb-16" id={id}>
             <h2 className="font-display text-3xl font-bold text-brand-dark mb-6 pb-2 border-b-[3px] border-neu-red inline-block">
                 {label}
             </h2>
@@ -67,6 +68,8 @@ export default async function ExternalResourcesPage() {
                     </div>
                 </section>
 
+                <CategoryAnchorNav />
+
                 <div className="container-custom">
                     <p className="text-[#de0911] text-4xl md:text-5xl font-bold mb-8">&lt;&gt;</p>
 
@@ -85,6 +88,7 @@ export default async function ExternalResourcesPage() {
                             {SECTION_ORDER.map((cat) => (
                                 <CategorySection
                                     key={cat}
+                                    id={cat}
                                     label={CATEGORY_LABELS[cat]}
                                     resources={grouped[cat] ?? []}
                                 />
