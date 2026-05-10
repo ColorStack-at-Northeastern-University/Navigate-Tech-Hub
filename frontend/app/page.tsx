@@ -59,9 +59,9 @@ export default async function Home() {
                     </h3>
                     <div className="accent-bar" />
 
-                    <div className="bg-white rounded-xl p-12 shadow-[0_2px_8px_rgba(0,0,0,0.1)] border-t-[3px] border-neu-red">
+                    <div className="bg-white rounded-xl p-12 shadow-[0_2px_8px_rgba(0,0,0,0.1)] border border-neu-lightgray">
                         <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                            <strong className="text-neu-red font-semibold">Navigate Tech Hub</strong> is a student-led initiative created by Adesola Odubiyi to support
+                            <strong className="font-semibold text-brand-dark">Navigate Tech Hub</strong> is a student-led initiative created by Adesola Odubiyi to support
                             Black and Latinx computer science students at Northeastern University. Our mission is simple: centralize
                             resources, share knowledge, and build community.
                         </p>
@@ -73,23 +73,21 @@ export default async function Home() {
                                 href={NATIONAL_COLORSTACK.website}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-neu-red font-semibold underline hover:opacity-80"
+                                className="text-neu-red font-semibold underline underline-offset-2 hover:opacity-80"
                             >
-                               National ColorStack
+                                National ColorStack
                             </a>
-                            {' '},{' '}
-                            <strong className="text-neu-red font-semibold">Code: Black</strong>, and experienced students who&apos;ve been where you are.
+                            , <strong className="font-semibold text-brand-dark">Code: Black</strong>, and experienced students who&apos;ve been where you are.
                         </p>
 
                         <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                            This platform is built{' '}
-                            <strong className="text-neu-red font-semibold">by students, for students</strong>. All content is open-source and continuously
+                            This platform is built <strong className="font-semibold text-brand-dark">by students, for students</strong>. All content is open-source and continuously
                             updated by our community.{' '}
                             <a
                                 href={submitUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-neu-red font-semibold underline hover:opacity-80"
+                                className="text-neu-red font-semibold underline underline-offset-2 hover:opacity-80"
                             >
                                 Suggest a resource
                             </a>
@@ -97,7 +95,7 @@ export default async function Home() {
                         </p>
 
                         <p className="text-lg text-gray-700 leading-relaxed">
-                            <strong className="text-neu-red font-semibold">Let&apos;s navigate this journey together.</strong>
+                            Let&apos;s navigate this journey together.
                         </p>
                     </div>
                 </section>
