@@ -1,11 +1,11 @@
 ---
-SYNTHESIS BRIEF: Resume System for Internships and Co-ops
+
+## SYNTHESIS BRIEF: Resume System for Internships and Co-ops
 Audience: first-year
 Outcome: Produce a role-targeted resume aligned to recruiter screening expectations.
 Word target: 5 minutes reading time → ~900–1,100 words (per inventory policy)
 Personal signal available: yes — hiring outcomes (Amazon, PwC, HubSpot) may support at most one concrete example in the final draft, framed as “one approach that worked,” not a universal rule.
 Synthesis-only: no
----
 
 DOMAIN ASSESSMENT
 
@@ -79,7 +79,10 @@ Close: In the next 24 hours, run the two-list pass (cut list + add list), then r
 PENDING ITEMS
 
 - User-supplied annotated resume examples (do not fabricate).
+  - remind me when posting the article that i need to put this, i have them but i just have to gather them and sanetize them (remove sensitive infromation)
 - Fact-check all time-per-resume claims, ColorStack resume-book mechanics/partners, Code2040 eligibility/current program copy, and any named sponsor lists.
+  - yea its fine
 - Optional: one personal-signal line from user (Amazon / PwC / HubSpot) if they want it included — max one example, non-universal framing.
+  - cool u can include this, but only amazon though because thats what i had freshman summer going into sophomore fall
 
 READY TO WRITE: awaiting your approval or adjustments.

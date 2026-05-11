@@ -1,11 +1,11 @@
 ---
-SYNTHESIS BRIEF: The Tech Internship Timeline: What Happens and When
+
+## SYNTHESIS BRIEF: The Tech Internship Timeline: What Happens and When
 Audience: first-year
 Outcome: Understand the full timeline from application to offer and what typically happens at each step.
 Word target: 5 minutes reading time → ~900–1,100 words
 Personal signal available: yes (FAANG-adjacent screening experience per kickoff) — at most one example in final draft, non-universal framing.
 Synthesis-only: no
----
 
 DOMAIN ASSESSMENT
 
@@ -69,6 +69,7 @@ Close: In the next 24 hours, list every open application with **current stage** 
 PENDING ITEMS
 
 - [FACT CHECK:] Northeastern-specific portals (Handshake, NUWorks, etc.) if named in draft.
+- handshake isnt neu specific. nuworks is though
 - [FACT CHECK:] Any dated recruiting season claims for the publish year.
 
 READY TO WRITE: awaiting your approval or adjustments.

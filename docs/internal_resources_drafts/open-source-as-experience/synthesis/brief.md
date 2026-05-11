@@ -1,11 +1,11 @@
 ---
-SYNTHESIS BRIEF: Using Open Source Contributions as Portfolio Experience
+
+## SYNTHESIS BRIEF: Using Open Source Contributions as Portfolio Experience
 Audience: first-year
 Outcome: Present open source work as verifiable portfolio signal alongside class projects.
 Word target: 5 minutes reading time → ~900–1,100 words (per inventory policy)
 Personal signal available: no — unless you add a short “one path that worked” anecdote later; keep claims program- and doc-grounded.
 Synthesis-only: no
----
 
 DOMAIN ASSESSMENT
 
@@ -85,7 +85,9 @@ PENDING ITEMS
 - Verify current All In for Students / Contributor Catalyst application facts and URLs if cited in the article body.
 - Confirm whether ColorStack publicly documents OSS-specific programming; if not, keep community mention general.
 - User: optional personal anecdote (one merged PR story) if you want “personal signal available: yes.”
+  - havent worked on anything open source
 
 READY TO WRITE: awaiting your approval or adjustments.
 
 ---
+

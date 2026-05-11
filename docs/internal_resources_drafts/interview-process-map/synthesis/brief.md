@@ -1,11 +1,11 @@
 ---
-SYNTHESIS BRIEF: Interview Process Map: What Interviewers Evaluate at Each Stage
+
+## SYNTHESIS BRIEF: Interview Process Map: What Interviewers Evaluate at Each Stage
 Audience: first-year
 Outcome: Know what recruiters and interviewers are evaluating at each stage and how to prepare without guessing.
 Word target: 5 minutes reading time → ~900–1,100 words
 Personal signal available: yes (behavioral / screening rounds per kickoff) — at most one example, non-universal framing.
 Synthesis-only: no
----
 
 DOMAIN ASSESSMENT
 
@@ -72,6 +72,7 @@ Close: In the next 24 hours, pick **one upcoming stage** for your next interview
 PENDING ITEMS
 
 - [FACT CHECK:] Any employer-specific loop names or round counts if named in draft.
-- Calibrate first-year vs underclassmen examples (inventory says first-year).
+- Calibrate first-year vs underclassmen examples (inventory says first-year).  
+isnt this supposed to be split into 2 articles, i dont recall?
 
 READY TO WRITE: awaiting your approval or adjustments.

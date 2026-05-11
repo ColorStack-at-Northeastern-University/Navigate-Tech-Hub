@@ -20,20 +20,24 @@ Output the brief. Stop. Wait for user approval.
 
 ## Before you start — workspace and tools (read this if you are a sub-agent)
 
-**Navigate Tech Hub often lives on a OneDrive-backed path.** Recursive workspace traversal (e.g. **Glob** over the repo, broad directory walks) can be slow enough to **time out** inside agent tool calls. That is an environment constraint, not a judgment that the repo is “too big.”
+**Navigate Tech Hub often lives on a OneDrive-backed path.** Recursive workspace traversal (e.g. the **Glob** tool with patterns like `**/*.md`, or broad directory walks) can be slow enough to **time out** inside agent tool calls—**do not use Glob or `**`/`*` workspace patterns here, ever.** The same applies to **repo-wide text search** (`grep`, `rg`, terminal `find`/`dir` over the whole tree, IDE-style “search everywhere,” or **SemanticSearch** / codebase_search used to *discover* paths): they walk/sync a lot of files through OneDrive and often **hang or hit tool timeouts**. That is an environment constraint, not a judgment that the repo is “too big.”
 
 **If you are a synthesis sub-agent (parallel Task, SDK agent, etc.):**
 
-1. **Do not rely on Glob or codebase-wide search** to discover inputs. Assume the **parent** pastes into your prompt: this skill’s hard rules (or the sections you need), the **inventory row** for your slug (title, category, audience, outcome, minutes, volatility, batch), kickoff source-priority reminders, and any special flags (synthesis-only, NEU manual, personal signal).
+1. **Do not use Glob (no `**` or `*` repo patterns), grep, ripgrep (`rg`), SemanticSearch for file discovery, or recursive shell search** over the workspace to discover inputs or “check the codebase.” Assume the **parent** pastes into your prompt: this skill’s hard rules (or the sections you need), the **inventory row** for your slug (title, category, audience, outcome, minutes, volatility, batch), kickoff source-priority reminders, and any special flags (synthesis-only, NEU manual, personal signal). If the parent gave **exact paths** to sibling files (e.g. another slug’s `brief.md`), use **Read** on those paths only—never search for them.
 2. **Reading the repo is optional and narrow:** if you must read one file, use **Read** on a **single absolute path** you were given (e.g. `INTERNAL_GUIDE_INVENTORY.md`). One file open is fine; **do not** walk the tree to “find” the inventory.
 3. **Writing output:** use **Write** (or equivalent) to **one known path** only, e.g.  
    `docs/internal_resources_drafts/{slug}/synthesis/brief.md`  
    (parent supplies the full absolute path). No need to list sibling folders first.
 4. **Research** uses **WebSearch** / **WebFetch** / browser tools on **external URLs** — those are not OneDrive traversal.
 
-**If you are the parent orchestrator** enumerating many `brief.md` or slugs: prefer **Shell** (e.g. PowerShell `Get-ChildItem` with a tight `-Path`) over **Glob** on the repo root for large trees on OneDrive.
+**If you are the parent orchestrator** enumerating many `brief.md` or slugs: prefer **Shell** with **bounded** paths only, e.g. PowerShell `Get-ChildItem -LiteralPath <one-folder> -Recurse -Filter brief.md` under `docs/internal_resources_drafts`—not `grep`/`rg` across the repo root, and not unbounded discovery.
 
-**You do not need Glob for this pipeline:** slug → output path is deterministic. Glob is only for unknown-path discovery; synthesis runs should not depend on it.
+**You do not need Glob or grep for this pipeline:** slug → output path is deterministic. Search tools are only for unknown-path discovery; synthesis and draft subagents should not depend on them.
+
+### Permissions (sub-agents)
+
+This chat cannot approve Cursor/OS dialogs for you. To reduce tedium: when a sub-agent asks for **network** (web verification) or **git_write**, choose **allow for this workspace** (or your client’s equivalent) so later Tasks reuse it. There is no separate “batch grant” API from the agent; workspace-level trust is the practical fix.
 
 ---
 
@@ -191,4 +195,4 @@ READY TO WRITE: awaiting your approval or adjustments.
 - Always stop after outputting the brief and wait for user input
 - For `cs-course-planning-neu`: output the flag message and stop,
   do not run any searches
-- **OneDrive / sub-agent runs:** do not use **Glob** or recursive repo listing to load this skill or the inventory; use parent-supplied inline text or **one** `Read` on a known absolute path. Write only to the agreed `brief.md` path (see *Before you start — workspace and tools*).
+- **OneDrive / sub-agent runs:** do not use **Glob** (no `**`/`*` workspace patterns), **grep**/`rg`, **SemanticSearch** for discovery, or recursive repo listing to load this skill or the inventory; use parent-supplied inline text or **one** `Read` on a known absolute path. Write only to the agreed `brief.md` path (see *Before you start — workspace and tools*).

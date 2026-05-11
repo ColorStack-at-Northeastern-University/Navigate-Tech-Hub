@@ -1,11 +1,11 @@
 ---
-SYNTHESIS BRIEF: Build a Portfolio That Converts Recruiter Interest
+
+## SYNTHESIS BRIEF: Build a Portfolio That Converts Recruiter Interest
 Audience: first-year (mandatory framing — thin formal internships, projects and clubs as primary proof)
 Outcome: Launch a portfolio that clearly communicates impact and ownership.
 Word target: 5 minutes reading time → ~900–1,100 words (per inventory policy)
 Personal signal available: no — confirm if you want one concrete “what worked once” example from hiring outcomes; otherwise keep examples generic or sourced.
 Synthesis-only: no
----
 
 DOMAIN ASSESSMENT
 
@@ -77,7 +77,10 @@ Close: In the next 24 hours, fix or remove one broken demo, rewrite three projec
 PENDING ITEMS
 
 - Verify any time-on-portfolio or eye-tracking statistics before publishing; prefer “fast skim” if uncertain.
+  - do this yes
 - Fact-check ColorStack / summit claims, sponsor lists, and membership stats against current public pages.
+  - yes web browse this
 - Decide whether to link or cross-reference the published `resume-for-tech-roles` guide for shared bullet/ATS content (avoid duplicating full resume doctrine here).
+  - good idea, do this
 
 READY TO WRITE: awaiting your approval or adjustments.

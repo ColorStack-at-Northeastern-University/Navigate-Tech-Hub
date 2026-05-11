@@ -1,11 +1,11 @@
 ---
-SYNTHESIS BRIEF: How to Select Electives with Career Intent
+
+## SYNTHESIS BRIEF: How to Select Electives with Career Intent
 Audience: first-year
 Outcome: Choose electives that support a clear skill pathway.
 Word target: 4 minutes reading time → ~750–950 words (per inventory policy)
 Personal signal available: no
 Synthesis-only: yes
----
 
 DOMAIN ASSESSMENT
 
@@ -75,7 +75,10 @@ Close: In the next week, pin **one target posting**, highlight **five skills**, 
 PENDING ITEMS
 
 - **Final article delivery:** synthesis-only; **no first-person** anywhere in the published guide; voice aligned to student Medium/Dev readability (direct, scannable, no hero narrative).
+  - you can discuss how i decided on a CE minor to my computer science and business (finance) major since i wanted to have some hardware exp, explore my inteterests in embedded systems , and be for flexible, thats good logic to use when picking electives as well
 - **Localization guardrails:** no unverified institution-specific course numbers or degree-rule claims; use generic labels (“systems elective,” “ML elective”) or explicit `[FACT CHECK: …]` where a named course is unavoidable.
+  - okay
 - Optional: one internal Navigate example pathway table (school-agnostic) if editorial wants a visual — not required for approval of this brief.
+  - thats cool
 
 READY TO WRITE: awaiting your approval or adjustments.

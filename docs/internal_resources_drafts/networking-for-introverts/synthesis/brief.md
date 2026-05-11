@@ -76,7 +76,8 @@ Close: **In the next 24 hours:** send **one** follow-up or **one** specific outb
 
 PENDING ITEMS
 • Verify any **campus-specific** fairs, club calendars, or **NEU** rooms/dates before publishing named examples.
-• Optional: **1–2 anonymized student quotes** from Navigate community for authenticity (not required for draft).
+yea this is good
+• Optional: **1–2 anonymized student quotes** from Navigate community for authenticity (not required for draft). not required but can add a note for later
 
 READY TO WRITE: awaiting your approval or adjustments.
 ---

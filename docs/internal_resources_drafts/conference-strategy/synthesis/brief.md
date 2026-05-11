@@ -1,11 +1,11 @@
 ---
-SYNTHESIS BRIEF: Conference and Career Fair Strategy
+
+## SYNTHESIS BRIEF: Conference and Career Fair Strategy
 Audience: all-levels
 Outcome: Maximize conference outcomes before, during, and after each event.
 Word target: ~1,100–1,300 words (6 min silent read per draft frontmatter; aligns with INTERNAL_GUIDE_INVENTORY ~5–7 min band)
 Personal signal available: no — use community + practitioner sources; org-specific travel/grant names need verification before publish
 Synthesis-only: no
----
 
 ## DOMAIN ASSESSMENT
 
@@ -85,6 +85,7 @@ Synthesis-only: no
 
 - Verify **current-year** AfroTech, NSBE, and ColorStack summit facts on official sites; reconcile conflicting numbers across blog posts.
 - Decide whether to link **Talent Infusion** / resume-book URLs (they may change — confirm at publish time).
+  - nah dont link these since you wont be able to find them theyre only sent to people registered for the event. defintiely mention them though
 - Optional: one-page printable checklist (draft meta already notes this).
 
 **READY TO WRITE:** awaiting your approval or adjustments.

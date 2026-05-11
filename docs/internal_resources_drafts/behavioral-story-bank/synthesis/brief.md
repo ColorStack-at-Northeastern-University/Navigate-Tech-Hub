@@ -1,5 +1,6 @@
 ---
-SYNTHESIS BRIEF: Behavioral Interview Story Bank with STAR
+
+## SYNTHESIS BRIEF: Behavioral Interview Story Bank with STAR
 Audience: first-year
 Outcome: Build reusable STAR stories mapped to common behavioral prompts.
 Word target: 5 minutes (~900–1,100 words; see INTERNAL_GUIDE_INVENTORY silent-reading band)
@@ -8,9 +9,9 @@ contentVolatility: low
 batch: 1
 Personal signal available: no — optional NEU club/CodeDay Labs project specifics can strengthen examples later
 Synthesis-only: no
----
 
 READER JOB-TO-BE-DONE (content framing — not UI)
+
 - Persona: Black and Latinx CS students at Northeastern navigating early recruiting exposure.
 - This week’s job: Turn scattered class, club, and project moments into a small set of interview-ready stories before a career fair, first phone screen, or club/ program mock (e.g., MLT-style peer practice, career center, or community workshop).
 - Primary action after reading: Create a tagged story bank (matrix or doc) and verbally run at least three stories in under two minutes each, with Action as the longest segment.
@@ -20,6 +21,7 @@ Expert-first (practitioner-first for behavioral / STAR).
 Interview-prep category: prioritize how hiring panels actually score answers (debrief “data points”), STAR mechanics, and reusable story-bank systems; student posts supply texture and first-internship examples, not the core framework.
 
 SOURCES SEARCHED
+
 1. Levels.fyi — “How to Prep for Behavioral Interviews”: debrief framing (interviewers collect evidence), company research flow, STAR definitions, reuse of a few stories across prompts, sample behavioral questions, pointer to Amazon LP / Netflix culture posts.
 2. Byte by Byte (Sam Gavis-Hughson) — “Behavioral Interviews for Software Engineers”: mistake list (rambling, not selling yourself, “we” vs “I”, not answering the question), company/JD soft-skill mapping, Interview Preparation Grid (projects × questions), STAR section with rough segment sizing, explicit guidance to mine non-internship experience.
 3. JobMentis — “STAR Story Bank”: story bank as reusable asset; suggested volume ranges; tagging stories by competency; example story categories (failure, ambiguity, conflict, etc.).
@@ -59,6 +61,7 @@ Supporting point — Programs serving Black and Latinx CS talent (e.g., MLT Care
 Supporting point — CodeDay Labs positions **career panels and recruiting literacy** alongside technical work; stories can cite OSS scope, mentor feedback, and cross-student collaboration as Situation/Task sources.
 
 DISCARDED
+
 - **Ultra-long STAR answers (e.g., 5–10 minutes)** suggested in some student posts — conflicts with “never more than two minutes” practitioner guidance; for this audience, optimize for concise debrief-friendly answers first.
 - **Unverified performance statistics** in some commercial STAR blogs (e.g., predictive validity percentages, offer-rate lifts) — cut as credibility noise; keep behavioral mechanisms instead.
 - **Generic motivation / “just network”** — no mapping to prompts or STAR structure.
@@ -88,7 +91,9 @@ Close: In the next 24 hours, list five experiences, pick three prompts each, and
 
 PENDING ITEMS
 • Optional: pull 1–2 **Northeastern-specific** examples (Khoury course team projects, club e-board moments) if the author wants local color — not required for synthesis validity.
+
+leading the colorstack swe project is a good example, club e board moment  
 • Optional deep link: Code2040 Applicant Playbook chapter pages if editorial wants a “process roadmap” sidebar (home page only reviewed here).
 
-READY TO WRITE: awaiting your approval or adjustments.
----
+## READY TO WRITE: awaiting your approval or adjustments.
+

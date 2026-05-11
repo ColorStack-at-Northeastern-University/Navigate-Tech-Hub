@@ -1,21 +1,24 @@
+
+
 ---
-SYNTHESIS BRIEF: How to Negotiate Your First Internship Offer
+
+## SYNTHESIS BRIEF: How to Negotiate Your First Internship Offer
 Audience: underclassmen
 Outcome: Negotiate a first internship or early offer without damaging relationships.
 Word target: ~900–1,100 words (5 min read per inventory policy)
 Personal signal available: no — community/NEU anecdotes optional later
 Synthesis-only: no
----
 
 DOMAIN ASSESSMENT
 Expert-first / practitioner-first (interview-prep, hiring and compensation norms).
 One sentence: Negotiation for a first tech internship is mostly about timing, market benchmarks, total-comp levers, and professional tone — sources skew to recruiter/comp platforms and structured student-career playbooks rather than student retrospectives alone.
 
 SOURCES SEARCHED
-1. Levels.fyi — Ultimate Negotiation Guide (https://www.levels.fyi/blog/ultimate-negotiation-guide.html) — total comp components, early-process salary questions, offer-call dynamics, written confirmation, exploding offers, competing-offer boundaries, “don’t use personal rent/daycare as the argument” vs market/value framing.
-2. Codepath Student Handbook — Negotiating on Internship Salary (https://books.codepath.org/student-handbook/offer-and-salary-negotiation/negotiating-on-internship-salary) — why students skip negotiating, intern market band illustration (~$3.5k–$9k/mo context), five-step flow (research → expenses outline → decide → proposal → plan if no), leverage and “rarely rescinded if professional” framing, phone vs email preference, competing-offer script pattern.
-3. Latinx in Tech Careers — How to Negotiate Salary Without Losing the Offer (https://latinxintechcareers.com/resources/how-to-negotiate-salary-without-losing-the-offer, Jan 2026) — employer-expectation stats (citing Procurement Tactics survey links), mistake list mapped to scripts, collaborative phrasing, non-base levers; audience pass for Black/Latinx students seeking low-risk language.
-4. POCIT — Welcome to intern life! Negotiate your experience (https://peopleofcolorintech.com/front/welcome-to-intern-life-negotiate-your-experience/) — not salary-focused; high signal for “negotiate the internship experience” (goals, mentor fit, onboarding gaps) as adjacent professional ask that protects relationships.
+
+1. Levels.fyi — Ultimate Negotiation Guide ([https://www.levels.fyi/blog/ultimate-negotiation-guide.html](https://www.levels.fyi/blog/ultimate-negotiation-guide.html)) — total comp components, early-process salary questions, offer-call dynamics, written confirmation, exploding offers, competing-offer boundaries, “don’t use personal rent/daycare as the argument” vs market/value framing.
+2. Codepath Student Handbook — Negotiating on Internship Salary ([https://books.codepath.org/student-handbook/offer-and-salary-negotiation/negotiating-on-internship-salary](https://books.codepath.org/student-handbook/offer-and-salary-negotiation/negotiating-on-internship-salary)) — why students skip negotiating, intern market band illustration (~$3.5k–$9k/mo context), five-step flow (research → expenses outline → decide → proposal → plan if no), leverage and “rarely rescinded if professional” framing, phone vs email preference, competing-offer script pattern.
+3. Latinx in Tech Careers — How to Negotiate Salary Without Losing the Offer ([https://latinxintechcareers.com/resources/how-to-negotiate-salary-without-losing-the-offer](https://latinxintechcareers.com/resources/how-to-negotiate-salary-without-losing-the-offer), Jan 2026) — employer-expectation stats (citing Procurement Tactics survey links), mistake list mapped to scripts, collaborative phrasing, non-base levers; audience pass for Black/Latinx students seeking low-risk language.
+4. POCIT — Welcome to intern life! Negotiate your experience ([https://peopleofcolorintech.com/front/welcome-to-intern-life-negotiate-your-experience/](https://peopleofcolorintech.com/front/welcome-to-intern-life-negotiate-your-experience/)) — not salary-focused; high signal for “negotiate the internship experience” (goals, mentor fit, onboarding gaps) as adjacent professional ask that protects relationships.
 5. LinkedIn Pulse — Refonte Learning, “Tech Internship Salary Negotiation: How to Get the Best Pay as a Newcomer” (May 2025) — practitioner-style checklist (research tools including Levels.fyi, relocation/housing asks, sample openers); treat as secondary vs Levels.fyi/Codepath due to training-vendor context.
 6. Student voice layer (Dev.to / Medium targeted search) — no dedicated first-offer negotiation retrospectives in results; limited signal beyond “don’t panic-accept.”
 7. CSU Fresno Career Center Q&A — Internship and Career Prep Advice for Students of Color (blog recap, Nov 2024) — surfaced in audience search; use cautiously for themes like mentor assignment and workplace protections, not as compensation authority.
@@ -38,6 +41,7 @@ Supporting — Intern pay dispersion is wide by hub and employer; use tools/band
 Supporting — Many employers treat negotiation as normal; large gap between employer expectation to negotiate and candidate avoidance (Latinx article’s cited survey framing — verify primary source if publishing exact percentages).
 
 DISCARDED
+
 - Generic confidence slogans without a script or step (“know your worth”) — replaced with specific talk tracks and sequencing.
 - Advice to lie about competing offers — contradicted by Levels.fyi proof risk; discard entirely.
 - Treating internship pay as never negotiable — contradicted across practitioner sources.
@@ -66,9 +70,13 @@ Close: In the next 24 hours, draft a five-line email: gratitude, two clarificati
 • A short list of non-salary levers to request if base is “fixed.”
 
 PENDING ITEMS
-- Fact-check any Northeastern-specific constraints (co-op office timing, international student work authorization interactions with offer deadlines) before final publish — not resolved in web synthesis.
-- If citing Latinx article’s 73% / 55% / 66% statistics in final prose, confirm against the primary survey or soften to qualitative (“many employers expect negotiation”).
-- Optional Navigate personal signal: one anonymized NEU student negotiation story (success or respectful “no”) if available later.
 
-READY TO WRITE: awaiting your approval or adjustments.
----
+- Fact-check any Northeastern-specific constraints (co-op office timing, international student work authorization interactions with offer deadlines) before final publish — not resolved in web synthesis.
+  - indeed do double check
+- If citing Latinx article’s 73% / 55% / 66% statistics in final prose, confirm against the primary survey or soften to qualitative (“many employers expect negotiation”).
+  - yup
+- Optional Navigate personal signal: one anonymized NEU student negotiation story (success or respectful “no”) if available later.
+  - save to be added later
+
+## READY TO WRITE: awaiting your approval or adjustments.
+

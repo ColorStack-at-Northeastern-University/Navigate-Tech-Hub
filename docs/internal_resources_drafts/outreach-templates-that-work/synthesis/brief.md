@@ -53,7 +53,7 @@ The mistake: Same template blasted wide with only the name changed — reads as 
 Close: Send 3 messages in 24 hours — each to a high-fit person, each with one provable line about their work and a 15-minute ask.
 
 "WHAT YOU'LL LEAVE WITH" DRAFT
-• Four fill-in-the-blank outreach scaffolds (connection, cold email, value follow-up, post-event).
+• Four fill-in-the-blank outreach scaffolds (connection, cold email, value follow-up, post-event). - you can web browse to find good ones that already exist and link them , so not to bloat the article, or make our own, it depends because external links can break, use best judgement, but i think linking externally to something stable is fine
 • A targeting rule for who to email first at different company sizes.
 • A 2–3 touch follow-up pattern that adds new information each time.
 
@@ -65,3 +65,4 @@ READY TO WRITE: awaiting your approval or adjustments.
 ---
 
 ```
+

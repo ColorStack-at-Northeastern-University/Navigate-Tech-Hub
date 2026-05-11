@@ -1,11 +1,11 @@
 ---
-SYNTHESIS BRIEF: Project Selection Framework for Portfolio Value
+
+## SYNTHESIS BRIEF: Project Selection Framework for Portfolio Value
 Audience: first-year (UX focus: Black and Latinx Northeastern first-years choosing portfolio projects)
 Outcome: Select projects that demonstrate practical scope and technical depth.
 Word target: 4 minutes reading time → ~550–750 words (per inventory policy)
 Personal signal available: no — not listed in inventory for this slug; add only if you supply a verified anecdote later.
 Synthesis-only: no
----
 
 DOMAIN ASSESSMENT
 
@@ -75,7 +75,15 @@ Close: In the next 24 hours, write a 3-sentence scope brief for **one** project,
 PENDING ITEMS
 
 • Optional NEU term/calendar specifics (midterms, Khoury project course timing if cited) — verify against current public syllabi or student-facing docs before publishing claims.
+
+-remind that i need to add this
+
+  
 • If you want personal signal (your own pinned repos or outcomes), add one non-universal example with explicit framing.
+
+hmmm remind me to come back with this  
 • Fact-check any numeric claims about Pack dollar value or partner lists against the live `education.github.com` page at publish time.
+
+- you can check
 
 READY TO WRITE: awaiting your approval or adjustments.

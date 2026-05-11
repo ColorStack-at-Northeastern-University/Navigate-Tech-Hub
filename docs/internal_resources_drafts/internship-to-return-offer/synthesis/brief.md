@@ -1,16 +1,17 @@
 ---
-SYNTHESIS BRIEF: How to Convert Your Internship Into a Return Offer
+
+## SYNTHESIS BRIEF: How to Convert Your Internship Into a Return Offer
 Audience: underclassmen
 Outcome: Track the behaviors and milestones that improve odds of a return offer.
-Word target: ~5 minutes silent read (~900–1,100 words per INTERNAL_GUIDE_INVENTORY policy)
+Word target: ~~5 minutes silent read (~~900–1,100 words per INTERNAL_GUIDE_INVENTORY policy)
 Personal signal available: no (not listed in inventory; add if you have a conversion story or manager quote)
 Synthesis-only: no
----
 
 DOMAIN ASSESSMENT
 Expert-first (practitioner / hiring-process topic). Prioritize manager expectations, structured internship programs, and compensation/offer mechanics; pair with student retrospectives for texture. Audience-specific sourcing is mandatory for this platform: community channels surfaced limited **return-offer-specific** playbooks (more placement/summit signal than “how to convert”), so the article should still speak to underrepresented students explicitly (isolation, visibility, sponsorship) using vetted practitioner framing plus any Navigate/ColorStack/AfroTech primary quotes you add later.
 
 SOURCES SEARCHED
+
 1. [Levels.fyi — Tech Internship Guide (`/internships`)](https://levels.fyi/internships) — **Fact-checked:** page states **“56% of interns receive full-time offers”** and that **at some companies conversion exceeds 70%**; **Succeed** section emphasizes mentor frequency, **substantial project updates often (example: once a day)**, team participation, interest in others’ work, and **shipping ahead of schedule / above baseline** so manager/mentor can vouch. **Caveat:** the 56%/70% figures are **platform copy, not cited to a named study** on that page—use with “Levels.fyi reports…” attribution, not as hard statistics.
 2. [TechnCV — “How to Turn Internship Into Full-Time Offer” (2026)](https://techncv.com/blog/college-internship-to-full-time) — Strong **scripts** for week-one alignment, informal/midpoint feedback, **“on track for return offer?”** ask, impact log for final review, and **closing conversion conversation** timeline; relationship + team “would we want to work with them FT?” framing. Treat as **career-blog practitioner synthesis**, not employer policy.
 3. [Business Insider — Nancy Qi, Google intern return-offer tips (2024-06)](https://www.businessinsider.com/google-summer-intern-tips-for-return-offer-2024-6) — **Student/practitioner hybrid:** host/manager as **#1** stakeholder; **moving from ~biweekly to near-daily host touchpoints** described as a major upgrade; evaluation dimensions called out (**improvement, team communication, code quality**); team socials for **character visibility**; **weekly notes** feeding end-of-intern self-reflection with **screenshots/links** as evidence of rigor. One company’s intern workflow; still high-signal for “visibility artifacts.”
@@ -33,6 +34,7 @@ KEY FINDINGS
 [Finding — supporting] **Offer mechanics variance:** committees vs manager-only; offers during internship vs later—**clarify early** so you don’t optimize the wrong signal. (TechnCV)
 
 DISCARDED
+
 - **Generic motivation** (“hustle,” “show passion”) without **cadence, artifacts, or scripts**.
 - **Overfitting one company** (Google host rituals, office visits) as universal steps—keep as **optional examples**.
 - **Uncited conversion stats** beyond Levels’ **explicitly attributed** lines—do not invent employer averages.
@@ -56,10 +58,14 @@ Close: **Schedule the alignment 1:1 and start the running log today** (first wor
 • A **plain-language read** on **conversion stats** (Levels.fyi attribution + limits) and **what to do if there’s no offer**.
 
 PENDING ITEMS
+
 - **Optional strengtheners:** 1–2 **Navigate / ColorStack / AfroTech** quotes or mini-case that is explicitly about **conversion**, not only **getting** the internship.
+  - if you can find one yes
 - **Verify employer-specific details** if you name a company (negotiability, host vs manager terminology).
 - **Levels.fyi statistics:** if the published article needs **hard numbers**, decide whether to **keep only their attributed lines** or **replace with a cited workforce study** (not done in this pass).
+  - you can web browse for specifics or give like ranges backed by common sources
 
 READY TO WRITE: awaiting your approval or adjustments.
 
 ---
+

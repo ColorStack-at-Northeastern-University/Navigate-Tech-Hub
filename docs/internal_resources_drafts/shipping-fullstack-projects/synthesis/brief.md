@@ -1,11 +1,11 @@
 ---
-SYNTHESIS BRIEF: Shipping Full-Stack Projects with Deployment Basics
+
+## SYNTHESIS BRIEF: Shipping Full-Stack Projects with Deployment Basics
 Audience: underclassmen
 Outcome: Deliver deployed projects with production basics documented.
 Word target: 7 minutes → ~1,250–1,550 words (dense, skimmable; aligns with draft `article.md` meta)
 Personal signal available: no (not flagged in inventory or draft)
 Synthesis-only: no
----
 
 DOMAIN ASSESSMENT
 
@@ -27,7 +27,7 @@ SOURCES SEARCHED
 
 KEY FINDINGS
 
-[GEM] **Split deployment is the default student pattern:** static or frontend host (Vercel, Netlify) + API host (Render, Railway, Fly.io, etc.) + managed DB; frontend reads **production API base URL** from build-time or runtime env (e.g. `REACT_APP_*`, `VITE_*`, or server-injected config), not hardcoded `localhost`. Sources: Dev.to tutorials, Codecademy-style narratives.
+[GEM] **Split deployment is the default student pattern:** static or frontend host (Vercel, Netlify) + API host (Render, Railway, Fly.io, etc.) + managed DB; frontend reads **production API base URL** from build-time or runtime env (e.g. `REACT_APP_`*, `VITE_*`, or server-injected config), not hardcoded `localhost`. Sources: Dev.to tutorials, Codecademy-style narratives.
 
 [GEM] **Secrets discipline:** never commit `.env`; ship `.env.example` with keys named and dummy values; set real values only in the host dashboard/CLI; if a key leaks, rotate it and assume the old one is burned. Sources: Render/Vercel docs, generic checklists, draft outline.
 
@@ -94,8 +94,12 @@ RECOMMENDED STRUCTURE
 PENDING ITEMS
 
 - Lock editorial stance: one opinionated stack vs neutral mini-table (draft asks for this).
+  - neutral mini table is better
 - [FACT CHECK] Current PaaS free tiers, limits, and Heroku (or legacy tutorial) disclaimers.
+  - search for links we can point to
 - [FACT CHECK] Any ColorStack (or other org) stats, partner counts, or program names if included.
-- Volatility note: vendor UIs and flags change — mark tutorial screenshots or CLI commands for periodic refresh.
+  - okay
+- Volatility note: vendor UIs and flags change — mark tutorial screenshots or CLI commands for periodic refresh. 
+  - thats fine
 
-READY TO WRITE: awaiting your approval or adjustments.
+READY TO WRITE: awaiting your approval or adjustments.  

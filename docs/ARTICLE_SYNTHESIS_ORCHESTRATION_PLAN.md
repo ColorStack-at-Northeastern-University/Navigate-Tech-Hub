@@ -64,14 +64,14 @@ Until automation exists, **Build** can mean: *run the parent checklist once, the
 
 **Mission:** Execute **article-synthesizer Step 1 only** → write `docs/internal_resources_drafts/{slug}/synthesis/brief.md`.
 
-**Workspace constraint (OneDrive):** Recursive **Glob** / full-tree listing on this repo can **hang or time out**. Sub-agents must **not** depend on Glob to load instructions or discover paths.
+**Workspace constraint (OneDrive):** Recursive **Glob** (including `**/*.md` and similar), full-tree listing, **SemanticSearch** used to locate files, and **grep** / **ripgrep (`rg`)** over this repo can **hang or time out**. Sub-agents must **not** depend on those tools to load instructions or discover paths.
 
 **Must read (choose one pattern):**
 
 - **Preferred:** Child prompt **embeds inline** the inventory row, kickoff source-priority bullets, and the **relevant sections** of `article-synthesizer` (hard rules + Steps 2–5 + output template). No repo read required for the skill.
 - **Optional:** At most **one** `Read` on a **known absolute path** (e.g. inventory file) if the parent did not inline it.
 
-**Must not (inputs):** Use Glob or recursive search to “find” the skill or inventory.
+**Must not (inputs):** Use Glob (any workspace pattern), grep, rg, SemanticSearch/codebase_search for path discovery, or recursive search to “find” the skill or inventory.
 
 **Tools in practice:** **WebSearch** / fetch for external sources; **Write** once to the known `brief.md` path. See `.cursor/skills/article-synthesizer/SKILL.md` → *Before you start — workspace and tools*.
 
@@ -99,7 +99,21 @@ Until automation exists, **Build** can mean: *run the parent checklist once, the
 - Push to Strapi.
 - Fabricate statistics or sponsor lists.
 
-### 3.3 Editor / merge agent (optional, single, after parallel wave)
+### 3.3 Draft pipeline (per slug): A → B → C
+
+Approved for article generation (see `docs/internal_resources_drafts/DRAFT_PIPELINE.md`):
+
+| Phase | Output | Role |
+|-------|--------|------|
+| **A** | `synthesis/verification-log.md` | Resolve **PENDING ITEMS** / author notes; **do not** edit `brief.md`. |
+| **B** | `draft/article.md` | Full draft using **`navigate-writing.mdc`** + brief + verification log. |
+| **C** | Patch `draft/article.md` | Style gate against `navigate-writing` (banned patterns, closers, FACT CHECK preservation). |
+
+**Matt Pocock links:** only the four `coding-with-ai-*` slugs (substantive link, e.g. Total TypeScript).
+
+Run **A then B then C** per slug before starting the next slug’s B if you want strict ordering; parallelize across **different** slugs (e.g. many A at once, then many B once their A files exist).
+
+### 3.4 Editor / merge agent (optional, single, after parallel wave)
 
 **Mission:** Normalize quality across briefs produced in parallel.
 
@@ -108,7 +122,7 @@ Until automation exists, **Build** can mean: *run the parent checklist once, the
 - Verify every brief ends with **READY TO WRITE** and **PENDING ITEMS** includes fact-checks where needed.
 - Does **not** replace child web research unless a brief is clearly thin—then **return to child** with “expand Search 2” instructions.
 
-### 3.4 Human (you)
+### 3.5 Human (you)
 
 - Approve or edit `brief.md` before any draft.
 - Resolve `[FACT CHECK: …]` before publish.

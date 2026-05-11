@@ -1,11 +1,11 @@
 ---
-SYNTHESIS BRIEF: Project Scoping and Execution in 6 Weeks
+
+## SYNTHESIS BRIEF: Project Scoping and Execution in 6 Weeks
 Audience: underclassmen (student builders) — mandatory dual lens: apply practitioner delivery discipline (timebox-first scoping, milestone sequencing, explicit non-goals) in language and examples appropriate to coursework, clubs, hackathons, and portfolio projects; avoid “corporate PM theater,” keep rituals lightweight.
 Outcome: Ship scoped projects on schedule using milestone planning.
 Word target: 5 minutes reading time → ~900–1,100 words (per inventory policy)
 Personal signal available: no — none listed in inventory for this slug
 Synthesis-only: no
----
 
 DOMAIN ASSESSMENT
 
@@ -81,7 +81,10 @@ Close: In the next 24 hours, **lock end-of-week-6 (or your demo) date**, write t
 PENDING ITEMS
 
 - Fact-check any statistics on project overruns or survey claims if the final article cites them.
+  - you can check that using google search
 - If naming Hack4Diversity, Decode Black Connect, or similar, verify current branding, dates, and eligibility from primary sources.
+  - you can check this
 - Optional: one Navigate-specific student example (only if user supplies; do not fabricate).
+  - ehh nah, no need to do this
 
 READY TO WRITE: awaiting your approval or adjustments.

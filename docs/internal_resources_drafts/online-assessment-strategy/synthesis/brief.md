@@ -75,8 +75,9 @@ Close: **24-hour action:** book one timed practice session in the same environme
 
 PENDING ITEMS
 • Confirm Northeastern / course-specific **academic integrity** language if this will be distributed as a sanctioned resource.
+    yes doubel check
 • Per-platform **2026 UI** screenshots or links change often—keep claims vendor-neutral and point to official help centers for “what’s allowed.”
-• Optional: one Navigate anecdote or internal stat (none surfaced in synthesis).
+• Optional: one Navigate anecdote or internal stat (none surfaced in synthesis). yea double check
 
 READY TO WRITE: awaiting your approval or adjustments.
 ---
