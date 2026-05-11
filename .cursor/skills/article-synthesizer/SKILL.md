@@ -20,20 +20,24 @@ Output the brief. Stop. Wait for user approval.
 
 ## Before you start — workspace and tools (read this if you are a sub-agent)
 
-**Navigate Tech Hub often lives on a OneDrive-backed path.** Recursive workspace traversal (e.g. the **Glob** tool with patterns like `**/*.md`, or broad directory walks) can be slow enough to **time out** inside agent tool calls—**do not use Glob or `**`/`*` workspace patterns here, ever.** The same applies to **repo-wide text search** (`grep`, `rg`, terminal `find`/`dir` over the whole tree, IDE-style “search everywhere,” or **SemanticSearch** / codebase_search used to *discover* paths): they walk/sync a lot of files through OneDrive and often **hang or hit tool timeouts**. That is an environment constraint, not a judgment that the repo is “too big.”
+**Two cases:**
+
+1. **Normal local clone** (repo on a fast local disk, not inside OneDrive sync): Use standard discovery (**Glob**, **grep**/`rg`, **SemanticSearch**) when helpful. Slug → `docs/internal_resources_drafts/{slug}/synthesis/brief.md` is still deterministic—you rarely need search if the parent gave paths.
+
+2. **Slow-sync root** (e.g. repo under **OneDrive**): Recursive **Glob**, repo-wide **grep**/`rg`, and **SemanticSearch** over the workspace often **time out**. **Do not** depend on those tools to load this skill or discover paths. Assume the **parent** pastes into your prompt: hard rules, **inventory row**, kickoff reminders, flags. Use **Read** only on **absolute paths** you were given; **Write** once to the agreed `brief.md` path.
 
 **If you are a synthesis sub-agent (parallel Task, SDK agent, etc.):**
 
-1. **Do not use Glob (no `**` or `*` repo patterns), grep, ripgrep (`rg`), SemanticSearch for file discovery, or recursive shell search** over the workspace to discover inputs or “check the codebase.” Assume the **parent** pastes into your prompt: this skill’s hard rules (or the sections you need), the **inventory row** for your slug (title, category, audience, outcome, minutes, volatility, batch), kickoff source-priority reminders, and any special flags (synthesis-only, NEU manual, personal signal). If the parent gave **exact paths** to sibling files (e.g. another slug’s `brief.md`), use **Read** on those paths only—never search for them.
-2. **Reading the repo is optional and narrow:** if you must read one file, use **Read** on a **single absolute path** you were given (e.g. `INTERNAL_GUIDE_INVENTORY.md`). One file open is fine; **do not** walk the tree to “find” the inventory.
+1. **Slow-sync only:** Do not use Glob, grep/`rg`, SemanticSearch for discovery, or recursive shell search over the workspace—use parent-supplied text + **Read** on known paths. **Local clone:** those restrictions do not apply unless the parent pastes the slow-sync TOOL ALLOWLIST from `DRAFT_PIPELINE.md`.
+2. **Reading the repo:** Prefer **Read** on paths you were given. **Local clone:** optional wider reads if the parent allows.
 3. **Writing output:** use **Write** (or equivalent) to **one known path** only, e.g.  
    `docs/internal_resources_drafts/{slug}/synthesis/brief.md`  
-   (parent supplies the full absolute path). No need to list sibling folders first.
-4. **Research** uses **WebSearch** / **WebFetch** / browser tools on **external URLs** — those are not OneDrive traversal.
+   (parent supplies the full absolute path).
+4. **Research** uses **WebSearch** / **WebFetch** / browser tools on **external URLs** — not disk traversal.
 
-**If you are the parent orchestrator** enumerating many `brief.md` or slugs: prefer **Shell** with **bounded** paths only, e.g. PowerShell `Get-ChildItem -LiteralPath <one-folder> -Recurse -Filter brief.md` under `docs/internal_resources_drafts`—not `grep`/`rg` across the repo root, and not unbounded discovery.
+**If you are the parent orchestrator** on a **slow-sync** tree: prefer **Shell** with **bounded** paths, e.g. PowerShell `Get-ChildItem -LiteralPath <one-folder> -Recurse -Filter brief.md` under `docs/internal_resources_drafts`. **Local clone:** normal enumeration is fine.
 
-**You do not need Glob or grep for this pipeline:** slug → output path is deterministic. Search tools are only for unknown-path discovery; synthesis and draft subagents should not depend on them.
+**Pipeline shape:** slug → output path is deterministic; search tools are optional helpers on fast disks, not required for synthesis subagents.
 
 ### Permissions (sub-agents)
 
@@ -43,7 +47,7 @@ This chat cannot approve Cursor/OS dialogs for you. To reduce tedium: when a sub
 
 ## Step 1 — Pull Article Metadata
 
-Before searching, retrieve from the inventory (from the **parent’s inline packet**, or **one** `Read` of the inventory file at a path the parent gave you — do not search the repo for it):
+Before searching, retrieve from the inventory (from the **parent’s inline packet**, or **one** `Read` of the inventory file at a path the parent gave you — on **slow-sync** roots, do not search the repo for it):
 - Audience stage
 - Outcome (what the student should leave with)
 - timeToReadMinutes (governs word count)
@@ -195,4 +199,4 @@ READY TO WRITE: awaiting your approval or adjustments.
 - Always stop after outputting the brief and wait for user input
 - For `cs-course-planning-neu`: output the flag message and stop,
   do not run any searches
-- **OneDrive / sub-agent runs:** do not use **Glob** (no `**`/`*` workspace patterns), **grep**/`rg`, **SemanticSearch** for discovery, or recursive repo listing to load this skill or the inventory; use parent-supplied inline text or **one** `Read` on a known absolute path. Write only to the agreed `brief.md` path (see *Before you start — workspace and tools*).
+- **Slow-sync / OneDrive sub-agent runs:** do not use **Glob**, **grep**/`rg`, **SemanticSearch** for discovery, or recursive repo listing to load this skill or the inventory; use parent-supplied inline text or **one** `Read` on a known absolute path. Write only to the agreed `brief.md` path (see *Before you start — workspace and tools*). **Local clones:** skip this restriction unless the parent says otherwise.

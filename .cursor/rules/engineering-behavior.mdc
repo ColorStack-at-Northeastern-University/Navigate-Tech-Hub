@@ -12,7 +12,7 @@ You are a senior software engineer collaborating with the user — not a code ex
 - Apply the standards in `baseline-coding-standard.mdc` and `python-backend.mdc` without being told.
 - Do not add features, abstractions, or refactors that were not asked for.
 - Do not change things outside the stated scope of the task.
-- **OneDrive / this workspace:** Do not use **Glob**, **SemanticSearch** / codebase-wide discovery, or **grep**/`rg` across the tree to find files. Those calls often hang or time out. Use **Read** on full paths the user or `docs/internal_resources_drafts/DRAFT_PIPELINE.md` already names, or bounded PowerShell on a single folder when the user asks for inventory.
+- **Slow-sync workspace roots (e.g. OneDrive under `OneDrive\`):** Avoid repo-wide **Glob**, **SemanticSearch**, or **grep**/`rg` over the whole tree—they often hang or time out. Prefer **Read** on paths you already have, or bounded PowerShell on one folder. **Normal local clones** (outside cloud-sync folders): standard discovery tools are fine unless the user says otherwise.
 ## Communication
 - Be direct. No padding, no filler phrases like "Certainly!" or "Great question!"
 - Use the technical vocabulary of the task at hand.

@@ -57,25 +57,26 @@ Until automation exists, **Build** can mean: *run the parent checklist once, the
    - **`cs-course-planning-neu`:** emit a **stub brief** that only states NEU manual sourcing required; **no web searches** in child.
 3. For each normal slug, **emit a child packet** (§5) to disk, e.g.  
    `docs/internal_resources_drafts/_build_packets/{slug}.md`
-4. **Launch** N sub-agents (§4) each with **one packet** that **embeds skill + inventory inline** (OneDrive-safe); do not tell children to Glob the repo for inputs.
-5. After children finish, run **merge/QC** (§8) or assign a **single editor agent** with all `brief.md` paths. When listing outputs, use **Shell** with a bounded path instead of repo-wide Glob.
+4. **Launch** N sub-agents (§4) each with **one packet** that **embeds skill + inventory inline** when the clone is on **OneDrive / slow-sync** (children then avoid Glob); on **local clones**, embedding is optional.
+5. After children finish, run **merge/QC** (§8) or assign a **single editor agent** with all `brief.md` paths. On slow-sync trees, prefer **Shell** with a bounded path over repo-wide Glob; on local clones, normal listing/search is fine.
 
 ### 3.2 Synthesis sub-agent (one per slug, parallel)
 
 **Mission:** Execute **article-synthesizer Step 1 only** → write `docs/internal_resources_drafts/{slug}/synthesis/brief.md`.
 
-**Workspace constraint (OneDrive):** Recursive **Glob** (including `**/*.md` and similar), full-tree listing, **SemanticSearch** used to locate files, and **grep** / **ripgrep (`rg`)** over this repo can **hang or time out**. Sub-agents must **not** depend on those tools to load instructions or discover paths.
+**Workspace constraint:** On **OneDrive / slow-sync** clones, recursive **Glob**, full-tree listing, **SemanticSearch** for path discovery, and **grep** / **ripgrep (`rg`)** over the repo can **hang or time out**—sub-agents must **not** depend on those tools there. On **normal local clones**, standard discovery is allowed.
 
 **Must read (choose one pattern):**
 
-- **Preferred:** Child prompt **embeds inline** the inventory row, kickoff source-priority bullets, and the **relevant sections** of `article-synthesizer` (hard rules + Steps 2–5 + output template). No repo read required for the skill.
+- **Preferred (slow-sync):** Child prompt **embeds inline** the inventory row, kickoff source-priority bullets, and the **relevant sections** of `article-synthesizer` (hard rules + Steps 2–5 + output template). No repo read required for the skill.
+- **Local clone:** Parent may rely on **Read** of skill/inventory paths instead of inlining.
 - **Optional:** At most **one** `Read` on a **known absolute path** (e.g. inventory file) if the parent did not inline it.
 
-**Must not (inputs):** Use Glob (any workspace pattern), grep, rg, SemanticSearch/codebase_search for path discovery, or recursive search to “find” the skill or inventory.
+**Must not (inputs, slow-sync only):** Use Glob, grep, rg, SemanticSearch/codebase_search for path discovery, or recursive search to “find” the skill or inventory.
 
 **Tools in practice:** **WebSearch** / fetch for external sources; **Write** once to the known `brief.md` path. See `.cursor/skills/article-synthesizer/SKILL.md` → *Before you start — workspace and tools*.
 
-**Parent enumeration:** When aggregating many `brief.md` files, use **Shell** (`Get-ChildItem` with a tight path), not repo-wide Glob.
+**Parent enumeration:** On slow-sync trees, use **Shell** (`Get-ChildItem` with a tight path) instead of repo-wide Glob; local clones may use any efficient method.
 
 **Must do:**
 
