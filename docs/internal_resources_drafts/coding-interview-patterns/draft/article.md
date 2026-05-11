@@ -7,7 +7,7 @@ outcome: Apply core problem patterns and a repeatable prep routine.
 timeToReadMinutes: 6
 contentVolatility: medium
 batch: 2
-draftStatus: full-draft
+draftStatus: phase-c
 ---
 
 # Coding Interview Patterns and Practice Plan
@@ -49,7 +49,7 @@ You are not auditioning to recite a textbook. You are showing you can reason abo
 
 ## What to say while you code
 
-Pattern knowledge is half the battle. The other half is sounding like someone people want on a team. Levels.fyi’s software engineer interview guide pushes behaviors that interviewers actually score: ask clarifying questions early, keep a running narration, call out trade-offs, and tie your final answer back to time and space ([guide](https://www.levels.fyi/blog/interview-guides/software-engineer.html)). Clarifying questions should change your plan. “Can the input be empty?” matters. “Can I mutate the array?” matters. Repeating the prompt to buy time does not.
+Pattern knowledge alone will not carry the interview. You also need to sound like someone people want on a team. Levels.fyi’s software engineer interview guide pushes behaviors that interviewers actually score: ask clarifying questions early, keep a running narration, call out trade-offs, and tie your final answer back to time and space ([guide](https://www.levels.fyi/blog/interview-guides/software-engineer.html)). Clarifying questions should change your plan. “Can the input be empty?” matters. “Can I mutate the array?” matters. Repeating the prompt to buy time does not.
 
 Practice the boring parts out loud. Ten minutes a week of verbal walk-through on a problem you already solved still counts; optional: narrate a blind redo into your phone like you are on a Zoom screen. Gayle Laakmann McDowell’s *Cracking the Coding Interview* shows up in that same prep ecosystem as an optional book if you like paper references; it is not a requirement to start.
 

@@ -6,8 +6,8 @@ audienceStage: first-year
 outcome: Get concrete value from ColorStack, NSBE, AfroTech, and related programs without waiting until you feel “ready.”
 timeToReadMinutes: 6
 contentVolatility: high
-batch: phase-b
-draftStatus: draft
+batch: 1
+draftStatus: phase-c
 ---
 
 # Making the Most of Black and Latinx Tech Communities
@@ -32,7 +32,7 @@ Stack what fits your major, your campus reality, and how you actually want to sp
 
 NSBE’s national membership year runs **August 1 through July 31**. If you join late in the cycle, national convention pricing and benefits can land differently than they would in August. Write that window next to your class registration dates like any other deadline. Late join still works; you just get a different price and benefit stack than someone who renewed in August.
 
-ColorStack’s own recap of the **Stacked Up Summit** frames the event as relationship-building with partners **before** recruiting season kicks into high gear. Translation for first-years: you show up for reps and signal, not because your portfolio is already a museum piece. [FACT CHECK: ColorStack Stacked Up Summit — next dates, registration URL, virtual vs in-person — confirm on colorstack.org or the live summit site before you name specific days or “this semester.”]
+ColorStack’s own recap of the **Stacked Up Summit** frames the event as relationship-building with partners **before** recruiting season kicks into high gear. Translation for first-years: you show up for reps and signal, not because your portfolio is already a museum piece. [FACT CHECK: ColorStack Stacked Up Summit: next dates, registration URL, virtual vs in-person; confirm on colorstack.org or the live summit site before you name specific days or “this semester.”]
 
 If you are waiting until you feel “technical enough” to engage, you are optimizing for the wrong gate. These communities reward consistent presence: a general body meeting, a virtual workshop, a resume review night. Pick one org to actually join this month, not five orgs you half-follow on Instagram.
 

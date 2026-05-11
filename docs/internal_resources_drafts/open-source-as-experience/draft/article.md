@@ -1,11 +1,16 @@
 ---
-title: "Using Open Source as Real Portfolio Proof"
 slug: open-source-as-experience
-draftStatus: draft
+title: Using Open Source Contributions as Portfolio Experience
+category: projects
+audienceStage: first-year
+outcome: Present open source work as verifiable portfolio signal alongside class projects.
 timeToReadMinutes: 5
-audience: first-year
-primaryOutcome: "Present open source work as verifiable portfolio signal alongside class projects."
+contentVolatility: medium
+batch: 2
+draftStatus: phase-c
 ---
+
+# Using Open Source Contributions as Portfolio Experience
 
 You already ship class projects with READMEs and screenshots. That still matters. Some screens and interview threads reward a different kind of proof: that you can open a repo you did not design, read how the maintainers want work done, and land a change someone else reviewed and merged. Open source is optional. When you use it, treat it like evidence, not a personality trait.
 

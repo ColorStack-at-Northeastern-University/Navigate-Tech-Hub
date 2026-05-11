@@ -7,7 +7,7 @@ outcome: Produce a role-targeted resume aligned to recruiter screening expectati
 timeToReadMinutes: 5
 contentVolatility: low
 batch: 1
-draftStatus: phase-b
+draftStatus: phase-c
 ---
 
 # Resume System for Internships and Co-ops (First-Year Edition)
@@ -49,12 +49,6 @@ If you are active in ColorStack or similar communities, learn how resume books a
 ## The mistake that costs you callbacks
 
 Bullets that narrate attendance train the reader wrong: participated, learned, assisted, shadowed. Those verbs leave no artifact. You want verbs that imply something exists: built, shipped, automated, instrumented, debugged, profiled, released, documented. If you cannot name the artifact, you probably need a different bullet or a smaller scope you can truthfully claim.
-
-## What you will leave with
-
-- A cut list and an add list grounded in how non-technical recruiters skim CS resumes, not generic “resume tips.”
-- A reusable bullet shape: action, what changed, tools, scope or metric, with honest fallbacks when the metric is still small.
-- A short checklist: ATS-safe layout, section titles that parse, one honest skills section, one pass of tailoring against a real posting before you blast the same file everywhere.
 
 One approach that worked for me, not a rule: I used a version of this system as a first-year and landed an Amazon internship the summer after freshman year; your mileage will vary with role, timing, and luck.
 

@@ -1,3 +1,15 @@
+---
+slug: selecting-electives-intentionally
+title: How to Select Electives with Career Intent
+category: classes
+audienceStage: first-year
+outcome: Choose electives that support a clear skill pathway.
+timeToReadMinutes: 4
+contentVolatility: medium
+batch: 2
+draftStatus: phase-b
+---
+
 # How to Select Electives with Career Intent
 
 Electives read like a buffet until recruiting asks what you can actually do. The catalog has dozens of titles; your transcript only has room for a handful of real signals. The job is to pick courses that stack into a skill story you can defend in an interview, without pretending you locked your whole life into one niche at nineteen.
