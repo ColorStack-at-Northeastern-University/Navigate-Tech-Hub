@@ -63,3 +63,34 @@ test.describe('public pages', () => {
         await expect(page.getByLabel(/resource name/i)).toBeVisible();
     });
 });
+
+test.describe('static assets', () => {
+    const requiredPaths = [
+        '/images/navtechhub-logo.png',
+        '/images/husky-head.png',
+        '/fonts/gotham-black.otf',
+        '/assets/resume/navigate-tech-hub-resume-template.docx',
+    ];
+
+    for (const assetPath of requiredPaths) {
+        test(`serves ${assetPath}`, async ({ request }) => {
+            const response = await request.get(assetPath);
+            expect(response.ok()).toBeTruthy();
+        });
+    }
+
+    test('home shows navbar logo', async ({ page }) => {
+        await page.goto('/');
+        await expect(page.getByRole('link', { name: /navigate tech hub/i }).locator('img')).toBeVisible();
+    });
+
+    test('resume page links to navigate template download', async ({ page }) => {
+        await page.goto('/resume');
+        const templateLink = page.getByRole('link', { name: /navigate template/i });
+        await expect(templateLink).toBeVisible();
+        await expect(templateLink).toHaveAttribute(
+            'href',
+            '/assets/resume/navigate-tech-hub-resume-template.docx',
+        );
+    });
+});
