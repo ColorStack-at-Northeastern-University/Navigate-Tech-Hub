@@ -1,35 +1,35 @@
 /**
  * parse-opportunities.mjs
  *
- * Converts a raw paste of ColorStack #opportunities Slack messages into a
- * structured ColorStackOpportunity[] array ready to drop into
- * frontend/data/opportunities.ts.
+ * Converts a raw paste of ColorStack #opportunities Slack messages into structured
+ * JSON for frontend/data/opportunities.ts.
  *
  * Usage:
- *   1. Paste your raw Slack export into a text file, e.g. raw-opps.txt
- *   2. Run:
- *        node scripts/parse-opportunities.mjs raw-opps.txt
- *      or pipe directly:
- *        pbpaste | node scripts/parse-opportunities.mjs
+ *   node scripts/parse-opportunities.mjs raw-opps.txt
+ *   node scripts/parse-opportunities.mjs --anchor-date=2026-05-18 raw-opps.txt
+ *   pbpaste | node scripts/parse-opportunities.mjs --anchor-date=2026-05-18
  *
- * Output:
- *   Prints a JSON array to stdout. Redirect to a file if you like:
- *        node scripts/parse-opportunities.mjs raw-opps.txt > parsed.json
+ * Flags:
+ *   --anchor-date=YYYY-MM-DD  Required for Today/Yesterday; default: today (UTC)
+ *   DEBUG=1                   Include _lineContext and _parseWarnings on each row
  *
- * The script:
- *   - Extracts all https:// URLs from the paste
- *   - Skips noise URLs (LinkedIn feeds, Slack archives, Google Forms, etc.)
- *   - For each URL, tries to extract context from surrounding text
- *   - Deduplicates by URL
- *   - Outputs an array with best-guess fields you can then hand-edit
+ * Posted-at fallback: paste order (pasteIndex, higher = newer in typical Slack copy).
+ * Overrides: docs/config/opportunities-overrides.json
  */
 
 import fs from 'node:fs';
+import path from 'node:path';
 import readline from 'node:readline';
+import { fileURLToPath } from 'node:url';
+import {
+    lineToSegmentIndex,
+    parseAnchorDate,
+    segmentSlackPaste,
+} from './lib/slack-post-dates.mjs';
 
-// ---------------------------------------------------------------------------
-// URL filtering — skip non-opportunity links
-// ---------------------------------------------------------------------------
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ROOT = path.join(__dirname, '..');
+const OVERRIDES_PATH = path.join(ROOT, 'docs/config/opportunities-overrides.json');
 
 const SKIP_PATTERNS = [
     /linkedin\.com\/feed\//,
@@ -46,7 +46,7 @@ const SKIP_PATTERNS = [
     /youtube\.com/,
     /nextofferup\.com/,
     /risehub\.site/,
-    /paraform\.com\/share/,        // referral links
+    /paraform\.com\/share/,
     /forms\.gle\//,
     /bit\.ly\//,
     /lnkd\.in\//,
@@ -61,10 +61,6 @@ function isSkippable(url) {
     return SKIP_PATTERNS.some((p) => p.test(url));
 }
 
-// ---------------------------------------------------------------------------
-// Type heuristics
-// ---------------------------------------------------------------------------
-
 function guessType(title = '', company = '', url = '') {
     const t = (title + ' ' + url).toLowerCase();
     if (/co-?op/i.test(t)) return 'co-op';
@@ -75,16 +71,33 @@ function guessType(title = '', company = '', url = '') {
     return 'other';
 }
 
-// ---------------------------------------------------------------------------
-// Company / title extraction from link preview text
-// Pattern in Slack export: URL followed by "CompanyTitle..." block
-// ---------------------------------------------------------------------------
+function loadOverrides() {
+    if (!fs.existsSync(OVERRIDES_PATH)) return new Map();
+    const raw = JSON.parse(fs.readFileSync(OVERRIDES_PATH, 'utf8'));
+    const list = raw.overrides ?? [];
+    const map = new Map();
+    for (const entry of list) {
+        if (entry?.url && entry?.postedAt) {
+            map.set(entry.url, entry.postedAt);
+        }
+    }
+    return map;
+}
+
+function parseCliArgs(argv) {
+    let anchorDate = null;
+    let filePath = null;
+    for (const arg of argv.slice(2)) {
+        if (arg.startsWith('--anchor-date=')) {
+            anchorDate = arg.slice('--anchor-date='.length);
+        } else if (!arg.startsWith('--')) {
+            filePath = arg;
+        }
+    }
+    return { anchorDate, filePath };
+}
 
 function extractContext(lines, urlLineIdx) {
-    // Look at the line containing the URL and up to 5 lines after for preview text
-    const contextLines = lines.slice(urlLineIdx, urlLineIdx + 6).join(' ');
-
-    // Try to detect company from known domains
     const urlLine = lines[urlLineIdx] || '';
     let company = '';
     let title = '';
@@ -99,71 +112,10 @@ function extractContext(lines, urlLineIdx) {
         [/app\.ripplematch\.com/, 'eBay (via RippleMatch)'],
         [/nvidia\.wd5\.myworkdayjobs\.com/, 'NVIDIA'],
         [/jobs\.nvidia\.com/, 'NVIDIA'],
-        [/jj\.wd5\.myworkdayjobs\.com/, 'Johnson & Johnson'],
-        [/sofi\.com\/careers/, 'SoFi'],
-        [/imc\.com\/us\/careers/, 'IMC Trading'],
-        [/job-boards\.greenhouse\.io\/typeface/, 'Typeface'],
-        [/citadel\.com\/careers/, 'Citadel'],
-        [/careers\.sig\.com/, 'SIG (Susquehanna)'],
-        [/university-uber\.icims\.com/, 'Uber'],
-        [/careers\.datadoghq\.com/, 'Datadog'],
-        [/jobs\.ashbyhq\.com\/Strava/, 'Strava'],
-        [/jobs\.ashbyhq\.com\/cohere/, 'Cohere'],
-        [/amazon\.jobs/, 'Amazon'],
-        [/stripe\.com\/jobs/, 'Stripe'],
-        [/shopify\.com\/careers/, 'Shopify'],
-        [/dap\.shopify\.com/, 'Shopify'],
-        [/talent\.wellsfargojobs\.com/, 'Wells Fargo'],
-        [/careers\.snowflake\.com/, 'Snowflake'],
-        [/careers\.docusign\.com/, 'Docusign'],
-        [/lifeattiktok\.com/, 'TikTok'],
-        [/jobs\.ashbyhq\.com\/replit/, 'Replit'],
-        [/www\.skydio\.com\/careers/, 'Skydio'],
-        [/jobs\.ashbyhq\.com\/triumph/, 'Triumph Arcade'],
-        [/salesforce\.wd12\.myworkdayjobs\.com/, 'Salesforce'],
-        [/salesforce-builderlab\.splashthat\.com/, 'Salesforce'],
-        [/careers\.nutanix\.com/, 'Nutanix'],
-        [/jobs\.nvidia\.com/, 'NVIDIA'],
-        [/www\.tesla\.com\/careers/, 'Tesla'],
-        [/haier\.wd3\.myworkdayjobs\.com/, 'GE Appliances'],
-        [/careers\.ibm\.com/, 'IBM'],
-        [/career-boards\.greenhouse\.io\/cloudflare/, 'Cloudflare'],
-        [/job-boards\.greenhouse\.io\/cloudflare/, 'Cloudflare'],
-        [/databricks\.com\/blog/, 'Databricks'],
-        [/zoom\.wd5\.myworkdayjobs\.com/, 'Zoom'],
-        [/bloomenergy\.wd1\.myworkdayjobs\.com/, 'Bloom Energy'],
-        [/cursor\.com\/careers/, 'Cursor'],
-        [/hioscar\.com\/careers/, 'Oscar Health'],
-        [/careers\.airbnb\.com/, 'Airbnb'],
-        [/jobs\.ashbyhq\.com\/arcade-ai/, 'Arcade AI'],
-        [/bloomberg\.wd1\.myworkdayjobs\.com/, 'Bloomberg'],
-        [/careers\.veeam\.com/, 'Veeam'],
-        [/job-boards\.greenhouse\.io\/formationbio/, 'Formation Bio'],
-        [/job-boards\.greenhouse\.io\/axon/, 'Axon'],
-        [/hp\.wd5\.myworkdayjobs\.com/, 'HP'],
-        [/voloridge-investment-management\.hiringthing\.com/, 'Voloridge'],
-        [/job-boards\.greenhouse\.io\/aquaticcapitalmanagement/, 'Aquatic Capital'],
-        [/jobright\.ai/, 'via Jobright'],
         [/janestreet\.com/, 'Jane Street'],
         [/careers\.google\.com/, 'Google'],
-        [/arrowstreetcapital\.wd5\.myworkdayjobs\.com/, 'Arrowstreet Capital'],
-        [/akunacapital\.com/, 'Akuna Capital'],
-        [/job-boards\.greenhouse\.io\/verkada/, 'Verkada'],
-        [/paradigm\.xyz/, 'Paradigm'],
-        [/www\.imc\.com\/us\/careers/, 'IMC Trading'],
-        [/careers\.progressive\.com/, 'Progressive'],
-        [/dsp\.prng\.co/, 'Intuit'],
-        [/salesforce\.wd12/, 'Salesforce'],
-        [/job-boards\.greenhouse\.io\/figureai/, 'Figure AI'],
-        [/jobs\.aon\.com/, 'Aon'],
-        [/gsk-us-earlytalent\.icims\.com/, 'GSK'],
-        [/shpe\.org/, 'SHPE'],
-        [/zoom\.wd5/, 'Zoom'],
-        [/spothero\.com\/careers/, 'SpotHero'],
-        [/careers\.paramount\.com/, 'Paramount'],
-        [/careers\.ibm\.com/, 'IBM'],
-        [/careers\.nutanix\.com/, 'Nutanix'],
         [/applytofigfest2026\.figma\.site/, 'Figma'],
+        [/paradigm\.xyz/, 'Paradigm'],
     ];
 
     for (const [pattern, co] of domainMap) {
@@ -173,9 +125,7 @@ function extractContext(lines, urlLineIdx) {
         }
     }
 
-    // Try to extract title from the context block (line after URL is usually preview title)
     const afterUrl = lines.slice(urlLineIdx + 1, urlLineIdx + 3).join(' ').trim();
-    // Link preview title is usually the first sentence before a long description
     const titleMatch = afterUrl.match(/^([^|.\n]+)/);
     if (titleMatch) {
         title = titleMatch[1].trim().slice(0, 100);
@@ -184,16 +134,28 @@ function extractContext(lines, urlLineIdx) {
     return { company, title };
 }
 
-// ---------------------------------------------------------------------------
-// Main
-// ---------------------------------------------------------------------------
+function resolvePostedAt(segment, overrides, url) {
+    if (overrides.has(url)) {
+        return { postedAt: overrides.get(url), postedAtSource: 'override' };
+    }
+    if (segment?.postedAt && segment.confidence === 'high') {
+        return { postedAt: segment.postedAt, postedAtSource: 'slack' };
+    }
+    if (segment?.postedAt && segment.confidence === 'low') {
+        return { postedAt: segment.postedAt, postedAtSource: 'inferred' };
+    }
+    return { postedAt: undefined, postedAtSource: 'paste-order' };
+}
 
 async function main() {
-    let raw = '';
+    const { anchorDate: anchorArg, filePath } = parseCliArgs(process.argv);
+    const anchor = anchorArg
+        ? parseAnchorDate(anchorArg)
+        : parseAnchorDate(new Date().toISOString().slice(0, 10));
 
-    // Read from file arg or stdin
-    if (process.argv[2]) {
-        raw = fs.readFileSync(process.argv[2], 'utf8');
+    let raw = '';
+    if (filePath) {
+        raw = fs.readFileSync(filePath, 'utf8');
     } else {
         const rl = readline.createInterface({ input: process.stdin });
         const lines = [];
@@ -202,53 +164,78 @@ async function main() {
     }
 
     const lines = raw.split('\n');
+    const segments = segmentSlackPaste(lines, anchor);
+    const lineSeg = lineToSegmentIndex(segments, lines.length);
+    const overrides = loadOverrides();
     const urlRegex = /https?:\/\/[^\s)"'>]+/g;
 
-    const seen = new Set();
-    const results = [];
-    let id = 1;
+    /** @type {Map<string, object>} */
+    const byUrl = new Map();
+    let pasteIndex = 0;
+    const stats = { slack: 0, inferred: 0, override: 0, pasteOrder: 0 };
 
     for (let i = 0; i < lines.length; i++) {
         const matches = lines[i].match(urlRegex);
         if (!matches) continue;
 
         for (const rawUrl of matches) {
-            // Clean trailing punctuation
             const url = rawUrl.replace(/[.,;!?)]+$/, '');
-            if (seen.has(url)) continue;
             if (isSkippable(url)) continue;
-            seen.add(url);
+
+            pasteIndex += 1;
+            const segment = segments[lineSeg[i]];
+            const { postedAt, postedAtSource } = resolvePostedAt(segment, overrides, url);
+            if (postedAtSource === 'slack') stats.slack += 1;
+            else if (postedAtSource === 'inferred') stats.inferred += 1;
+            else if (postedAtSource === 'override') stats.override += 1;
+            else stats.pasteOrder += 1;
 
             const { company, title: guessedTitle } = extractContext(lines, i);
-            const type = guessType(guessedTitle, company, url);
-
-            results.push({
-                id: id++,
+            const candidate = {
                 title: guessedTitle || '(fill in title)',
                 company: company || '(fill in company)',
                 url,
-                description: undefined,
-                type,
-                location: undefined,
-                deadline: undefined,
+                type: guessType(guessedTitle, company, url),
                 tags: [],
-                // metadata to help manual curation:
+                postedAt,
+                postedAtSource,
+                pasteIndex,
+                _parseWarnings: [],
                 _lineContext: lines.slice(Math.max(0, i - 1), i + 3).join(' | ').slice(0, 200),
-            });
+            };
+
+            const existing = byUrl.get(url);
+            if (!existing) {
+                byUrl.set(url, candidate);
+                continue;
+            }
+
+            const existingPosted = existing.postedAt ? Date.parse(existing.postedAt) : 0;
+            const candidatePosted = candidate.postedAt ? Date.parse(candidate.postedAt) : 0;
+            if (candidatePosted > existingPosted || candidate.pasteIndex > existing.pasteIndex) {
+                byUrl.set(url, candidate);
+            }
         }
     }
 
-    // Separate deadline items (manually tagged or heuristically detected)
-    // For now just output in extraction order; the check-opportunity-links
-    // script handles dead links separately.
+    const results = [...byUrl.values()].map((row, idx) => {
+        const { _lineContext, _parseWarnings, ...rest } = row;
+        const base = { id: idx + 1, ...rest };
+        if (process.env.DEBUG) {
+            return { ...base, _lineContext, _parseWarnings };
+        }
+        return base;
+    });
 
-    // Strip _lineContext from final output unless DEBUG=1
-    const output = results.map(({ _lineContext, ...rest }) =>
-        process.env.DEBUG ? { ...rest, _lineContext } : rest
+    console.log(JSON.stringify(results, null, 2));
+    console.error(
+        `\nExtracted ${results.length} unique opportunities.`,
+        `\npostedAt: slack=${stats.slack} inferred=${stats.inferred} override=${stats.override} paste-order=${stats.pasteOrder}`,
+        `\nAnchor date: ${anchor.toISOString().slice(0, 10)}`,
     );
-
-    console.log(JSON.stringify(output, null, 2));
-    console.error(`\nExtracted ${output.length} unique opportunities. Review and curate before pasting into frontend/data/opportunities.ts`);
 }
 
-main().catch((e) => { console.error(e); process.exit(1); });
+main().catch((e) => {
+    console.error(e);
+    process.exit(1);
+});

@@ -4,31 +4,21 @@
  * Data is sourced from the ColorStack Slack #opportunities channel.
  * No member names are stored here; attribution is to ColorStack as the source.
  * Replace with API-driven data once the ColorStack integration is live.
+ *
+ * Re-ingest: node scripts/parse-opportunities.mjs --anchor-date=YYYY-MM-DD raw-opps.txt
  */
 
-export type OpportunityType =
-    | 'internship'
-    | 'co-op'
-    | 'new-grad'
-    | 'program'       // insight / fellowship / early-career program
-    | 'scholarship'
-    | 'other';
+import { sortColorStackOpportunities } from '@/lib/opportunitySort';
+import type { ColorStackOpportunity } from '@/lib/opportunityTypes';
 
-export interface ColorStackOpportunity {
-    id: number;
-    title: string;
-    company: string;
-    url: string;
-    /** Short description pulled from link preview. Optional  -  not all posts include one. */
-    description?: string;
-    type: OpportunityType;
-    location?: string;
-    /** Hard deadline if known from the post. */
-    deadline?: string;
-    tags: string[];
-}
+export type {
+    ColorStackOpportunity,
+    OpportunityType,
+    PostedAtSource,
+} from '@/lib/opportunityTypes';
 
-export const COLORSTACK_OPPORTUNITIES: ColorStackOpportunity[] = [
+/** Curated snapshot; sort applied at export (deadlines first, then recency). */
+const RAW_COLORSTACK_OPPORTUNITIES: ColorStackOpportunity[] = [
     // ── Entries with explicit deadlines (sorted earliest first) ──────────────
     {
         id: 1,
@@ -42,7 +32,7 @@ export const COLORSTACK_OPPORTUNITIES: ColorStackOpportunity[] = [
         tags: ['Insight Event', 'Women in Tech', 'Quant', 'Summer 2026'],
     },
 
-    // ── No explicit deadline  -  reverse order of appearance (most recently posted first) ──
+    // ── No explicit deadline: ordered by paste recency (newest first); pasteIndex assigned on sort ──
     {
         id: 2,
         title: 'FigFest 2026',
@@ -617,3 +607,5 @@ export const COLORSTACK_OPPORTUNITIES: ColorStackOpportunity[] = [
         tags: ['SWE', 'Android', 'Mobile', 'Trust & Safety'],
     },
 ];
+
+export const COLORSTACK_OPPORTUNITIES = sortColorStackOpportunities(RAW_COLORSTACK_OPPORTUNITIES);
