@@ -668,8 +668,46 @@ const programs = [
 ];
 
 // ---------------------------------------------------------------------------
-// Helpers
+// Helpers — schema uses directoryTier + seasonalNote (no application* fields)
 // ---------------------------------------------------------------------------
+
+function buildSeasonalNote(applicationStatus, applicationDeadline) {
+  const deadlineHint = applicationDeadline
+    ? ` Previously noted in CMS: deadline ${applicationDeadline}. Verify on the official program page.`
+    : '';
+  const byStatus = {
+    'opens-fall-2026': `Typically opens applications in fall.${deadlineHint}`,
+    'apply-now': `Application timing varies by cycle.${deadlineHint}`,
+    'uncertain-2026': 'Program offering may change year to year — confirm on the official site.',
+    'closed-this-cycle': 'Runs annually — watch for the next cycle on the program page.',
+    rolling: 'Often rolling — check the site for current availability.',
+    'closing-soon': `Seasonal program.${deadlineHint}`,
+    'year-round': 'Runs year-round — confirm details on the official page.',
+  };
+  if (applicationStatus && byStatus[applicationStatus]) {
+    return byStatus[applicationStatus].trim();
+  }
+  if (deadlineHint) return deadlineHint.trim();
+  return undefined;
+}
+
+/**
+ * Maps legacy seed objects (with applicationStatus) to current Strapi shape.
+ */
+function toStrapiPayload(raw) {
+  const { applicationStatus, applicationDeadline, ...rest } = raw;
+  const directoryTier =
+    raw.category === 'programs' ? 'recurring-program' : 'tools-and-communities';
+  const seasonalNote =
+    raw.category === 'programs'
+      ? buildSeasonalNote(applicationStatus, applicationDeadline)
+      : undefined;
+  return {
+    ...rest,
+    directoryTier,
+    ...(seasonalNote ? { seasonalNote } : {}),
+  };
+}
 
 async function fetchExistingTitles() {
   const res = await fetch(
@@ -682,10 +720,11 @@ async function fetchExistingTitles() {
 }
 
 async function postEntry(entry) {
+  const payload = toStrapiPayload(entry);
   const res = await fetch(`${STRAPI_URL}/api/external-resources`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${API_KEY}` },
-    body: JSON.stringify({ data: entry }),
+    body: JSON.stringify({ data: payload }),
   });
   if (!res.ok) {
     const text = await res.text();

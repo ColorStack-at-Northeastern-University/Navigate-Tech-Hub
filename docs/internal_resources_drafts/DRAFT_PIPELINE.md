@@ -33,6 +33,7 @@ Each inventory slug under `docs/internal_resources_drafts/{slug}/` follows **thr
 - **Reads:** `draft/article.md` + `navigate-writing.mdc`.
 - **Writes:** Updates `draft/article.md` only (fix violations, do not change factual claims without re-flagging). **Do not** edit `.cursor/rules/*`, `synthesis/*`, or any path outside that slug’s `draft/article.md`.
 - **Job:** Check banned patterns (contrarian “not just X but Y,” rhetorical em dashes, hollow openers, AI-signature vocabulary, stacked transitions), structure (no summary closer, prose-first), and `[FACT CHECK]` preservation.
+- **Web layout (all guides):** Use skimmable markdown the frontend can render: `##` / `###` section headers, bullets for actions, `---` between major sections, and optional `> ### Key takeaways` callouts. After publish, run `node scripts/publish-internal-guides-from-drafts.mjs` so Strapi content matches drafts. Article pages render through `ArticleProse` + `ArticleMarkdown` in the frontend (one path for every slug).
 
 ## Slow-sync roots (e.g. OneDrive): prefer known paths
 

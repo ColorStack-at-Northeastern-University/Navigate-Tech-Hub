@@ -14,6 +14,7 @@ Each planned guide includes:
 - `timeToReadMinutes`
 - `contentVolatility`
 - `batch`
+- **Card summary** (one sentence for browse/search cards): stored in `docs/config/article-card-summaries.json`, published to Strapi as `description`. Write for a student skimming the hub (“when you’re wondering how to…”), not as a truncated article opener.
 
 ## 2) How `timeToReadMinutes` is interpreted here
 
