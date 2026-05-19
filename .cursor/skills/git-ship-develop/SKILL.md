@@ -60,7 +60,10 @@ Do **not** commit (verify `.gitignore`):
 
 - `frontend/public/assets/resume/samples/source/*.docx` (PII)
 - `frontend/public/assets/resume/samples/sanitized/*.docx` (working copies)
+- Local-only paths under `.cursor/skills/` listed in `.gitignore` (ship-internal-guide, resume-sample-sanitization, publish-gate, opportunity-radar, external-programs-maintenance, colorstack-opportunities-ingest, article-synthesizer)
 - `node_modules/`, `.next/`, `backend/.tmp/`, build artifacts
+
+If skills were previously tracked, remove with `git rm -r --cached .cursor/skills/<name>/` (files stay on disk).
 
 ## Commit commands (PowerShell)
 
