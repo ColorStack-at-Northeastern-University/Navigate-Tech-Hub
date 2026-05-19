@@ -1,4 +1,5 @@
 import type { ExternalResource, ProgramType } from '@/lib/types';
+import { externalResourceListKey } from '@/lib/utils';
 import ExternalResourceCard from './ExternalResourceCard';
 import ProgramTypeBucket from './ProgramTypeBucket';
 
@@ -16,12 +17,13 @@ interface ProgramTypeMeta {
  * Insight events sit between fellowships and conferences because they bridge
  * the two — short, name-targeted, and often a feeder into pre-internships.
  */
+// Conferences are surfaced in MetaSourcesStrip (stable org homepages) rather than
+// here — recurring program card URLs for conferences rotate yearly and are hard to maintain.
 const PROGRAM_TYPE_ORDER: ProgramType[] = [
     'early-career-program',
     'pre-internship',
     'fellowship',
     'insight-event',
-    'conference',
 ];
 
 const PROGRAM_TYPE_META: Record<ProgramType, ProgramTypeMeta> = {
@@ -41,10 +43,8 @@ const PROGRAM_TYPE_META: Record<ProgramType, ProgramTypeMeta> = {
         label: 'Insight Events',
         blurb: '1–4 day on-site experiences. Often a feeder into the company\'s sophomore internship pipeline.',
     },
-    'conference': {
-        label: 'Conferences',
-        blurb: 'Recruiting-heavy gatherings worth attending if travel and timing line up.',
-    },
+    // conference intentionally omitted — see MetaSourcesStrip for stable org links
+    'conference': { label: 'Conferences', blurb: '' },
 };
 
 /**
@@ -62,13 +62,13 @@ export default function ProgramsSection({ resources }: ProgramsSectionProps) {
     const grouped = groupByProgramType(resources);
 
     return (
-        <section className="mb-16" id="programs">
+        <section className="mb-16" id="recurring-programs">
             <h2 className="font-display text-3xl font-bold text-brand-dark mb-2 pb-2 border-b-[3px] border-neu-red inline-block">
-                Programs for First-Years &amp; Sophomores
+                Recurring Programs
             </h2>
             <p className="text-gray-600 mb-8 max-w-3xl">
-                Named, time-bounded opportunities — fellowships, freshman/sophomore internships,
-                insight events, and recruiting conferences. Verified during the most recent radar run.
+                Named programs that run every cycle: fellowships, freshman/sophomore internships, insight events, and more.
+                Each links to the program&apos;s permanent landing page, not a job posting.
             </p>
 
             {PROGRAM_TYPE_ORDER.map((programType) => {
@@ -92,11 +92,11 @@ export default function ProgramsSection({ resources }: ProgramsSectionProps) {
                         <span className="ml-2 text-sm font-normal text-gray-500">({grouped.untyped.length})</span>
                     </h3>
                     <p className="text-sm text-gray-600 mb-5">
-                        Programs without a sub-type assigned yet — surface for completeness while a maintainer categorizes them.
+                        Programs without a sub-type assigned yet. Shown for completeness while a maintainer categorizes them.
                     </p>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {grouped.untyped.map((resource) => (
-                            <ExternalResourceCard key={resource.url} resource={resource} />
+                            <ExternalResourceCard key={externalResourceListKey(resource)} resource={resource} />
                         ))}
                     </div>
                 </div>

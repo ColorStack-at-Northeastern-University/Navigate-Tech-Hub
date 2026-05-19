@@ -1,14 +1,15 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
-interface AnchorPill {
-    id: string;
-    label: string;
-}
+const PROGRAM_SUBS = [
+    { id: 'programs-early-career-program', label: 'Early Career' },
+    { id: 'programs-pre-internship', label: 'Pre-Internship' },
+    { id: 'programs-fellowship', label: 'Fellowships' },
+    { id: 'programs-insight-event', label: 'Insight Events' },
+];
 
-const PILLS: AnchorPill[] = [
-    { id: 'programs', label: 'Programs' },
+const TOOL_SUBS = [
     { id: 'interview-prep', label: 'Interview Prep' },
     { id: 'projects', label: 'Projects' },
     { id: 'community', label: 'Community' },
@@ -16,87 +17,96 @@ const PILLS: AnchorPill[] = [
     { id: 'classes', label: 'Learning' },
 ];
 
-/**
- * Sticky horizontal pill bar that sits below the page hero.
- *
- * Scroll-spy uses IntersectionObserver watching each section's top edge so
- * the active pill updates as the user scrolls — no scroll event listener.
- * On mobile the bar scrolls horizontally (overflow-x: auto, no wrapping).
- */
-export default function CategoryAnchorNav() {
-    const [active, setActive] = useState<string>('programs');
-    const navRef = useRef<HTMLDivElement>(null);
-    const activePillRef = useRef<HTMLButtonElement | null>(null);
+const ALL_SECTIONS = [
+    { id: 'recurring-programs', label: 'Recurring Programs' },
+    ...PROGRAM_SUBS,
+    { id: 'tools-and-communities', label: 'Tools & Communities' },
+    ...TOOL_SUBS,
+];
 
+function scrollTo(id: string) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const y = el.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+}
+
+function useScrollSpy(): string {
+    const [active, setActive] = useState('recurring-programs');
     useEffect(() => {
-        const sectionIds = PILLS.map((p) => p.id);
-
         const observer = new IntersectionObserver(
             (entries) => {
-                // Pick the topmost section that is currently intersecting.
                 const visible = entries
                     .filter((e) => e.isIntersecting)
                     .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-                if (visible.length > 0) {
-                    setActive(visible[0].target.id);
-                }
+                if (visible.length > 0) setActive(visible[0].target.id);
             },
-            {
-                // Fire when the section top crosses the 15% mark from the viewport top.
-                rootMargin: '-15% 0px -80% 0px',
-                threshold: 0,
-            },
+            { rootMargin: '-15% 0px -80% 0px', threshold: 0 },
         );
-
-        sectionIds.forEach((id) => {
+        ALL_SECTIONS.forEach(({ id }) => {
             const el = document.getElementById(id);
             if (el) observer.observe(el);
         });
-
         return () => observer.disconnect();
     }, []);
+    return active;
+}
 
-    // Keep the active pill scrolled into view inside the nav bar on mobile.
+export default function CategoryAnchorNav() {
+    const active = useScrollSpy();
+    const rowRef = useRef<HTMLDivElement>(null);
+    const activePillRef = useRef<HTMLButtonElement | null>(null);
+
     useEffect(() => {
-        activePillRef.current?.scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest',
-            inline: 'center',
-        });
+        activePillRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
     }, [active]);
-
-    function handlePillClick(id: string) {
-        const el = document.getElementById(id);
-        if (!el) return;
-        // Offset by the sticky nav height (~52px) so the section heading isn't hidden.
-        const y = el.getBoundingClientRect().top + window.scrollY - 64;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-        setActive(id);
-    }
 
     return (
         <div className="sticky top-[64px] z-30 bg-white border-b border-gray-200 shadow-sm">
-            <div
-                ref={navRef}
-                className="container-custom py-3 flex gap-2 overflow-x-auto scrollbar-none"
-                role="navigation"
-                aria-label="Jump to section"
-            >
-                {PILLS.map((pill) => (
-                    <button
-                        key={pill.id}
-                        ref={active === pill.id ? activePillRef : null}
-                        onClick={() => handlePillClick(pill.id)}
-                        className={`shrink-0 px-4 py-1.5 rounded-full text-sm font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-neu-red ${
-                            active === pill.id
-                                ? 'bg-neu-red text-white'
-                                : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900'
-                        }`}
-                        aria-current={active === pill.id ? 'location' : undefined}
+            <div className="container-custom py-3">
+                <nav role="navigation" aria-label="Jump to section">
+                    <div
+                        ref={rowRef}
+                        className="flex items-center gap-2 overflow-x-auto scrollbar-none"
                     >
-                        {pill.label}
-                    </button>
-                ))}
+                        {/* Programs group label */}
+                        <span className="shrink-0 text-[10px] font-bold uppercase tracking-widest text-gray-400 pr-1">
+                            Programs
+                        </span>
+                        {PROGRAM_SUBS.map((sub) => (
+                            <button
+                                key={sub.id}
+                                ref={active === sub.id ? activePillRef : null}
+                                type="button"
+                                onClick={() => scrollTo(sub.id)}
+                                className={`shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neu-red
+                                    ${active === sub.id ? 'bg-neu-red text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                            >
+                                {sub.label}
+                            </button>
+                        ))}
+
+                        {/* Divider */}
+                        <span className="shrink-0 w-px h-5 bg-gray-200 mx-1" aria-hidden="true" />
+
+                        {/* Tools group label */}
+                        <span className="shrink-0 text-[10px] font-bold uppercase tracking-widest text-gray-400 pr-1">
+                            Tools
+                        </span>
+                        {TOOL_SUBS.map((sub) => (
+                            <button
+                                key={sub.id}
+                                ref={active === sub.id ? activePillRef : null}
+                                type="button"
+                                onClick={() => scrollTo(sub.id)}
+                                className={`shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neu-red
+                                    ${active === sub.id ? 'bg-neu-red text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                            >
+                                {sub.label}
+                            </button>
+                        ))}
+                    </div>
+                </nav>
             </div>
         </div>
     );

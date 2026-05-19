@@ -1,19 +1,23 @@
 /**
  * External Resources Data
- * Links to external platforms, tools, and resources for CS students
+ * Links to external platforms, tools, and resources for CS students.
  *
- * All resources link to real external sites and open in new tabs
+ * All resources link to real external sites and open in new tabs.
+ * This is the local fallback  -  full catalog lives in Strapi.
  */
 
 import { ExternalResource } from '@/lib/types';
 
 export const externalResources: ExternalResource[] = [
-    // INTERVIEW PREP RESOURCES
+    // ── TIER 1: TOOLS & COMMUNITIES ─────────────────────────────────────────
+
+    // Interview Prep
     {
         title: 'Codewars',
-        description: 'The true beginner coding practice site to go when even two-sum makes you feel dumb',
+        description: 'Beginner-friendly coding practice  -  good starting point before tackling LeetCode.',
         url: 'https://codewars.com',
         category: 'interview-prep',
+        directoryTier: 'tools-and-communities',
         resourceType: 'learning-platform',
     },
     {
@@ -21,6 +25,7 @@ export const externalResources: ExternalResource[] = [
         description: 'Curated list of 150 LeetCode questions with video explanations. Organized by pattern for efficient learning.',
         url: 'https://neetcode.io/practice',
         category: 'interview-prep',
+        directoryTier: 'tools-and-communities',
         resourceType: 'learning-platform',
     },
     {
@@ -28,6 +33,7 @@ export const externalResources: ExternalResource[] = [
         description: 'Most commonly asked interview questions across top tech companies. Essential practice for technical interviews.',
         url: 'https://leetcode.com/studyplan/top-interview-150/',
         category: 'interview-prep',
+        directoryTier: 'tools-and-communities',
         resourceType: 'learning-platform',
     },
     {
@@ -35,6 +41,7 @@ export const externalResources: ExternalResource[] = [
         description: '160+ coding interview questions with video explanations, time/space complexity analysis, and optimal solutions.',
         url: 'https://www.algoexpert.io',
         category: 'interview-prep',
+        directoryTier: 'tools-and-communities',
         resourceType: 'learning-platform',
         badge: 'Paid',
     },
@@ -43,6 +50,7 @@ export const externalResources: ExternalResource[] = [
         description: 'The gold standard book for technical interview prep. 189 programming questions with detailed solutions.',
         url: 'https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850',
         category: 'interview-prep',
+        directoryTier: 'tools-and-communities',
         resourceType: 'documentation-reference',
     },
     {
@@ -50,6 +58,7 @@ export const externalResources: ExternalResource[] = [
         description: 'Free mock technical and behavioral interviews led by Black engineers from top tech companies.',
         url: 'https://www.brilliantblackminds.com',
         category: 'interview-prep',
+        directoryTier: 'tools-and-communities',
         resourceType: 'community-network',
     },
     {
@@ -57,6 +66,7 @@ export const externalResources: ExternalResource[] = [
         description: 'Practice live coding interviews with peers. Free, anonymous, and great for building interview confidence.',
         url: 'https://www.pramp.com',
         category: 'interview-prep',
+        directoryTier: 'tools-and-communities',
         resourceType: 'career-tool',
     },
     {
@@ -64,15 +74,17 @@ export const externalResources: ExternalResource[] = [
         description: 'Anonymous technical interviews with engineers from top companies. Get real interview practice and feedback.',
         url: 'https://interviewing.io',
         category: 'interview-prep',
+        directoryTier: 'tools-and-communities',
         resourceType: 'career-tool',
     },
 
-    // PROJECTS & PORTFOLIO RESOURCES
+    // Projects & Portfolio
     {
         title: 'Framer',
         description: 'No-code portfolio builder with stunning templates. Create beautiful, responsive portfolio websites in minutes.',
         url: 'https://www.framer.com',
         category: 'projects',
+        directoryTier: 'tools-and-communities',
         resourceType: 'career-tool',
     },
     {
@@ -80,6 +92,7 @@ export const externalResources: ExternalResource[] = [
         description: 'Open-source portfolio template that auto-syncs with your GitHub projects. Deploy with Vercel in minutes.',
         url: 'https://github.com/arifszn/gitprofile',
         category: 'projects',
+        directoryTier: 'tools-and-communities',
         resourceType: 'documentation-reference',
     },
     {
@@ -87,6 +100,7 @@ export const externalResources: ExternalResource[] = [
         description: 'Real-world frontend challenges to build your portfolio. Improve your skills with design files and community feedback.',
         url: 'https://www.frontendmentor.io',
         category: 'projects',
+        directoryTier: 'tools-and-communities',
         resourceType: 'learning-platform',
     },
     {
@@ -94,6 +108,7 @@ export const externalResources: ExternalResource[] = [
         description: 'Deploy your projects instantly with automatic HTTPS and global CDN. Perfect for Next.js and React apps.',
         url: 'https://vercel.com',
         category: 'projects',
+        directoryTier: 'tools-and-communities',
         resourceType: 'career-tool',
     },
     {
@@ -101,6 +116,7 @@ export const externalResources: ExternalResource[] = [
         description: 'Deploy web projects with continuous deployment from Git. Free tier includes custom domains and SSL.',
         url: 'https://www.netlify.com',
         category: 'projects',
+        directoryTier: 'tools-and-communities',
         resourceType: 'career-tool',
     },
     {
@@ -108,15 +124,17 @@ export const externalResources: ExternalResource[] = [
         description: 'Deploy full-stack applications with databases. Simple interface for backend projects and APIs.',
         url: 'https://railway.app',
         category: 'projects',
+        directoryTier: 'tools-and-communities',
         resourceType: 'career-tool',
     },
 
-    // COMMUNITY & NETWORKING RESOURCES
+    // Community & Networking
     {
         title: 'ColorStack',
         description: 'The largest community of Black and Latinx computer science students. Access events, mentorship, and opportunities.',
         url: 'https://www.colorstack.org',
         category: 'community',
+        directoryTier: 'tools-and-communities',
         resourceType: 'community-network',
         officialStatus: 'official-org',
     },
@@ -125,13 +143,16 @@ export const externalResources: ExternalResource[] = [
         description: 'Premier organization for Black engineers. Attend conferences, network with professionals, and find scholarships.',
         url: 'https://www.nsbe.org',
         category: 'community',
+        directoryTier: 'tools-and-communities',
         resourceType: 'community-network',
+        officialStatus: 'official-org',
     },
     {
         title: 'AfroTech Conference',
         description: 'The largest Black tech conference in the world. Network with recruiters, attend workshops, and explore career opportunities.',
         url: 'https://afrotech.com',
         category: 'community',
+        directoryTier: 'tools-and-communities',
         resourceType: 'events-conference',
     },
     {
@@ -139,6 +160,7 @@ export const externalResources: ExternalResource[] = [
         description: 'Essential professional networking platform. Connect with recruiters, showcase your experience, and find opportunities.',
         url: 'https://www.linkedin.com',
         category: 'community',
+        directoryTier: 'tools-and-communities',
         resourceType: 'community-network',
     },
     {
@@ -146,6 +168,7 @@ export const externalResources: ExternalResource[] = [
         description: 'Community for women and non-binary students in tech. Access to mentorship, internships, and career development.',
         url: 'https://rewritingthecode.org',
         category: 'community',
+        directoryTier: 'tools-and-communities',
         resourceType: 'community-network',
     },
     {
@@ -153,22 +176,26 @@ export const externalResources: ExternalResource[] = [
         description: 'Global community for LGBTQ+ people in tech. Professional development, mentorship, and networking events.',
         url: 'https://outintech.com',
         category: 'community',
+        directoryTier: 'tools-and-communities',
         resourceType: 'community-network',
     },
 
-    // HACKATHON RESOURCES
+    // Hackathons
     {
         title: 'Major League Hacking (MLH)',
         description: 'Discover upcoming hackathons, find teammates, and access resources. The official student hackathon league.',
         url: 'https://mlh.io',
         category: 'hackathons',
+        directoryTier: 'tools-and-communities',
         resourceType: 'events-conference',
+        officialStatus: 'official-org',
     },
     {
         title: 'Devpost',
         description: 'Browse hackathons, submit projects, and showcase your work. Discover inspiration from past winning projects.',
         url: 'https://devpost.com',
         category: 'hackathons',
+        directoryTier: 'tools-and-communities',
         resourceType: 'opportunities-board',
     },
     {
@@ -176,22 +203,17 @@ export const externalResources: ExternalResource[] = [
         description: 'Participate in coding challenges and hackathons hosted by top companies. Win prizes and get noticed by recruiters.',
         url: 'https://www.hackerearth.com/challenges/',
         category: 'hackathons',
-        resourceType: 'opportunities-board',
-    },
-    {
-        title: 'Hackathons.io',
-        description: 'Comprehensive calendar of hackathons worldwide. Filter by location, date, and prize pool.',
-        url: 'https://hackathons.io',
-        category: 'hackathons',
+        directoryTier: 'tools-and-communities',
         resourceType: 'opportunities-board',
     },
 
-    // LEARNING PLATFORM RESOURCES
+    // Learning Platforms
     {
         title: 'freeCodeCamp',
         description: 'Learn web development, data science, and more through interactive courses. Completely free with certifications.',
         url: 'https://www.freecodecamp.org',
         category: 'classes',
+        directoryTier: 'tools-and-communities',
         resourceType: 'learning-platform',
     },
     {
@@ -199,6 +221,7 @@ export const externalResources: ExternalResource[] = [
         description: "Harvard's introduction to computer science. Free, world-class education covering algorithms, data structures, and more.",
         url: 'https://cs50.harvard.edu/x/',
         category: 'classes',
+        directoryTier: 'tools-and-communities',
         resourceType: 'learning-platform',
     },
     {
@@ -206,6 +229,7 @@ export const externalResources: ExternalResource[] = [
         description: 'Free full-stack web development curriculum. Learn by building real projects from scratch.',
         url: 'https://www.theodinproject.com',
         category: 'classes',
+        directoryTier: 'tools-and-communities',
         resourceType: 'learning-platform',
     },
     {
@@ -213,6 +237,7 @@ export const externalResources: ExternalResource[] = [
         description: 'Online courses from top universities. Many courses are free to audit, with certificates available for a fee.',
         url: 'https://www.coursera.org',
         category: 'classes',
+        directoryTier: 'tools-and-communities',
         resourceType: 'learning-platform',
     },
     {
@@ -220,6 +245,7 @@ export const externalResources: ExternalResource[] = [
         description: "Free access to MIT's course materials. Video lectures, assignments, and exams from actual MIT classes.",
         url: 'https://ocw.mit.edu',
         category: 'classes',
+        directoryTier: 'tools-and-communities',
         resourceType: 'learning-platform',
     },
     {
@@ -227,49 +253,45 @@ export const externalResources: ExternalResource[] = [
         description: 'Interactive coding lessons in popular programming languages. Free tier covers basics, Pro for advanced content.',
         url: 'https://www.codecademy.com',
         category: 'classes',
-        resourceType: 'learning-platform',
-    },
-    {
-        title: 'Khan Academy Computer Science',
-        description: 'Free interactive lessons on computer programming, algorithms, and cryptography. Great for beginners.',
-        url: 'https://www.khanacademy.org/computing/computer-science',
-        category: 'classes',
+        directoryTier: 'tools-and-communities',
         resourceType: 'learning-platform',
     },
 
-    // PROGRAMS (named, time-bounded opportunities — one representative per programType
-    // for fallback rendering when Strapi is unavailable; full catalog lives in Strapi)
+    // ── TIER 2: RECURRING PROGRAMS ──────────────────────────────────────────
+
     {
         title: 'CodePath Applied AI Engineering',
         description: 'Free, project-based AI engineering program. Build production-grade ML projects with structured curriculum and industry mentors.',
         url: 'https://www.codepath.org',
         category: 'programs',
+        directoryTier: 'recurring-program',
         resourceType: 'learning-platform',
         programType: 'pre-internship',
-        applicationStatus: 'closing-soon',
-        applicationDeadline: '2026-05-17',
+        seasonalNote: 'Typically opens applications in spring. Visit the program page to see the current cycle.',
         audienceSpecific: true,
         lastVerified: '2026-05-10',
     },
     {
         title: 'Jane Street JSIP',
-        description: '8-week paid summer internship in NYC for first-year and sophomore students who have faced barriers in STEM. $12,500 stipend plus housing.',
+        description: '8-week paid summer program in NYC for first-year and sophomore students who have faced barriers in STEM. $12,500 stipend plus housing.',
         url: 'https://www.janestreet.com/join-jane-street/programs-and-events/',
         category: 'programs',
+        directoryTier: 'recurring-program',
         resourceType: 'opportunities-board',
         programType: 'early-career-program',
-        applicationStatus: 'closed-this-cycle',
+        seasonalNote: 'Applications typically open in fall semester. Watch their careers page in October.',
         audienceSpecific: true,
         lastVerified: '2026-05-10',
     },
     {
         title: 'Microsoft Explore',
-        description: 'Microsoft\'s freshman/sophomore-only 12-week summer program. Rotates students through engineering, PM, and design tracks.',
+        description: "Microsoft's freshman/sophomore-only 12-week summer program. Rotates students through engineering, PM, and design tracks.",
         url: 'https://careers.microsoft.com/students/us/en/usexploreprogram',
         category: 'programs',
+        directoryTier: 'recurring-program',
         resourceType: 'opportunities-board',
         programType: 'early-career-program',
-        applicationStatus: 'opens-fall-2026',
+        seasonalNote: 'Applications open in fall  -  typically August through December.',
         lastVerified: '2026-05-10',
     },
     {
@@ -277,53 +299,57 @@ export const externalResources: ExternalResource[] = [
         description: 'Year-long fellowship combining technical training, mentorship, and direct internship placement at top tech companies.',
         url: 'https://www.seo-usa.org/career/tech/',
         category: 'programs',
+        directoryTier: 'recurring-program',
         resourceType: 'community-network',
         programType: 'fellowship',
-        applicationStatus: 'opens-fall-2026',
+        seasonalNote: 'Applications typically open in fall. Check the SEO website in September.',
         audienceSpecific: true,
         lastVerified: '2026-05-10',
     },
     {
         title: 'Jump Trading Early Access',
-        description: 'Insight day for first-year students at Jump\'s Chicago HQ. Travel covered. A direct line into Jump\'s sophomore internship pipeline.',
+        description: "Insight day for first-year students at Jump's Chicago HQ. Travel covered. Direct line into Jump's sophomore internship pipeline.",
         url: 'https://www.jumptrading.com/careers/',
         category: 'programs',
+        directoryTier: 'recurring-program',
         resourceType: 'events-conference',
         programType: 'insight-event',
-        applicationStatus: 'opens-fall-2026',
+        seasonalNote: 'Typically held in spring. Applications appear on their careers page  -  search "Early Access".',
         lastVerified: '2026-05-10',
     },
     {
         title: 'AfroTech Conference 2026',
-        description: 'The largest gathering of Black tech professionals. Recruiting fair, talks, and side events. November 2-6, Houston.',
+        description: 'The largest gathering of Black tech professionals. Recruiting fair, talks, and side events. Annual, usually November, Houston.',
         url: 'https://afrotech.com',
         category: 'programs',
+        directoryTier: 'recurring-program',
         resourceType: 'events-conference',
         programType: 'conference',
-        applicationStatus: 'apply-now',
-        applicationDeadline: '2026-09-15',
+        seasonalNote: 'Registration opens in summer. Scholarships and fellowships available through ColorStack and NSBE.',
         audienceSpecific: true,
         lastVerified: '2026-05-10',
     },
     {
         title: 'Liberty Mutual Spark Summit',
-        description: '2-day on-site experience for freshman and sophomore students at Liberty Mutual\'s Boston-area HQ. Direct path to TechStart.',
+        description: "2-day on-site experience for freshman and sophomore students at Liberty Mutual's Boston-area HQ. Direct path to TechStart.",
         url: 'https://jobs.libertymutualgroup.com/students-and-grads',
         category: 'programs',
+        directoryTier: 'recurring-program',
         resourceType: 'opportunities-board',
         programType: 'insight-event',
-        applicationStatus: 'apply-now',
+        seasonalNote: 'Applications typically open in spring. Boston-area students encouraged to apply.',
         bostonLocal: true,
         lastVerified: '2026-05-10',
     },
     {
         title: 'Apple Pathways Academy',
-        description: 'Apple\'s historically HBCU-partnered software engineering pathway. Status for 2026 cohort unconfirmed.',
+        description: "Apple's historically HBCU-partnered software engineering pathway. Status varies year to year.",
         url: 'https://www.apple.com/diversity/',
         category: 'programs',
+        directoryTier: 'recurring-program',
         resourceType: 'opportunities-board',
         programType: 'pre-internship',
-        applicationStatus: 'uncertain-2026',
+        seasonalNote: 'Program status varies  -  verify on Apple Diversity page before applying.',
         riskFlag: 'verify-before-applying',
         audienceSpecific: true,
         lastVerified: '2026-05-10',

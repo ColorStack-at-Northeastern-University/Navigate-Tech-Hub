@@ -4,10 +4,12 @@ import CategoryAnchorNav from '@/components/ui/CategoryAnchorNav';
 import CircuitPattern from '@/components/ui/CircuitPattern';
 import EmptyResourceState from '@/components/ui/EmptyResourceState';
 import ExternalResourceCard from '@/components/ui/ExternalResourceCard';
+import MetaSourcesStrip from '@/components/ui/MetaSourcesStrip';
 import ProgramsSection from '@/components/ui/ProgramsSection';
-import { getSubmitResourceUrl } from '@/lib/constants';
 import { getExternalResources } from '@/lib/strapi';
 import type { ExternalResource, ResourceCategory } from '@/lib/types';
+import { externalResourceListKey } from '@/lib/utils';
+import Link from 'next/link';
 
 const CATEGORY_LABELS: Record<Exclude<ResourceCategory, 'programs'>, string> = {
     'interview-prep': 'Interview Prep',
@@ -35,7 +37,7 @@ function CategorySection({ label, resources, id }: { label: string; resources: E
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {resources.map((resource) => (
-                    <ExternalResourceCard key={resource.url} resource={resource} />
+                    <ExternalResourceCard key={externalResourceListKey(resource)} resource={resource} />
                 ))}
             </div>
         </section>
@@ -44,11 +46,9 @@ function CategorySection({ label, resources, id }: { label: string; resources: E
 
 export default async function ExternalResourcesPage() {
     const allResources = await getExternalResources();
-    const submitUrl = getSubmitResourceUrl();
-
-    const programs = allResources.filter((r) => r.category === 'programs');
-    const others = allResources.filter((r) => r.category !== 'programs');
-    const grouped = Object.groupBy(others, (r) => r.category);
+    const recurringPrograms = allResources.filter((r) => r.directoryTier === 'recurring-program');
+    const toolsAndCommunities = allResources.filter((r) => r.directoryTier === 'tools-and-communities');
+    const grouped = Object.groupBy(toolsAndCommunities, (r) => r.category);
 
     return (
         <>
@@ -62,7 +62,7 @@ export default async function ExternalResourcesPage() {
                             External Resources Directory
                         </h1>
                         <p className="text-white/80 text-xl max-w-3xl">
-                            Quick links to external tools, platforms, and named programs curated for CS students.
+                            Curated links to tools, communities, and recurring programs.
                             All links open in a new tab.
                         </p>
                     </div>
@@ -70,8 +70,21 @@ export default async function ExternalResourcesPage() {
 
                 <CategoryAnchorNav />
 
+                {/* Meta-sources pointer strip */}
+                <MetaSourcesStrip />
+
                 <div className="container-custom">
-                    <p className="text-[#de0911] text-4xl md:text-5xl font-bold mb-8">&lt;&gt;</p>
+                    <p className="text-[#de0911] text-4xl md:text-5xl font-bold mb-2">&lt;&gt;</p>
+
+                    {/* Honest-expectations disclaimer */}
+                    <p className="text-sm text-gray-500 max-w-3xl mb-10">
+                        This directory is curated, not exhaustive. We point to the 20–30 tools and programs
+                        that matter most, with honest seasonal context for programs.
+                        Links verified by a human; last-verified dates shown on each card.{' '}
+                        <Link href="/suggest-resource" className="text-neu-red underline underline-offset-2 hover:opacity-80">
+                            Know something broken or missing?
+                        </Link>
+                    </p>
 
                     {allResources.length === 0 ? (
                         <EmptyResourceState
@@ -79,20 +92,33 @@ export default async function ExternalResourcesPage() {
                             body="Curated tools and platforms will appear here once they are added in Strapi."
                             links={[
                                 { href: '/browse', label: 'Browse guides' },
-                                { href: submitUrl, label: 'Suggest a link', external: true },
+                                { href: '/suggest-resource', label: 'Suggest a link' },
                             ]}
                         />
                     ) : (
                         <>
-                            <ProgramsSection resources={programs} />
-                            {SECTION_ORDER.map((cat) => (
-                                <CategorySection
-                                    key={cat}
-                                    id={cat}
-                                    label={CATEGORY_LABELS[cat]}
-                                    resources={grouped[cat] ?? []}
-                                />
-                            ))}
+                            {/* Tier 2 — Recurring programs (programType buckets) */}
+                            <ProgramsSection resources={recurringPrograms} />
+
+                            {/* Tier 1 — Tools & communities (category grids) */}
+                            {toolsAndCommunities.length > 0 && (
+                                <section className="mb-8" id="tools-and-communities">
+                                    <h2 className="font-display text-3xl font-bold text-brand-dark mb-2 pb-2 border-b-[3px] border-neu-red inline-block">
+                                        Tools &amp; Communities
+                                    </h2>
+                                    <p className="text-gray-600 mb-8 max-w-3xl">
+                                        Stable links to platforms and communities. Permanent homepages that don&apos;t change with recruiting seasons.
+                                    </p>
+                                    {SECTION_ORDER.map((cat) => (
+                                        <CategorySection
+                                            key={cat}
+                                            id={cat}
+                                            label={CATEGORY_LABELS[cat]}
+                                            resources={grouped[cat] ?? []}
+                                        />
+                                    ))}
+                                </section>
+                            )}
                         </>
                     )}
                 </div>
