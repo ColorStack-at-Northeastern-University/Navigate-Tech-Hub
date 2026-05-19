@@ -7,3 +7,7 @@ docs/opportunities-radar/scripts/output/
 # Playwright
 frontend/playwright-report/
 frontend/test-results/
+
+# Resume samples — originals and pre-PDF scrubbed docx may contain PII (see docs/resume-sanitization.md)
+frontend/public/assets/resume/samples/source/*.docx
+frontend/public/assets/resume/samples/sanitized/*.docx
