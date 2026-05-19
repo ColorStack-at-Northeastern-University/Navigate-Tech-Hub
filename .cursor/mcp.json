@@ -13,6 +13,9 @@
         "-y",
         "docx-mcp-server"
       ]
+    },
+    "mcp-vercel": {
+      "url": "https://mcp-vercel.com"
     }
   }
 }

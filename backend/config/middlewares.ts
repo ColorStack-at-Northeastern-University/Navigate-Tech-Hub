@@ -7,6 +7,8 @@ export default [
     config: {
       origin: [
         'http://localhost:3000',
+        'https://navigate-tech-hub-6st3.vercel.app',
+        'https://navigate-tech-hub.vercel.app',
         ...(process.env.STRAPI_CORS_ORIGINS?.split(',').map((o) => o.trim()).filter(Boolean) ?? []),
       ],
     },
