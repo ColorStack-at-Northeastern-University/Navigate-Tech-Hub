@@ -9,8 +9,6 @@ import { getResourcesByCategory } from '@/lib/strapi';
 import type { ResourceCategory } from '@/lib/types';
 import Link from 'next/link';
 
-export const dynamic = 'force-dynamic';
-
 export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
     const { category } = await params;
 

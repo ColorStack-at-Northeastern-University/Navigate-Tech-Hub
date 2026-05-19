@@ -45,6 +45,9 @@ export default function SuggestResourceForm() {
             });
             const body = await res.json() as { issueUrl?: string; error?: string };
             if (!res.ok) {
+                if (res.status === 429) {
+                    throw new Error('Too many suggestions from this network. Please wait and try again later.');
+                }
                 throw new Error(body.error ?? 'Unknown error');
             }
             setIssueUrl(body.issueUrl ?? null);

@@ -1,4 +1,5 @@
 import { FAQ_JUMP_LINKS, FAQ_QUICK_ANSWERS, FAQ_SECTIONS } from '@/lib/faqContent';
+import Link from 'next/link';
 import FaqAccordionItem from './FaqAccordionItem';
 import FaqAnswer from './FaqAnswer';
 
@@ -8,9 +9,9 @@ export default function FaqPageContent() {
             <p className="text-gray-600 text-lg max-w-3xl mb-8 leading-relaxed">
                 Straight answers about who we are, how to use the hub, and how content gets made.
                 For mission and story, see{' '}
-                <a href="/about" className="text-neu-red font-semibold underline underline-offset-2 hover:opacity-80">
+                <Link href="/about" className="text-neu-red font-semibold underline underline-offset-2 hover:opacity-80">
                     About
-                </a>
+                </Link>
                 .
             </p>
 

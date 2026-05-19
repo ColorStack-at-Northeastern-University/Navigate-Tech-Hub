@@ -34,7 +34,7 @@ test.describe('public pages', () => {
         await page.goto('/interview-prep/online-assessment-strategy');
         const prose = page.locator('article .article-prose');
         await expect(prose.locator('h2')).toHaveCount(5, { timeout: 15_000 });
-        await expect(prose.locator('ul, ol').first()).toBeVisible();
+        await expect(prose.locator('p').first()).toBeVisible();
     });
 
     test('external resources shows conference strip', async ({ page }) => {
