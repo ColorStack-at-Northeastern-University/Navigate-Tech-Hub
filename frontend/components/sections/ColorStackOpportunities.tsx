@@ -1,43 +1,62 @@
 'use client';
 
 import { useRef } from 'react';
-import { SAMPLE_OPPORTUNITIES, type Opportunity } from '@/data/opportunities';
+import { COLORSTACK_OPPORTUNITIES, type ColorStackOpportunity } from '@/data/opportunities';
 
-function OpportunityCard({ opportunity }: { opportunity: Opportunity }) {
+const TYPE_LABELS: Record<ColorStackOpportunity['type'], string> = {
+    internship: 'Internship',
+    'co-op': 'Co-op',
+    'new-grad': 'New Grad',
+    program: 'Program',
+    scholarship: 'Scholarship',
+    other: 'Opportunity',
+};
+
+const TYPE_COLORS: Record<ColorStackOpportunity['type'], string> = {
+    internship: 'bg-blue-100 text-blue-700',
+    'co-op': 'bg-purple-100 text-purple-700',
+    'new-grad': 'bg-green-100 text-green-700',
+    program: 'bg-amber-100 text-amber-700',
+    scholarship: 'bg-pink-100 text-pink-700',
+    other: 'bg-gray-100 text-gray-600',
+};
+
+function OpportunityCard({ opportunity }: { opportunity: ColorStackOpportunity }) {
     return (
-        <div className="bg-white rounded-xl p-6 min-w-[320px] max-w-[340px] flex-shrink-0 snap-start flex flex-col">
-            <h3 className="text-base font-bold text-brand-dark mb-1 leading-snug">
+        <div className="bg-white rounded-xl p-6 min-w-[320px] max-w-[340px] shrink-0 snap-start flex flex-col">
+            <div className="flex items-start justify-between gap-2 mb-2">
+                <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shrink-0 ${TYPE_COLORS[opportunity.type]}`}>
+                    {TYPE_LABELS[opportunity.type]}
+                </span>
+                {opportunity.deadline && (
+                    <span className="text-[10px] font-semibold text-red-600 bg-red-50 px-2 py-0.5 rounded-full shrink-0">
+                        Due {opportunity.deadline}
+                    </span>
+                )}
+            </div>
+
+            <h3 className="text-base font-bold text-brand-dark mb-1 leading-snug mt-2">
                 {opportunity.title}
             </h3>
-            <p className="text-neu-red font-semibold text-sm mb-3">
+            <p className="text-neu-red font-semibold text-sm mb-2">
                 {opportunity.company}
             </p>
 
-            <div className="space-y-1 text-sm text-gray-600 mb-4">
-                <p>
-                    <span className="text-gray-400">Posted by</span>{' '}
-                    {opportunity.postedBy}
-                    <span className="text-gray-400 ml-2">2 hours ago</span>
-                </p>
-                <p>
-                    <span className="text-gray-400">Comp:</span>{' '}
-                    {opportunity.compensation}
-                </p>
-                <p>
-                    <span className="text-gray-400">Location:</span>{' '}
-                    {opportunity.location}
-                </p>
-                <p>
-                    <span className="text-gray-400">Deadline:</span>{' '}
-                    {opportunity.deadline}
-                </p>
-            </div>
+            {opportunity.location && (
+                <p className="text-xs text-gray-400 mb-2">{opportunity.location}</p>
+            )}
 
-            <div className="flex flex-wrap gap-2 mb-4">
+            {opportunity.description && (
+                <p className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-2 flex-1">
+                    {opportunity.description}
+                </p>
+            )}
+
+            <div className="flex flex-wrap gap-1.5 mb-4">
                 {opportunity.tags.map((tag) => (
                     <span
                         key={tag}
-                        className="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-600 font-medium"
+                        className="text-xs px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-600 font-medium"
                     >
                         {tag}
                     </span>
@@ -48,9 +67,9 @@ function OpportunityCard({ opportunity }: { opportunity: Opportunity }) {
                 href={opportunity.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-auto block text-center bg-neu-red text-white px-6 py-2.5 rounded font-semibold text-sm hover:bg-red-700 transition-colors"
+                className="mt-auto block text-center bg-neu-red text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-red-700 transition-colors"
             >
-                View Careers Page
+                View & Apply →
             </a>
         </div>
     );
@@ -71,12 +90,19 @@ export default function ColorStackOpportunities() {
         <section className="relative bg-neu-black py-16 px-8">
             <div className="absolute top-0 left-0 w-1/2 h-[7px] bg-neu-red rounded-r-full" />
             <div className="max-w-7xl mx-auto">
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-2">
-                    ColorStack Opportunities
+                <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-1">
+                    <a
+                        href="https://wiki.colorstack.org/the-colorstack-family/community/all-things-slack/slack-channels"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-neu-red transition-colors underline underline-offset-4 decoration-neu-red/60"
+                    >
+                        ColorStack Opportunities
+                    </a>
                 </h2>
-                <div className="w-32 h-1 bg-white mb-4" />
-                <p className="text-gray-400 mb-10 max-w-2xl text-sm md:text-base">
-                    Navigate Tech Hub integrates with ColorStack to bring opportunities directly to you.
+                <p className="text-gray-400 mb-10 max-w-2xl text-sm md:text-base mt-3">
+                    Sourced from the ColorStack <span className="text-white/80 font-medium">#opportunities</span> channel.
+                    Join ColorStack if you haven&apos;t already so you can see for yourself.
                 </p>
 
                 <div className="relative">
@@ -85,7 +111,7 @@ export default function ColorStackOpportunities() {
                         className="flex gap-6 overflow-x-auto scroll-smooth pb-4 snap-x snap-mandatory"
                         style={{ scrollbarWidth: 'none' }}
                     >
-                        {SAMPLE_OPPORTUNITIES.map((opp) => (
+                        {COLORSTACK_OPPORTUNITIES.map((opp) => (
                             <OpportunityCard key={opp.id} opportunity={opp} />
                         ))}
                     </div>

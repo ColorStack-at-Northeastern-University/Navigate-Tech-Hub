@@ -1,0 +1,1029 @@
+{
+  "checkedAt": "2026-05-17T03:31:13.896Z",
+  "results": [
+    {
+      "title": "Cracking the Coding Interview",
+      "documentId": "uq8yiblqd9p0d52045ucm5js",
+      "directoryTier": "tools-and-communities",
+      "url": "https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850",
+      "status": 405,
+      "finalUrl": "https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850",
+      "genericLanding": false,
+      "ok": false
+    },
+    {
+      "title": "Out in Tech",
+      "documentId": "uy3fqdpzxv1d488md67e7twq",
+      "directoryTier": "tools-and-communities",
+      "url": "https://outintech.com",
+      "status": 200,
+      "finalUrl": "https://outintech.com/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Hackathons.io",
+      "documentId": "s9zqix5rgye9nm41ztxet9y3",
+      "directoryTier": "tools-and-communities",
+      "url": "https://hackathons.io",
+      "status": 200,
+      "finalUrl": "https://hackathons.io/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Khan Academy Computer Science",
+      "documentId": "nhvkijwzwhiwg8jwmg88lhl3",
+      "directoryTier": "tools-and-communities",
+      "url": "https://www.khanacademy.org/computing/computer-science",
+      "status": 200,
+      "finalUrl": "https://www.khanacademy.org/computing/computer-science",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "CodePath — Applied AI Engineering",
+      "documentId": "xm5gjh1ylxadf1wph7oof1cv",
+      "directoryTier": "recurring-program",
+      "url": "https://www.codepath.org/courses",
+      "status": 200,
+      "finalUrl": "https://www.codepath.org/courses",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Jane Street — JSIP",
+      "documentId": "ks5k83bv6ehqt4e9sqx6yd67",
+      "directoryTier": "recurring-program",
+      "url": "https://www.janestreet.com/join-jane-street/programs-and-events/",
+      "status": 200,
+      "finalUrl": "https://www.janestreet.com/join-jane-street/programs-and-events/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Jane Street — IN FOCUS",
+      "documentId": "xzc57lfjcdfjjfo6lvhustv1",
+      "directoryTier": "recurring-program",
+      "url": "https://www.janestreet.com/join-jane-street/programs-and-events/",
+      "status": 200,
+      "finalUrl": "https://www.janestreet.com/join-jane-street/programs-and-events/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Duolingo — Thrive Internship",
+      "documentId": "xhcinny734vppyj5iwncrnep",
+      "directoryTier": "recurring-program",
+      "url": "https://careers.duolingo.com/",
+      "status": 200,
+      "finalUrl": "https://careers.duolingo.com/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Uber — UberSTAR Internship",
+      "documentId": "wc5faiyj1l0lhhr6wzh4xw3r",
+      "directoryTier": "recurring-program",
+      "url": "https://www.uber.com/us/en/careers/teams/university/",
+      "status": 406,
+      "finalUrl": "https://www.uber.com/us/en/careers/teams/university/",
+      "genericLanding": false,
+      "ok": false
+    },
+    {
+      "title": "Uber — Career Prep Fellowship",
+      "documentId": "yw1o5d4x7keny7wly0dep2hi",
+      "directoryTier": "recurring-program",
+      "url": "https://www.uber.com/us/en/careers/teams/university/",
+      "status": 406,
+      "finalUrl": "https://www.uber.com/us/en/careers/teams/university/",
+      "genericLanding": false,
+      "ok": false
+    },
+    {
+      "title": "Dropbox — Launch / Emerging Talent",
+      "documentId": "auuxwyhq00oh1sz8d416gotv",
+      "directoryTier": "recurring-program",
+      "url": "https://jobs.dropbox.com/",
+      "status": 403,
+      "finalUrl": "https://www.dropbox.jobs/",
+      "genericLanding": false,
+      "ok": false
+    },
+    {
+      "title": "Hudson River Trading — Inside HRT",
+      "documentId": "cfz8x368havmgm6vh7cidhqp",
+      "directoryTier": "recurring-program",
+      "url": "https://www.hudsonrivertrading.com/campus/",
+      "status": 404,
+      "finalUrl": "https://www.hudsonrivertrading.com/campus/",
+      "genericLanding": false,
+      "ok": false
+    },
+    {
+      "title": "Hudson River Trading — WiTTI",
+      "documentId": "z7hjhhbp90dxk8uscinmdiaf",
+      "directoryTier": "recurring-program",
+      "url": "https://www.hudsonrivertrading.com/campus/",
+      "status": 404,
+      "finalUrl": "https://www.hudsonrivertrading.com/campus/",
+      "genericLanding": false,
+      "ok": false
+    },
+    {
+      "title": "D. E. Shaw — Discovery & early talent programs",
+      "documentId": "s1t3ul2nupifpmc02zk9t5au",
+      "directoryTier": "recurring-program",
+      "url": "https://www.deshaw.com/careers",
+      "status": 200,
+      "finalUrl": "https://www.deshaw.com/careers",
+      "genericLanding": true,
+      "ok": true
+    },
+    {
+      "title": "Jane Street — FOCUS",
+      "documentId": "ti3w0r8c5kennmgdxqoxop9f",
+      "directoryTier": "recurring-program",
+      "url": "https://www.janestreet.com/join-jane-street/programs-and-events/",
+      "status": 200,
+      "finalUrl": "https://www.janestreet.com/join-jane-street/programs-and-events/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Five Rings — LINK",
+      "documentId": "yygyouq4cy2d21dgudzzb8n7",
+      "directoryTier": "recurring-program",
+      "url": "https://fiverings.com/careers",
+      "status": 200,
+      "finalUrl": "https://fiverings.com/careers/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Jump Trading — Early Access",
+      "documentId": "e032umqvafl86zgfz8exqcwf",
+      "directoryTier": "recurring-program",
+      "url": "https://www.jumptrading.com/careers/",
+      "status": 200,
+      "finalUrl": "https://www-webflow.jumptrading.com/careers",
+      "genericLanding": true,
+      "ok": true
+    },
+    {
+      "title": "IMC — Launchpad",
+      "documentId": "eck0wov7fsvva8h3ksa3afmh",
+      "directoryTier": "recurring-program",
+      "url": "https://www.imc.com/us/careers/students",
+      "status": 404,
+      "finalUrl": "https://www.imc.com/us/careers/students",
+      "genericLanding": true,
+      "ok": false
+    },
+    {
+      "title": "Capital One — TEIP (Tech Emerging Internship Program)",
+      "documentId": "gz3a72bn4cma6h8tqqfydmz8",
+      "directoryTier": "recurring-program",
+      "url": "https://www.capitalonecareers.com/",
+      "status": 200,
+      "finalUrl": "https://www.capitalonecareers.com/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Citadel Securities — Discover",
+      "documentId": "ukmutf245nbu015tlz77zulk",
+      "directoryTier": "recurring-program",
+      "url": "https://www.citadelsecurities.com/careers/students/",
+      "status": 403,
+      "finalUrl": "https://www.citadelsecurities.com/careers/students/",
+      "genericLanding": false,
+      "ok": false
+    },
+    {
+      "title": "Google — ASDI (Associate Software Developer Intern)",
+      "documentId": "ch3bkho2uhgwlg89oregok84",
+      "directoryTier": "recurring-program",
+      "url": "https://careers.google.com/students/",
+      "status": 200,
+      "finalUrl": "https://www.google.com/about/careers/applications/students/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Microsoft — Explore",
+      "documentId": "m55xr7ueph7fwvihtrvn2mzw",
+      "directoryTier": "recurring-program",
+      "url": "https://careers.microsoft.com/students/us/en/usexploreprogram",
+      "status": 200,
+      "finalUrl": "https://careers.microsoft.com/v2/global/en/students",
+      "genericLanding": true,
+      "ok": true
+    },
+    {
+      "title": "Apple — Pathways Academy",
+      "documentId": "yyddokj661ezfxzsznfuljw7",
+      "directoryTier": "recurring-program",
+      "url": "https://www.apple.com/jobs/us/students.html",
+      "status": 200,
+      "finalUrl": "https://www.apple.com/careers/us/work-at-apple/students.html",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Netflix × Formation",
+      "documentId": "o2y9on1lpqmuzn30kjdrdyih",
+      "directoryTier": "recurring-program",
+      "url": "https://formation.dev",
+      "status": 200,
+      "finalUrl": "https://formation.dev/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Amazon Propel",
+      "documentId": "uq3ggy467rzwkr7wib6v13vc",
+      "directoryTier": "recurring-program",
+      "url": "https://www.amazon.jobs/content/en/career-programs/student-programs",
+      "status": 200,
+      "finalUrl": "https://www.amazon.jobs/content/en/career-programs/university",
+      "genericLanding": true,
+      "ok": true
+    },
+    {
+      "title": "Salesforce — Futureforce University Recruiting",
+      "documentId": "lv44b5rrqeofagrti4ybbjkq",
+      "directoryTier": "recurring-program",
+      "url": "https://careers.salesforce.com/en/university/",
+      "status": 200,
+      "finalUrl": "https://www.salesforce.com/company/careers/university/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Salesforce — Futureforce Tech Launchpad",
+      "documentId": "dfoq98v3geiqdgjfyvt67l9d",
+      "directoryTier": "recurring-program",
+      "url": "https://careers.salesforce.com/en/university/",
+      "status": 200,
+      "finalUrl": "https://www.salesforce.com/company/careers/university/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "NVIDIA — Ignite Internship",
+      "documentId": "xgt10o5pmjgisk15qnrtvc7e",
+      "directoryTier": "recurring-program",
+      "url": "https://nvidia.wd5.myworkdayjobs.com/UniversityJobs",
+      "status": 200,
+      "finalUrl": "https://www.nvidia.com/en-us/about-nvidia/careers/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Two Sigma — First Year SWE Internship",
+      "documentId": "kmpeo641bwockgv5fdz7deei",
+      "directoryTier": "recurring-program",
+      "url": "https://careers.twosigma.com/careers/Careers?level=University",
+      "status": 404,
+      "finalUrl": "https://careers.twosigma.com/careers/Error",
+      "genericLanding": false,
+      "ok": false
+    },
+    {
+      "title": "Citadel — Launch Internship",
+      "documentId": "qaxkfrco2ufn59zlr78iklz3",
+      "directoryTier": "recurring-program",
+      "url": "https://www.citadel.com/careers/students/",
+      "status": 403,
+      "finalUrl": "https://www.citadel.com/careers/students/",
+      "genericLanding": false,
+      "ok": false
+    },
+    {
+      "title": "Hudson River Trading — Sophomore Internship",
+      "documentId": "b1mjvhl56locy53w1w3yu60g",
+      "directoryTier": "recurring-program",
+      "url": "https://www.hudsonrivertrading.com/campus/",
+      "status": 404,
+      "finalUrl": "https://www.hudsonrivertrading.com/campus/",
+      "genericLanding": false,
+      "ok": false
+    },
+    {
+      "title": "SIG — First Year Discovery Program",
+      "documentId": "nu4ywjvvg55ecvhufex141z8",
+      "directoryTier": "recurring-program",
+      "url": "https://sig.com/campus-programs/",
+      "status": 200,
+      "finalUrl": "https://sig.com/careers/interns-co-ops/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "JPMorgan Chase — Code for Good Hackathon",
+      "documentId": "pl3q74452nqgeqwxeidjlvd3",
+      "directoryTier": "recurring-program",
+      "url": "https://careers.jpmorgan.com/us/en/students/programs/code-for-good",
+      "status": 200,
+      "finalUrl": "https://www.jpmorganchase.com/careers/explore-opportunities/programs/tfsg-hackathons",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Morgan Stanley — TSAP Boston",
+      "documentId": "ix5tdavstxi7jmmoz41p0ls3",
+      "directoryTier": "recurring-program",
+      "url": "https://careers.morganstanley.com/students-and-graduates",
+      "status": 0,
+      "finalUrl": "https://careers.morganstanley.com/students-and-graduates",
+      "genericLanding": false,
+      "ok": false,
+      "error": "TypeError: fetch failed"
+    },
+    {
+      "title": "Liberty Mutual — Spark Summit",
+      "documentId": "s1ve7l7aqj9z00lbibzg5xvm",
+      "directoryTier": "recurring-program",
+      "url": "https://jobs.libertymutual.com/early-career/",
+      "status": 0,
+      "finalUrl": "https://jobs.libertymutual.com/early-career/",
+      "genericLanding": false,
+      "ok": false,
+      "error": "TypeError: fetch failed"
+    },
+    {
+      "title": "Bloomberg — First Year Insights Program",
+      "documentId": "v5oz2ogzbtoygpcr13z9ixrl",
+      "directoryTier": "recurring-program",
+      "url": "https://careers.bloomberg.com/job/detail/students",
+      "status": 200,
+      "finalUrl": "https://www.bloomberg.com/company/what-we-do/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Goldman Sachs — Engineering Essentials",
+      "documentId": "t4xgxja93ooi2pkqrl25l1pu",
+      "directoryTier": "recurring-program",
+      "url": "https://www.goldmansachs.com/careers/students/programs/",
+      "status": 200,
+      "finalUrl": "https://www.goldmansachs.com/careers/students/programs-and-internships",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "IBM — Accelerate",
+      "documentId": "y0vxern5we9yqesfhykcm9hj",
+      "directoryTier": "recurring-program",
+      "url": "https://www.ibm.com/careers/us-en/entry-level/accelerate/",
+      "status": 200,
+      "finalUrl": "https://www.ibm.com/careers",
+      "genericLanding": true,
+      "ok": true
+    },
+    {
+      "title": "Capital One — Early Internship Program (Sophomore)",
+      "documentId": "fwet76msmsbu578r4t1giyej",
+      "directoryTier": "recurring-program",
+      "url": "https://www.capitalonecareers.com/students",
+      "status": 200,
+      "finalUrl": "https://www.capitalonecareers.com/students",
+      "genericLanding": true,
+      "ok": true
+    },
+    {
+      "title": "Google — BOLD Immersion Program",
+      "documentId": "lz4qohcyd06x77dl6xpjtn6q",
+      "directoryTier": "recurring-program",
+      "url": "https://buildyourfuture.withgoogle.com/programs/bold",
+      "status": 200,
+      "finalUrl": "https://buildyourfuture.withgoogle.com/programs/bold",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Jane Street — WiSE Program",
+      "documentId": "ecfmpseqfwboulne7pesc3w3",
+      "directoryTier": "recurring-program",
+      "url": "https://www.janestreet.com/join-jane-street/programs-and-events/",
+      "status": 200,
+      "finalUrl": "https://www.janestreet.com/join-jane-street/programs-and-events/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Jane Street — INSIGHT",
+      "documentId": "fvszkou4wx8gc2teucr9mxlu",
+      "directoryTier": "recurring-program",
+      "url": "https://www.janestreet.com/join-jane-street/programs-and-events/",
+      "status": 200,
+      "finalUrl": "https://www.janestreet.com/join-jane-street/programs-and-events/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Jane Street — FTTP (First-Year Trading & Tech)",
+      "documentId": "pgoegi55mtfr9nvzf6ivr55m",
+      "directoryTier": "recurring-program",
+      "url": "https://www.janestreet.com/join-jane-street/programs-and-events/",
+      "status": 200,
+      "finalUrl": "https://www.janestreet.com/join-jane-street/programs-and-events/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Goldman Sachs — Possibilities Series (Freshman)",
+      "documentId": "vc07bxl0ll1ambqaotnejlyl",
+      "directoryTier": "recurring-program",
+      "url": "https://www.goldmansachs.com/careers/students/programs/",
+      "status": 200,
+      "finalUrl": "https://www.goldmansachs.com/careers/students/programs-and-internships",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Akuna Capital — Sneak Peek (Women+)",
+      "documentId": "a0x4askxj20khj44dw4ckrbs",
+      "directoryTier": "recurring-program",
+      "url": "https://akunacapital.com/careers",
+      "status": 200,
+      "finalUrl": "https://akunacapital.com/careers/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "D. E. Shaw — Nexus Fellowship",
+      "documentId": "glc2z6fqs9r43gxkd9flqm4t",
+      "directoryTier": "recurring-program",
+      "url": "https://www.deshaw.com/careers/fellowships",
+      "status": 200,
+      "finalUrl": "https://www.deshaw.com/careers",
+      "genericLanding": true,
+      "ok": true
+    },
+    {
+      "title": "DRW — Discover DRW",
+      "documentId": "t6qgksft2gwrcomr7c1if26t",
+      "directoryTier": "recurring-program",
+      "url": "https://drw.com/work-at-drw/students",
+      "status": 404,
+      "finalUrl": "https://www.drw.com/work-at-drw/students",
+      "genericLanding": true,
+      "ok": false
+    },
+    {
+      "title": "SEO Tech Developer Program",
+      "documentId": "dfa00xegz08ijswycyo8gyqd",
+      "directoryTier": "recurring-program",
+      "url": "https://www.seo-usa.org/tech/",
+      "status": 404,
+      "finalUrl": "https://www.seo-usa.org/tech/",
+      "genericLanding": false,
+      "ok": false
+    },
+    {
+      "title": "SEO Career Program",
+      "documentId": "cq636nhx6npnymyabo1snloo",
+      "directoryTier": "recurring-program",
+      "url": "https://www.seo-usa.org/career/",
+      "status": 200,
+      "finalUrl": "https://career.seo-usa.org/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "MLT Career Prep",
+      "documentId": "uap3ory8erd6o6daqas66k9v",
+      "directoryTier": "recurring-program",
+      "url": "https://mlt.org/career-prep/",
+      "status": 200,
+      "finalUrl": "https://mlt.org/career-prep/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "MLT — Tech Trek",
+      "documentId": "o3czcd1y9tnpbzf2zgt70lz3",
+      "directoryTier": "recurring-program",
+      "url": "https://mlt.org/tech-trek/",
+      "status": 404,
+      "finalUrl": "https://mlt.org/tech-trek/",
+      "genericLanding": false,
+      "ok": false
+    },
+    {
+      "title": "AI4ALL — Ignite Fellows Program",
+      "documentId": "wqi5ceigykmgcf7qi6223gex",
+      "directoryTier": "recurring-program",
+      "url": "https://ai-4-all.org/programs/ignite/",
+      "status": 404,
+      "finalUrl": "https://ai-4-all.org/programs/ignite/",
+      "genericLanding": false,
+      "ok": false
+    },
+    {
+      "title": "BASTA Fellowship",
+      "documentId": "plmqkx4mqfpyc7ynx8nomk8l",
+      "directoryTier": "recurring-program",
+      "url": "https://www.bastainc.org/",
+      "status": 0,
+      "finalUrl": "https://www.bastainc.org/",
+      "genericLanding": false,
+      "ok": false,
+      "error": "TypeError: fetch failed"
+    },
+    {
+      "title": "HSF — Scholar Program",
+      "documentId": "gtpi1sl84a2oo23kc0k2ytg1",
+      "directoryTier": "recurring-program",
+      "url": "https://www.hsf.net/scholarship",
+      "status": 200,
+      "finalUrl": "https://www.hsf.net/scholarship/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Hack.Diversity",
+      "documentId": "ee2qukw2ky52q65vx6ovyq4g",
+      "directoryTier": "recurring-program",
+      "url": "https://www.hackdiversity.com/",
+      "status": 200,
+      "finalUrl": "https://www.hackdiversity.com/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Headstart Fellowship",
+      "documentId": "g9gzl28aa4dja5wtbt9spci4",
+      "directoryTier": "recurring-program",
+      "url": "https://www.headstartfellowship.com/",
+      "status": 200,
+      "finalUrl": "https://www.headstartfellowship.com/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "BASE Fellowship",
+      "documentId": "k63cvm0eisna7t055r2ewswp",
+      "directoryTier": "recurring-program",
+      "url": "https://www.basefellowship.org/",
+      "status": 0,
+      "finalUrl": "https://www.basefellowship.org/",
+      "genericLanding": false,
+      "ok": false,
+      "error": "TypeError: fetch failed"
+    },
+    {
+      "title": "Goldman Sachs — Scholarship for Excellence",
+      "documentId": "wymyj5hqau0r6j3g9z2ydka7",
+      "directoryTier": "recurring-program",
+      "url": "https://www.goldmansachs.com/careers/students/programs/",
+      "status": 200,
+      "finalUrl": "https://www.goldmansachs.com/careers/students/programs-and-internships",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Anthropic — Fellows Program",
+      "documentId": "y47bt9w67ugswutl16xryy0z",
+      "directoryTier": "recurring-program",
+      "url": "https://www.anthropic.com/careers",
+      "status": 200,
+      "finalUrl": "https://www.anthropic.com/careers",
+      "genericLanding": true,
+      "ok": true
+    },
+    {
+      "title": "Adobe — GEM Fellowship",
+      "documentId": "ek9ctwy0g92i4qfbdansoo63",
+      "directoryTier": "recurring-program",
+      "url": "https://www.adobe.com/corporate-responsibility/education.html",
+      "status": 200,
+      "finalUrl": "https://www.adobe.com/corporate-responsibility/education.html",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "BlackRock — Founders Scholarship",
+      "documentId": "vk511l1rvweniurpvn5kljdf",
+      "directoryTier": "recurring-program",
+      "url": "https://careers.blackrock.com/early-careers/",
+      "status": 200,
+      "finalUrl": "https://careers.blackrock.com/students-and-graduates",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Deloitte — HBCU Emerging Leaders Program",
+      "documentId": "i1lsz8feupug9dj4mwypmyuw",
+      "directoryTier": "recurring-program",
+      "url": "https://www2.deloitte.com/us/en/pages/careers/articles/join-deloitte-emerging-leaders.html",
+      "status": 404,
+      "finalUrl": "https://www.deloitte.com/us/en/pages/careers/articles/join-deloitte-emerging-leaders.html",
+      "genericLanding": false,
+      "ok": false
+    },
+    {
+      "title": "CodePath — TIP (Technical Interview Prep)",
+      "documentId": "tp1ohfu4nkfc7kx9r7cy21f5",
+      "directoryTier": "recurring-program",
+      "url": "https://www.codepath.org/courses/technical-interview-prep",
+      "status": 200,
+      "finalUrl": "https://www.codepath.org/courses/tech-interview-prep",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "DRW — Apprenticeship Program",
+      "documentId": "tqjqrkvevud7xzo9fnerwhx5",
+      "directoryTier": "recurring-program",
+      "url": "https://drw.com/work-at-drw/students",
+      "status": 404,
+      "finalUrl": "https://www.drw.com/work-at-drw/students",
+      "genericLanding": true,
+      "ok": false
+    },
+    {
+      "title": "Deloitte — Discovery Internship",
+      "documentId": "x5nbbpdkm35gdt0llwba7r8b",
+      "directoryTier": "recurring-program",
+      "url": "https://www2.deloitte.com/us/en/pages/careers/articles/join-deloitte-students.html",
+      "status": 404,
+      "finalUrl": "https://www.deloitte.com/us/en/pages/careers/articles/join-deloitte-students.html",
+      "genericLanding": false,
+      "ok": false
+    },
+    {
+      "title": "Akuna Capital — Akunacademy Internship",
+      "documentId": "whrpcbj39fq4zzgtt6ubrmx4",
+      "directoryTier": "recurring-program",
+      "url": "https://akunacapital.com/careers",
+      "status": 200,
+      "finalUrl": "https://akunacapital.com/careers/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Adobe — Digital Academy",
+      "documentId": "zz9nhi2w612r56eds7pypn3g",
+      "directoryTier": "recurring-program",
+      "url": "https://www.adobe.com/corporate-responsibility/education/digital-academy.html",
+      "status": 404,
+      "finalUrl": "https://www.adobe.com/corporate-responsibility/education/digital-academy.html",
+      "genericLanding": false,
+      "ok": false
+    },
+    {
+      "title": "Capital One — Launchpad: Legacy & Leadership Program",
+      "documentId": "jmgbofnxv1igpnnwhadwnu4n",
+      "directoryTier": "recurring-program",
+      "url": "https://www.capitalonecareers.com/students",
+      "status": 200,
+      "finalUrl": "https://www.capitalonecareers.com/students",
+      "genericLanding": true,
+      "ok": true
+    },
+    {
+      "title": "Asana — AsanaUP Internship",
+      "documentId": "dh3ct7s52f4wk8pcbtybs1y7",
+      "directoryTier": "recurring-program",
+      "url": "https://asana.com/jobs/university",
+      "status": 200,
+      "finalUrl": "https://asana.com/jobs/university-recruiting",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Block — Builder Fellowship",
+      "documentId": "z7i9qhx61e9npsnx4rvt52lw",
+      "directoryTier": "recurring-program",
+      "url": "https://block.xyz/careers",
+      "status": 200,
+      "finalUrl": "https://block.xyz/careers/jobs?",
+      "genericLanding": true,
+      "ok": true
+    },
+    {
+      "title": "Confluent — Sophomore SWE Internship",
+      "documentId": "efns740083zf9f8flcnt5sec",
+      "directoryTier": "recurring-program",
+      "url": "https://www.confluent.io/careers/",
+      "status": 429,
+      "finalUrl": "https://careers.confluent.io/",
+      "genericLanding": false,
+      "ok": false
+    },
+    {
+      "title": "Khoury Tech for the Culture",
+      "documentId": "bk35pklbam4ch5twz2hegk9r",
+      "directoryTier": "tools-and-communities",
+      "url": "https://www.khoury.northeastern.edu/",
+      "status": 200,
+      "finalUrl": "https://www.khoury.northeastern.edu/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "NeetCode 150",
+      "documentId": "inw91zbni0cvanpegyksbjxy",
+      "directoryTier": "tools-and-communities",
+      "url": "https://neetcode.io/practice",
+      "status": 200,
+      "finalUrl": "https://neetcode.io/practice",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "LeetCode Top Interview 150",
+      "documentId": "b02kz9nkrggs3y7mm5sgok7m",
+      "directoryTier": "tools-and-communities",
+      "url": "https://leetcode.com/studyplan/top-interview-150/",
+      "status": 403,
+      "finalUrl": "https://leetcode.com/studyplan/top-interview-150/",
+      "genericLanding": false,
+      "ok": false
+    },
+    {
+      "title": "AlgoExpert",
+      "documentId": "ux7s181m5skmikb1aulfxr4z",
+      "directoryTier": "tools-and-communities",
+      "url": "https://www.algoexpert.io",
+      "status": 200,
+      "finalUrl": "https://www.algoexpert.io/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Pramp",
+      "documentId": "i1uxkdys2ibqgfo90c9a4cxk",
+      "directoryTier": "tools-and-communities",
+      "url": "https://www.pramp.com",
+      "status": 200,
+      "finalUrl": "https://www.pramp.com/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "interviewing.io",
+      "documentId": "f2ftnrcnxfvaqonu0b6u60f0",
+      "directoryTier": "tools-and-communities",
+      "url": "https://interviewing.io",
+      "status": 200,
+      "finalUrl": "https://interviewing.io/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Framer",
+      "documentId": "fpuul7jy6h8fdljrj5h0wnkq",
+      "directoryTier": "tools-and-communities",
+      "url": "https://www.framer.com",
+      "status": 200,
+      "finalUrl": "https://www.framer.com/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "GitProfile Template",
+      "documentId": "ogsw29l1agqmk81mg4zdcwql",
+      "directoryTier": "tools-and-communities",
+      "url": "https://github.com/arifszn/gitprofile",
+      "status": 200,
+      "finalUrl": "https://github.com/arifszn/gitprofile",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Frontend Mentor",
+      "documentId": "cutfg1czltlvydzgfbu9ibvg",
+      "directoryTier": "tools-and-communities",
+      "url": "https://www.frontendmentor.io",
+      "status": 200,
+      "finalUrl": "https://www.frontendmentor.io/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Vercel",
+      "documentId": "slaydshs0k29ry3zr6092171",
+      "directoryTier": "tools-and-communities",
+      "url": "https://vercel.com",
+      "status": 200,
+      "finalUrl": "https://vercel.com/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Netlify",
+      "documentId": "in4xw3d2qwrg2wigusrt1gaj",
+      "directoryTier": "tools-and-communities",
+      "url": "https://www.netlify.com",
+      "status": 200,
+      "finalUrl": "https://www.netlify.com/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Railway",
+      "documentId": "oxglf114yskuahkmxg5mlpuh",
+      "directoryTier": "tools-and-communities",
+      "url": "https://railway.app",
+      "status": 200,
+      "finalUrl": "https://railway.com/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "ColorStack",
+      "documentId": "f5flaflpp71l2trhn0fq8qcy",
+      "directoryTier": "tools-and-communities",
+      "url": "https://www.colorstack.org",
+      "status": 200,
+      "finalUrl": "https://www.colorstack.org/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "NSBE (National Society of Black Engineers)",
+      "documentId": "un8e2ni5uuvdlepsv50tcoog",
+      "directoryTier": "tools-and-communities",
+      "url": "https://www.nsbe.org",
+      "status": 200,
+      "finalUrl": "https://nsbe.org/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "AfroTech Conference",
+      "documentId": "xd824ow06ydr8mom4ijlfjio",
+      "directoryTier": "tools-and-communities",
+      "url": "https://afrotech.com",
+      "status": 200,
+      "finalUrl": "https://afrotech.com/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "LinkedIn",
+      "documentId": "et05jfpjfh7xnxq9th0q49nw",
+      "directoryTier": "tools-and-communities",
+      "url": "https://www.linkedin.com",
+      "status": 200,
+      "finalUrl": "https://www.linkedin.com/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Rewriting the Code",
+      "documentId": "afln0s6sy7e514pfab5vtmp1",
+      "directoryTier": "tools-and-communities",
+      "url": "https://rewritingthecode.org",
+      "status": 200,
+      "finalUrl": "https://rewritingthecode.org/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Major League Hacking (MLH)",
+      "documentId": "vnzvqy0rntc2a25w4vay4zym",
+      "directoryTier": "tools-and-communities",
+      "url": "https://mlh.io",
+      "status": 200,
+      "finalUrl": "https://www.mlh.com/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Devpost",
+      "documentId": "fv2mkmnmrli57ju73o22qczk",
+      "directoryTier": "tools-and-communities",
+      "url": "https://devpost.com",
+      "status": 200,
+      "finalUrl": "https://devpost.com/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "HackerEarth Challenges",
+      "documentId": "lbgq5qahnkp8fn6ji5aijje1",
+      "directoryTier": "tools-and-communities",
+      "url": "https://www.hackerearth.com/challenges/",
+      "status": 200,
+      "finalUrl": "https://www.hackerearth.com/challenges/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "freeCodeCamp",
+      "documentId": "rddtjxjqwewi5u8vwzahx97a",
+      "directoryTier": "tools-and-communities",
+      "url": "https://www.freecodecamp.org",
+      "status": 200,
+      "finalUrl": "https://www.freecodecamp.org/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Harvard CS50",
+      "documentId": "c43xn7y4to2emgokmmteakz2",
+      "directoryTier": "tools-and-communities",
+      "url": "https://cs50.harvard.edu/x/",
+      "status": 200,
+      "finalUrl": "https://cs50.harvard.edu/x/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "The Odin Project",
+      "documentId": "qdzdzanzbphys2lusd11qn56",
+      "directoryTier": "tools-and-communities",
+      "url": "https://www.theodinproject.com",
+      "status": 200,
+      "finalUrl": "https://www.theodinproject.com/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Coursera",
+      "documentId": "fsufgoussuk5vedkrym0a0c0",
+      "directoryTier": "tools-and-communities",
+      "url": "https://www.coursera.org",
+      "status": 200,
+      "finalUrl": "https://www.coursera.org/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "MIT OpenCourseWare",
+      "documentId": "el9rfmtxuttsm4iz9298apni",
+      "directoryTier": "tools-and-communities",
+      "url": "https://ocw.mit.edu",
+      "status": 200,
+      "finalUrl": "https://ocw.mit.edu/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Codecademy",
+      "documentId": "zvs39xw4b1lium3xihox5v54",
+      "directoryTier": "tools-and-communities",
+      "url": "https://www.codecademy.com",
+      "status": 200,
+      "finalUrl": "https://www.codecademy.com/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Brilliant Black Minds Mock Interviews",
+      "documentId": "dpqyx60lix6cjbnza9fn312s",
+      "directoryTier": "recurring-program",
+      "url": "https://brilliantblackminds.co",
+      "status": 200,
+      "finalUrl": "https://brilliantblackminds.co/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "LinkedIn — First Play Internship",
+      "documentId": "q6mcavbw20v18kytajabrmkx",
+      "directoryTier": "recurring-program",
+      "url": "https://careers.linkedin.com/students",
+      "status": 200,
+      "finalUrl": "https://careers.linkedin.com/pathways-programs",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "AfroTech 2026 Conference",
+      "documentId": "niolddao5yvfjlg3ysr3z87b",
+      "directoryTier": "recurring-program",
+      "url": "https://afrotech.com/conference",
+      "status": 200,
+      "finalUrl": "https://afrotechconference.com/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "NSBE Annual Convention 2026",
+      "documentId": "lpkne2b16nc9d1uyt7bg55yt",
+      "directoryTier": "recurring-program",
+      "url": "https://convention.nsbe.org",
+      "status": 200,
+      "finalUrl": "https://convention.nsbe.org/",
+      "genericLanding": false,
+      "ok": true
+    },
+    {
+      "title": "Codewars",
+      "documentId": "rigpyembye1jpk0wtj93cedn",
+      "directoryTier": "tools-and-communities",
+      "url": "https://codewars.com",
+      "status": 200,
+      "finalUrl": "https://www.codewars.com/",
+      "genericLanding": false,
+      "ok": true
+    }
+  ]
+}
