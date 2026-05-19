@@ -2,6 +2,7 @@
 
 @font-face {
   font-family: 'Gotham Black';
+  /* Path must match SITE_ASSETS.fonts.gothamBlack in lib/siteAssets.ts */
   src: url('/fonts/gotham-black.otf') format('opentype');
   font-weight: 900;
   font-style: normal;
@@ -10,6 +11,7 @@
 
 @font-face {
   font-family: 'Archer Semibold';
+  /* Path must match SITE_ASSETS.fonts.archerSemibold in lib/siteAssets.ts */
   src: url('/fonts/archer-semibold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;

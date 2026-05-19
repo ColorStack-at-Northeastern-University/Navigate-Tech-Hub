@@ -1,6 +1,7 @@
 'use client';
 
 import { NAV_LINKS } from '@/lib/constants';
+import { SITE_ASSETS } from '@/lib/siteAssets';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -14,7 +15,7 @@ export default function Navbar() {
                 {/* Left: Logo — allowed to overflow the navbar height */}
                 <Link href="/" className="flex-shrink-0 relative z-10">
                     <Image
-                        src="/images/navtechhub-logo.png"
+                        src={SITE_ASSETS.images.navtechhubLogo}
                         alt="Navigate Tech Hub"
                         width={500}
                         height={140}

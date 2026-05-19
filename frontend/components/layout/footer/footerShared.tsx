@@ -1,4 +1,5 @@
 import { NATIONAL_COLORSTACK, SITE_CONFIG } from '@/lib/constants';
+import { SITE_ASSETS } from '@/lib/siteAssets';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -23,7 +24,7 @@ export const FOOTER_COLORSTACK_LINKS = [
 export function FooterCopyright({ centered = false }: { centered?: boolean }) {
     return (
         <div className={`flex items-center gap-2 ${centered ? 'justify-center' : ''}`}>
-            <Image src="/images/s-icon.png" alt="" width={24} height={24} />
+            <Image src={SITE_ASSETS.images.sIcon} alt="" width={24} height={24} />
             <p className="text-neu-gray text-base leading-snug">{SITE_CONFIG.footer.copyright}</p>
         </div>
     );

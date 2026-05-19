@@ -1,6 +1,7 @@
 import { SITE_CONFIG } from '@/lib/constants';
 import type { HeroStats } from '@/lib/strapi';
 import Image from 'next/image';
+import { SITE_ASSETS } from '@/lib/siteAssets';
 import Link from 'next/link';
 
 function buildStats(counts: HeroStats) {
@@ -69,7 +70,7 @@ export default function Hero({ stats }: HeroProps) {
             {/* Husky — absolutely positioned, out of flow */}
             <div className="hidden md:block absolute left-0 lg:left-4 top-[42%] -translate-y-1/2 z-0 pointer-events-none">
                 <Image
-                    src="/images/husky-head.png"
+                    src={SITE_ASSETS.images.huskyHead}
                     alt="King Husky mascot"
                     width={650}
                     height={750}
@@ -82,7 +83,7 @@ export default function Hero({ stats }: HeroProps) {
             <div className="hidden md:block absolute right-12 lg:right-24 xl:right-32 top-1/2 -translate-y-1/2 z-0 pointer-events-none">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                    src="/images/colorstack-logo-red.png"
+                    src={SITE_ASSETS.images.colorstackLogoRed}
                     alt=""
                     className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-none w-[400px] md:w-[480px] lg:w-[560px] h-auto"
                 />
