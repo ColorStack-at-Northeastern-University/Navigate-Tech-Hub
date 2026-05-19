@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { RESUME_PATH, RESUME_TEMPLATES, SAMPLE_RESUMES } from '@/components/sections/resumeSectionData';
+import { isExternalAssetUrl } from '@/lib/siteAssets';
 
 function SampleCard({ resume }: { resume: (typeof SAMPLE_RESUMES)[0] }) {
     return (
@@ -8,22 +9,34 @@ function SampleCard({ resume }: { resume: (typeof SAMPLE_RESUMES)[0] }) {
                 <p className="font-semibold text-brand-dark text-sm">{resume.label}</p>
                 <p className="text-xs text-gray-500 mt-1 leading-relaxed">{resume.highlights}</p>
             </div>
-            <a
-                href={resume.downloadUrl}
-                className="mt-auto inline-flex items-center gap-1.5 text-xs font-semibold text-neu-red hover:underline"
-            >
-                ↓ Download sample
-            </a>
+            {resume.downloadAvailable ? (
+                <a
+                    href={resume.downloadUrl}
+                    download={resume.downloadFileName}
+                    className="mt-auto inline-flex items-center gap-1.5 text-xs font-semibold text-neu-red hover:underline"
+                >
+                    ↓ Download sample (.docx)
+                </a>
+            ) : (
+                <span className="mt-auto text-xs font-semibold text-gray-400">Coming soon</span>
+            )}
         </div>
     );
 }
 
 function TemplateButton({ template }: { template: (typeof RESUME_TEMPLATES)[0] }) {
+    const external = isExternalAssetUrl(template.url);
+    const downloadName =
+        'downloadFileName' in template && template.downloadFileName
+            ? template.downloadFileName
+            : undefined;
+
     return (
         <a
             href={template.url}
-            target={template.url === '#' ? undefined : '_blank'}
-            rel="noopener noreferrer"
+            {...(downloadName ? { download: downloadName } : {})}
+            target={external ? '_blank' : undefined}
+            rel={external ? 'noopener noreferrer' : undefined}
             className="flex items-start gap-3 p-4 rounded-xl border border-gray-200 bg-white hover:border-neu-red group transition-colors"
         >
             <div className="flex-1 min-w-0">
@@ -37,7 +50,9 @@ function TemplateButton({ template }: { template: (typeof RESUME_TEMPLATES)[0] }
                 </div>
                 <p className="text-xs text-gray-500 mt-0.5">{template.note}</p>
             </div>
-            <span className="text-gray-400 group-hover:text-neu-red transition-colors shrink-0">→</span>
+            <span className="text-gray-400 group-hover:text-neu-red transition-colors shrink-0">
+                {downloadName ? '↓' : '→'}
+            </span>
         </a>
     );
 }
@@ -76,7 +91,7 @@ export default function ResumeSection({ embedded = false }: ResumeSectionProps) 
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-10 border-t border-gray-100">
                     <div>
-                        <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-4">Sample resumes</p>
+                        <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-4">Sample freshman resumes</p>
                         <div className="grid grid-cols-2 gap-3">
                             {SAMPLE_RESUMES.map((resume) => (
                                 <SampleCard key={resume.id} resume={resume} />
@@ -91,7 +106,7 @@ export default function ResumeSection({ embedded = false }: ResumeSectionProps) 
                             ))}
                         </div>
                         <p className="text-xs text-gray-400 mt-4 italic">
-                            All samples are anonymized composites. These paths are real.
+                            All samples are anonymized. However, they come from real people and their experience is real.
                         </p>
                     </div>
                 </div>

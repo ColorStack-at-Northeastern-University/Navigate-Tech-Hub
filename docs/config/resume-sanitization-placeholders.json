@@ -1,0 +1,101 @@
+{
+  "mode": "relaxed",
+  "personas": {
+    "john": {
+      "displayName": "John Doe",
+      "email": "johndoe@gmail.com",
+      "phone": "555-555-5555",
+      "linkedin": "linkedin.com/in/johndoe",
+      "github": "github.com/johndoe",
+      "location": "City, ST"
+    },
+    "jane": {
+      "displayName": "Jane Doe",
+      "email": "janedoe@gmail.com",
+      "phone": "555-555-5555",
+      "linkedin": "linkedin.com/in/janedoe",
+      "github": "github.com/janedoe",
+      "location": "City, ST"
+    }
+  },
+  "filePersona": {
+    "resume-sample-1.docx": "john",
+    "resume-sample-2.docx": "jane",
+    "resume-sample-3.docx": "john",
+    "resume-sample-4.docx": "jane"
+  },
+  "educationReplacements": [
+    {
+      "search": "Northeastern University, Khoury College of Computer Science",
+      "replace": "University A, College of Computer Science"
+    },
+    {
+      "search": "Northeastern University, D'Amore-McKim School of Business",
+      "replace": "University A, School of Business"
+    },
+    {
+      "search": "Husky Competitive Programming (Club)",
+      "replace": "Competitive Programming Club"
+    },
+    {
+      "search": "John Martinson Honors College",
+      "replace": "Honors College"
+    },
+    {
+      "search": "Ujima Global Leader Scholar",
+      "replace": "Leadership Scholar Program"
+    }
+  ],
+  "locationReplacements": ["Boston, MA", "Oakland, CA", "San Francisco, CA"],
+  "employerAliases": {
+    "resume-sample-1.docx": [
+      { "search": "Outlier AI", "replace": "Small Company A", "kind": "small_company" },
+      { "search": "ColorStack – Northeastern University", "replace": "School Club 1", "kind": "school_club" },
+      { "search": "Oasis – Northeastern University", "replace": "School Club 2", "kind": "school_club" }
+    ],
+    "resume-sample-2.docx": [
+      { "search": "TELO Trucks", "replace": "Startup A", "kind": "startup" },
+      { "search": "VOICEplug AI", "replace": "Startup B", "kind": "startup" },
+      { "search": "ColorStack - Northeastern University", "replace": "School Club 1", "kind": "school_club" },
+      {
+        "search": "Archimedes Research Club - Northeastern University",
+        "replace": "School Club 2",
+        "kind": "school_club"
+      },
+      {
+        "search": "City of Oakland AI Research Project - Northeastern University",
+        "replace": "School Club 3",
+        "kind": "school_club"
+      },
+      { "search": "AI4ALL Ignite", "replace": "Fellowship A", "kind": "fellowship" },
+      { "search": "BobaTalks", "replace": "Fellowship B", "kind": "fellowship" }
+    ]
+  },
+  "syntheticSamples": {
+    "resume-sample-3.docx": {
+      "derivedFrom": "resume-sample-1.docx",
+      "profile": "1 hackathon win · 2 personal projects · 1 fellowship"
+    },
+    "resume-sample-4.docx": {
+      "derivedFrom": "resume-sample-2.docx",
+      "profile": "1 internship · 2 projects · multiple fellowships"
+    }
+  },
+  "perFilePii": {
+    "resume-sample-1.docx": [
+      { "search": "johndoze", "replace": "johndoe", "note": "use edit_paragraph on block 1 if replace_text returns 0" },
+      { "search": "ayaanimtiaz", "replace": "johndoe", "note": "use edit_paragraph on block 1 if replace_text returns 0" }
+    ],
+    "resume-sample-2.docx": [
+      { "search": "Bryce Blaylock", "replace": "Jane Doe" },
+      { "search": "bblaylock8916@gmail.com", "replace": "janedoe@gmail.com" },
+      { "search": "(929) 216-1622", "replace": "555-555-5555" },
+      { "search": "www.linkedin.com/in/bryceblaylock", "replace": "linkedin.com/in/janedoe" },
+      { "search": "github.com/BryceBlaylock", "replace": "github.com/janedoe" },
+      {
+        "search": "Honors/Involvements: John Martinson Honors College, Ujima Global Leader Scholar, Accelerated Entrepreneurship & Finance Program, ColorStack",
+        "replace": "Honors/Involvements: Honors College, Leadership Scholar Program, Accelerated Entrepreneurship & Finance Program, School Club 1"
+      }
+    ]
+  }
+}

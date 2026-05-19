@@ -1,66 +1,126 @@
+import { SITE_ASSETS } from '@/lib/siteAssets';
+
+
+
+const { samples } = SITE_ASSETS.resume;
+
+
+
 export const SAMPLE_RESUMES = [
     {
         id: 1,
-        label: 'Freshman Resume',
-        highlights: '0 internship experience · 2 hackathons · 1 club role',
-        downloadUrl: '#',
+        label: 'Resume 1',
+        highlights: '0 internships · 2 hackathons · 2 club experiences',
+        downloadUrl: samples.resume1.href,
+        downloadFileName: samples.resume1.downloadName,
+        downloadAvailable: true,
     },
     {
         id: 2,
-        label: 'Sophomore Resume',
-        highlights: '0 internship · 1 fellowship · 1 research project',
-        downloadUrl: '#',
+        label: 'Resume 2',
+        highlights: '0 internships · 2 fellowships · 1 project · 2 club experiences',
+        downloadUrl: samples.resume2.href,
+        downloadFileName: samples.resume2.downloadName,
+        downloadAvailable: true,
     },
     {
         id: 3,
-        label: 'Sophomore (Technical Track)',
-        highlights: '1 hackathon win · 2 personal projects · co-op ready',
-        downloadUrl: '#',
+        label: 'Resume 3',
+        highlights: '0 Internships · 1 hackathon win · 2 personal projects · 1 fellowship',
+        downloadUrl: samples.resume3.href,
+        downloadFileName: samples.resume3.downloadName,
+        downloadAvailable: true,
     },
     {
         id: 4,
-        label: 'Junior Resume',
+        label: 'Resume 4',
         highlights: '1 internship · 2 projects · multiple fellowships',
-        downloadUrl: '#',
+        downloadUrl: samples.resume4.href,
+        downloadFileName: samples.resume4.downloadName,
+        downloadAvailable: true,
     },
 ];
+
+
 
 export const RESUME_TEMPLATES = [
+
     {
+
         id: 1,
+
         name: 'Navigate Template',
-        note: 'Word doc. File → Make a copy, then fill it in.',
-        url: '#',
+
+        note: 'Word doc. Download, then File → Save a copy and fill it in.',
+
+        url: SITE_ASSETS.resume.navigateTemplate.href,
+
+        downloadFileName: SITE_ASSETS.resume.navigateTemplate.downloadName,
+
         badge: 'Recommended',
+
     },
+
     {
+
         id: 2,
+
         name: "Jake's Resume",
+
         note: 'The gold standard in CS. Open in Overleaf (free LaTeX editor).',
+
         url: 'https://www.overleaf.com/latex/templates/jakes-resume/syzfjbzwjncs',
+
         badge: 'Popular in CS',
+
     },
+
 ];
 
+
+
 export const RESUME_PATH = [
+
     {
+
         step: 1,
-        action: 'Win 1–2 hackathons',
+
+        action: 'Participate in 1–2 hackathons',
+
         note: 'DevNEU, HackBeanpot: beginner-friendly and local',
+
     },
+
     {
+
         step: 2,
-        action: 'Apply to freshman fellowships',
-        note: 'Jane Street FOCUS, MLT Career Prep, Code for Good',
+
+        action: 'Apply to underclassmen fellowships',
+
+        note: 'Jane Street FOCUS, CodePath, Code2040',
+
     },
+
     {
+
         step: 3,
-        action: 'Reach out to a professor for research',
-        note: 'Cold email works. A strong one gets replies in 1–2 weeks',
+
+        action: 'Reach out to professor for research or startups for experience',
+
+        note: 'Cold email works. Send out 20+ emails and get replies in 1–2 weeks',
+
     },
+
     {
+
         step: 4,
+
         action: 'Build a project with real users',
+
         note: 'Even 10 users counts as a production project on your resume',
+
     },
+
 ];
+
+

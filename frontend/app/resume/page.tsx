@@ -22,7 +22,7 @@ export default function ResumePage() {
                             Build a resume before you have an internship
                         </h1>
                         <p className="text-gray-600 leading-relaxed max-w-2xl">
-                            This page lives on its own so the homepage stays focused. Use the roadmap, download a sample,
+                            Use the roadmap, download a sample,
                             and copy a template. No internship required to get started.
                         </p>
                         <p className="text-sm text-gray-500 mt-4">
