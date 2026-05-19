@@ -1,4 +1,6 @@
 import { SITE_CONFIG } from '@/lib/constants';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 import './globals.css';
 
@@ -60,6 +62,8 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
