@@ -4,6 +4,7 @@ import Hero from '../components/sections/Hero';
 import ColorStackOpportunities from '../components/sections/ColorStackOpportunities';
 import EmptyResourceState from '@/components/ui/EmptyResourceState';
 import FeaturedGuideCarousel from '@/components/ui/FeaturedGuideCarousel';
+import ResumeHomeCta from '@/components/sections/ResumeHomeCta';
 import { NATIONAL_COLORSTACK } from '@/lib/constants';
 import { getFeaturedResources, getHeroStats, getStartHereArticle } from '@/lib/strapi';
 import Link from 'next/link';
@@ -64,17 +65,7 @@ export default async function Home() {
                         </div>
                     </section>
 
-                    <section className="w-full max-w-2xl text-center py-4 border-t border-gray-100">
-                        <p className="text-sm text-gray-600 mb-3">
-                            Confused about your resume? No internship required.
-                        </p>
-                        <Link
-                            href="/resume"
-                            className="inline-flex px-6 py-2.5 bg-neu-red text-white rounded-full text-sm font-semibold hover:bg-red-700 transition-colors"
-                        >
-                            Resume roadmap & samples →
-                        </Link>
-                    </section>
+                    <ResumeHomeCta />
 
                     <section className="w-full max-w-2xl text-center" id="about">
                         <p className="text-[11px] font-bold uppercase tracking-widest text-gray-400 mb-6">About</p>
