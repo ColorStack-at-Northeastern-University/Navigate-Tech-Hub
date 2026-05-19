@@ -63,7 +63,15 @@ Do **not** commit (verify `.gitignore`):
 - Local-only paths under `.cursor/skills/` listed in `.gitignore` (ship-internal-guide, resume-sample-sanitization, publish-gate, opportunity-radar, external-programs-maintenance, colorstack-opportunities-ingest, article-synthesizer)
 - `node_modules/`, `.next/`, `backend/.tmp/`, build artifacts
 
-If skills were previously tracked, remove with `git rm -r --cached .cursor/skills/<name>/` (files stay on disk).
+To stop tracking local-only skills **without deleting files**, use only:
+
+```powershell
+git rm -r --cached .cursor/skills/<name>/
+```
+
+Never `git rm` without `--cached`. Never `git checkout` a branch that lacks ignored files without restoring them afterward.
+
+After untracking, confirm files still exist: `Test-Path .cursor/skills/<name>/SKILL.md`
 
 ## Commit commands (PowerShell)
 
