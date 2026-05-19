@@ -4,10 +4,12 @@ import CircuitPattern from '@/components/ui/CircuitPattern';
 import EmptyResourceState from '@/components/ui/EmptyResourceState';
 import ResourceCard from '@/components/ui/ResourceCard';
 import { notFound } from 'next/navigation';
-import { CATEGORIES, getSubmitResourceUrl } from '@/lib/constants';
+import { CATEGORIES } from '@/lib/constants';
 import { getResourcesByCategory } from '@/lib/strapi';
 import type { ResourceCategory } from '@/lib/types';
 import Link from 'next/link';
+
+export const dynamic = 'force-dynamic';
 
 export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
     const { category } = await params;
@@ -18,8 +20,6 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
     }
 
     const categoryResources = await getResourcesByCategory(category as ResourceCategory);
-    const submitUrl = getSubmitResourceUrl();
-
     return (
         <>
             <Navbar />
@@ -57,14 +57,14 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                             links={[
                                 { href: '/browse', label: 'Browse all guides' },
                                 { href: '/external-resources', label: 'External resources' },
-                                { href: submitUrl, label: 'Suggest a resource', external: true },
+                                { href: '/suggest-resource', label: 'Suggest a resource' },
                             ]}
                         />
                     ) : (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                             {categoryResources.map((resource) => (
                                 <ResourceCard
-                                    key={resource.slug}
+                                    key={`${resource.category}-${resource.slug}`}
                                     resource={resource}
                                     showCategory={false}
                                 />

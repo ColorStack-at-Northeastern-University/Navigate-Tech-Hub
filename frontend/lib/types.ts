@@ -7,8 +7,8 @@
  * Valid resource categories that match the app routing structure.
  *
  * `programs` is External-Resource only — there is no `/programs` article route.
- * It surfaces named, time-bounded opportunities (fellowships, early-career
- * programs, insight events) in the External Resources directory.
+ * It surfaces named recurring programs (fellowships, early-career pipelines,
+ * insight events) in the External Resources directory.
  */
 export type ResourceCategory =
     | 'interview-prep'
@@ -17,6 +17,21 @@ export type ResourceCategory =
     | 'hackathons'
     | 'community'
     | 'programs';
+
+/**
+ * Two-tier directory classification for external resources.
+ *
+ * `tools-and-communities` — stable homepages that rarely change URL
+ * (e.g. NeetCode, NSBE, MLH, ColorStack). Link to the homepage.
+ *
+ * `recurring-program` — named programs that run every cycle; links point to
+ * the permanent program page (never a job-posting URL). Seasonal guidance
+ * replaces deadline tracking.
+ */
+export type DirectoryTier = 'tools-and-communities' | 'recurring-program';
+
+/** When a recurring program typically opens applications or registration. */
+export type TypicalOpenSeason = 'spring' | 'summer' | 'fall' | 'winter' | 'rolling' | 'varies';
 
 /**
  * Difficulty levels for resources.
@@ -36,7 +51,7 @@ export type OfficialStatus = 'official-org' | 'community-vetted';
 
 /**
  * Sub-type of a Programs entry. Drives sub-headings and ordering inside
- * the Programs section of the External Resources page.
+ * the Recurring Programs section of the External Resources page.
  */
 export type ProgramType =
     | 'early-career-program'
@@ -44,21 +59,6 @@ export type ProgramType =
     | 'pre-internship'
     | 'insight-event'
     | 'conference';
-
-/**
- * Application status for Programs. Drives the colored badge and the
- * default ordering inside each programType bucket.
- *
- * `closed-this-cycle` entries are collapsed by default in the UI.
- */
-export type ApplicationStatus =
-    | 'apply-now'
-    | 'closing-soon'
-    | 'rolling'
-    | 'opens-fall-2026'
-    | 'uncertain-2026'
-    | 'closed-this-cycle'
-    | 'year-round';
 
 /**
  * Reasons a Program needs human verification before a student commits to it.
@@ -88,6 +88,7 @@ export interface Resource {
     slug: string;
     category: ResourceCategory;
     title: string;
+    /** One-sentence card blurb for browse/home cards (from `article-card-summaries.json` at publish time). */
     description: string;
     content?: string;
     audienceStage: AudienceStage;
@@ -101,38 +102,27 @@ export interface Resource {
     lastUpdated?: string;
     lastReviewedAt?: string;
     featured?: boolean;
+    /** When true, this article is pinned on the homepage as the "Start Here" entry point. */
+    startHere?: boolean;
+    /** Up to 3 articles to show in the "Continue reading" block at the end of this article. */
+    relatedArticles?: ResourceStub[];
     image?: StrapiImage | null;
 }
 
 /**
- * Represents an external resource link.
- *
- * Program-specific fields (programType, applicationStatus, applicationDeadline,
- * audienceSpecific, bostonLocal, riskFlag, lastVerified, relatedArticleSlug)
- * are only populated when `category === 'programs'`. They default to undefined
- * for community/learning/etc. resources.
+ * Minimal article reference used in "Continue reading" blocks.
+ * Avoids loading full content for sibling articles on an article page.
  */
-export interface ExternalResource {
+export interface ResourceStub {
+    slug: string;
+    /** Hub article category only — not `programs` (that is external directory only). */
+    category: ResourceCategory;
     title: string;
     description: string;
-    url: string;
-    category: ResourceCategory;
-    resourceType: ExternalResourceType;
-    badge?: string;
-    officialStatus?: OfficialStatus;
-    /** From Strapi updatedAt when present in API response */
+    timeToReadMinutes: number;
+    /** From Strapi `publishedAt` when populated — improves card “freshness” line. */
+    publishedDate?: string;
     lastUpdated?: string;
-    programType?: ProgramType;
-    applicationStatus?: ApplicationStatus;
-    /** ISO date string (YYYY-MM-DD) used for "closing-soon" detection and sorting */
-    applicationDeadline?: string;
-    audienceSpecific?: boolean;
-    bostonLocal?: boolean;
-    riskFlag?: RiskFlag;
-    /** ISO date string (YYYY-MM-DD) — date a human last confirmed the program is live */
-    lastVerified?: string;
-    /** Slug of one internal article to pair with this resource (no Strapi relation; intentional decoupling) */
-    relatedArticleSlug?: string;
 }
 
 /**
@@ -148,6 +138,56 @@ export interface ResourceCardProps {
  */
 export interface ExternalResourceCardProps {
     resource: ExternalResource;
+}
+
+/**
+ * Represents an external resource link.
+ *
+ * `directoryTier` determines which section of the External Resources page
+ * the entry appears in:
+ *   - `tools-and-communities` → "Tools & Communities" grids
+ *   - `recurring-program` → "Recurring Programs" section (programType buckets)
+ *
+ * Program-specific fields (programType, seasonalNote, audienceSpecific,
+ * bostonLocal, riskFlag, lastVerified, relatedArticleSlug) are only populated
+ * when `directoryTier === 'recurring-program'`. They default to undefined
+ * for tools/community resources.
+ */
+export interface ExternalResource {
+    /** Strapi document id — stable key for list rendering (URLs may repeat across entries). */
+    documentId?: string;
+    title: string;
+    description: string;
+    url: string;
+    category: ResourceCategory;
+    directoryTier: DirectoryTier;
+    resourceType: ExternalResourceType;
+    badge?: string;
+    officialStatus?: OfficialStatus;
+    /** From Strapi updatedAt when present in API response */
+    lastUpdated?: string;
+    programType?: ProgramType;
+    /**
+     * Seasonal guidance shown instead of deadline tracking.
+     * E.g. "Typically opens in October — visit this page or search [program name] on [company] careers."
+     */
+    seasonalNote?: string;
+    /** Typical application window — drives UI badge and calendar reminder. */
+    typicalOpenSeason?: TypicalOpenSeason;
+    /** Stable careers / students URL when `url` is a rotating program landing page. */
+    careersHubUrl?: string;
+    /** Phrase to search on the careers site, e.g. "UberSTAR". */
+    programSearchHint?: string;
+    audienceSpecific?: boolean;
+    bostonLocal?: boolean;
+    riskFlag?: RiskFlag;
+    /** ISO date string (YYYY-MM-DD) — date a human last confirmed the program page is live */
+    lastVerified?: string;
+    /**
+     * Internal guide to pair with this resource (no Strapi relation; intentional decoupling).
+     * Format: `{category}/{slug}` where category is a hub route segment (e.g. interview-prep), not `programs`.
+     */
+    relatedArticleSlug?: string;
 }
 
 // ---------------------------------------------------------------------------
@@ -192,10 +232,26 @@ export interface StrapiResource {
     author?: string | null;
     lastReviewedAt?: string | null;
     featured?: boolean | null;
+    startHere?: boolean | null;
+    relatedArticles?: StrapiResourceStub[] | null;
     image?: StrapiImage | null;
     publishedAt: string | null;
     updatedAt: string;
     createdAt: string;
+}
+
+/**
+ * Minimal shape returned when populating `relatedArticles` on a resource.
+ */
+export interface StrapiResourceStub {
+    documentId?: string;
+    slug: string;
+    category: ResourceCategory;
+    title: string;
+    description: string;
+    timeToReadMinutes: number;
+    publishedAt?: string | null;
+    updatedAt?: string | null;
 }
 
 /**
@@ -208,12 +264,15 @@ export interface StrapiExternalResource {
     description: string | null;
     url: string;
     category: ResourceCategory;
+    directoryTier: DirectoryTier;
     resourceType: ExternalResourceType;
     badge?: string | null;
     officialStatus?: OfficialStatus | null;
     programType?: ProgramType | null;
-    applicationStatus?: ApplicationStatus | null;
-    applicationDeadline?: string | null;
+    seasonalNote?: string | null;
+    typicalOpenSeason?: TypicalOpenSeason | null;
+    careersHubUrl?: string | null;
+    programSearchHint?: string | null;
     audienceSpecific?: boolean | null;
     bostonLocal?: boolean | null;
     riskFlag?: RiskFlag | null;

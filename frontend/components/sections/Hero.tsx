@@ -1,13 +1,16 @@
 import { SITE_CONFIG } from '@/lib/constants';
+import type { HeroStats } from '@/lib/strapi';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const STATS = [
-    { value: '12+', label: 'Resources', color: '#9C373B', offsetX: 'right-17' },
-    { value: '31+', label: 'External Links', color: '#B9272C', offsetX: 'left-17 -mt-4' },
-    { value: '5', label: 'Categories', color: '#AA0F15', offsetX: 'right-17' },
-    { value: '100%', label: 'Free Access', color: '#6B080C', offsetX: 'left-17 -mt-4' },
-];
+function buildStats(counts: HeroStats) {
+    return [
+        { value: `${counts.resourceCount}+`, label: 'Guides', color: '#9C373B', offsetX: 'right-17' },
+        { value: `${counts.externalCount}+`, label: 'External Links', color: '#B9272C', offsetX: 'left-17 -mt-4' },
+        { value: '5', label: 'Categories', color: '#AA0F15', offsetX: 'right-17' },
+        { value: '100%', label: 'Free Access', color: '#6B080C', offsetX: 'left-17 -mt-4' },
+    ];
+}
 
 function OrbCluster({ position }: { position: 'top-right' | 'bottom-left' }) {
     const base = position === 'top-right'
@@ -52,7 +55,12 @@ function TitleBrackets() {
     );
 }
 
-export default function Hero() {
+interface HeroProps {
+    stats: HeroStats;
+}
+
+export default function Hero({ stats }: HeroProps) {
+    const STATS = buildStats(stats);
     return (
         <section className="mt-14 bg-white py-16 md:py-20 px-8 relative overflow-hidden">
             <OrbCluster position="top-right" />

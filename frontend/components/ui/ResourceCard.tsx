@@ -41,8 +41,7 @@ export default function ResourceCard({ resource, showCategory = false }: Resourc
                 {resource.title}
             </h4>
 
-            {/* Resource Description */}
-            <p className="text-gray-600 mb-4 leading-relaxed">
+            <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3">
                 {resource.description}
             </p>
 

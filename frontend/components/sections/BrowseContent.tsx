@@ -29,14 +29,35 @@ interface BrowseContentProps {
  * Renders the search bar, category filter buttons, and the filtered
  * resource card grid. All filtering happens client-side for instant UX.
  */
+function resourceMatchesSearch(resource: Resource, queryNormalized: string): boolean {
+    if (!queryNormalized) return true;
+    const title = (resource.title ?? '').toLowerCase();
+    const description = (resource.description ?? '').toLowerCase();
+    const tags = (resource.tags ?? []).map((t) => t.toLowerCase()).join(' ');
+    return (
+        title.includes(queryNormalized)
+        || description.includes(queryNormalized)
+        || tags.includes(queryNormalized)
+    );
+}
+
 export default function BrowseContent({ resources }: BrowseContentProps) {
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('all');
 
-    const filteredResources = resources.filter((r) =>
-        (selectedCategory === 'all' || r.category === selectedCategory) &&
-        (r.title ?? '').toLowerCase().includes(searchQuery.toLowerCase())
+    const queryNormalized = searchQuery.trim().toLowerCase();
+
+    const filteredResources = resources.filter(
+        (r) =>
+            (selectedCategory === 'all' || r.category === selectedCategory)
+            && resourceMatchesSearch(r, queryNormalized),
     );
+
+    const countsByCategory = CATEGORIES.reduce<Record<string, number>>((acc, cat) => {
+        if (cat.value === 'all') return acc;
+        acc[cat.value] = resources.filter((r) => r.category === cat.value).length;
+        return acc;
+    }, {});
 
     return (
         <>
@@ -44,8 +65,8 @@ export default function BrowseContent({ resources }: BrowseContentProps) {
             <div className="mb-8">
                 <input
                     type="text"
-                    placeholder="Search resources by title..."
-                    aria-label="Search resources by title"
+                    placeholder="Search by title, description, or tags..."
+                    aria-label="Search guides by title, description, or tags"
                     className="w-full max-w-2xl px-6 py-3 text-base border-2 border-gray-300 rounded-full transition-all duration-300 focus:outline-none focus:border-neu-red focus:shadow-[0_0_0_3px_rgba(212,27,44,0.1)]"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
@@ -66,6 +87,11 @@ export default function BrowseContent({ resources }: BrowseContentProps) {
                         }`}
                     >
                         {category.label}
+                        {category.value !== 'all' && (
+                            <span className="ml-1.5 tabular-nums opacity-80">
+                                ({countsByCategory[category.value] ?? 0})
+                            </span>
+                        )}
                     </button>
                 ))}
             </div>
@@ -75,7 +101,7 @@ export default function BrowseContent({ resources }: BrowseContentProps) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                     {filteredResources.map((resource) => (
                         <ResourceCard
-                            key={resource.slug}
+                            key={`${resource.category}-${resource.slug}`}
                             resource={resource}
                             showCategory={false}
                         />
@@ -84,10 +110,11 @@ export default function BrowseContent({ resources }: BrowseContentProps) {
             ) : (
                 <div className="text-center py-16">
                     <h3 className="text-2xl font-semibold text-red-600 mb-2">
-                        No resources found
+                        No guides match your filters
                     </h3>
-                    <p className="text-gray-600">
-                        Try adjusting your search or filter criteria.
+                    <p className="text-gray-600 max-w-lg mx-auto">
+                        Try clearing the search box, choose “All”, or pick a category that lists at least one guide
+                        (counts are shown on each category pill).
                     </p>
                 </div>
             )}

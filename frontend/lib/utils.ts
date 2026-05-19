@@ -3,7 +3,7 @@
  * Reusable helper functions for formatting, string manipulation, and data processing
  */
 
-import { ResourceCategory } from './types';
+import type { ExternalResource, ResourceCategory } from './types';
 
 /**
  * Formats an ISO date string into a human-readable format.
@@ -96,6 +96,14 @@ export function getCategoryColor(category: ResourceCategory): string {
  * truncateText('This is a very long description', 20) 
  * // => 'This is a very long...'
  */
+/**
+ * React list key for external resource rows. Prefer Strapi `documentId`; fall back when absent (sample data).
+ */
+export function externalResourceListKey(resource: ExternalResource): string {
+    if (resource.documentId) return resource.documentId;
+    return `${resource.category}:${resource.title}:${resource.url}`;
+}
+
 export function truncateText(text: string, maxLength: number): string {
     if (text.length <= maxLength) {
         return text;

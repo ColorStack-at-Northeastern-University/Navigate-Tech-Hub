@@ -40,7 +40,11 @@ export default function NotFound() {
                         <Link href="/external-resources" className="text-neu-red underline hover:text-red-700">
                             External Resources
                         </Link>
-                        {' '}from the menu.
+                        , or read the{' '}
+                        <Link href="/faq" className="text-neu-red underline hover:text-red-700">
+                            FAQ
+                        </Link>
+                        .
                     </p>
                     <p className="text-gray-600 text-sm">
                         Looking for{' '}

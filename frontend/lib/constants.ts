@@ -94,8 +94,12 @@ export const SITE_CONFIG = {
         github: 'https://github.com/ColorStack-at-Northeastern-University/Navigate-Tech-Hub',
     },
     footer: {
-        copyright: '2025 Navigate Tech Hub — Northeastern University x ColorStack',
+        copyright: `${new Date().getFullYear()} Navigate Tech Hub · Northeastern University x ColorStack`,
         tagline: 'Built by students, for students',
+    },
+    directContact: {
+        email: 'odubiyi.a@northeastern.edu',
+        prompt: 'Reach out to me directly!',
     },
 } as const;
 
@@ -113,14 +117,13 @@ export const NATIONAL_COLORSTACK = {
  * URL for “Suggest a resource” (Google Form, Typeform, etc.).
  * Set NEXT_PUBLIC_SUBMIT_RESOURCE_URL in .env for production; otherwise falls back to a GitHub issue template.
  */
+/** Primary intake for directory suggestions — on-site form, not a raw GitHub URL. */
 export function getSubmitResourceUrl(): string {
     const fromEnv = process.env.NEXT_PUBLIC_SUBMIT_RESOURCE_URL?.trim();
     if (fromEnv) {
         return fromEnv;
     }
-    const base = SITE_CONFIG.social.github;
-    const title = encodeURIComponent('Suggest a resource');
-    return `${base}/issues/new?labels=content&title=${title}`;
+    return '/suggest-resource';
 }
 
 /**
@@ -130,8 +133,10 @@ export function getSubmitResourceUrl(): string {
 export const NAV_LINKS = [
     { href: '/', label: 'Home' },
     { href: '/browse', label: 'Browse' },
+    { href: '/resume', label: 'Resume' },
     { href: '/external-resources', label: 'External Resources' },
-    { href: '/about#get-involved', label: 'Contributions' },
+    { href: '/contributions', label: 'Contributions' },
+    { href: '/faq', label: 'FAQ' },
     { href: '/about', label: 'About' },
 ] as const;
 
