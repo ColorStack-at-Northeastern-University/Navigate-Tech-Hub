@@ -100,11 +100,14 @@ export default function ColorStackOpportunities() {
                         ColorStack Opportunities
                     </a>
                 </h2>
-                <p className="text-gray-400 mb-10 max-w-2xl text-sm md:text-base mt-3">
-                    Sourced from the ColorStack{' '}
-                    <span className="text-white/80 font-medium">#opportunities</span> channel. Join ColorStack if you
-                    haven&apos;t already so you can see for yourself!
-                </p>
+                <div className="text-gray-400 mb-10 max-w-2xl text-sm md:text-base mt-3 space-y-2">
+                    <p>
+                        Sourced from the ColorStack{' '}
+                        <span className="text-white/80 font-medium">#opportunities</span>
+                        {' '}channel.
+                    </p>
+                    <p>Join ColorStack if you haven&apos;t already so you can see for yourself!</p>
+                </div>
 
                 <div className="relative">
                     <div
