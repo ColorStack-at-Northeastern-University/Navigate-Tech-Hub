@@ -6,6 +6,13 @@
         "-y",
         "@bschauer/strapi-mcp-server@2.8.0"
       ]
+    },
+    "docx-editor": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "docx-mcp-server"
+      ]
     }
   }
 }
