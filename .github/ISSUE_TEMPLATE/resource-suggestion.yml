@@ -1,0 +1,73 @@
+name: Suggest a resource
+description: Propose a tool, community link, or recurring program for the External Resources directory
+title: "[Suggestion] "
+labels:
+  - resource-suggestion
+  - triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve the directory. Submissions are reviewed manually before anything is added to Strapi.
+        Prefer the suggestion form on Navigate Tech Hub (`/suggest-resource`) if you are already on the site — same fields, same labels.
+
+  - type: input
+    id: resource-name
+    attributes:
+      label: Resource name
+      description: Official name of the tool, community, or program
+      placeholder: e.g. Jane Street JSIP
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: Homepage or permanent program page — not a single job posting
+      placeholder: https://
+    validations:
+      required: true
+
+  - type: dropdown
+    id: suggested-tier
+    attributes:
+      label: Directory tier
+      description: Tools & communities = stable homepage; Recurring program = runs every cycle
+      options:
+        - tools-and-communities
+        - recurring-program
+        - unsure
+    validations:
+      required: true
+
+  - type: dropdown
+    id: suggested-category
+    attributes:
+      label: Category
+      options:
+        - interview-prep
+        - projects
+        - community
+        - hackathons
+        - classes
+        - programs
+        - unsure
+    validations:
+      required: true
+
+  - type: textarea
+    id: why-it-matters
+    attributes:
+      label: Why it matters
+      description: Who this helps and why it belongs in a curated student hub (not a generic link dump)
+      placeholder: This helps first-year students who…
+    validations:
+      required: true
+
+  - type: input
+    id: contact
+    attributes:
+      label: Contact (optional)
+      description: Discord, email, or GitHub — for follow-up only
+      placeholder: "@handle"

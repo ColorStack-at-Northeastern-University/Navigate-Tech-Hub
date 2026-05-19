@@ -1,0 +1,48 @@
+name: Internal resource suggestion
+description: Propose a new internal guide or article topic for Navigate Tech Hub
+title: "[Guide idea] "
+labels:
+  - internal-resource-suggestion
+  - triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Pitch a guide topic for the hub's internal articles (recruiting, interview prep, portfolio, etc.).
+        Prefer the Contributions page on the site if you are already browsing the hub.
+
+  - type: input
+    id: guide-title
+    attributes:
+      label: Working title
+      placeholder: e.g. How to read a return offer
+    validations:
+      required: true
+
+  - type: textarea
+    id: audience
+    attributes:
+      label: Who is this for?
+      description: Year, background, or moment in the journey (e.g. first recruiting cycle)
+    validations:
+      required: true
+
+  - type: textarea
+    id: outcomes
+    attributes:
+      label: What should the reader be able to do after reading?
+      description: 2–3 concrete outcomes
+    validations:
+      required: true
+
+  - type: textarea
+    id: draft-intent
+    attributes:
+      label: Do you want to draft it yourself?
+      description: Optional — say yes if you plan to open a PR with a draft in `docs/internal_resources_drafts/`
+
+  - type: input
+    id: contact
+    attributes:
+      label: Contact (optional)
+      placeholder: "@github or email"
