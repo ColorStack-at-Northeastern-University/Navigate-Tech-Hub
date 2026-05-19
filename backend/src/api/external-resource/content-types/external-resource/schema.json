@@ -36,6 +36,14 @@
       ],
       "required": true
     },
+    "directoryTier": {
+      "type": "enumeration",
+      "enum": [
+        "tools-and-communities",
+        "recurring-program"
+      ],
+      "required": true
+    },
     "resourceType": {
       "type": "enumeration",
       "enum": [
@@ -69,20 +77,25 @@
         "conference"
       ]
     },
-    "applicationStatus": {
+    "seasonalNote": {
+      "type": "text"
+    },
+    "typicalOpenSeason": {
       "type": "enumeration",
       "enum": [
-        "apply-now",
-        "closing-soon",
+        "spring",
+        "summer",
+        "fall",
+        "winter",
         "rolling",
-        "opens-fall-2026",
-        "uncertain-2026",
-        "closed-this-cycle",
-        "year-round"
+        "varies"
       ]
     },
-    "applicationDeadline": {
-      "type": "date"
+    "careersHubUrl": {
+      "type": "string"
+    },
+    "programSearchHint": {
+      "type": "string"
     },
     "audienceSpecific": {
       "type": "boolean",

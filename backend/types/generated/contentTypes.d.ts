@@ -423,22 +423,11 @@ export interface ApiExternalResourceExternalResource
     draftAndPublish: true;
   };
   attributes: {
-    applicationDeadline: Schema.Attribute.Date;
-    applicationStatus: Schema.Attribute.Enumeration<
-      [
-        'apply-now',
-        'closing-soon',
-        'rolling',
-        'opens-fall-2026',
-        'uncertain-2026',
-        'closed-this-cycle',
-        'year-round',
-      ]
-    >;
     audienceSpecific: Schema.Attribute.Boolean &
       Schema.Attribute.DefaultTo<false>;
     badge: Schema.Attribute.String;
     bostonLocal: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    careersHubUrl: Schema.Attribute.String;
     category: Schema.Attribute.Enumeration<
       [
         'interview-prep',
@@ -454,6 +443,10 @@ export interface ApiExternalResourceExternalResource
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text & Schema.Attribute.Required;
+    directoryTier: Schema.Attribute.Enumeration<
+      ['tools-and-communities', 'recurring-program']
+    > &
+      Schema.Attribute.Required;
     lastVerified: Schema.Attribute.Date;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -464,6 +457,7 @@ export interface ApiExternalResourceExternalResource
     officialStatus: Schema.Attribute.Enumeration<
       ['official-org', 'community-vetted']
     >;
+    programSearchHint: Schema.Attribute.String;
     programType: Schema.Attribute.Enumeration<
       [
         'early-career-program',
@@ -490,7 +484,11 @@ export interface ApiExternalResourceExternalResource
     riskFlag: Schema.Attribute.Enumeration<
       ['dei-rollback-risk', 'deprecated-soon', 'verify-before-applying']
     >;
+    seasonalNote: Schema.Attribute.Text;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    typicalOpenSeason: Schema.Attribute.Enumeration<
+      ['spring', 'summer', 'fall', 'winter', 'rolling', 'varies']
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -540,9 +538,14 @@ export interface ApiResourceResource extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     outcome: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    relatedArticles: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::resource.resource'
+    >;
     slug: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
+    startHere: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     tags: Schema.Attribute.JSON;
     timeToReadMinutes: Schema.Attribute.Integer &
       Schema.Attribute.Required &

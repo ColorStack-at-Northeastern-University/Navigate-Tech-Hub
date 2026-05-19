@@ -7,7 +7,7 @@ export default [
     config: {
       origin: [
         'http://localhost:3000',
-        // Add production URL here when deploying (e.g. Vercel domain)
+        ...(process.env.STRAPI_CORS_ORIGINS?.split(',').map((o) => o.trim()).filter(Boolean) ?? []),
       ],
     },
   },

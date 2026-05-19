@@ -89,6 +89,15 @@
       "type": "boolean",
       "default": false
     },
+    "startHere": {
+      "type": "boolean",
+      "default": false
+    },
+    "relatedArticles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::resource.resource"
+    },
     "image": {
       "type": "media",
       "multiple": false,
