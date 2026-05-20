@@ -2,6 +2,8 @@
 
 import { useRef } from 'react';
 import { COLORSTACK_OPPORTUNITIES, type ColorStackOpportunity } from '@/data/opportunities';
+import { downloadTextFile } from '@/lib/downloadTextFile';
+import { buildOpportunitiesCsv, opportunitiesCsvFilename } from '@/lib/opportunitiesCsv';
 
 const TYPE_LABELS: Record<ColorStackOpportunity['type'], string> = {
     internship: 'Internship',
@@ -86,6 +88,11 @@ export default function ColorStackOpportunities() {
         scrollRef.current?.scrollBy({ left: 360, behavior: 'smooth' });
     }
 
+    function downloadCsv() {
+        const csv = buildOpportunitiesCsv(COLORSTACK_OPPORTUNITIES);
+        downloadTextFile(opportunitiesCsvFilename(), csv, 'text/csv;charset=utf-8');
+    }
+
     return (
         <section className="relative bg-neu-black py-16 px-8">
             <div className="max-w-7xl mx-auto">
@@ -99,13 +106,25 @@ export default function ColorStackOpportunities() {
                         ColorStack Opportunities
                     </a>
                 </h2>
-                <div className="text-gray-400 mb-10 max-w-2xl text-sm md:text-base mt-3 space-y-2">
-                    <p>
-                        Sourced from the ColorStack{' '}
-                        <span className="text-white/80 font-medium">#opportunities</span>
-                        {' '}channel.
-                    </p>
-                    <p>Join ColorStack if you haven&apos;t already so you can see for yourself!</p>
+                <div className="flex flex-col gap-4 mb-10 max-w-2xl mt-3 sm:flex-row sm:items-end sm:justify-between sm:max-w-none">
+                    <div className="text-gray-400 text-sm md:text-base space-y-2 max-w-2xl">
+                        <p>
+                            Sourced from the ColorStack{' '}
+                            <span className="text-white/80 font-medium">#opportunities</span>
+                            {' '}channel.
+                        </p>
+                        <p>Join ColorStack if you haven&apos;t already so you can see for yourself!</p>
+                        <p className="text-xs text-gray-500">
+                            CSV includes all {COLORSTACK_OPPORTUNITIES.length} opportunities in this hub snapshot (not live Slack).
+                        </p>
+                    </div>
+                    <button
+                        type="button"
+                        onClick={downloadCsv}
+                        className="shrink-0 self-start rounded-lg border border-white/25 bg-white/10 px-4 py-2 text-sm font-semibold text-white hover:bg-white/15 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-neu-black"
+                    >
+                        Download CSV
+                    </button>
                 </div>
 
                 <div className="relative">
