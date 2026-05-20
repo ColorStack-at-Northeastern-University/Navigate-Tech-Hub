@@ -35,9 +35,16 @@ export function isProdPlaywrightRun(): boolean {
 export function normalizeInternalPath(href: string): string | null {
     if (!href || href.startsWith('mailto:') || href.startsWith('tel:')) return null;
 
-    const pathOnly = href.startsWith('http')
-        ? new URL(href).pathname
-        : href.split('?')[0].split('#')[0];
+    let pathOnly: string;
+    if (/^https?:\/\//i.test(href)) {
+        try {
+            pathOnly = new URL(href).pathname;
+        } catch {
+            return null;
+        }
+    } else {
+        pathOnly = href.split('?')[0].split('#')[0];
+    }
 
     if (!pathOnly.startsWith('/')) return null;
     return pathOnly.replace(/\/$/, '') || '/';

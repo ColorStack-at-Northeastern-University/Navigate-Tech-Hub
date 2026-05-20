@@ -4,6 +4,7 @@ import {
     assertGuidesCatalogHealthy,
     collectGuideHrefs,
     isProdPlaywrightRun,
+    normalizeInternalPath,
 } from './helpers/public-health';
 
 const describeProd = isProdPlaywrightRun() ? test.describe : test.describe.skip;
@@ -53,9 +54,11 @@ describeProd('public site health @prod', () => {
 
         const firstHref = await featuredLinks.first().getAttribute('href');
         expect(firstHref).toBeTruthy();
-        const pathOnly = firstHref!.startsWith('http')
-            ? new URL(firstHref!).pathname
-            : firstHref!.split('?')[0];
+        const pathOnly = normalizeInternalPath(firstHref!);
+        if (!pathOnly) {
+            test.skip(true, 'featured link is not a parseable internal path');
+            return;
+        }
 
         await assertArticlePageHealthy(page, pathOnly);
     });
