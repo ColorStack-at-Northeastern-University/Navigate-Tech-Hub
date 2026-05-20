@@ -105,15 +105,25 @@ git push origin develop
 
 If push rejected: `git pull --rebase origin develop`, resolve conflicts, re-run checks, push again.
 
-## Merge to main
+## Merge to main (triggers Vercel production)
+
+Pushing **`origin/main`** deploys **`navigate-tech-hub`** production (`navigate-tech-hub.vercel.app`).
+Pushing **`develop` only** creates a **Preview** deploy — not production.
+
+When the user says **redeploy**, **ship to prod**, or **update production**:
 
 ```powershell
+git fetch origin
 git checkout main
 git pull origin main
 git merge develop -m "merge develop into main"
 git push origin main
 git checkout develop
 ```
+
+Optional: confirm in Vercel dashboard or `npx vercel api "/v6/deployments?projectId=prj_Izfxcpr67RFb8HToRNylhc8lhXUv&limit=1"` that latest production `githubCommitRef` is `main` and `readyState` is `READY`.
+
+Dashboard **Redeploy** without a new `main` push rebuilds the **same commit** — use only after env var changes, not to land `develop` code.
 
 If merge conflicts: resolve, `git add`, `git commit` (merge commit), push `main`, return to `develop`.
 

@@ -1,5 +1,21 @@
 # Deployment
 
+## Vercel Git deploys (Navigate Tech Hub)
+
+| Project | Git connected | Production branch | Production URL |
+|---------|---------------|-------------------|----------------|
+| `navigate-tech-hub` | Yes | `main` | `https://navigate-tech-hub.vercel.app` |
+| `navigate-tech-hub-6st3` | **No** (retired) | — | frozen last deploy only |
+
+**What triggers a deploy**
+
+- Push to **`develop`** → Preview deployment on `navigate-tech-hub` only (not production).
+- Push to **`main`** → Production deployment on `navigate-tech-hub` (auto-promoted to `navigate-tech-hub.vercel.app`).
+
+**Common mistake:** Merging or committing on `develop` and expecting production to update. Production stays on the last **`main`** commit until you merge `develop` → `main` and **`git push origin main`**. Dashboard **Redeploy** rebuilds the *current* production commit (same SHA); it does not pull in `develop`.
+
+**Monorepo:** Project root directory in Vercel is `frontend` (not repo root).
+
 ## Frontend Environment Variables
 
 ### Local Next.js (`frontend/.env.local`)

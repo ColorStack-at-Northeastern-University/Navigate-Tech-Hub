@@ -1,0 +1,42 @@
+---
+description: Vercel MCP/CLI guardrails for Navigate Tech Hub. Apply when using Vercel MCP, changing deploy settings, env, domains, or consolidating projects.
+alwaysApply: false
+---
+
+# Vercel MCP / CLI guardrails
+
+## Production truth (until user confirms cutover)
+
+- **`navigate-tech-hub-6st3`** is the working production deploy (`frontend` root, Next.js).
+- **`navigate-tech-hub`** is the target canonical hostname; currently misconfigured (repo root, wrong framework).
+- Do not treat the short-name project as production-ready until a successful deploy is verified.
+
+## Never without explicit user approval in the same task
+
+- Delete or rename any Vercel project.
+- Disconnect Git or change production branch / repo link.
+- Production rollback, promote old deployment, or alias swap.
+- Add, remove, or overwrite environment variables (no bulk copy; never log or commit secret values).
+- Change root directory, framework preset, build/install commands, or Node version.
+- `deploy_to_vercel`, `vercel deploy --prod`, or any production deploy.
+- Domains, DNS, redirects at project level, or domain purchase.
+- Write changes on **`navigate-tech-hub-6st3`** except read-only inspection.
+
+## Default mode
+
+- **Read-only first:** `list_projects`, `get_project`, `list_deployments`, `get_deployment`, build/runtime logs, `search_vercel_documentation`.
+- Propose a numbered checklist; execute **one write step** only after the user says to proceed (e.g. “do step 2” or “go ahead”).
+- If a deploy fails, diagnose only—do not chain unapproved fixes.
+
+## Consolidation write target
+
+- Configuration writes apply only to **`navigate-tech-hub`** unless the user explicitly authorizes retiring `6st3`.
+- Repo changes (e.g. `frontend/vercel.json` host redirect) follow normal git workflow; user must approve commits.
+
+## MCP vs CLI
+
+- Vercel MCP does **not** expose project PATCH, env CRUD, or git disconnect—use CLI only when approved, with the same guardrails above.
+
+## Official MCP endpoint
+
+- Use `https://mcp.vercel.com` in `.cursor/mcp.json` (not `mcp-vercel.com`).

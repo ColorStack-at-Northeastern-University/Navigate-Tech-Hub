@@ -78,7 +78,7 @@ export default async function ExternalResourcesPage() {
 
                     {/* Honest-expectations disclaimer */}
                     <p className="text-sm text-gray-500 max-w-3xl mb-10">
-                        This directory is curated, not exhaustive. We point to the 20–30 tools and programs
+                        This directory is curated, not exhaustive. We point to the tools and programs
                         that matter most, with honest seasonal context for programs.
                         Links verified by a human; last-verified dates shown on each card.{' '}
                         <Link href="/suggest-resource" className="text-neu-red underline underline-offset-2 hover:opacity-80">
