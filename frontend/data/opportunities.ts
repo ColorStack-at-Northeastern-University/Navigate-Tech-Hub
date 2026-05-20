@@ -32,7 +32,7 @@ const RAW_COLORSTACK_OPPORTUNITIES: ColorStackOpportunity[] = [
         tags: ['Insight Event', 'Women in Tech', 'Quant', 'Summer 2026'],
     },
 
-    // ── No explicit deadline: ordered by paste recency (newest first); pasteIndex assigned on sort ──
+    // ── No explicit deadline: sort by pasteIndex desc (global ingest rank; higher = newer) ──
     {
         id: 70,
         title: 'Associate Product Manager, MuleSoft',
@@ -42,7 +42,7 @@ const RAW_COLORSTACK_OPPORTUNITIES: ColorStackOpportunity[] = [
         type: 'new-grad',
         location: 'San Francisco, CA',
         tags: ['Product', 'PM', 'New Grad'],
-        pasteIndex: 5,
+        pasteIndex: 75,
     },
     {
         id: 69,
@@ -52,7 +52,7 @@ const RAW_COLORSTACK_OPPORTUNITIES: ColorStackOpportunity[] = [
         type: 'internship',
         location: 'Seattle, WA',
         tags: ['SWE'],
-        pasteIndex: 4,
+        pasteIndex: 74,
     },
     {
         id: 68,
@@ -63,7 +63,7 @@ const RAW_COLORSTACK_OPPORTUNITIES: ColorStackOpportunity[] = [
         type: 'internship',
         location: 'San Jose, CA',
         tags: ['Program Management', 'Clean Energy', 'Summer 2026'],
-        pasteIndex: 3,
+        pasteIndex: 73,
     },
     {
         id: 67,
@@ -73,7 +73,7 @@ const RAW_COLORSTACK_OPPORTUNITIES: ColorStackOpportunity[] = [
         description: 'Research intern role focused on high-performance quantum error-correcting code discovery.',
         type: 'internship',
         tags: ['Research', 'Quantum', 'AI/ML', 'Fall 2026'],
-        pasteIndex: 2,
+        pasteIndex: 72,
     },
     {
         id: 66,
@@ -84,7 +84,7 @@ const RAW_COLORSTACK_OPPORTUNITIES: ColorStackOpportunity[] = [
         type: 'program',
         location: 'New York, NY',
         tags: ['SWE', 'Early Career', 'Summer 2026'],
-        pasteIndex: 1,
+        pasteIndex: 71,
     },
     {
         id: 2,
