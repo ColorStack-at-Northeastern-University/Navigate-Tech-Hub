@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { checkSuggestRateLimit } from '@/lib/suggest-rate-limit';
+import { normalizeSuggestionUrl } from '@/lib/suggest-url';
 
 /**
  * POST /api/suggest-resource
@@ -50,15 +51,6 @@ function validatePayload(body: unknown): SuggestionPayload | null {
         whyItMatters: b.whyItMatters.trim().slice(0, 2000),
         contact: typeof b.contact === 'string' ? b.contact.trim().slice(0, 200) : undefined,
     };
-}
-
-function isAllowedSuggestionUrl(rawUrl: string): boolean {
-    try {
-        const parsedUrl = new URL(rawUrl);
-        return parsedUrl.protocol === 'http:' || parsedUrl.protocol === 'https:';
-    } catch {
-        return false;
-    }
 }
 
 /**
@@ -124,12 +116,14 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         );
     }
 
-    if (!isAllowedSuggestionUrl(payload.url)) {
+    const normalizedUrl = normalizeSuggestionUrl(payload.url);
+    if (!normalizedUrl.ok) {
         return NextResponse.json(
-            { error: 'Enter a valid http or https URL for the resource.' },
+            { error: 'Enter a valid URL for the resource (http or https).' },
             { status: 422 },
         );
     }
+    payload.url = normalizedUrl.url;
 
     const issueBody = {
         title: `[Suggestion] ${payload.resourceName}`,

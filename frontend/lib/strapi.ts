@@ -11,7 +11,9 @@
  *   - Media fields require `populate` to be included in responses
  */
 
+import { unstable_noStore as noStore } from 'next/cache';
 import { SAMPLE_ARTICLES, SAMPLE_EXTERNAL_RESOURCES } from '@/data/sample-resources';
+import type { GuidesCatalogResult } from './guides-catalog';
 import type {
     Resource,
     ResourceStub,
@@ -46,10 +48,31 @@ function shouldUseStrapiSampleFallback(): boolean {
     return process.env.NODE_ENV === 'development';
 }
 
-function assertNonEmptyResourceList(resources: Resource[], context: string): void {
-    if (shouldUseStrapiSampleFallback() || resources.length > 0) return;
+function isStrapiTokenConfigured(): boolean {
+    return typeof STRAPI_API_TOKEN === 'string' && STRAPI_API_TOKEN.trim().length > 0;
+}
 
-    throw new Error(`[strapi] ${context}: zero published resources in production`);
+function finalizeGuidesCatalogResult(
+    resources: Resource[],
+    context: string,
+    fetchFailed: boolean,
+): GuidesCatalogResult {
+    if (resources.length > 0) {
+        return { resources, loadStatus: 'loaded' };
+    }
+
+    if (shouldUseStrapiSampleFallback()) {
+        return { resources, loadStatus: 'empty' };
+    }
+
+    if (fetchFailed || !isStrapiTokenConfigured()) {
+        console.error(`[strapi] ${context}: guides catalog unavailable in production`);
+        noStore();
+        return { resources: [], loadStatus: 'unavailable' };
+    }
+
+    console.warn(`[strapi] ${context}: zero published resources in production`);
+    return { resources: [], loadStatus: 'empty' };
 }
 
 /** Fields to return for resource list views (everything except `content`). */
@@ -536,7 +559,7 @@ function compactExternalResources(records: Array<ExternalResource | null>): Exte
  * Fetches resources marked as featured for the homepage grid.
  * Returns up to 6 results sorted by most recent first.
  */
-export async function getFeaturedResources(): Promise<Resource[]> {
+export async function getFeaturedResources(): Promise<GuidesCatalogResult> {
     try {
         const query = buildQuery([
             ['filters[featured][$eq]', 'true'],
@@ -551,12 +574,16 @@ export async function getFeaturedResources(): Promise<Resource[]> {
         );
 
         const resources = compactResources(normalizeResourceRows(res).map(mapResource));
-        assertNonEmptyResourceList(resources, 'getFeaturedResources');
-        return resources;
+        return finalizeGuidesCatalogResult(resources, 'getFeaturedResources', false);
     } catch (error) {
         console.error('[strapi] getFeaturedResources failed:', error);
-        if (!shouldUseStrapiSampleFallback()) throw error;
-        return SAMPLE_ARTICLES.filter((r) => r.featured);
+        if (shouldUseStrapiSampleFallback()) {
+            return {
+                resources: SAMPLE_ARTICLES.filter((r) => r.featured),
+                loadStatus: 'loaded',
+            };
+        }
+        return finalizeGuidesCatalogResult([], 'getFeaturedResources', true);
     }
 }
 
@@ -564,7 +591,7 @@ export async function getFeaturedResources(): Promise<Resource[]> {
  * Fetches all published resources for the browse page.
  * The browse page handles search and category filtering client-side.
  */
-export async function getAllResources(): Promise<Resource[]> {
+export async function getAllResources(): Promise<GuidesCatalogResult> {
     try {
         const pageSize = 100;
         let page = 1;
@@ -591,12 +618,13 @@ export async function getAllResources(): Promise<Resource[]> {
             page += 1;
         }
 
-        assertNonEmptyResourceList(aggregated, 'getAllResources');
-        return aggregated;
+        return finalizeGuidesCatalogResult(aggregated, 'getAllResources', false);
     } catch (error) {
         console.error('[strapi] getAllResources failed:', error);
-        if (!shouldUseStrapiSampleFallback()) throw error;
-        return SAMPLE_ARTICLES;
+        if (shouldUseStrapiSampleFallback()) {
+            return { resources: SAMPLE_ARTICLES, loadStatus: 'loaded' };
+        }
+        return finalizeGuidesCatalogResult([], 'getAllResources', true);
     }
 }
 
@@ -604,7 +632,7 @@ export async function getAllResources(): Promise<Resource[]> {
  * Fetches all resources in a specific category.
  * Used by the dynamic `[category]/page.tsx` route.
  */
-export async function getResourcesByCategory(category: ResourceCategory): Promise<Resource[]> {
+export async function getResourcesByCategory(category: ResourceCategory): Promise<GuidesCatalogResult> {
     try {
         const pageSize = 100;
         let page = 1;
@@ -632,12 +660,16 @@ export async function getResourcesByCategory(category: ResourceCategory): Promis
             page += 1;
         }
 
-        assertNonEmptyResourceList(aggregated, `getResourcesByCategory(${category})`);
-        return aggregated;
+        return finalizeGuidesCatalogResult(aggregated, `getResourcesByCategory(${category})`, false);
     } catch (error) {
         console.error('[strapi] getResourcesByCategory failed:', error);
-        if (!shouldUseStrapiSampleFallback()) throw error;
-        return SAMPLE_ARTICLES.filter((r) => r.category === category);
+        if (shouldUseStrapiSampleFallback()) {
+            return {
+                resources: SAMPLE_ARTICLES.filter((r) => r.category === category),
+                loadStatus: 'loaded',
+            };
+        }
+        return finalizeGuidesCatalogResult([], `getResourcesByCategory(${category})`, true);
     }
 }
 

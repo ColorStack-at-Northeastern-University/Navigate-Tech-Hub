@@ -6,15 +6,22 @@ import EmptyResourceState from '@/components/ui/EmptyResourceState';
 import FeaturedGuideCarousel from '@/components/ui/FeaturedGuideCarousel';
 import ResumeHomeCta from '@/components/sections/ResumeHomeCta';
 import { NATIONAL_COLORSTACK } from '@/lib/constants';
+import { resolveGuidesEmptyState } from '@/lib/guides-catalog';
 import { getFeaturedResources, getHeroStats, getStartHereArticle } from '@/lib/strapi';
 import Link from 'next/link';
 
 export default async function Home() {
-    const [featuredResources, startHereArticle, heroStats] = await Promise.all([
+    const [featuredCatalog, startHereArticle, heroStats] = await Promise.all([
         getFeaturedResources(),
         getStartHereArticle(),
         getHeroStats(),
     ]);
+    const featuredResources = featuredCatalog.resources;
+    const featuredEmptyState = resolveGuidesEmptyState(featuredCatalog.loadStatus, {
+        title: 'No featured guides yet',
+        body: 'Editors can mark entries as featured in Strapi.',
+        links: [{ href: '/browse', label: 'Browse all guides' }],
+    });
 
     return (
         <>
@@ -47,12 +54,8 @@ export default async function Home() {
 
                     <section className="w-full max-w-4xl">
                         <p className="text-[11px] font-bold uppercase tracking-widest text-gray-400 text-center mb-6">Featured guides</p>
-                        {featuredResources.length === 0 ? (
-                            <EmptyResourceState
-                                title="No featured guides yet"
-                                body="Editors can mark entries as featured in Strapi."
-                                links={[{ href: '/browse', label: 'Browse all guides' }]}
-                            />
+                        {featuredEmptyState ? (
+                            <EmptyResourceState {...featuredEmptyState} />
                         ) : (
                             <FeaturedGuideCarousel resources={featuredResources} />
                         )}

@@ -3,10 +3,20 @@ import Navbar from '@/components/layout/Navbar';
 import BrowseContent from '@/components/sections/BrowseContent';
 import CircuitPattern from '@/components/ui/CircuitPattern';
 import EmptyResourceState from '@/components/ui/EmptyResourceState';
+import { resolveGuidesEmptyState } from '@/lib/guides-catalog';
 import { getAllResources } from '@/lib/strapi';
 
 export default async function BrowsePage() {
-    const resources = await getAllResources();
+    const catalog = await getAllResources();
+    const resources = catalog.resources;
+    const emptyState = resolveGuidesEmptyState(catalog.loadStatus, {
+        title: 'No guides published yet',
+        body: "Once editors add articles in Strapi, they'll show up here. You can still explore external links or suggest content.",
+        links: [
+            { href: '/external-resources', label: 'External resources' },
+            { href: '/suggest-resource', label: 'Suggest a resource' },
+        ],
+    });
 
     return (
         <>
@@ -28,15 +38,8 @@ export default async function BrowsePage() {
                 <div className="container-custom">
                     <p className="text-[#de0911] text-4xl md:text-5xl font-bold mb-8">&lt;&gt;</p>
 
-                    {resources.length === 0 ? (
-                        <EmptyResourceState
-                            title="No guides published yet"
-                            body="Once editors add articles in Strapi, they'll show up here. You can still explore external links or suggest content."
-                            links={[
-                                { href: '/external-resources', label: 'External resources' },
-                                { href: '/suggest-resource', label: 'Suggest a resource' },
-                            ]}
-                        />
+                    {emptyState ? (
+                        <EmptyResourceState {...emptyState} />
                     ) : (
                         <BrowseContent resources={resources} />
                     )}

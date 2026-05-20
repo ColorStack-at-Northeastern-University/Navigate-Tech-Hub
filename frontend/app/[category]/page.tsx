@@ -5,6 +5,7 @@ import EmptyResourceState from '@/components/ui/EmptyResourceState';
 import ResourceCard from '@/components/ui/ResourceCard';
 import { notFound } from 'next/navigation';
 import { CATEGORIES } from '@/lib/constants';
+import { resolveGuidesEmptyState } from '@/lib/guides-catalog';
 import { getResourcesByCategory } from '@/lib/strapi';
 import type { ResourceCategory } from '@/lib/types';
 import Link from 'next/link';
@@ -17,7 +18,17 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
         notFound();
     }
 
-    const categoryResources = await getResourcesByCategory(category as ResourceCategory);
+    const categoryCatalog = await getResourcesByCategory(category as ResourceCategory);
+    const categoryResources = categoryCatalog.resources;
+    const categoryEmptyState = resolveGuidesEmptyState(categoryCatalog.loadStatus, {
+        title: `No guides in ${categoryData.label} yet`,
+        body: 'We are still building this section. Browse other categories, check external tools, or suggest something we should add.',
+        links: [
+            { href: '/browse', label: 'Browse all guides' },
+            { href: '/external-resources', label: 'External resources' },
+            { href: '/suggest-resource', label: 'Suggest a resource' },
+        ],
+    });
     return (
         <>
             <Navbar />
@@ -48,16 +59,8 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                         </p>
                     )}
 
-                    {categoryResources.length === 0 ? (
-                        <EmptyResourceState
-                            title={`No guides in ${categoryData.label} yet`}
-                            body="We are still building this section. Browse other categories, check external tools, or suggest something we should add."
-                            links={[
-                                { href: '/browse', label: 'Browse all guides' },
-                                { href: '/external-resources', label: 'External resources' },
-                                { href: '/suggest-resource', label: 'Suggest a resource' },
-                            ]}
-                        />
+                    {categoryEmptyState ? (
+                        <EmptyResourceState {...categoryEmptyState} />
                     ) : (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                             {categoryResources.map((resource) => (
