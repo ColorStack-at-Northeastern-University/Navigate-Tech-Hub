@@ -11,7 +11,6 @@ CURSOR_AGENT_RULES_AND_SKILLS_HANDOFF.md
 .cursor/skills/article-synthesizer/
 
 # Internal planning, drafts, radar — not served by the public site
-docs/
 internal-docs/
 
 # One-off maintenance scripts (run locally; use env tokens from backend/.env)
@@ -31,3 +30,4 @@ frontend/test-results/
 # Resume samples — originals may contain PII
 frontend/public/assets/resume/samples/source/*.docx
 frontend/public/assets/resume/samples/sanitized/*.docx
+.vercel

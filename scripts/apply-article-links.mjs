@@ -4,9 +4,9 @@
  *   2) relatedArticles on Resources (guide ↔ guide)
  *
  * Config:
- *   docs/config/article-external-links.json
- *   docs/config/article-related-articles.json
- *   docs/INTERNAL_GUIDE_INVENTORY.md (slug → category)
+ *   internal-docs/config/article-external-links.json
+ *   internal-docs/config/article-related-articles.json
+ *   internal-docs/INTERNAL_GUIDE_INVENTORY.md (slug → category)
  *
  * Usage:
  *   node scripts/apply-article-links.mjs
@@ -16,6 +16,7 @@
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { DOCS_ROOT } from './lib/docs-root.mjs';
 
 const REPO_ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const STRAPI_URL = process.env.STRAPI_URL ?? 'http://localhost:1337';
@@ -185,10 +186,10 @@ async function main() {
   console.log(`Apply article links — ${STRAPI_URL}${DRY_RUN ? ' (dry-run)' : ''}\n`);
 
   const slugToCategory = parseSlugCategoryMap(
-    readFileSync(join(REPO_ROOT, 'docs', 'INTERNAL_GUIDE_INVENTORY.md'), 'utf8'),
+    readFileSync(join(DOCS_ROOT, 'INTERNAL_GUIDE_INVENTORY.md'), 'utf8'),
   );
-  const externalTitleMap = loadJson(join(REPO_ROOT, 'docs', 'config', 'article-external-links.json'));
-  const relatedMap = loadJson(join(REPO_ROOT, 'docs', 'config', 'article-related-articles.json'));
+  const externalTitleMap = loadJson(join(DOCS_ROOT, 'config', 'article-external-links.json'));
+  const relatedMap = loadJson(join(DOCS_ROOT, 'config', 'article-related-articles.json'));
 
   console.log('External resources (relatedArticleSlug):');
   const extCount = await applyExternalLinks(slugToCategory, externalTitleMap);

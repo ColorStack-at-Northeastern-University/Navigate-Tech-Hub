@@ -1,6 +1,6 @@
 ---
 description: Strapi API integration patterns and data fetching
-globs: frontend/lib/strapi.ts, frontend/lib/types.ts, frontend/app/**/*.{ts,tsx}, frontend/components/**/*.{ts,tsx}, docs/API_ENDPOINT_DESIGN.md
+globs: frontend/lib/strapi.ts, frontend/lib/types.ts, frontend/app/**/*.{ts,tsx}, frontend/components/**/*.{ts,tsx}, internal-docs/API_ENDPOINT_DESIGN.md
 alwaysApply: false
 ---
 
