@@ -13,7 +13,8 @@
  *   --anchor-date=YYYY-MM-DD  Required for Today/Yesterday; default: today (UTC)
  *   DEBUG=1                   Include _lineContext and _parseWarnings on each row
  *
- * Posted-at fallback: paste order (pasteIndex, higher = newer in typical Slack copy).
+ * Batch pasteIndex: 1 = first URL in paste (top), higher = later in paste (bottom = newer).
+ * Merge uses scripts/print-ingest-ranks.mjs for global pasteIndex in opportunities.ts.
  * Overrides: internal-docs/config/opportunities-overrides.json
  */
 
