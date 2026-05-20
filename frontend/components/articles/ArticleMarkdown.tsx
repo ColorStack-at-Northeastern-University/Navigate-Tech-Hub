@@ -4,6 +4,7 @@ import remarkGfm from 'remark-gfm';
 import type { ReactNode } from 'react';
 import { Children, isValidElement } from 'react';
 import { headingTextFromChildren, slugifyHeadingText } from '@/lib/slugifyHeading';
+import { isSafeHttpHref, sanitizeHttpHref } from '@/lib/safeUrl';
 
 function blockquoteLooksLikeCallout(children: ReactNode): boolean {
     const nodes = Children.toArray(children);
@@ -88,6 +89,21 @@ const markdownComponents: Components = {
         );
     },
     pre: ({ children }) => <pre className="article-prose__pre">{children}</pre>,
+    a: ({ href, children }) => {
+        const safeHref = href ? sanitizeHttpHref(href) : '#';
+        const isExternal = safeHref !== '#' && isSafeHttpHref(safeHref);
+        return (
+            <a
+                href={safeHref}
+                className="article-prose__link"
+                {...(isExternal
+                    ? { target: '_blank', rel: 'noopener noreferrer' }
+                    : {})}
+            >
+                {children}
+            </a>
+        );
+    },
 };
 
 /** Renders article markdown (GFM) with shared Navigate typography for every internal guide. */

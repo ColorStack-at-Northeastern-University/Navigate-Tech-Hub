@@ -12,6 +12,7 @@
  */
 
 import { unstable_noStore as noStore } from 'next/cache';
+import { sanitizeStrapiMediaUrl } from '@/lib/safeUrl';
 import { SAMPLE_ARTICLES, SAMPLE_EXTERNAL_RESOURCES } from '@/data/sample-resources';
 import type { GuidesCatalogResult } from './guides-catalog';
 import type {
@@ -400,8 +401,9 @@ function mapResource(rawInput: unknown): Resource | null {
     }
 
     const normalizedImage = normalizeStrapiImage(raw.image);
-    const image = normalizedImage
-        ? { url: toAbsoluteUrl(normalizedImage.url), alternativeText: normalizedImage.alternativeText }
+    const imageUrl = normalizedImage ? toAbsoluteUrl(normalizedImage.url) : '';
+    const image = normalizedImage && imageUrl
+        ? { url: imageUrl, alternativeText: normalizedImage.alternativeText }
         : null;
 
     return {
@@ -539,8 +541,7 @@ function mapExternalResource(rawInput: unknown): ExternalResource | null {
  * If the URL is already absolute, returns it unchanged.
  */
 function toAbsoluteUrl(path: string): string {
-    if (path.startsWith('http')) return path;
-    return `${STRAPI_URL}${path}`;
+    return sanitizeStrapiMediaUrl(path, STRAPI_URL);
 }
 
 function compactResources(records: Array<Resource | null>): Resource[] {

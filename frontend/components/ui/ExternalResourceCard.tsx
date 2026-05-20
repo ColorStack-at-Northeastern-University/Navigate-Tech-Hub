@@ -2,6 +2,7 @@
 
 import { CATEGORIES } from '@/lib/constants';
 import { hasDistinctProgramUrl, resolveCareersHubUrl } from '@/lib/programCycle';
+import { sanitizeHttpHref } from '@/lib/safeUrl';
 import { ExternalResourceCardProps, ResourceCategory, RiskFlag } from '@/lib/types';
 import { formatDate } from '@/lib/utils';
 import Link from 'next/link';
@@ -107,7 +108,7 @@ export default function ExternalResourceCard({ resource }: ExternalResourceCardP
     }
 
     // Tools & communities — entire card is one link
-    const safeUrl = resource.url?.trim() || '#';
+    const safeUrl = sanitizeHttpHref(resource.url);
     const displayHost = parseDisplayHost(safeUrl);
     const anchorPad = relatedGuideHref ? 'px-8 pt-8 pb-4' : 'px-8 pt-8 pb-8';
 
