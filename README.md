@@ -1,42 +1,50 @@
-# Welcome to the Navigate Tech Hub Project!
+# Navigate Tech Hub
 
-This guide will walk you through setting up your local development environment to start contributing. This is web app with advice and content regarding the nuances of the tech field. Designed to help students navigate the difficulties and achieve success in the tech sector.
+Curated guides and external resources for ColorStack CS students at Northeastern. Next.js frontend; articles and directory from Strapi Cloud.
 
-## Prerequisites
+## Run locally
 
-Before you begin, make sure you have the following installed:
-- [Node.js](https://nodejs.org/en) (LTS version recommended)
-- [Git](https://git-scm.com/)
-- A code editor like [VS Code](https://code.visualstudio.com/)
+**Prerequisites:** Node.js LTS, Git.
 
-## Step-by-Step Setup
+```powershell
+git clone https://github.com/ColorStack-at-Northeastern-University/Navigate-Tech-Hub.git
+cd Navigate-Tech-Hub
+git checkout develop
+cd frontend
+npm install
+```
 
-1.  **Clone the Repository:**
-    ```bash
-    git clone [https://github.com/ColorStack-at-Northeastern-University/Navigate-Tech-Hub.git](https://github.com/ColorStack-at-Northeastern-University/Navigate-Tech-Hub.git)
-    cd Navigate-Tech-Hub
-    ```
+Create `frontend/.env.local` (see [`frontend/README.md`](frontend/README.md)). Minimum for dev:
 
-2.  **Switch to the `develop` Branch:**
-    All our development work happens on the `develop` branch.
-    ```bash
-    git checkout develop
-    ```
+```
+NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
+```
 
-3.  **Install Frontend Dependencies:**
-    Navigate into the `frontend` directory and install all the necessary packages.
-    ```bash
-    cd frontend
-    npm install
-    ```
+Or point `NEXT_PUBLIC_STRAPI_URL` at Strapi Cloud and set `STRAPI_API_TOKEN` (read-only).
 
-4.  **Run the Development Server:**
-    Once the installation is complete, you can start the local development server.
-    ```bash
-    npm run dev
-    ```
+```powershell
+npm run dev
+```
 
-5.  **Open in Browser:**
-    Open your web browser and navigate to `http://localhost:3000`. You should see the Next.js starter page.
+Open http://localhost:3000.
 
-You are now ready to start developing!
+## Branches
+
+Open pull requests against **`develop`**.
+
+**Deployment or production hosting:** email **odubiyi.a@northeastern.edu** — not documented in this repo.
+
+## Documentation
+
+Full map: [`docs/INDEX.md`](docs/INDEX.md).
+
+Agents: paste [`docs/AGENT_ONBOARDING.md`](docs/AGENT_ONBOARDING.md) before large changes.
+
+## Tests
+
+```powershell
+cd frontend
+npm run test:e2e
+```
+
+Prod health (manual): see [`docs/TESTING.md`](docs/TESTING.md).
