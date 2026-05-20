@@ -1,43 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# frontend/
 
-## Getting Started
+Next.js App Router app. Server components fetch Strapi; one API route creates GitHub issues.
 
-First, run the development server:
+## Run
 
-```bash
+```powershell
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+http://localhost:3000
 
 ## Environment variables
 
-| Variable | Purpose |
-|----------|---------|
-| `NEXT_PUBLIC_STRAPI_URL` | Strapi API base URL (default `http://localhost:1337`). |
-| `NEXT_PUBLIC_SUBMIT_RESOURCE_URL` | Optional. URL for the “Suggest a resource” link (Google Form, Typeform, etc.). If unset, links fall back to opening a new GitHub issue on this repo. |
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `NEXT_PUBLIC_STRAPI_URL` | Yes | Strapi API base URL |
+| `STRAPI_API_TOKEN` | Prod / cloud dev | Read-only token; server-only (no `NEXT_PUBLIC_`) |
+| `GITHUB_SUGGEST_TOKEN` | For suggest form | Issues write on this repo |
+| `GITHUB_REPO_OWNER` | For suggest form | `ColorStack-at-Northeastern-University` |
+| `GITHUB_REPO_NAME` | For suggest form | `Navigate-Tech-Hub` |
+| `STRAPI_REVALIDATE_SECONDS` | Optional | ISR interval; default `180` |
+| `STRAPI_CACHE` | Optional | Set `no-store` to disable fetch cache |
+| `SUGGEST_RATE_LIMIT_MAX` | Optional | Default `5` per IP per instance |
+| `SUGGEST_RATE_LIMIT_WINDOW_SECONDS` | Optional | Default `3600` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copy from `.env.example`. Do not commit `.env.local`.
 
-## Learn More
+## Key paths
 
-To learn more about Next.js, take a look at the following resources:
+| Path | Role |
+|------|------|
+| `app/` | Routes and `api/suggest-resource` |
+| `lib/strapi.ts` | Strapi client and mappers |
+| `lib/safeUrl.ts` | http(s) link sanitization |
+| `data/opportunities.ts` | Homepage carousel (static) |
+| `e2e/` | Playwright smoke + prod health |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Commands
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Command | Purpose |
+|---------|---------|
+| `npm run dev` | Dev server |
+| `npm run build` | Production build |
+| `npm run test:e2e` | Local smoke |
+| `npm run test:e2e:prod` | Prod health (`PLAYWRIGHT_BASE_URL` required) |
 
-## Deploy on Vercel
+## References
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. [`docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md)
+2. [`docs/DOMAIN.md`](../docs/DOMAIN.md)
+3. [`e2e/README.md`](e2e/README.md)
