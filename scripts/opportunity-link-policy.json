@@ -1,0 +1,13 @@
+{
+  "genericPatterns": [
+    "careers\\.(amazon|google|microsoft|apple|meta)\\.com\\/?$",
+    "jobs\\.(amazon|google)\\.com\\/?$",
+    "\\/jobs\\/?$",
+    "\\/careers\\/?$",
+    "\\/university-recruiting\\/?$",
+    "workday\\.com\\/.*\\/jobs\\/?$"
+  ],
+  "knownGoodPartialUrls": [],
+  "skipLinkCheckUrls": [],
+  "pinnedUrls": []
+}

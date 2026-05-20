@@ -42,8 +42,8 @@ Set these per environment in Vercel Project Settings.
 | `NEXT_PUBLIC_STRAPI_URL` | Strapi Cloud production URL | Same or staging Strapi | Inlined at build; redeploy after changing. |
 | `STRAPI_API_TOKEN` | Read-only Strapi token | Preview read-only token | Server-only. |
 | `GITHUB_SUGGEST_TOKEN` | If form enabled | Optional | Fine-grained PAT with Issues:write. |
-| `GITHUB_REPO_OWNER` | Yes | Yes | |
-| `GITHUB_REPO_NAME` | Yes | Yes | |
+| `GITHUB_REPO_OWNER` | Yes | Yes | `ColorStack-at-Northeastern-University` (org slug, not the Vercel project name). |
+| `GITHUB_REPO_NAME` | Yes | Yes | `Navigate-Tech-Hub` |
 | `NEXT_PUBLIC_SUBMIT_RESOURCE_URL` | Optional | Optional | Public link override. |
 | `STRAPI_REVALIDATE_SECONDS` | `180` | `60` or unset | Production ISR TTL in seconds; dev uses `no-store`. |
 | `SUGGEST_RATE_LIMIT_MAX` | `5` | `5` or unset | Best-effort per-instance API limit. |
