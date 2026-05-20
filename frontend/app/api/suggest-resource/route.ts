@@ -11,7 +11,7 @@ import { normalizeSuggestionUrl } from '@/lib/suggest-url';
  *
  * Required env vars (set in .env.local / Vercel dashboard):
  *   GITHUB_SUGGEST_TOKEN — fine-grained PAT with Issues:write on the hub repo
- *   GITHUB_REPO_OWNER    — e.g. "navigate-tech-hub"
+ *   GITHUB_REPO_OWNER    — e.g. "ColorStack-at-Northeastern-University"
  *   GITHUB_REPO_NAME     — e.g. "Navigate-Tech-Hub"
  *
  * Rate limiting is best-effort per serverless instance. It protects beta

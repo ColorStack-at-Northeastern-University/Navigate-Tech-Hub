@@ -1,0 +1,82 @@
+name: Opportunity carousel maintenance
+
+on:
+  schedule:
+    # GitHub cron is calendar-based; this runs roughly every 10 days.
+    - cron: '0 12 */10 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  maintain:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Continue existing maintenance branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin chore/opportunity-carousel-maintenance || true
+          if git show-ref --verify --quiet refs/remotes/origin/chore/opportunity-carousel-maintenance; then
+            git checkout -B chore/opportunity-carousel-maintenance origin/chore/opportunity-carousel-maintenance
+            git merge origin/main --no-edit
+          fi
+
+      - name: Maintain opportunity carousel
+        run: |
+          node scripts/maintain-opportunities.mjs \
+            --apply \
+            --prune-oldest=10 \
+            --min-entries=15 \
+            --state-file=scripts/opportunity-link-state.json \
+            --policy-file=scripts/opportunity-link-policy.json \
+            --report-file=scripts/reports/opportunity-maintenance-report.md
+
+      - name: Create maintenance pull request
+        id: cpr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          base: main
+          branch: chore/opportunity-carousel-maintenance
+          delete-branch: true
+          title: 'chore: maintain ColorStack opportunity carousel'
+          commit-message: 'chore: maintain ColorStack opportunity carousel'
+          body-path: scripts/reports/opportunity-maintenance-report.md
+          labels: |
+            automated
+            opportunities
+          add-paths: |
+            frontend/data/opportunities.ts
+            scripts/opportunity-link-state.json
+            scripts/opportunity-link-policy.json
+
+      - name: Add required maintenance summary comment
+        if: steps.cpr.outputs.pull-request-number != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('scripts/reports/opportunity-maintenance-report.md', 'utf8');
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: Number('${{ steps.cpr.outputs.pull-request-number }}'),
+              body,
+            });
+
+      - name: Write job summary
+        run: cat scripts/reports/opportunity-maintenance-report.md >> "$GITHUB_STEP_SUMMARY"
