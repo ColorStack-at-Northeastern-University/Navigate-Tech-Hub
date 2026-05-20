@@ -1,16 +1,5 @@
 import type { ColorStackOpportunity } from '@/lib/opportunityTypes';
 
-/** Assign pasteIndex from file order when missing (higher = earlier in paste = newer). */
-export function withPasteIndexFallback(
-    items: ColorStackOpportunity[],
-): ColorStackOpportunity[] {
-    const total = items.length;
-    return items.map((item, index) => ({
-        ...item,
-        pasteIndex: item.pasteIndex ?? total - index,
-    }));
-}
-
 function parseDeadlineMs(deadline?: string): number | null {
     if (!deadline) return null;
     const parsed = Date.parse(deadline);
@@ -24,14 +13,20 @@ function postedAtMs(item: ColorStackOpportunity): number | null {
 }
 
 /**
- * Sort: explicit deadlines first (earliest due first), then by postedAt desc,
- * then pasteIndex desc, then id asc.
+ * Global ingest rank for carousel ordering. Higher = added more recently.
+ * Legacy rows may omit pasteIndex; `id` is a monotonic fallback from ingest order.
+ */
+function ingestRank(item: ColorStackOpportunity): number {
+    return item.pasteIndex ?? item.id;
+}
+
+/**
+ * Sort: explicit deadlines first (earliest due first), then most recently ingested first.
  */
 export function sortColorStackOpportunities(
     items: ColorStackOpportunity[],
 ): ColorStackOpportunity[] {
-    const withIndex = withPasteIndexFallback(items);
-    return [...withIndex].sort((a, b) => {
+    return [...items].sort((a, b) => {
         const aDeadline = parseDeadlineMs(a.deadline);
         const bDeadline = parseDeadlineMs(b.deadline);
         const aHasDeadline = aDeadline !== null;
@@ -51,10 +46,10 @@ export function sortColorStackOpportunities(
         if (aPosted !== null && bPosted === null) return -1;
         if (aPosted === null && bPosted !== null) return 1;
 
-        const aPaste = a.pasteIndex ?? 0;
-        const bPaste = b.pasteIndex ?? 0;
-        if (aPaste !== bPaste) return bPaste - aPaste;
+        const aRank = ingestRank(a);
+        const bRank = ingestRank(b);
+        if (aRank !== bRank) return bRank - aRank;
 
-        return a.id - b.id;
+        return b.id - a.id;
     });
 }

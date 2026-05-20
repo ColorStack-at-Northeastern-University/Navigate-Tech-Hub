@@ -21,6 +21,9 @@ export interface ColorStackOpportunity {
     /** ISO date (YYYY-MM-DD) when the Slack post was shared, when known. */
     postedAt?: string;
     postedAtSource?: PostedAtSource;
-    /** Monotonic order from parse (higher = newer in paste). Fallback when postedAt is missing. */
+    /**
+     * Global ingest rank (higher = added more recently = nearer front of carousel).
+     * Set via print-ingest-ranks.mjs when merging a paste. Legacy rows may omit; sort uses `id`.
+     */
     pasteIndex?: number;
 }
