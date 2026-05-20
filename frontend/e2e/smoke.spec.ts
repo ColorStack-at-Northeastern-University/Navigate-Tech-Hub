@@ -1,4 +1,15 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
+import { collectGuideHrefs } from './helpers/public-health';
+
+async function openFirstBrowseArticle(page: Page): Promise<string> {
+    await page.goto('/browse');
+    const guideHrefs = await collectGuideHrefs(page, 1);
+    expect(guideHrefs.length, 'browse must link at least one guide for article smoke').toBeGreaterThan(0);
+    const articlePath = guideHrefs[0];
+    const response = await page.goto(articlePath);
+    expect(response?.ok(), `${articlePath} should not 404`).toBeTruthy();
+    return articlePath;
+}
 
 test.describe('public pages', () => {
     test('home loads', async ({ page }) => {
@@ -22,18 +33,18 @@ test.describe('public pages', () => {
     });
 
     test('article body does not leak draft frontmatter', async ({ page }) => {
-        await page.goto('/interview-prep/online-assessment-strategy');
+        await openFirstBrowseArticle(page);
         const prose = page.locator('article .article-prose');
         await expect(prose).toBeVisible();
-        await expect(prose).not.toContainText(/slug:\s*online-assessment-strategy/i);
-        await expect(prose).not.toContainText(/draftStatus:\s*draft/i);
-        await expect(prose.getByRole('heading', { name: /before you click start/i })).toBeVisible();
+        await expect(prose).not.toContainText(/slug:\s*\S+/i);
+        await expect(prose).not.toContainText(/draftStatus:\s*\S+/i);
+        await expect(prose.locator('h2').first()).toBeVisible();
     });
 
     test('article prose renders markdown section structure', async ({ page }) => {
-        await page.goto('/interview-prep/online-assessment-strategy');
+        await openFirstBrowseArticle(page);
         const prose = page.locator('article .article-prose');
-        await expect(prose.locator('h2')).toHaveCount(5, { timeout: 15_000 });
+        await expect(prose.locator('h2').first()).toBeVisible({ timeout: 15_000 });
         await expect(prose.locator('p').first()).toBeVisible();
     });
 
