@@ -45,13 +45,21 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                 </section>
 
                 <div className="container-custom">
-                    <div className="text-gray-600 mb-8 text-sm">
+                    <nav aria-label="Breadcrumb" className="text-gray-600 mb-8 text-sm">
                         <Link href="/" className="hover:text-neu-red transition-colors">
                             Home
                         </Link>
-                        <span className="mx-2">&rsaquo;</span>
+                        <span className="mx-2" aria-hidden="true">
+                            &rsaquo;
+                        </span>
+                        <Link href="/browse" className="hover:text-neu-red transition-colors">
+                            Browse
+                        </Link>
+                        <span className="mx-2" aria-hidden="true">
+                            &rsaquo;
+                        </span>
                         <span className="text-brand-dark font-medium">{categoryData.label}</span>
-                    </div>
+                    </nav>
 
                     {categoryResources.length > 0 && (
                         <p className="text-gray-500 text-lg mb-8">
