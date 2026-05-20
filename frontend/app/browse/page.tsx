@@ -5,8 +5,6 @@ import CircuitPattern from '@/components/ui/CircuitPattern';
 import EmptyResourceState from '@/components/ui/EmptyResourceState';
 import { getAllResources } from '@/lib/strapi';
 
-export const dynamic = 'force-dynamic';
-
 export default async function BrowsePage() {
     const resources = await getAllResources();
 

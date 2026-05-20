@@ -14,7 +14,7 @@
  *   DEBUG=1                   Include _lineContext and _parseWarnings on each row
  *
  * Posted-at fallback: paste order (pasteIndex, higher = newer in typical Slack copy).
- * Overrides: docs/config/opportunities-overrides.json
+ * Overrides: internal-docs/config/opportunities-overrides.json
  */
 
 import fs from 'node:fs';
@@ -29,7 +29,7 @@ import {
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
-const OVERRIDES_PATH = path.join(ROOT, 'docs/config/opportunities-overrides.json');
+const OVERRIDES_PATH = path.join(ROOT, 'internal-docs/config/opportunities-overrides.json');
 
 const SKIP_PATTERNS = [
     /linkedin\.com\/feed\//,

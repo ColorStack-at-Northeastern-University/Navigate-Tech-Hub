@@ -53,7 +53,7 @@ Stage **one logical concern** per commit. Suggested order:
 
 1. `chore` — MCP, gitignore, scripts that don’t change product behavior
 2. `feat` / `fix` — product code (frontend, backend)
-3. `docs` — markdown under `docs/`
+3. `internal-docs` — planning markdown (gitignored; not shipped to the site)
 4. `chore(skills)` — `.cursor/skills/` additions
 
 Do **not** commit (verify `.gitignore`):

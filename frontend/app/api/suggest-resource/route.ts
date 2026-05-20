@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { checkSuggestRateLimit } from '@/lib/suggest-rate-limit';
 
 /**
  * POST /api/suggest-resource
@@ -11,6 +12,9 @@ import { NextRequest, NextResponse } from 'next/server';
  *   GITHUB_SUGGEST_TOKEN — fine-grained PAT with Issues:write on the hub repo
  *   GITHUB_REPO_OWNER    — e.g. "navigate-tech-hub"
  *   GITHUB_REPO_NAME     — e.g. "Navigate-Tech-Hub"
+ *
+ * Rate limiting is best-effort per serverless instance. It protects beta
+ * traffic from accidental/spiky abuse without introducing external infra.
  */
 
 const GITHUB_TOKEN = process.env.GITHUB_SUGGEST_TOKEN;
@@ -48,6 +52,15 @@ function validatePayload(body: unknown): SuggestionPayload | null {
     };
 }
 
+function isAllowedSuggestionUrl(rawUrl: string): boolean {
+    try {
+        const parsedUrl = new URL(rawUrl);
+        return parsedUrl.protocol === 'http:' || parsedUrl.protocol === 'https:';
+    } catch {
+        return false;
+    }
+}
+
 /**
  * Machine-readable block matches `.github/ISSUE_TEMPLATE/resource-suggestion.yml`
  * field ids so agents/scripts can parse issues filed via the site or GitHub UI.
@@ -83,6 +96,19 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         );
     }
 
+    const rateLimit = checkSuggestRateLimit(request.headers);
+    if (!rateLimit.allowed) {
+        return NextResponse.json(
+            { error: 'Too many suggestions. Try again later.' },
+            {
+                status: 429,
+                headers: rateLimit.retryAfterSeconds
+                    ? { 'Retry-After': String(rateLimit.retryAfterSeconds) }
+                    : undefined,
+            },
+        );
+    }
+
     let rawBody: unknown;
     try {
         rawBody = await request.json();
@@ -94,6 +120,13 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     if (!payload) {
         return NextResponse.json(
             { error: 'Missing or invalid fields. resourceName, url, and whyItMatters are required.' },
+            { status: 422 },
+        );
+    }
+
+    if (!isAllowedSuggestionUrl(payload.url)) {
+        return NextResponse.json(
+            { error: 'Enter a valid http or https URL for the resource.' },
             { status: 422 },
         );
     }

@@ -1,9 +1,9 @@
 /**
  * Publish internal guides from repo drafts into Strapi Resource collection.
  *
- * Metadata: docs/INTERNAL_GUIDE_INVENTORY.md
- * Body: docs/internal_resources_drafts/{slug}/draft/article.md
- * Card line: docs/config/article-card-summaries.json → Strapi `description`
+ * Metadata: internal-docs/INTERNAL_GUIDE_INVENTORY.md
+ * Body: internal-docs/internal_resources_drafts/{slug}/draft/article.md
+ * Card line: internal-docs/config/article-card-summaries.json → Strapi `description`
  *
  * Usage (repo root, Strapi running on STRAPI_URL):
  *   node scripts/publish-internal-guides-from-drafts.mjs
@@ -16,11 +16,12 @@ import { readFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { prepareArticleMarkdown } from './lib/article-markdown.mjs';
+import { DOCS_ROOT } from './lib/docs-root.mjs';
 
 const REPO_ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const INVENTORY_PATH = join(REPO_ROOT, 'docs', 'INTERNAL_GUIDE_INVENTORY.md');
-const CARD_SUMMARIES_PATH = join(REPO_ROOT, 'docs', 'config', 'article-card-summaries.json');
-const DRAFTS_ROOT = join(REPO_ROOT, 'docs', 'internal_resources_drafts');
+const INVENTORY_PATH = join(DOCS_ROOT, 'INTERNAL_GUIDE_INVENTORY.md');
+const CARD_SUMMARIES_PATH = join(DOCS_ROOT, 'config', 'article-card-summaries.json');
+const DRAFTS_ROOT = join(DOCS_ROOT, 'internal_resources_drafts');
 const STRAPI_URL = process.env.STRAPI_URL ?? 'http://localhost:1337';
 const DRY_RUN = process.argv.includes('--dry-run');
 
@@ -57,7 +58,7 @@ function resolveCardDescription(slug, outcome) {
     return outcome.trim();
   }
   throw new Error(
-    `No card summary for slug "${slug}". Add a one-liner to docs/config/article-card-summaries.json`,
+    `No card summary for slug "${slug}". Add a one-liner to internal-docs/config/article-card-summaries.json`,
   );
 }
 

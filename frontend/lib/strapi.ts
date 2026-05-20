@@ -42,8 +42,14 @@ const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
 const STRAPI_API_TOKEN = process.env.STRAPI_API_TOKEN;
 
 /** Sample data is for local dev only — production must not masquerade demo content as live CMS data. */
-function useStrapiSampleFallback(): boolean {
+function shouldUseStrapiSampleFallback(): boolean {
     return process.env.NODE_ENV === 'development';
+}
+
+function assertNonEmptyResourceList(resources: Resource[], context: string): void {
+    if (shouldUseStrapiSampleFallback() || resources.length > 0) return;
+
+    throw new Error(`[strapi] ${context}: zero published resources in production`);
 }
 
 /** Fields to return for resource list views (everything except `content`). */
@@ -295,12 +301,12 @@ function strapiFetchInit(): RequestInit {
         headers.Authorization = `Bearer ${STRAPI_API_TOKEN}`;
     }
 
-    // Dev and CMS publish cycles: avoid serving 60s-stale resource metadata on browse cards.
+    // Dev and CMS publish cycles: avoid serving stale resource metadata on browse cards.
     if (process.env.NODE_ENV === 'development' || process.env.STRAPI_CACHE === 'no-store') {
         return { headers, cache: 'no-store' };
     }
 
-    const revalidateSeconds = Number(process.env.STRAPI_REVALIDATE_SECONDS ?? 60);
+    const revalidateSeconds = Number(process.env.STRAPI_REVALIDATE_SECONDS ?? 180);
     if (!Number.isFinite(revalidateSeconds) || revalidateSeconds <= 0) {
         return { headers, cache: 'no-store' };
     }
@@ -544,10 +550,13 @@ export async function getFeaturedResources(): Promise<Resource[]> {
             `/api/resources?${query}`
         );
 
-        return compactResources(normalizeResourceRows(res).map(mapResource));
+        const resources = compactResources(normalizeResourceRows(res).map(mapResource));
+        assertNonEmptyResourceList(resources, 'getFeaturedResources');
+        return resources;
     } catch (error) {
         console.error('[strapi] getFeaturedResources failed:', error);
-        return useStrapiSampleFallback() ? SAMPLE_ARTICLES.filter((r) => r.featured) : [];
+        if (!shouldUseStrapiSampleFallback()) throw error;
+        return SAMPLE_ARTICLES.filter((r) => r.featured);
     }
 }
 
@@ -582,10 +591,12 @@ export async function getAllResources(): Promise<Resource[]> {
             page += 1;
         }
 
+        assertNonEmptyResourceList(aggregated, 'getAllResources');
         return aggregated;
     } catch (error) {
         console.error('[strapi] getAllResources failed:', error);
-        return useStrapiSampleFallback() ? SAMPLE_ARTICLES : [];
+        if (!shouldUseStrapiSampleFallback()) throw error;
+        return SAMPLE_ARTICLES;
     }
 }
 
@@ -621,12 +632,12 @@ export async function getResourcesByCategory(category: ResourceCategory): Promis
             page += 1;
         }
 
+        assertNonEmptyResourceList(aggregated, `getResourcesByCategory(${category})`);
         return aggregated;
     } catch (error) {
         console.error('[strapi] getResourcesByCategory failed:', error);
-        return useStrapiSampleFallback()
-            ? SAMPLE_ARTICLES.filter((r) => r.category === category)
-            : [];
+        if (!shouldUseStrapiSampleFallback()) throw error;
+        return SAMPLE_ARTICLES.filter((r) => r.category === category);
     }
 }
 
@@ -681,7 +692,7 @@ export async function getResourceBySlug(
         return mapped;
     } catch (error) {
         console.error('[strapi] getResourceBySlug failed:', error);
-        if (!useStrapiSampleFallback()) return null;
+        if (!shouldUseStrapiSampleFallback()) return null;
         return SAMPLE_ARTICLES.find((r) => r.slug === slug && r.category === category) ?? null;
     }
 }
@@ -711,7 +722,7 @@ export async function getRelatedResources(
         return compactResources(normalizeResourceRows(res).map(mapResource));
     } catch (error) {
         console.error('[strapi] getRelatedResources failed:', error);
-        if (!useStrapiSampleFallback()) return [];
+        if (!shouldUseStrapiSampleFallback()) return [];
         return SAMPLE_ARTICLES.filter((r) => r.category === category && r.slug !== excludeSlug).slice(0, 3);
     }
 }
@@ -740,7 +751,7 @@ export async function getExternalResources(): Promise<ExternalResource[]> {
         return compactExternalResources(normalizeExternalResourceRows(res).map(mapExternalResource));
     } catch (error) {
         console.error('[strapi] getExternalResources failed:', error);
-        return useStrapiSampleFallback() ? SAMPLE_EXTERNAL_RESOURCES : [];
+        return shouldUseStrapiSampleFallback() ? SAMPLE_EXTERNAL_RESOURCES : [];
     }
 }
 
@@ -767,7 +778,7 @@ export async function getExternalResourcesForArticle(
         return compactExternalResources(normalizeExternalResourceRows(res).map(mapExternalResource));
     } catch (error) {
         console.error('[strapi] getExternalResourcesForArticle failed:', error);
-        if (!useStrapiSampleFallback()) return [];
+        if (!shouldUseStrapiSampleFallback()) return [];
         return SAMPLE_EXTERNAL_RESOURCES.filter((r) => r.relatedArticleSlug === composite);
     }
 }

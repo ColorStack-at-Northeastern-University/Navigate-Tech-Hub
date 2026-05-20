@@ -9,8 +9,6 @@ import { NATIONAL_COLORSTACK } from '@/lib/constants';
 import { getFeaturedResources, getHeroStats, getStartHereArticle } from '@/lib/strapi';
 import Link from 'next/link';
 
-export const dynamic = 'force-dynamic';
-
 export default async function Home() {
     const [featuredResources, startHereArticle, heroStats] = await Promise.all([
         getFeaturedResources(),

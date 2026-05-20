@@ -7,13 +7,13 @@ import { prepareArticleMarkdown } from './lib/article-markdown.mjs';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 
 const structuredDraft = readFileSync(
-    join(root, 'docs/internal_resources_drafts/online-assessment-strategy/draft/article.md'),
+    join(root, 'internal-docs/internal_resources_drafts/online-assessment-strategy/draft/article.md'),
     'utf8',
 );
 const flatDraft = readFileSync(
     join(
         root,
-        'docs/internal_resources_drafts/coding-with-ai-learning-path/draft/article.md',
+        'internal-docs/internal_resources_drafts/coding-with-ai-learning-path/draft/article.md',
     ),
     'utf8',
 );

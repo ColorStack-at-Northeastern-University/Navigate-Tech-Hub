@@ -5,10 +5,10 @@
 import { readFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { DOCS_ROOT } from './lib/docs-root.mjs';
 
-const REPO_ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const INVENTORY_PATH = join(REPO_ROOT, 'docs', 'INTERNAL_GUIDE_INVENTORY.md');
-const CARD_SUMMARIES_PATH = join(REPO_ROOT, 'docs', 'config', 'article-card-summaries.json');
+const INVENTORY_PATH = join(DOCS_ROOT, 'INTERNAL_GUIDE_INVENTORY.md');
+const CARD_SUMMARIES_PATH = join(DOCS_ROOT, 'config', 'article-card-summaries.json');
 
 function parseInventorySlugs(markdown) {
   const slugs = [];
