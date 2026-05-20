@@ -1,3 +1,5 @@
+'use client';
+
 import { CATEGORIES } from '@/lib/constants';
 import { hasDistinctProgramUrl, resolveCareersHubUrl } from '@/lib/programCycle';
 import { ExternalResourceCardProps, ResourceCategory, RiskFlag } from '@/lib/types';
