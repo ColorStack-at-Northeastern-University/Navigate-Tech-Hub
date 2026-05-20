@@ -1,3 +1,4 @@
+import { sanitizeHttpHref } from '@/lib/safeUrl';
 import type { ExternalResource, ProgramType, TypicalOpenSeason } from '@/lib/types';
 
 const SEASON_BY_PROGRAM_TYPE: Record<ProgramType, TypicalOpenSeason> = {
@@ -51,8 +52,8 @@ export function deriveProgramSearchHint(title: string): string {
 
 export function resolveCareersHubUrl(resource: ExternalResource): string {
     const hub = resource.careersHubUrl?.trim();
-    if (hub) return hub;
-    return resource.url?.trim() || '#';
+    if (hub) return sanitizeHttpHref(hub);
+    return sanitizeHttpHref(resource.url);
 }
 
 export function hasDistinctProgramUrl(resource: ExternalResource): boolean {

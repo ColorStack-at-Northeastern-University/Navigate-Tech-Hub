@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { checkSuggestRateLimit } from '@/lib/suggest-rate-limit';
+import { escapeGitHubTableCell } from '@/lib/safeUrl';
 import { normalizeSuggestionUrl } from '@/lib/suggest-url';
 
 /**
@@ -31,6 +32,22 @@ interface SuggestionPayload {
     contact?: string;
 }
 
+const ALLOWED_SUGGESTION_TIERS = new Set([
+    'tools-and-communities',
+    'recurring-program',
+    'unsure',
+]);
+
+const ALLOWED_SUGGESTION_CATEGORIES = new Set([
+    'interview-prep',
+    'projects',
+    'community',
+    'hackathons',
+    'classes',
+    'programs',
+    'unsure',
+]);
+
 function validatePayload(body: unknown): SuggestionPayload | null {
     if (typeof body !== 'object' || body === null) return null;
     const b = body as Record<string, unknown>;
@@ -43,11 +60,18 @@ function validatePayload(body: unknown): SuggestionPayload | null {
     ) {
         return null;
     }
+
+    const suggestedTier = b.suggestedTier.trim();
+    const suggestedCategory = b.suggestedCategory.trim();
+    if (!ALLOWED_SUGGESTION_TIERS.has(suggestedTier) || !ALLOWED_SUGGESTION_CATEGORIES.has(suggestedCategory)) {
+        return null;
+    }
+
     return {
         resourceName: b.resourceName.trim().slice(0, 200),
         url: b.url.trim().slice(0, 500),
-        suggestedTier: b.suggestedTier,
-        suggestedCategory: b.suggestedCategory,
+        suggestedTier,
+        suggestedCategory,
         whyItMatters: b.whyItMatters.trim().slice(0, 2000),
         contact: typeof b.contact === 'string' ? b.contact.trim().slice(0, 200) : undefined,
     };
@@ -64,11 +88,11 @@ function buildIssueBody(payload: SuggestionPayload): string {
 
 | Field | Value |
 |-------|-------|
-| resource-name | ${payload.resourceName} |
-| url | ${payload.url} |
-| suggested-tier | ${payload.suggestedTier} |
-| suggested-category | ${payload.suggestedCategory} |
-| contact | ${payload.contact ?? '_none_'} |
+| resource-name | ${escapeGitHubTableCell(payload.resourceName)} |
+| url | ${escapeGitHubTableCell(payload.url)} |
+| suggested-tier | ${escapeGitHubTableCell(payload.suggestedTier)} |
+| suggested-category | ${escapeGitHubTableCell(payload.suggestedCategory)} |
+| contact | ${escapeGitHubTableCell(payload.contact ?? '_none_')} |
 
 ### Why it matters
 
