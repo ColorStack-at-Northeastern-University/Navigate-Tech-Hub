@@ -36,11 +36,19 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
             <Navbar />
 
             <main className="container-custom mt-16">
-                <div className="text-gray-600 mb-6 text-sm">
+                <nav aria-label="Breadcrumb" className="text-gray-600 mb-6 text-sm">
                     <Link href="/" className="hover:text-neu-red transition-colors">
                         Home
                     </Link>
-                    <span className="mx-2">&rsaquo;</span>
+                    <span className="mx-2" aria-hidden="true">
+                        &rsaquo;
+                    </span>
+                    <Link href="/browse" className="hover:text-neu-red transition-colors">
+                        Browse
+                    </Link>
+                    <span className="mx-2" aria-hidden="true">
+                        &rsaquo;
+                    </span>
                     <Link
                         href={`/${category}`}
                         className="hover:text-neu-red transition-colors"
@@ -51,7 +59,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
                     <span className="text-brand-dark font-medium">
                         {resource.title}
                     </span>
-                </div>
+                </nav>
 
                 <Link
                     href={`/${category}`}
