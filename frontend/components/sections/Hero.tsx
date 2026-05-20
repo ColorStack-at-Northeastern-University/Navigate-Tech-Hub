@@ -13,21 +13,6 @@ function buildStats(counts: HeroStats) {
     ];
 }
 
-function OrbCluster({ position }: { position: 'top-right' | 'bottom-left' }) {
-    const base = position === 'top-right'
-        ? 'top-2 right-2'
-        : 'bottom-2 left-2';
-
-    return (
-        <div className={`absolute ${base} w-[50px] h-[50px] md:w-[70px] md:h-[70px] pointer-events-none`}>
-            <div className="absolute top-0 left-0 w-[55%] h-[55%] rounded-full bg-gray-300/85" />
-            <div className="absolute top-0 right-0 w-[55%] h-[55%] rounded-full bg-gray-300/85" />
-            <div className="absolute bottom-0 left-0 w-[55%] h-[55%] rounded-full bg-gray-300/85" />
-            <div className="absolute bottom-0 right-0 w-[55%] h-[55%] rounded-full bg-gray-300/85" />
-        </div>
-    );
-}
-
 function TitleBrackets() {
     const bracketColor = '#9C373B';
     return (
@@ -64,9 +49,6 @@ export default function Hero({ stats }: HeroProps) {
     const STATS = buildStats(stats);
     return (
         <section className="mt-14 bg-white py-16 md:py-20 px-8 relative overflow-hidden">
-            <OrbCluster position="top-right" />
-            <OrbCluster position="bottom-left" />
-
             {/* Husky — absolutely positioned, out of flow */}
             <div className="hidden md:block absolute left-0 lg:left-4 top-[42%] -translate-y-1/2 z-0 pointer-events-none">
                 <Image

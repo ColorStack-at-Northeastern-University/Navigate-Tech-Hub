@@ -88,14 +88,13 @@ export default function ColorStackOpportunities() {
 
     return (
         <section className="relative bg-neu-black py-16 px-8">
-            <div className="absolute top-0 left-0 w-1/2 h-[7px] bg-neu-red rounded-r-full" />
             <div className="max-w-7xl mx-auto">
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-1">
                     <a
                         href="https://wiki.colorstack.org/the-colorstack-family/community/all-things-slack/slack-channels"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:text-neu-red transition-colors underline underline-offset-4 decoration-neu-red/60"
+                        className="hover:text-neu-red transition-colors"
                     >
                         ColorStack Opportunities
                     </a>
