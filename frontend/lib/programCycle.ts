@@ -109,6 +109,14 @@ function titleDayOffset(title: string): number {
     return sum % 14;
 }
 
+export interface ProgramReminderEvent {
+    uid: string;
+    start: Date;
+    end: Date;
+    summary: string;
+    description: string;
+}
+
 function nextReminderDate(season: TypicalOpenSeason, title: string): Date | null {
     if (season === 'varies') return null;
 
@@ -132,8 +140,13 @@ function nextReminderDate(season: TypicalOpenSeason, title: string): Date | null
     return candidate;
 }
 
-/** Google Calendar "create event" URL for a check-in reminder. */
-export function buildCalendarReminderUrl(resource: ExternalResource): string | null {
+function reminderUid(resource: ExternalResource): string {
+    const key = resource.documentId?.trim() || resource.url.trim();
+    return `navigate-program-${key.replace(/[^a-zA-Z0-9-]/g, '-')}@navigate-tech-hub`;
+}
+
+/** Reminder event for a recurring program, or null when season is unknown. */
+export function buildProgramReminderEvent(resource: ExternalResource): ProgramReminderEvent | null {
     const season = resource.typicalOpenSeason ?? defaultSeasonForProgramType(resource.programType);
     const when = nextReminderDate(season, resource.title);
     if (!when) return null;
@@ -142,16 +155,31 @@ export function buildCalendarReminderUrl(resource: ExternalResource): string | n
     const hint = resource.programSearchHint?.trim() || deriveProgramSearchHint(resource.title);
     const hub = resolveCareersHubUrl(resource);
 
-    const params = new URLSearchParams({
-        action: 'TEMPLATE',
-        text: `Check: ${resource.title}`,
-        details: [
+    return {
+        uid: reminderUid(resource),
+        start: when,
+        end,
+        summary: `Check: ${resource.title}`,
+        description: [
             `Reminder to look for "${hint}" on the careers site.`,
             `Careers hub: ${hub}`,
             '',
+            'Estimated check-in — not an application deadline. Confirm on the official site.',
             'Program pages rotate each cycle. The hub link is usually more stable than last year\'s apply URL.',
         ].join('\n'),
-        dates: `${formatCalendarInstant(when)}/${formatCalendarInstant(end)}`,
+    };
+}
+
+/** Google Calendar "create event" URL for a check-in reminder. */
+export function buildCalendarReminderUrl(resource: ExternalResource): string | null {
+    const event = buildProgramReminderEvent(resource);
+    if (!event) return null;
+
+    const params = new URLSearchParams({
+        action: 'TEMPLATE',
+        text: event.summary,
+        details: event.description,
+        dates: `${formatCalendarInstant(event.start)}/${formatCalendarInstant(event.end)}`,
     });
 
     return `https://calendar.google.com/calendar/render?${params.toString()}`;

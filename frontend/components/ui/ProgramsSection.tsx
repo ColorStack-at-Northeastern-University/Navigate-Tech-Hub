@@ -1,6 +1,7 @@
 import type { ExternalResource, ProgramType } from '@/lib/types';
 import { externalResourceListKey } from '@/lib/utils';
 import ExternalResourceCard from './ExternalResourceCard';
+import ProgramRemindersExport from './ProgramRemindersExport';
 import ProgramTypeBucket from './ProgramTypeBucket';
 
 interface ProgramsSectionProps {
@@ -66,10 +67,11 @@ export default function ProgramsSection({ resources }: ProgramsSectionProps) {
             <h2 className="font-display text-3xl font-bold text-brand-dark mb-2 pb-2 border-b-[3px] border-neu-red inline-block">
                 Recurring Programs
             </h2>
-            <p className="text-gray-600 mb-8 max-w-3xl">
+            <p className="text-gray-600 mb-4 max-w-3xl">
                 Named programs that run every cycle: fellowships, freshman/sophomore internships, insight events, and more.
                 Each links to the program&apos;s permanent landing page, not a job posting.
             </p>
+            <ProgramRemindersExport resources={resources} />
 
             {PROGRAM_TYPE_ORDER.map((programType) => {
                 const meta = PROGRAM_TYPE_META[programType];
