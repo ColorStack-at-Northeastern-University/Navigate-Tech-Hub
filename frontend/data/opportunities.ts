@@ -86,98 +86,16 @@ const RAW_COLORSTACK_OPPORTUNITIES: ColorStackOpportunity[] = [
         tags: ['SWE', 'Early Career', 'Summer 2026'],
         pasteIndex: 71,
     },
-    {
-        id: 2,
-        title: 'FigFest 2026',
-        company: 'Figma',
-        url: 'https://applytofigfest2026.figma.site/',
-        description: 'Early-career program and event for designers and builders. Application-based admission.',
-        type: 'program',
-        tags: ['Design', 'Early Career', 'Event'],
-    },
-    {
-        id: 3,
-        title: 'Paradigm Fellowship 2026',
-        company: 'Paradigm',
-        url: 'https://paradigm.xyz/fellowship-2026',
-        description: 'Competitive fellowship for researchers and developers at the frontier of crypto and web3.',
-        type: 'program',
-        tags: ['Fellowship', 'Crypto', 'Research', 'Web3'],
-    },
-    {
-        id: 4,
-        title: 'Software Engineer Intern (Summer or Fall 2026)',
-        company: 'Triumph Arcade',
-        url: 'https://jobs.ashbyhq.com/triumph-arcade/89d82fc2-c2dd-439d-bbc2-e3dcb298fffc/application',
-        type: 'internship',
-        tags: ['SWE', 'Summer 2026', 'Fall 2026'],
-    },
-    {
-        id: 5,
-        title: 'Software Engineer Intern  -  Fall 2026 / Winter 2027',
-        company: 'Skydio',
-        url: 'https://www.skydio.com/careers?ashby_jid=f6320e9b-4eed-408d-8d37-d509fb0406ee',
-        description: 'Intern on the autonomy and robotics software team at Skydio.',
-        type: 'internship',
-        tags: ['SWE', 'Robotics', 'Fall 2026'],
-    },
-    {
-        id: 6,
-        title: 'Software Engineering Intern (Summer 2026)',
-        company: 'Replit',
-        url: 'https://jobs.ashbyhq.com/replit/12737078-74c7-4e63-98a7-5e8da1e9deb1/application',
-        description: '12-week paid internship. Ship features used by millions of developers worldwide.',
-        type: 'internship',
-        location: 'San Francisco, CA',
-        tags: ['SWE', 'AI', 'Summer 2026'],
-    },
-    {
-        id: 7,
-        title: 'Quantitative Research Analyst Intern (BS/MS)',
-        company: 'Citadel',
-        url: 'https://www.citadel.com/careers/details/quantitative-research-analyst-intern-bs-ms-us/',
-        description: 'Quant research internship at Citadel. Selective and well-compensated.',
-        type: 'internship',
-        location: 'Chicago, IL',
-        tags: ['Quant', 'Research', 'Finance'],
-    },
-    {
-        id: 8,
-        title: 'Builder Lab (New Grad  -  offer within 48 hrs)',
-        company: 'Salesforce',
-        url: 'https://salesforce-builderlab.splashthat.com/',
-        description: 'Accelerated new-grad program  -  complete the Builder Lab and receive a job offer within 48 hours.',
-        type: 'program',
-        tags: ['New Grad', 'Fast Track', 'SWE'],
-    },
-    {
-        id: 9,
-        title: 'Software Engineering Intern (Summer 2026)',
-        company: 'Nutanix',
-        url: 'https://careers.nutanix.com/en/jobs/n1910/software-engineering-intern-summer-2026/',
-        type: 'internship',
-        location: 'San Jose, CA / Remote',
-        tags: ['SWE', 'Summer 2026', 'Remote'],
-    },
-    {
-        id: 10,
-        title: 'Summer 2027 Intern  -  Software Engineer',
-        company: 'Salesforce',
-        url: 'https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Summer-2027-Intern---Software-Engineer_JR340771-1',
-        description: 'Futureforce program  -  work on real projects that affect how Salesforce runs.',
-        type: 'internship',
-        location: 'San Francisco, CA',
-        tags: ['SWE', 'Summer 2027'],
-    },
-    {
-        id: 11,
-        title: 'AI Builder  -  Emerging Talent',
-        company: 'Salesforce',
-        url: 'https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/AI-Builder--Emerging-Talent_JR341276-1',
-        description: "Entry-level AI Builder role through Salesforce's Emerging Talent pipeline. Build AI-powered features on the Salesforce platform.",
-        type: 'new-grad',
-        tags: ['AI/ML', 'New Grad', 'Emerging Talent'],
-    },
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     {
         id: 12,
         title: 'Associate Product Manager',

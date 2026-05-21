@@ -1,0 +1,705 @@
+{
+  "lastRunAt": "2026-05-21T14:54:36.484Z",
+  "links": {
+    "https://www.janestreet.com/apply-insight-nyc/": {
+      "title": "INSIGHT Program (Deadline: June 14)",
+      "company": "Jane Street",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://www.janestreet.com/apply-insight-nyc/",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://salesforce.wd12.myworkdayjobs.com/External_Career_Site/job/California---San-Francisco/Associate-Product-Manager_JR342622": {
+      "title": "Associate Product Manager, MuleSoft",
+      "company": "Salesforce",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://salesforce.wd12.myworkdayjobs.com/External_Career_Site/job/California---San-Francisco/Associate-Product-Manager_JR342622",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://careers.docusign.com/careers-home/jobs/28427?lang=en-us": {
+      "title": "Software Engineer Intern",
+      "company": "Docusign",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://careers.docusign.com/careers-home/jobs/28427?lang=en-us",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://bloomenergy.wd1.myworkdayjobs.com/BloomEnergyCareers/job/San-Jose-California/Engineering-Program-Management-Intern_JR-22789": {
+      "title": "Engineering Program Management Intern",
+      "company": "Bloom Energy",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://bloomenergy.wd1.myworkdayjobs.com/BloomEnergyCareers/job/San-Jose-California/Engineering-Program-Management-Intern_JR-22789",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/Quantum-Research-Scientist-Intern---Fall-2026_JR2018244": {
+      "title": "Quantum Research Scientist Intern - Fall 2026",
+      "company": "NVIDIA",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/Quantum-Research-Scientist-Intern---Fall-2026_JR2018244",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://job-boards.greenhouse.io/fiveringsllc/jobs/4988120008": {
+      "title": "2026 Software Development Intensive Program",
+      "company": "Five Rings",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://job-boards.greenhouse.io/fiveringsllc/jobs/4988120008",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://applytofigfest2026.figma.site/": {
+      "title": "FigFest 2026",
+      "company": "Figma",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://applytofigfest2026.figma.site/",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://paradigm.xyz/fellowship-2026": {
+      "title": "Paradigm Fellowship 2026",
+      "company": "Paradigm",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://paradigm.xyz/fellowship-2026",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://jobs.ashbyhq.com/triumph-arcade/89d82fc2-c2dd-439d-bbc2-e3dcb298fffc/application": {
+      "title": "Software Engineer Intern (Summer or Fall 2026)",
+      "company": "Triumph Arcade",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://jobs.ashbyhq.com/triumph-arcade/89d82fc2-c2dd-439d-bbc2-e3dcb298fffc/application",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://www.skydio.com/careers?ashby_jid=f6320e9b-4eed-408d-8d37-d509fb0406ee": {
+      "title": "Software Engineer Intern  -  Fall 2026 / Winter 2027",
+      "company": "Skydio",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://www.skydio.com/jobs/f6320e9b-4eed-408d-8d37-d509fb0406ee?ashby_jid=f6320e9b-4eed-408d-8d37-d509fb0406ee",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://jobs.ashbyhq.com/replit/12737078-74c7-4e63-98a7-5e8da1e9deb1/application": {
+      "title": "Software Engineering Intern (Summer 2026)",
+      "company": "Replit",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://jobs.ashbyhq.com/replit/12737078-74c7-4e63-98a7-5e8da1e9deb1/application",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://www.citadel.com/careers/details/quantitative-research-analyst-intern-bs-ms-us/": {
+      "title": "Quantitative Research Analyst Intern (BS/MS)",
+      "company": "Citadel",
+      "status": "BLOCKED",
+      "code": 403,
+      "finalUrl": "https://www.citadel.com/careers/details/quantitative-research-analyst-intern-bs-ms-us/",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://salesforce-builderlab.splashthat.com/": {
+      "title": "Builder Lab (New Grad  -  offer within 48 hrs)",
+      "company": "Salesforce",
+      "status": "BLOCKED",
+      "code": 403,
+      "finalUrl": "https://salesforce-builderlab.splashthat.com/",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://careers.nutanix.com/en/jobs/n1910/software-engineering-intern-summer-2026/": {
+      "title": "Software Engineering Intern (Summer 2026)",
+      "company": "Nutanix",
+      "status": "FAIL",
+      "code": 404,
+      "finalUrl": "https://careers.nutanix.com/en/jobs/n1910/software-engineering-intern-summer-2026/",
+      "failStrikes": 1,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Summer-2027-Intern---Software-Engineer_JR340771-1": {
+      "title": "Summer 2027 Intern  -  Software Engineer",
+      "company": "Salesforce",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Summer-2027-Intern---Software-Engineer_JR340771-1",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/AI-Builder--Emerging-Talent_JR341276-1": {
+      "title": "AI Builder  -  Emerging Talent",
+      "company": "Salesforce",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/AI-Builder--Emerging-Talent_JR341276-1",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://careers.paramount.com/job/Burbank-Associate-Product-Manager-CA-91505/1387218700/": {
+      "title": "Associate Product Manager",
+      "company": "Paramount",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://careers.paramount.com/job/Burbank-Associate-Product-Manager-CA-91505/1387218700/",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://www.janestreet.com/apply-wise-nyc/": {
+      "title": "WiSE NYC Fly-out (Incoming Freshmen)",
+      "company": "Jane Street",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://www.janestreet.com/apply-wise-nyc/",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://jobright.ai/jobs/info/69f52b0312f2811ab5a6396b": {
+      "title": "Software Engineering Intern  -  Fall 2026",
+      "company": "Gemini",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://jobright.ai/jobs/info/69f52b0312f2811ab5a6396b",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://job-boards.greenhouse.io/aquaticcapitalmanagement/jobs/8489233002": {
+      "title": "Software Engineer Intern (Summer 2027)",
+      "company": "Aquatic Capital",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://job-boards.greenhouse.io/aquaticcapitalmanagement/jobs/8489233002",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://voloridge-investment-management.hiringthing.com/job/1013126/quantitative-developer-intern-2027": {
+      "title": "Quantitative Developer Intern 2027",
+      "company": "Voloridge",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://voloridge-investment-management.hiringthing.com/job/1013126/quantitative-developer-intern-2027",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://hp.wd5.myworkdayjobs.com/en-US/ExternalCareerSite/job/Software-Engineering-Intern_3160714-1": {
+      "title": "Software Engineering Intern",
+      "company": "HP",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://hp.wd5.myworkdayjobs.com/en-US/ExternalCareerSite/job/Software-Engineering-Intern_3160714-1",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://job-boards.greenhouse.io/axon/jobs/7624168003": {
+      "title": "Software Engineer I (New Grad)",
+      "company": "Axon",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://job-boards.greenhouse.io/axon?error=true",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://job-boards.greenhouse.io/formationbio/jobs/7821695": {
+      "title": "Software Engineer  -  Open Level (New Grad)",
+      "company": "Formation Bio",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://job-boards.greenhouse.io/formationbio/jobs/7821695",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://careers.veeam.com/job/-/-/22681/95054981040": {
+      "title": "AI Intern (Summer 2026)",
+      "company": "Veeam",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://careers.veeam.com/job/-/-/22681/95054981040",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://bloomberg.wd1.myworkdayjobs.com/Bloombergindustrygroup_External_Career_Site/job/Arlington---1801-S-Bell-INDG/Internship-Engineering_138786": {
+      "title": "Summer Internship  -  Security Engineering",
+      "company": "Bloomberg",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://bloomberg.wd1.myworkdayjobs.com/Bloombergindustrygroup_External_Career_Site/job/Arlington---1801-S-Bell-INDG/Internship-Engineering_138786",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://jobs.ashbyhq.com/arcade-ai/380c2162-63ea-4dfb-a6f0-495785c284dd": {
+      "title": "New Grad Agent Engineer",
+      "company": "Arcade AI",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://jobs.ashbyhq.com/arcade-ai/380c2162-63ea-4dfb-a6f0-495785c284dd",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://careers.airbnb.com/positions/7859317/": {
+      "title": "iOS Software Engineer  -  New Grad",
+      "company": "Airbnb",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://careers.airbnb.com/positions/7859317/",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://www.hioscar.com/careers/7871724": {
+      "title": "Internal Communications Intern",
+      "company": "Oscar Health",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://www.hioscar.com/careers/7871724",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://cursor.com/careers/sdr-intern": {
+      "title": "SDR Intern",
+      "company": "Cursor",
+      "status": "FAIL",
+      "code": 404,
+      "finalUrl": "https://cursor.com/careers/sdr-intern",
+      "failStrikes": 1,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://bloomenergy.wd1.myworkdayjobs.com/en-US/BloomEnergyCareers/job/San-Jose-California/Full-Stack-Developer-Intern_JR-20763": {
+      "title": "Full Stack Developer Intern",
+      "company": "Bloom Energy",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://bloomenergy.wd1.myworkdayjobs.com/en-US/BloomEnergyCareers/job/San-Jose-California/Full-Stack-Developer-Intern_JR-20763",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://amazon.jobs/en/jobs/10419265/software-development-engineer-test-intern-fall": {
+      "title": "Software Development Engineer in Test Intern (Fall)",
+      "company": "Amazon",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://amazon.jobs/en/jobs/10419265/robotics-software-development-engineer-test-intern-fall",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/Systems-Software-Engineer-Intern--Metropolis---Fall-2026_JR2018016": {
+      "title": "Systems Software Engineer Intern, Metropolis  -  Fall 2026",
+      "company": "NVIDIA",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/Systems-Software-Engineer-Intern--Metropolis---Fall-2026_JR2018016",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://zoom.wd5.myworkdayjobs.com/en-US/Zoom/job/Intern---AI-Product-Management--Agentic-Workflows_R18582": {
+      "title": "Intern  -  AI Product Management, Agentic Workflows",
+      "company": "Zoom",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://zoom.wd5.myworkdayjobs.com/en-US/Zoom/job/Intern---AI-Product-Management--Agentic-Workflows_R18582",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://job-boards.greenhouse.io/cloudflare/jobs/7914511": {
+      "title": "Data Science Intern (Summer 2026)  -  In-Office",
+      "company": "Cloudflare",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://job-boards.greenhouse.io/cloudflare/jobs/7914511",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://haier.wd3.myworkdayjobs.com/en-US/GE_Appliances/job/Software-Engineering-Co-op-Fall-2026_REQ-25560": {
+      "title": "Software Engineering Co-op  -  Fall 2026",
+      "company": "GE Appliances",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://haier.wd3.myworkdayjobs.com/en-US/GE_Appliances/job/Software-Engineering-Co-op-Fall-2026_REQ-25560",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://www.tesla.com/careers/search/job/269445": {
+      "title": "Software Engineering Intern (Fall 2026)",
+      "company": "Tesla",
+      "status": "BLOCKED",
+      "code": 403,
+      "finalUrl": "https://www.tesla.com/careers/search/job/269445",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://www.tesla.com/careers/search/job/internship-software-engineering-people-systems-fall-2026-269198": {
+      "title": "Internship, Software Engineering  -  People Systems (Fall 2026)",
+      "company": "Tesla",
+      "status": "BLOCKED",
+      "code": 403,
+      "finalUrl": "https://www.tesla.com/careers/search/job/internship-software-engineering-people-systems-fall-2026-269198",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://jobs.nvidia.com/careers/job/893394753940-software-engineering-intern-ai-tools-fall-2026-us-ca-santa-clara": {
+      "title": "Software Engineering Intern, AI Tools  -  Fall 2026",
+      "company": "NVIDIA",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://jobs.nvidia.com/careers/job/893394753940-software-engineering-intern-ai-tools-fall-2026-us-ca-santa-clara",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Networking-Systems-Software-Engineering-Intern---Fall-2026_JR2017181": {
+      "title": "Networking Systems Software Engineering Intern  -  Fall 2026",
+      "company": "NVIDIA",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Networking-Systems-Software-Engineering-Intern---Fall-2026_JR2017181",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://dap.shopify.com": {
+      "title": "Design Apprentice Program (12-month)",
+      "company": "Shopify",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://dap.shopify.com/",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://dsp.prng.co/kVPl2Pb": {
+      "title": "Summer 2026 Full Stack Engineering Intern",
+      "company": "Intuit",
+      "status": "FAIL",
+      "code": 404,
+      "finalUrl": "https://jobs.intuit.com/job/-/-/27595/94792475344?cid=pjob_li_click_us_swe-fs-fy26_cn_text_job_int-tm&iis=pjob&iisn=li&p_sid=kVPl2Pb&p_uid=sVsjCKx1P5&ss=paid&utm_campaign=&utm_content=pj_board&utm_medium=jobad&utm_source=linkedin+slots+%28intuit%29",
+      "failStrikes": 1,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://job-boards.greenhouse.io/figureai/jobs/4397706006": {
+      "title": "Embedded Software Intern  -  Fall 2026",
+      "company": "Figure AI",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://job-boards.greenhouse.io/figureai/jobs/4397706006",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://lifeattiktok.com/search/7602132104936130869": {
+      "title": "UX Researcher Intern (GMPT)  -  Summer 2026",
+      "company": "TikTok",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://lifeattiktok.com/search/7602132104936130869",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://careers.docusign.com/jobs/28330": {
+      "title": "Software Engineer Intern",
+      "company": "Docusign",
+      "status": "FAIL",
+      "code": 404,
+      "finalUrl": "https://careers.docusign.com/careers-home/jobs/28330",
+      "failStrikes": 1,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://careers.snowflake.com/us/en/job/SNCOUSFF84E2B707904E9EB748FD1349C8655AEXTERNALENUSBE659B5408A14ACFB86CF003EF6343EA/software-engineer-intern-ai-ml-fall-2026": {
+      "title": "Software Engineer Intern (AI/ML)  -  Fall 2026",
+      "company": "Snowflake",
+      "status": "FAIL",
+      "code": 410,
+      "finalUrl": "https://careers.snowflake.com/us/en/job/SNCOUSFF84E2B707904E9EB748FD1349C8655AEXTERNALENUSBE659B5408A14ACFB86CF003EF6343EA/software-engineer-intern-ai-ml-fall-2026",
+      "failStrikes": 1,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://careers.ibm.com/en_US/careers/JobDetail?jobId=113738": {
+      "title": "Software Engineer Apprentice",
+      "company": "IBM",
+      "status": "OK",
+      "code": 202,
+      "finalUrl": "https://careers.ibm.com/en_US/careers/JobDetail?jobId=113738",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://careers.ibm.com/en_US/careers/JobDetail/System-Support-Tech-Apprentice/112720": {
+      "title": "System Support Tech Apprentice",
+      "company": "IBM",
+      "status": "OK",
+      "code": 202,
+      "finalUrl": "https://careers.ibm.com/en_US/careers/JobDetail/System-Support-Tech-Apprentice/112720",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://lifeattiktok.com/search/7499689149813950727": {
+      "title": "AI/ML Software Engineer Intern (Data Platform)  -  Summer 2026",
+      "company": "TikTok",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://lifeattiktok.com/search/7499689149813950727",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://shpe.org/2026-shpe/": {
+      "title": "2026 National Convention  -  Travel Assistance Program",
+      "company": "SHPE",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://shpe.org/2026-shpe/",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://www.amazon.jobs/en/jobs/10407301/front-end-engineer-fall-internship-2026-us": {
+      "title": "Front-End Engineer Fall Internship  -  2026",
+      "company": "Amazon",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://www.amazon.jobs/en/jobs/10407301/front-end-engineer-fall-internship-2026-us",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://jobs.ashbyhq.com/cohere/73bd3e2b-6597-4124-b64b-1e5dbc32e785": {
+      "title": "Research Internship (Fall / Winter 2026)",
+      "company": "Cohere",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://jobs.ashbyhq.com/cohere/73bd3e2b-6597-4124-b64b-1e5dbc32e785",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://jobs.ashbyhq.com/cohere/8c035d3d-081d-4c8a-914a-72f4efaad254": {
+      "title": "Software Engineer Intern (Fall / Winter 2026)",
+      "company": "Cohere",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://jobs.ashbyhq.com/cohere/8c035d3d-081d-4c8a-914a-72f4efaad254",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://arrowstreetcapital.wd5.myworkdayjobs.com/en-US/Campus_Careers/job/Software-Engineer-Intern--Summer-2026_R1454": {
+      "title": "Software Engineer Intern  -  Summer 2026",
+      "company": "Arrowstreet Capital",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://arrowstreetcapital.wd5.myworkdayjobs.com/en-US/Campus_Careers/job/Software-Engineer-Intern--Summer-2026_R1454",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://careers.ibm.com/en_US/careers/JobDetail/Back-End-Developer-Intern-2026/62028": {
+      "title": "Back-End Developer Intern 2026",
+      "company": "IBM",
+      "status": "OK",
+      "code": 202,
+      "finalUrl": "https://careers.ibm.com/en_US/careers/JobDetail/Back-End-Developer-Intern-2026/62028",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://talent.wellsfargojobs.com/flows/2026-changemakers-summit-mir8kbo3y": {
+      "title": "2026 Changemakers Summit (Sophomores)",
+      "company": "Wells Fargo",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://talent.wellsfargojobs.com/flows/2026-changemakers-summit-mir8kbo3y",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "http://job-boards.greenhouse.io/verkada/jobs/5117760007": {
+      "title": "AI Software Engineering Intern  -  Fall 2026",
+      "company": "Verkada",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://job-boards.greenhouse.io/verkada/jobs/5117760007",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Software-Engineering-Intern--JAX---Fall-2026_JR2009745": {
+      "title": "Software Engineering Intern, JAX  -  Fall 2026",
+      "company": "NVIDIA",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Software-Engineering-Intern--JAX---Fall-2026_JR2009745",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "http://job-boards.greenhouse.io/typeface/jobs/4986848007": {
+      "title": "Software Engineer Intern",
+      "company": "Typeface",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://job-boards.greenhouse.io/typeface?error=true",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://www.imc.com/us/careers/jobs/4829446101": {
+      "title": "2026 US Chess Academy",
+      "company": "IMC Trading",
+      "status": "FAIL",
+      "code": 404,
+      "finalUrl": "https://www.imc.com/us/careers/jobs/4829446101",
+      "failStrikes": 1,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://www.sofi.com/careers/sofi-university/7581448003": {
+      "title": "Intern",
+      "company": "SoFi",
+      "status": "GENERIC",
+      "code": 200,
+      "finalUrl": "https://www.sofi.com/careers/",
+      "failStrikes": 0,
+      "genericStrikes": 1,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://jj.wd5.myworkdayjobs.com/en-US/JJ/job/Technology-2026-Fall-Co-Op_R-029591": {
+      "title": "Technology Fall Co-Op 2026",
+      "company": "Johnson & Johnson",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://jj.wd5.myworkdayjobs.com/en-US/JJ/job/Technology-2026-Fall-Co-Op_R-029591",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Software-Engineering-Intern--Robot-Learning-Platform---Fall-2026_JR2015575": {
+      "title": "Software Engineering Intern, Robot Learning Platform  -  Fall 2026",
+      "company": "NVIDIA",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Software-Engineering-Intern--Robot-Learning-Platform---Fall-2026_JR2015575",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://app.ripplematch.com/v2/public/job/c753a051": {
+      "title": "Associate Product Manager, Product Futures Program (Recent Grad)",
+      "company": "eBay",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://app.ripplematch.com/v2/public/job/c753a051",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "http://job-boards.greenhouse.io/youcom/jobs/5129928008": {
+      "title": "Engineering Intern (Hybrid)",
+      "company": "You.com",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://job-boards.greenhouse.io/youcom?error=true",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "http://job-boards.greenhouse.io/fiveringsllc/jobs/5122638008": {
+      "title": "Winter Intern 2027  -  Quantitative Trader",
+      "company": "Five Rings",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://job-boards.greenhouse.io/fiveringsllc?error=true",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://careers.point72.com/CSJobDetail?jobName=2027-point72-academy-investment-analyst-summer-internship-program-us&jobCode=CPA-0014081": {
+      "title": "2027 Academy Investment Analyst Summer Internship",
+      "company": "Point72",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://careers.point72.com/CSJobDetail?jobName=2027-point72-academy-investment-analyst-summer-internship-program-us&jobCode=CPA-0014081",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://careers.point72.com/CSJobDetail?jobName=summer-2027-quantitative-developer-internship&jobCode=CSS-0012293": {
+      "title": "Summer 2027 Quantitative Developer Internship",
+      "company": "Point72",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://careers.point72.com/CSJobDetail?jobName=summer-2027-quantitative-developer-internship&jobCode=CSS-0012293",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://draftkings.wd1.myworkdayjobs.com/Campus_Career_Portal/job/Boston-MA/XMLNAME-2026-Campus--Data-Science-Co-op_JR13061": {
+      "title": "2026 Campus: Data Science Co-op",
+      "company": "DraftKings",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://draftkings.wd1.myworkdayjobs.com/Campus_Career_Portal/job/Boston-MA/XMLNAME-2026-Campus--Data-Science-Co-op_JR13061",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    },
+    "https://jobs.ashbyhq.com/Strava/0d5e7277-429d-45ad-8c9c-8441d0c9202d/application": {
+      "title": "Software Engineering Intern, Android  -  Trust & Safety",
+      "company": "Strava",
+      "status": "OK",
+      "code": 200,
+      "finalUrl": "https://jobs.ashbyhq.com/Strava/0d5e7277-429d-45ad-8c9c-8441d0c9202d/application",
+      "failStrikes": 0,
+      "genericStrikes": 0,
+      "lastCheckedAt": "2026-05-21T14:54:36.484Z"
+    }
+  }
+}
