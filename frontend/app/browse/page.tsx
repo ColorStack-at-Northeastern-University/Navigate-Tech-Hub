@@ -3,6 +3,7 @@ import Navbar from '@/components/layout/Navbar';
 import BrowseContent from '@/components/sections/BrowseContent';
 import CircuitPattern from '@/components/ui/CircuitPattern';
 import EmptyResourceState from '@/components/ui/EmptyResourceState';
+import NewsletterSignup from '@/components/ui/NewsletterSignup';
 import { resolveGuidesEmptyState } from '@/lib/guides-catalog';
 import { getAllResources } from '@/lib/strapi';
 
@@ -43,6 +44,11 @@ export default async function BrowsePage() {
                     ) : (
                         <BrowseContent resources={resources} />
                     )}
+                    <NewsletterSignup
+                        source="browse"
+                        compact
+                        className="mb-10 max-w-3xl"
+                    />
                 </div>
                 <div className="container-custom !pt-0">
                     <p className="text-[#de0911] text-3xl md:text-4xl font-bold">&lt;/&gt;</p>

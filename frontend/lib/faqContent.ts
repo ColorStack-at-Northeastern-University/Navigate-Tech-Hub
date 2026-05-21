@@ -94,7 +94,7 @@ export const FAQ_SECTIONS: FaqSection[] = [
                 id: 'ai-policy',
                 question: 'Do you use AI to write guides?',
                 answer:
-                    'Yes — AI is definitely utilized to assist with the research, outlining, synthesis, and fact-checking of information provided in guides. However, we want to make it clear that the actual information provided in the guides came as a result of the experiences of **dozens of students** that filled out surveys expressing their challenges with CS as underclassmen. We do not publish raw AI output without human edit. Guides that depend on fast-changing facts (recruiting timelines, tool ToS) get reviewed when things shift.',
+                    'AI is definitely utilized to assist with the research, outlining, synthesis, and fact-checking of information provided in guides. However, we want to make it clear that the actual information provided in the guides came as a result of the experiences of **dozens of students** that filled out surveys expressing their challenges with CS as underclassmen. We do not publish raw AI output without human edit. Guides that depend on fast-changing facts (recruiting timelines, tool ToS) get reviewed when things shift.',
             },
             {
                 id: 'guide-outdated',

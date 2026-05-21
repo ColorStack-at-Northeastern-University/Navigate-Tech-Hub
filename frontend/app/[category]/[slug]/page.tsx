@@ -8,6 +8,7 @@ import Tag from '@/components/ui/Tag';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ArticleProse from '@/components/articles/ArticleProse';
+import NewsletterSignup from '@/components/ui/NewsletterSignup';
 import { CATEGORIES } from '@/lib/constants';
 import { getExternalResourcesForArticle, getRelatedResources, getResourceBySlug } from '@/lib/strapi';
 import { externalResourceListKey, formatDate } from '@/lib/utils';
@@ -106,6 +107,12 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
                         articleTitle={resource.title}
                     />
                 </article>
+
+                <NewsletterSignup
+                    source={`article-${category}-${slug}`}
+                    compact
+                    className="mb-16 max-w-3xl"
+                />
 
                 {linkedExternalResources.length > 0 && (
                     <section className="mb-16" aria-labelledby="linked-external-heading">

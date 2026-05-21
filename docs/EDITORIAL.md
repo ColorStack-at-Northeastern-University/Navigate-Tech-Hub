@@ -14,6 +14,16 @@ Flow: research/draft in repo → editorial metadata → Strapi publish → site 
 
 Do not document every draft folder here. The skill owns step-by-step commands.
 
+## Biweekly email (Buttondown)
+
+| Piece | Location |
+|-------|----------|
+| Draft markdown | `docs/newsletter/` (gitignored — local only) |
+| Push draft to Buttondown | `node scripts/draft-buttondown-newsletter.mjs <path-to-draft.md>` |
+| Reminder | GitHub Action `.github/workflows/newsletter-draft-reminder.yml` opens an issue ~every 14 days |
+
+Site signup is `POST /api/newsletter` on the frontend; sending the digest is manual in Buttondown.
+
 ## External resources
 
 Edited in **Strapi Admin** (`external-resource` type). Frontend reads published entries only.
