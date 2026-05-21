@@ -1,5 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 import { RESUME_PATH, RESUME_TEMPLATES, SAMPLE_RESUMES } from '@/components/sections/resumeSectionData';
+import { trackValueEvent, type AssetDownloadName } from '@/lib/analytics';
 import { isExternalAssetUrl } from '@/lib/siteAssets';
 
 function SampleCard({ resume }: { resume: (typeof SAMPLE_RESUMES)[0] }) {
@@ -13,6 +16,9 @@ function SampleCard({ resume }: { resume: (typeof SAMPLE_RESUMES)[0] }) {
                 <a
                     href={resume.downloadUrl}
                     download={resume.downloadFileName}
+                    onClick={() => trackValueEvent('asset_download', {
+                        asset: resumeSampleAsset(resume.id),
+                    })}
                     className="mt-auto inline-flex items-center gap-1.5 text-xs font-semibold text-neu-red hover:underline"
                 >
                     ↓ Download sample (.docx)
@@ -37,6 +43,18 @@ function TemplateButton({ template }: { template: (typeof RESUME_TEMPLATES)[0] }
             {...(downloadName ? { download: downloadName } : {})}
             target={external ? '_blank' : undefined}
             rel={external ? 'noopener noreferrer' : undefined}
+            onClick={() => {
+                if (downloadName) {
+                    trackValueEvent('asset_download', {
+                        asset: 'navigate_template',
+                    });
+                    return;
+                }
+
+                trackValueEvent('outbound_click', {
+                    asset: 'jakes_resume_overleaf',
+                });
+            }}
             className="flex items-start gap-3 p-4 rounded-xl border border-gray-200 bg-white hover:border-neu-red group transition-colors"
         >
             <div className="flex-1 min-w-0">
@@ -55,6 +73,21 @@ function TemplateButton({ template }: { template: (typeof RESUME_TEMPLATES)[0] }
             </span>
         </a>
     );
+}
+
+function resumeSampleAsset(id: number): AssetDownloadName {
+    switch (id) {
+        case 1:
+            return 'resume_sample_1';
+        case 2:
+            return 'resume_sample_2';
+        case 3:
+            return 'resume_sample_3';
+        case 4:
+            return 'resume_sample_4';
+        default:
+            return 'resume_sample_1';
+    }
 }
 
 type ResumeSectionProps = {

@@ -3,11 +3,15 @@
  * External Resources page only; distinct from ColorStack Opportunities on home.
  */
 
+import TrackedOutboundLink from '@/components/analytics/TrackedOutboundLink';
+
 interface MetaLink {
     label: string;
     description: string;
     url: string;
 }
+
+type MetaSection = 'job_boards' | 'conferences';
 
 const JOB_BOARDS: MetaLink[] = [
     {
@@ -96,15 +100,20 @@ const STUDENT_CONFERENCES: MetaLink[] = [
     },
 ];
 
-function LinkGrid({ items }: { items: MetaLink[] }) {
+function LinkGrid({ items, section }: { items: MetaLink[]; section: MetaSection }) {
     return (
         <ul className="flex flex-col sm:flex-row sm:flex-wrap gap-4" role="list">
             {items.map((source) => (
                 <li key={source.url} className="flex-1 min-w-[220px] max-w-xs">
-                    <a
+                    <TrackedOutboundLink
                         href={source.url}
                         target="_blank"
                         rel="noopener noreferrer"
+                        eventName="meta_strip_outbound_click"
+                        eventProperties={{
+                            section,
+                            label: metaLabelSlug(source.label),
+                        }}
                         className="group flex flex-col gap-1 p-4 rounded-lg bg-white border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neu-red focus-visible:ring-offset-2"
                     >
                         <span className="text-sm font-semibold text-brand-dark group-hover:text-neu-red transition-colors">
@@ -114,7 +123,7 @@ function LinkGrid({ items }: { items: MetaLink[] }) {
                             </span>
                         </span>
                         <span className="text-xs text-gray-500 leading-snug">{source.description}</span>
-                    </a>
+                    </TrackedOutboundLink>
                 </li>
             ))}
         </ul>
@@ -132,7 +141,7 @@ export default function MetaSourcesStrip() {
                     >
                         Community-maintained directories
                     </p>
-                    <LinkGrid items={JOB_BOARDS} />
+                    <LinkGrid items={JOB_BOARDS} section="job_boards" />
                 </section>
 
                 <section aria-labelledby="meta-conferences-heading">
@@ -145,9 +154,18 @@ export default function MetaSourcesStrip() {
                     <p className="text-xs text-gray-500 mb-4 max-w-3xl">
                         These are organization homepages  -  confirm dates and registration on the official site each cycle.
                     </p>
-                    <LinkGrid items={STUDENT_CONFERENCES} />
+                    <LinkGrid items={STUDENT_CONFERENCES} section="conferences" />
                 </section>
             </div>
         </section>
     );
+}
+
+function metaLabelSlug(label: string): string {
+    return label
+        .toLowerCase()
+        .replace(/&/g, 'and')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+        .slice(0, 80) || 'unknown';
 }

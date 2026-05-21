@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { trackValueEvent } from '@/lib/analytics';
 
 type SubmitState = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -52,6 +53,7 @@ export default function SuggestResourceForm() {
             }
             setIssueUrl(body.issueUrl ?? null);
             setState('success');
+            trackValueEvent('suggest_resource_submit');
         } catch (err) {
             setErrorMessage(err instanceof Error ? err.message : 'Something went wrong.');
             setState('error');

@@ -37,6 +37,21 @@ Unsafe URL schemes from CMS are sanitized to `#` via `frontend/lib/safeUrl.ts`.
 
 FAQ states guides are human-edited and how to report issues (`/contributions#fix-content`). Keep FAQ aligned with `docs/PRODUCT.md` when product positioning changes.
 
+## Value analytics
+
+Vercel Web Analytics owns site-wide visitors and page views. Custom events track high-value outcomes only.
+
+| Event | Question answered |
+|-------|-------------------|
+| `opportunity_outbound_click` | How many visitors left to apply through the ColorStack opportunity carousel? |
+| `external_resource_outbound_click` | How many visitors used curated Strapi directory cards or careers hubs? |
+| `meta_strip_outbound_click` | How often static job-board and conference pointers are used. |
+| `article_engaged_60s` | How many visitors kept an article visible for at least one minute. |
+| `asset_download` | How many visitors took resume samples, the Navigate template, CSV, or ICS files. |
+| `outbound_click` | High-value external actions that are not downloads, such as Jake's Resume or Google Calendar. |
+| `contribution_cta_click` | Which contribution lane gets intent before a completed submission. |
+| `suggest_resource_submit` | How many resource suggestions were successfully submitted. |
+
 ## References
 
 1. `docs/PRODUCT.md`

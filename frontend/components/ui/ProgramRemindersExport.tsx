@@ -1,5 +1,6 @@
 'use client';
 
+import { trackValueEvent } from '@/lib/analytics';
 import { downloadTextFile } from '@/lib/downloadTextFile';
 import {
     buildProgramRemindersIcs,
@@ -18,6 +19,9 @@ export default function ProgramRemindersExport({ resources }: ProgramRemindersEx
     if (eventCount === 0) return null;
 
     function downloadIcs() {
+        trackValueEvent('asset_download', {
+            asset: 'program_reminders_ics',
+        });
         const ics = buildProgramRemindersIcs(resources);
         downloadTextFile(programRemindersIcsFilename(), ics, 'text/calendar;charset=utf-8');
     }
