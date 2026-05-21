@@ -5,6 +5,7 @@ import CircuitPattern from '@/components/ui/CircuitPattern';
 import EmptyResourceState from '@/components/ui/EmptyResourceState';
 import ExternalResourceCard from '@/components/ui/ExternalResourceCard';
 import MetaSourcesStrip from '@/components/ui/MetaSourcesStrip';
+import NewsletterSignup from '@/components/ui/NewsletterSignup';
 import ProgramsSection from '@/components/ui/ProgramsSection';
 import { getExternalResources } from '@/lib/strapi';
 import type { ExternalResource, ResourceCategory } from '@/lib/types';
@@ -121,6 +122,10 @@ export default async function ExternalResourcesPage() {
                             )}
                         </>
                     )}
+                    <NewsletterSignup
+                        source="external-resources"
+                        className="mb-10 max-w-3xl"
+                    />
                 </div>
                 <div className="container-custom !pt-0">
                     <p className="text-[#de0911] text-3xl md:text-4xl font-bold">&lt;/&gt;</p>

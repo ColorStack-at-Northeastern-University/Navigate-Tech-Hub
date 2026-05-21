@@ -4,6 +4,7 @@ import Hero from '../components/sections/Hero';
 import ColorStackOpportunities from '../components/sections/ColorStackOpportunities';
 import EmptyResourceState from '@/components/ui/EmptyResourceState';
 import FeaturedGuideCarousel from '@/components/ui/FeaturedGuideCarousel';
+import NewsletterSignup from '@/components/ui/NewsletterSignup';
 import ResumeHomeCta from '@/components/sections/ResumeHomeCta';
 import { NATIONAL_COLORSTACK } from '@/lib/constants';
 import { resolveGuidesEmptyState } from '@/lib/guides-catalog';
@@ -31,6 +32,11 @@ export default async function Home() {
                 <ColorStackOpportunities />
 
                 <div className="flex flex-col items-center gap-20 py-8 px-4">
+                    <NewsletterSignup
+                        source="homepage-after-opportunities"
+                        className="w-full max-w-4xl"
+                    />
+
                     {startHereArticle && (
                         <section className="w-full max-w-2xl text-center">
                             <p className="text-[11px] font-bold uppercase tracking-widest text-neu-red mb-4">New here?</p>

@@ -69,7 +69,7 @@ export default function ProgramsSection({ resources }: ProgramsSectionProps) {
             </h2>
             <p className="text-gray-600 mb-4 max-w-3xl">
                 Named programs that run every cycle: fellowships, freshman/sophomore internships, insight events, and more.
-                Each links to the program&apos;s permanent landing page, not a job posting.
+                Each links to the program&apos;s permanent landing page (if we were able to find it!)
             </p>
             <ProgramRemindersExport resources={resources} />
 

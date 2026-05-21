@@ -10,14 +10,14 @@ interface RateLimitResult {
     retryAfterSeconds?: number;
 }
 
-const DEFAULT_LIMIT = 5;
+const DEFAULT_LIMIT = 10;
 const DEFAULT_WINDOW_SECONDS = 60 * 60;
 const rateLimitStore = new Map<string, RateLimitRecord>();
 
-export function checkSuggestRateLimit(headers: Headers, now = Date.now()): RateLimitResult {
-    const limit = positiveIntegerFromEnv(process.env.SUGGEST_RATE_LIMIT_MAX, DEFAULT_LIMIT);
+export function checkNewsletterRateLimit(headers: Headers, now = Date.now()): RateLimitResult {
+    const limit = positiveIntegerFromEnv(process.env.NEWSLETTER_RATE_LIMIT_MAX, DEFAULT_LIMIT);
     const windowSeconds = positiveIntegerFromEnv(
-        process.env.SUGGEST_RATE_LIMIT_WINDOW_SECONDS,
+        process.env.NEWSLETTER_RATE_LIMIT_WINDOW_SECONDS,
         DEFAULT_WINDOW_SECONDS,
     );
     const windowMs = windowSeconds * 1000;

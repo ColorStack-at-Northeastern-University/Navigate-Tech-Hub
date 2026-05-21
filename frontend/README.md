@@ -24,6 +24,10 @@ http://localhost:3000
 | `STRAPI_CACHE` | Optional | Set `no-store` to disable fetch cache |
 | `SUGGEST_RATE_LIMIT_MAX` | Optional | Default `5` per IP per instance |
 | `SUGGEST_RATE_LIMIT_WINDOW_SECONDS` | Optional | Default `3600` |
+| `BUTTONDOWN_API_KEY` | Newsletter signup | Server-only; Buttondown API token |
+| `BUTTONDOWN_NEWSLETTER_TAG` | Optional | Tag on new subscribers (e.g. `navigate-updates`) |
+| `NEWSLETTER_RATE_LIMIT_MAX` | Optional | Default `10` signup attempts per IP per instance |
+| `NEWSLETTER_RATE_LIMIT_WINDOW_SECONDS` | Optional | Default `3600` |
 
 Copy from `.env.example`. Do not commit `.env.local`.
 
