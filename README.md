@@ -1,44 +1,59 @@
 # Navigate Tech Hub
 
-Curated guides and external resources for ColorStack CS students at Northeastern. Next.js frontend; articles and directory from Strapi Cloud.
+Curated guides and external resources for ColorStack CS students at Northeastern and beyond.
+
+## Stack
+
+Next.js (App Router), Strapi Cloud, Vercel.
 
 ## Run locally
 
-**Prerequisites:** Node.js LTS, Git.
+Node.js LTS and Git.
 
 ```powershell
 git clone https://github.com/ColorStack-at-Northeastern-University/Navigate-Tech-Hub.git
-cd Navigate-Tech-Hub
-git checkout develop
-cd frontend
+cd Navigate-Tech-Hub\frontend
 npm install
 ```
 
-Create `frontend/.env.local` (see [`frontend/README.md`](frontend/README.md)). Minimum for dev:
+Clone checks out `develop` (GitHub default).
+
+Create `frontend/.env.local` — variable list in [`frontend/README.md`](frontend/README.md). Local Strapi:
 
 ```
 NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
 ```
 
-Or point `NEXT_PUBLIC_STRAPI_URL` at Strapi Cloud and set `STRAPI_API_TOKEN` (read-only).
+Strapi Cloud: set `NEXT_PUBLIC_STRAPI_URL` and `STRAPI_API_TOKEN` (read-only).
 
 ```powershell
 npm run dev
 ```
 
-Open http://localhost:3000.
+http://localhost:3000
 
 ## Branches
 
-Open pull requests against **`develop`**.
+| Branch | Use |
+|--------|-----|
+| `develop` | Default on GitHub. Land features here; open PRs against `develop`. Push → Vercel preview. |
+| `main` | [navigatetechhub.com](https://navigatetechhub.com). Merge `develop` into `main`, then push. |
 
-**Deployment or production hosting:** email **odubiyi.a@northeastern.edu** — not documented in this repo.
+```powershell
+git checkout develop
+git checkout -b your-feature
+# open PR → develop
+# release (maintainers): merge develop → main, push origin main
+```
 
-## Documentation
+Production deploy access: [odubiyi.a@northeastern.edu](mailto:odubiyi.a@northeastern.edu).
 
-Full map: [`docs/INDEX.md`](docs/INDEX.md).
+## Docs
 
-Agents: paste [`docs/AGENT_ONBOARDING.md`](docs/AGENT_ONBOARDING.md) before large changes.
+| Path | Contents |
+|------|----------|
+| [`docs/INDEX.md`](docs/INDEX.md) | Doc map |
+| [`docs/AGENT_ONBOARDING.md`](docs/AGENT_ONBOARDING.md) | Paste into agent sessions for large changes |
 
 ## Tests
 
@@ -47,4 +62,4 @@ cd frontend
 npm run test:e2e
 ```
 
-Prod health (manual): see [`docs/TESTING.md`](docs/TESTING.md).
+Prod Playwright: [`docs/TESTING.md`](docs/TESTING.md).
