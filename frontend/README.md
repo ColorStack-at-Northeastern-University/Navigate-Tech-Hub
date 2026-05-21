@@ -37,6 +37,10 @@ Copy from `.env.example`. Do not commit `.env.local`.
 | `data/opportunities.ts` | Homepage carousel (static) |
 | `e2e/` | Playwright smoke + prod health |
 
+## Value metrics
+
+Use **Vercel Analytics → Visitors** for site-wide unique visitors. Use **Vercel Analytics → Events** for value outcomes: opportunity clicks, external-resource clicks, article reads over one minute, asset downloads, contribution CTAs, and suggestions.
+
 ## Commands
 
 | Command | Purpose |

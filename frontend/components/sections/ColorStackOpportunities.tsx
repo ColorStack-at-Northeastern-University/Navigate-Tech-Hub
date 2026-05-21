@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import { COLORSTACK_OPPORTUNITIES, type ColorStackOpportunity } from '@/data/opportunities';
+import { trackValueEvent } from '@/lib/analytics';
 import { downloadTextFile } from '@/lib/downloadTextFile';
 import { buildOpportunitiesCsv, opportunitiesCsvFilename } from '@/lib/opportunitiesCsv';
 
@@ -69,6 +70,9 @@ function OpportunityCard({ opportunity }: { opportunity: ColorStackOpportunity }
                 href={opportunity.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackValueEvent('opportunity_outbound_click', {
+                    opportunity_id: opportunity.id,
+                })}
                 className="mt-auto block text-center bg-neu-red text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-red-700 transition-colors"
             >
                 View & Apply →
@@ -89,6 +93,9 @@ export default function ColorStackOpportunities() {
     }
 
     function downloadCsv() {
+        trackValueEvent('asset_download', {
+            asset: 'opportunities_csv',
+        });
         const csv = buildOpportunitiesCsv(COLORSTACK_OPPORTUNITIES);
         downloadTextFile(opportunitiesCsvFilename(), csv, 'text/csv;charset=utf-8');
     }

@@ -7,6 +7,7 @@ import {
     resolveSeasonalGuidance,
     seasonLabel,
 } from '@/lib/programCycle';
+import { analyticsResourceId, trackValueEvent } from '@/lib/analytics';
 import type { ExternalResource, TypicalOpenSeason } from '@/lib/types';
 
 interface ProgramCycleCalloutProps {
@@ -20,6 +21,7 @@ export default function ProgramCycleCallout({ resource }: ProgramCycleCalloutPro
     const hubUrl = resolveCareersHubUrl(resource);
     const calendarUrl = buildCalendarReminderUrl(resource);
     const showSeasonBadge = season !== 'varies';
+    const resourceId = analyticsResourceId(resource.documentId, resource.title);
 
     return (
         <div
@@ -42,6 +44,13 @@ export default function ProgramCycleCallout({ resource }: ProgramCycleCalloutPro
                     href={hubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={(event) => {
+                        event.stopPropagation();
+                        trackValueEvent('external_resource_outbound_click', {
+                            resource_id: resourceId,
+                            surface: 'careers_hub',
+                        });
+                    }}
                     className="inline-flex items-center gap-1 px-3 py-1.5 rounded-md text-xs font-semibold bg-white border border-amber-300 text-neu-red hover:bg-amber-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neu-red"
                 >
                     Open careers hub
@@ -52,6 +61,13 @@ export default function ProgramCycleCallout({ resource }: ProgramCycleCalloutPro
                         href={calendarUrl}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={(event) => {
+                            event.stopPropagation();
+                            trackValueEvent('outbound_click', {
+                                resource_id: resourceId,
+                                destination: 'google_calendar',
+                            });
+                        }}
                         className="inline-flex items-center gap-1 px-3 py-1.5 rounded-md text-xs font-semibold bg-neu-red text-white hover:bg-red-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neu-red focus-visible:ring-offset-2"
                     >
                         Add calendar reminder

@@ -2,6 +2,7 @@ import DifficultyBadge from '@/components/ui/DifficultyBadge';
 import ExternalResourceCard from '@/components/ui/ExternalResourceCard';
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
+import ArticleEngagementTracker from '@/components/analytics/ArticleEngagementTracker';
 import ResourceCard from '@/components/ui/ResourceCard';
 import Tag from '@/components/ui/Tag';
 import Link from 'next/link';
@@ -36,6 +37,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
             <Navbar />
 
             <main className="container-custom mt-16">
+                <ArticleEngagementTracker category={category} slug={slug} />
                 <nav aria-label="Breadcrumb" className="text-gray-600 mb-6 text-sm">
                     <Link href="/" className="hover:text-neu-red transition-colors">
                         Home

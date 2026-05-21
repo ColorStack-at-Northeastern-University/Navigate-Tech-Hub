@@ -1,4 +1,7 @@
+'use client';
+
 import { SITE_CONFIG } from '@/lib/constants';
+import { trackValueEvent } from '@/lib/analytics';
 
 export default function ContributionsDirectContact() {
     const { email, prompt } = SITE_CONFIG.directContact;
@@ -11,6 +14,9 @@ export default function ContributionsDirectContact() {
                 Questions about contributing, partnerships, or where to start? Email{' '}
                 <a
                     href={`mailto:${email}`}
+                    onClick={() => trackValueEvent('contribution_cta_click', {
+                        lane: 'contact-email',
+                    })}
                     className="text-neu-red font-semibold underline underline-offset-2 hover:opacity-80"
                 >
                     {email}

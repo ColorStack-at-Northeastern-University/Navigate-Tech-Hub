@@ -1,5 +1,8 @@
+'use client';
+
 import { CONTRIBUTIONS_FIRST_CONTRIBUTION_URL } from '@/lib/contributions';
 import { SITE_CONFIG } from '@/lib/constants';
+import { trackValueEvent } from '@/lib/analytics';
 import Link from 'next/link';
 
 export default function ContributionsFooterCtas() {
@@ -13,6 +16,9 @@ export default function ContributionsFooterCtas() {
                         href={CONTRIBUTIONS_FIRST_CONTRIBUTION_URL}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => trackValueEvent('contribution_cta_click', {
+                            lane: 'first-contributions',
+                        })}
                         className="text-neu-red font-semibold underline hover:opacity-80"
                     >
                         First Contributions
@@ -24,6 +30,9 @@ export default function ContributionsFooterCtas() {
                         href={SITE_CONFIG.social.github}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => trackValueEvent('contribution_cta_click', {
+                            lane: 'github-repo',
+                        })}
                         className="bg-brand-dark text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-800 transition-colors inline-flex items-center justify-center gap-2"
                     >
                         GitHub repository

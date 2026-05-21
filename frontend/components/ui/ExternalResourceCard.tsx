@@ -1,6 +1,7 @@
 'use client';
 
 import { CATEGORIES } from '@/lib/constants';
+import { analyticsResourceId, trackValueEvent } from '@/lib/analytics';
 import { hasDistinctProgramUrl, resolveCareersHubUrl } from '@/lib/programCycle';
 import { sanitizeHttpHref } from '@/lib/safeUrl';
 import { ExternalResourceCardProps, ResourceCategory, RiskFlag } from '@/lib/types';
@@ -28,6 +29,7 @@ export default function ExternalResourceCard({ resource }: ExternalResourceCardP
     const isRecurring = resource.directoryTier === 'recurring-program';
     const relatedGuideHref = buildRelatedGuideHref(resource.relatedArticleSlug);
     const hasPills = isRecurring && hasAnyPill(resource.audienceSpecific, resource.bostonLocal, resource.riskFlag);
+    const resourceId = analyticsResourceId(resource.documentId, resource.title);
 
     if (isRecurring) {
         const hubUrl = resolveCareersHubUrl(resource);
@@ -41,6 +43,10 @@ export default function ExternalResourceCard({ resource }: ExternalResourceCardP
                     href={hubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackValueEvent('external_resource_outbound_click', {
+                        resource_id: resourceId,
+                        surface: 'careers_hub',
+                    })}
                     className={`block px-8 pt-8 ${relatedGuideHref ? 'pb-4' : 'pb-8'} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neu-red focus-visible:ring-offset-2`}
                 >
                     <h4 className="text-2xl font-semibold mb-3 text-neu-black mt-4 group-hover:text-neu-red transition-colors">
@@ -118,6 +124,10 @@ export default function ExternalResourceCard({ resource }: ExternalResourceCardP
                 href={safeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackValueEvent('external_resource_outbound_click', {
+                    resource_id: resourceId,
+                    surface: 'card',
+                })}
                 className={`block cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neu-red focus-visible:ring-offset-2 ${anchorPad}`}
             >
                 <span className="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold bg-neu-red text-white uppercase tracking-wide">
