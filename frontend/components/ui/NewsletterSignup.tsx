@@ -44,10 +44,16 @@ export default function NewsletterSignup({
 
             form.reset();
             setState('success');
-            trackValueEvent('newsletter_signup_success', { source });
         } catch (error) {
             setErrorMessage(error instanceof Error ? error.message : 'Something went wrong.');
             setState('error');
+            return;
+        }
+
+        try {
+            trackValueEvent('newsletter_signup_success', { source });
+        } catch {
+            // Analytics must not override a successful signup UI.
         }
     }
 
