@@ -40,6 +40,7 @@ This repo does not document production deploy steps. Email **odubiyi.a@northeast
 | Routes and CMS empty states | `UX.md` | `PRODUCT.md` |
 | E2E commands | `TESTING.md` + `frontend/e2e/README.md` | root README (link only) |
 | Ship a guide to Strapi | `EDITORIAL.md` + ship-internal-guide skill | `ARCHITECTURE.md` |
+| Strapi MCP + publish webhook | [`STRAPI_MCP_AND_WEBHOOK.md`](STRAPI_MCP_AND_WEBHOOK.md) | `ARCHITECTURE.md` |
 | Biweekly email drafts (Buttondown) | Local `docs/newsletter/` (gitignored) + GitHub issue reminder | `PRODUCT.md` |
 | Deployment / production access | Email maintainer (above) | any tracked doc |
 

@@ -11,7 +11,13 @@
  *   - Media fields require `populate` to be included in responses
  */
 
+import { cache } from 'react';
 import { unstable_noStore as noStore } from 'next/cache';
+import {
+    STRAPI_TAG_EXTERNALS,
+    STRAPI_TAG_GUIDES,
+    strapiArticleTag,
+} from '@/lib/strapi-cache-tags';
 import { sanitizeStrapiMediaUrl } from '@/lib/safeUrl';
 import { SAMPLE_ARTICLES, SAMPLE_EXTERNAL_RESOURCES } from '@/data/sample-resources';
 import type { GuidesCatalogResult } from './guides-catalog';
@@ -220,14 +226,6 @@ function externalResourceFieldsParams(): Array<[string, string]> {
     return fields.map((field, index) => [`fields[${index}]`, field]);
 }
 
-/** Returns query params to populate image with url and alternativeText. */
-function imagePopulateParams(): Array<[string, string]> {
-    return [
-        ['populate[image][fields][0]', 'url'],
-        ['populate[image][fields][1]', 'alternativeText'],
-    ];
-}
-
 // ---------------------------------------------------------------------------
 // Internal helpers
 // ---------------------------------------------------------------------------
@@ -319,7 +317,11 @@ function normalizeExternalResourceRows(res: StrapiListResponse<StrapiExternalRes
     return rows.map((row) => flattenStrapiRestEntity(row) as unknown as StrapiExternalResource);
 }
 
-function strapiFetchInit(): RequestInit {
+interface StrapiFetchCacheOptions {
+    tags?: string[];
+}
+
+function strapiFetchInit(cacheOptions?: StrapiFetchCacheOptions): RequestInit {
     const headers: HeadersInit = {};
     if (isNonEmptyString(STRAPI_API_TOKEN)) {
         headers.Authorization = `Bearer ${STRAPI_API_TOKEN}`;
@@ -335,16 +337,22 @@ function strapiFetchInit(): RequestInit {
         return { headers, cache: 'no-store' };
     }
 
-    return { headers, next: { revalidate: revalidateSeconds } };
+    return {
+        headers,
+        next: {
+            revalidate: revalidateSeconds,
+            ...(cacheOptions?.tags?.length ? { tags: cacheOptions.tags } : {}),
+        },
+    };
 }
 
 /**
  * Fetches a Strapi REST endpoint and returns the parsed JSON.
  * Throws a descriptive error on non-2xx responses.
  */
-async function fetchStrapi<T>(path: string): Promise<T> {
+async function fetchStrapi<T>(path: string, cacheOptions?: StrapiFetchCacheOptions): Promise<T> {
     const url = `${STRAPI_URL}${path}`;
-    const response = await fetch(url, strapiFetchInit());
+    const response = await fetch(url, strapiFetchInit(cacheOptions));
 
     if (!response.ok) {
         throw new Error(
@@ -557,6 +565,38 @@ function compactExternalResources(records: Array<ExternalResource | null>): Exte
 // ---------------------------------------------------------------------------
 
 /**
+ * One Strapi-backed catalog per server render; browse and category routes filter in memory.
+ */
+const loadPublishedResourceList = cache(async (): Promise<Resource[]> => {
+    const pageSize = 100;
+    let page = 1;
+    let pageCount = 1;
+    const aggregated: Resource[] = [];
+
+    while (page <= pageCount) {
+        const query = buildQuery([
+            ['pagination[page]', String(page)],
+            ['pagination[pageSize]', String(pageSize)],
+            ['sort', 'publishedAt:desc'],
+            ...resourceListFieldsParams(),
+        ]);
+
+        const res = await fetchStrapi<StrapiListResponse<StrapiResource>>(
+            `/api/resources?${query}`,
+            { tags: [STRAPI_TAG_GUIDES] },
+        );
+
+        const rows = normalizeResourceRows(res);
+        aggregated.push(...compactResources(rows.map(mapResource)));
+        pageCount = res.meta?.pagination?.pageCount ?? 1;
+        if (rows.length === 0) break;
+        page += 1;
+    }
+
+    return aggregated;
+});
+
+/**
  * Fetches resources marked as featured for the homepage grid.
  * Returns up to 6 results sorted by most recent first.
  */
@@ -567,11 +607,11 @@ export async function getFeaturedResources(): Promise<GuidesCatalogResult> {
             ['pagination[pageSize]', '6'],
             ['sort', 'publishedAt:desc'],
             ...resourceListFieldsParams(),
-            ...imagePopulateParams(),
         ]);
 
         const res = await fetchStrapi<StrapiListResponse<StrapiResource>>(
-            `/api/resources?${query}`
+            `/api/resources?${query}`,
+            { tags: [STRAPI_TAG_GUIDES] },
         );
 
         const resources = compactResources(normalizeResourceRows(res).map(mapResource));
@@ -590,35 +630,12 @@ export async function getFeaturedResources(): Promise<GuidesCatalogResult> {
 
 /**
  * Fetches all published resources for the browse page.
- * The browse page handles search and category filtering client-side.
+ * Category hubs reuse the same in-memory catalog (one Strapi list fetch per render).
+ * The browse page handles search filtering client-side.
  */
 export async function getAllResources(): Promise<GuidesCatalogResult> {
     try {
-        const pageSize = 100;
-        let page = 1;
-        let pageCount = 1;
-        const aggregated: Resource[] = [];
-
-        while (page <= pageCount) {
-            const query = buildQuery([
-                ['pagination[page]', String(page)],
-                ['pagination[pageSize]', String(pageSize)],
-                ['sort', 'publishedAt:desc'],
-                ...resourceListFieldsParams(),
-                ...imagePopulateParams(),
-            ]);
-
-            const res = await fetchStrapi<StrapiListResponse<StrapiResource>>(
-                `/api/resources?${query}`
-            );
-
-            const rows = normalizeResourceRows(res);
-            aggregated.push(...compactResources(rows.map(mapResource)));
-            pageCount = res.meta?.pagination?.pageCount ?? 1;
-            if (rows.length === 0) break;
-            page += 1;
-        }
-
+        const aggregated = await loadPublishedResourceList();
         return finalizeGuidesCatalogResult(aggregated, 'getAllResources', false);
     } catch (error) {
         console.error('[strapi] getAllResources failed:', error);
@@ -635,32 +652,8 @@ export async function getAllResources(): Promise<GuidesCatalogResult> {
  */
 export async function getResourcesByCategory(category: ResourceCategory): Promise<GuidesCatalogResult> {
     try {
-        const pageSize = 100;
-        let page = 1;
-        let pageCount = 1;
-        const aggregated: Resource[] = [];
-
-        while (page <= pageCount) {
-            const query = buildQuery([
-                ['filters[category][$eq]', category],
-                ['pagination[page]', String(page)],
-                ['pagination[pageSize]', String(pageSize)],
-                ['sort', 'publishedAt:desc'],
-                ...resourceListFieldsParams(),
-                ...imagePopulateParams(),
-            ]);
-
-            const res = await fetchStrapi<StrapiListResponse<StrapiResource>>(
-                `/api/resources?${query}`
-            );
-
-            const rows = normalizeResourceRows(res);
-            aggregated.push(...compactResources(rows.map(mapResource)));
-            pageCount = res.meta?.pagination?.pageCount ?? 1;
-            if (rows.length === 0) break;
-            page += 1;
-        }
-
+        const allResources = await loadPublishedResourceList();
+        const aggregated = allResources.filter((resource) => resource.category === category);
         return finalizeGuidesCatalogResult(aggregated, `getResourcesByCategory(${category})`, false);
     } catch (error) {
         console.error('[strapi] getResourcesByCategory failed:', error);
@@ -700,12 +693,14 @@ export async function getResourceBySlug(
             ['filters[slug][$eq]', slug],
             ['filters[category][$eq]', category],
             ['pagination[pageSize]', '1'],
-            ...imagePopulateParams(),
             ...relatedPopulate,
         ]);
 
         const res = await fetchStrapi<StrapiListResponse<StrapiResource>>(
-            `/api/resources?${queryWithRelated}`
+            `/api/resources?${queryWithRelated}`,
+            {
+                tags: [STRAPI_TAG_GUIDES, strapiArticleTag(category, slug)],
+            },
         );
 
         const rows = normalizeResourceRows(res);
@@ -745,11 +740,11 @@ export async function getRelatedResources(
             ['sort', 'publishedAt:desc'],
             ['pagination[pageSize]', '3'],
             ...resourceListFieldsParams(),
-            ...imagePopulateParams(),
         ]);
 
         const res = await fetchStrapi<StrapiListResponse<StrapiResource>>(
-            `/api/resources?${query}`
+            `/api/resources?${query}`,
+            { tags: [STRAPI_TAG_GUIDES, strapiArticleTag(category, excludeSlug)] },
         );
 
         return compactResources(normalizeResourceRows(res).map(mapResource));
@@ -778,7 +773,8 @@ export async function getExternalResources(): Promise<ExternalResource[]> {
         ]);
 
         const res = await fetchStrapi<StrapiListResponse<StrapiExternalResource>>(
-            `/api/external-resources?${query}`
+            `/api/external-resources?${query}`,
+            { tags: [STRAPI_TAG_EXTERNALS] },
         );
 
         return compactExternalResources(normalizeExternalResourceRows(res).map(mapExternalResource));
@@ -805,7 +801,8 @@ export async function getExternalResourcesForArticle(
         ]);
 
         const res = await fetchStrapi<StrapiListResponse<StrapiExternalResource>>(
-            `/api/external-resources?${query}`
+            `/api/external-resources?${query}`,
+            { tags: [STRAPI_TAG_EXTERNALS, strapiArticleTag(category, slug)] },
         );
 
         return compactExternalResources(normalizeExternalResourceRows(res).map(mapExternalResource));
@@ -829,11 +826,11 @@ export async function getStartHereArticle(): Promise<Resource | null> {
             ['pagination[pageSize]', '1'],
             ['sort', 'publishedAt:desc'],
             ...resourceListFieldsParams(),
-            ...imagePopulateParams(),
         ]);
 
         const res = await fetchStrapi<StrapiListResponse<StrapiResource>>(
-            `/api/resources?${query}`
+            `/api/resources?${query}`,
+            { tags: [STRAPI_TAG_GUIDES] },
         );
 
         const rows = normalizeResourceRows(res);
@@ -857,10 +854,12 @@ export async function getHeroStats(): Promise<HeroStats> {
     try {
         const [resourceRes, externalRes] = await Promise.all([
             fetchStrapi<StrapiListResponse<unknown>>(
-                `/api/resources?pagination[pageSize]=1&pagination[page]=1&fields[0]=id`
+                `/api/resources?pagination[pageSize]=1&pagination[page]=1&fields[0]=id`,
+                { tags: [STRAPI_TAG_GUIDES] },
             ),
             fetchStrapi<StrapiListResponse<unknown>>(
-                `/api/external-resources?pagination[pageSize]=1&pagination[page]=1&fields[0]=id`
+                `/api/external-resources?pagination[pageSize]=1&pagination[page]=1&fields[0]=id`,
+                { tags: [STRAPI_TAG_EXTERNALS] },
             ),
         ]);
         return {

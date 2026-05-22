@@ -27,6 +27,7 @@ flowchart LR
 2. Server Component calls `fetchStrapi()` in `frontend/lib/strapi.ts` with optional `STRAPI_API_TOKEN` (server-only).
 3. Strapi returns published resources; Next maps to UI types and renders.
 4. ISR: `STRAPI_REVALIDATE_SECONDS` (default 180) caches Strapi responses in production.
+5. Publish: Strapi webhook → `POST /api/revalidate/strapi` → `revalidateTag` (see `docs/STRAPI_MCP_AND_WEBHOOK.md`).
 
 ## Suggest-resource path
 
