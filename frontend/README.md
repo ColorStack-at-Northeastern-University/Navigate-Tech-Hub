@@ -21,6 +21,7 @@ http://localhost:3000
 | `GITHUB_REPO_OWNER` | For suggest form | `ColorStack-at-Northeastern-University` |
 | `GITHUB_REPO_NAME` | For suggest form | `Navigate-Tech-Hub` |
 | `STRAPI_REVALIDATE_SECONDS` | Optional | ISR interval; default `180` |
+| `STRAPI_REVALIDATE_SECRET` | Prod webhook | Shared secret for `POST /api/revalidate/strapi` (`X-Revalidate-Secret` header) |
 | `STRAPI_CACHE` | Optional | Set `no-store` to disable fetch cache |
 | `SUGGEST_RATE_LIMIT_MAX` | Optional | Default `5` per IP per instance |
 | `SUGGEST_RATE_LIMIT_WINDOW_SECONDS` | Optional | Default `3600` |
