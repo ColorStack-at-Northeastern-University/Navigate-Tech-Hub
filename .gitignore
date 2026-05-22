@@ -34,3 +34,6 @@ frontend/test-results/
 frontend/public/assets/resume/samples/source/*.docx
 frontend/public/assets/resume/samples/sanitized/*.docx
 .vercel
+
+# weekly checklist
+weekly_checklist.md
