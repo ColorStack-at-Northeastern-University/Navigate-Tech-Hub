@@ -1,0 +1,26 @@
+# Sync org develop → personal fork for Strapi Cloud Free (personal repo only).
+# Requires org secret PERSONAL_ACCESS_TOKEN (PAT with push to AdesolaOdubiyi/Navigate-Tech-Hub).
+name: Mirror to personal (Strapi Cloud)
+
+on:
+  push:
+    branches:
+      - develop
+  workflow_dispatch:
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout org repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+      - name: Push develop to personal mirror
+        env:
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        run: |
+          git remote add personal "https://x-access-token:${PERSONAL_ACCESS_TOKEN}@github.com/AdesolaOdubiyi/Navigate-Tech-Hub.git"
+          git push personal HEAD:develop --force
